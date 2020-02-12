@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{extsizes}
+\usepackage{parskip}
+
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=1in}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{figures/}}
+
+% Make prettier tables.
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+%\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+\title{Visit to CCFE, 05 Feb 2020}
+\author{Graham Van Goffrier}
+
+
+
+%%% Custom Commands
+%---------------------------------------------------------------------------
+% Concise referencing
+\newcommand{\eqnref}[1]{\eqref{#1}}
+\newcommand{\secref}[1]{Section \ref{#1}}
+\newcommand{\figref}[1]{Figure \ref{#1}}
+\newcommand{\lemref}[1]{Lemma \ref{#1}}
+\newcommand{\corref}[1]{Corollary \ref{#1}}
+\newcommand{\thmref}[1]{Theorem \ref{#1}}
+% Real numbers
+\newcommand{\Real}[1]{\mathbb{R}^{#1}}
+% Complex numbers
+\newcommand{\Complex}[1]{\mathbb{C}^{#1}}
+% Integers
+\newcommand{\Integer}[1]{\mathbb{Z}^{#1}}
+% Rank operator
+\DeclareMathOperator{\rank}{\textnormal{rank}}
+% Vec operator
+\newcommand{\vecop}{\textnormal{vec}}
+% Norm
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+% Trace
+\newcommand{\trace}{\textnormal{tr}}
+% Range
+\newcommand{\range}{\textnormal{range}}
+% Partial derivative
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+% Complete derivative
+\newcommand{\dd}[2]{\dfrac{d #1}{d #2}}
+% Complete derivative, second order
+\newcommand{\dds}[2]{\dfrac{d^2 #1}{d {#2}^2}}
+% Limit to N / N
+\newcommand{\limover}[1]{\lim_{#1 \rightarrow \infty} \dfrac{1}{#1}}
+% Display style sum
+\newcommand{\dsum}{\displaystyle\sum}
+% arg min and arg max
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg~max}}}
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg~min}}}
+%---------------------------------------------------------------------------
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+
+\maketitle
+
+
+%\begin{abstract}
+%\noindent Begin abstract
+%\end{abstract}
+
+
+\section{The Model}
+
+We discussed the simplified spherical model as presented in the Docker files to which we have been given access. Neutrons are sourced from the centre of the sphere with a Gaussian energy spread about 14 MeV. All these parameters are described in the help document for the Docker container, so I will not duplicate the description here, except to mention that certain noteworthy parameters are not included in the Docker model (e.g. temperature). More complex toroidal models, which take asymmetric plasma forms into account, come with a D=35 parameter space.
+
+Monte Carlo n-Particle (MCNP) is the general descriptor for methods where neutron tracks through the geometric structure of the reactor are repeatedly modelled and observables such as the Tritium breeding ratio (TBR) are calculated. These geometries have long been represented in constructive solid geometry (CSG) format, but computer-aided design (CAD) geometry has now developed to the stage of providing increased efficiency for neutronics modelling. MCNP calculations are massively paralellisable, and generally follow a rectangular-wave pattern in core usage, where only one core is used to load the model followed by full core usage for the simulation.
+
+The softwares in common use have been OpenMC for particle transport and DAGMC for CAD, while Chinese McCAD and German MCsen have been gaining prominence.
+(see more: https://pdfs.semanticscholar.org/9f5c/07526173d6db29b6200e694a23835c0aa3f1.pdf)
+
+
+\section{Project Planning}
+
+The general scope of our literature review must include methods of building surrogate models from existing models.
+
+F1000 Research was mentioned as an open-source publishing platform which allows for easy sharing of data in diverse formats -- however publishing via this platform does seem to exclude the possibility of publishing the same work in more traditional / renowned journals.
+
+Effective quadratures were mentioned as a potentially useful method of polyfitting on undersampled regions.
+
+
+
+
+
+
+\end{document}
