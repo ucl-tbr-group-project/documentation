@@ -1,0 +1,54 @@
+# Reading list
+
+## Interesting methods we may want to try
+
+ - https://en.wikipedia.org/wiki/Response_surface_methodology
+ - https://en.wikipedia.org/wiki/Kriging
+ - https://en.wikipedia.org/wiki/Gradient-enhanced_kriging
+ - https://en.wikipedia.org/wiki/Space_mapping
+ - https://en.wikipedia.org/wiki/Bayesian_network
+ - general: https://en.wikipedia.org/wiki/Surrogate_model
+
+
+## Surrogate Modeling Toolbox
+
+ - https://github.com/SMTorg/smt
+ - https://smt.readthedocs.io/en/latest/index.html
+
+
+## Papers & slides on regression methods
+
+ - http://www.jmlr.org/papers/volume12/park11a/park11a.pdf
+ - http://proceedings.mlr.press/v48/bui16.pdf
+ - http://www.cs.toronto.edu/~rgrosse/courses/csc321_2017/slides/lec21.pdf
+ - https://arxiv.org/pdf/1807.02811.pdf
+ - https://homepages.inf.ed.ac.uk/ckiw/postscript/lskm_chap.pdf
+ - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892455/
+ - https://towardsdatascience.com/the-intuitions-behind-bayesian-optimization-with-gaussian-processes-7e00fcc898a0
+ - https://arxiv.org/abs/1602.05149
+ - https://link.springer.com/article/10.1023/A:1008306431147
+ - https://link.springer.com/article/10.1007/BF01099263
+ - https://arxiv.org/abs/1012.2599
+ - https://krasserm.github.io/2018/03/21/bayesian-optimization/
+ - https://medium.com/@jonathan_hui/machine-learning-sampling-based-inference-253285417cca
+
+
+## Materials on high-dimensional methods
+
+ - http://ci.columbia.edu/ci/premba_test/c0331/s7/index.html
+ - https://www.stat.cmu.edu/~ryantibs/advmethods/notes/highdim.pdf
+ - http://www.math.univ-toulouse.fr/~besse/Wikistat/pdf/st-m-datSc2-regHD.pdf
+ - https://web.stanford.edu/class/stats202/content/lec16.pdf
+ - https://team.inria.fr/perception/research/high-dim-regression/
+ - https://arxiv.org/abs/1808.00723
+ - https://arxiv.org/abs/1109.5587
+ - https://www.sciencedirect.com/science/article/abs/pii/S122631921830070X
+ - https://www.researchgate.net/post/Can_you_recommend_a_model_to_perform_regression_with_high_dimension_data
+ - https://www.researchgate.net/publication/40684804_OP-ELM_Optimally_pruned_extreme_learning_machine
+ - https://www-ai.cs.tu-dortmund.de/SOFTWARE/MYKLR/index.html
+ - https://statweb.stanford.edu/~tibs/lasso.html
+ - http://www.math.univ-toulouse.fr/~gfort/Slides/MAS14.pdf
+ - https://www.econ.pitt.edu/fantin/papers/efficientHD-import-sampling.pdf
+ - http://www.aco.gatech.edu/sites/default/files/documents/cousins_ben_thesis.pdf
+ - https://smartech.gatech.edu/bitstream/handle/1853/58671/COUSINS-DISSERTATION-2017.pdf?sequence=1&isAllowed=y
+
