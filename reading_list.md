@@ -31,6 +31,8 @@
  - https://arxiv.org/abs/1012.2599
  - https://krasserm.github.io/2018/03/21/bayesian-optimization/
  - https://medium.com/@jonathan_hui/machine-learning-sampling-based-inference-253285417cca
+ - https://machinelearningmastery.com/what-is-bayesian-optimization/
+ - https://thuijskens.github.io/2016/12/29/bayesian-optimisation/
 
 
 ## Materials on high-dimensional methods
