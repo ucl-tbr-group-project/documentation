@@ -3,25 +3,31 @@
 ## Surrogate Model Methods
  - https://en.wikipedia.org/wiki/Surrogate_model
 
-# Response Surface Methods
+### Response Surface Methods
  - https://en.wikipedia.org/wiki/Response_surface_methodology
  
-# Kriging / GEK
+### Kriging / GEK
  - https://en.wikipedia.org/wiki/Kriging
  - https://en.wikipedia.org/wiki/Gradient-enhanced_kriging
  
- # Radial Basis Function Networks
+### Radial Basis Function Networks
  - https://en.wikipedia.org/wiki/Radial_basis_function_network
  - - https://core.ac.uk/download/pdf/37320748.pdf
  - - https://pro.arcgis.com/en/pro-app/help/analysis/geostatistical-analyst/how-radial-basis-functions-work.htm
  - - http://www.jessebett.com/Radial-Basis-Function-USRA/
  - - http://www.scholarpedia.org/article/Radial_basis_function#Choice_of_interpolation_as_approximation_method
  
- # Space Mapping
+### Space Mapping
  - https://en.wikipedia.org/wiki/Space_mapping
  
- # Bayesian Optimisation
+### Bayesian Optimisation
  - https://en.wikipedia.org/wiki/Bayesian_network
+ - - https://machinelearningmastery.com/what-is-bayesian-optimization/
+ - - https://thuijskens.github.io/2016/12/29/bayesian-optimisation/
+ 
+### Mixed Discrete-Continuous Methods
+ - https://cfwebprod.sandia.gov/cfdocs/CompResearch/docs/MixedSurrSAND2012-0491.pdf
+ - RBF: https://link.springer.com/chapter/10.1007/978-3-642-15381-5_31
 
 
 ## Surrogate Modeling Toolbox
@@ -45,8 +51,6 @@
  - https://arxiv.org/abs/1012.2599
  - https://krasserm.github.io/2018/03/21/bayesian-optimization/
  - https://medium.com/@jonathan_hui/machine-learning-sampling-based-inference-253285417cca
- - https://machinelearningmastery.com/what-is-bayesian-optimization/
- - https://thuijskens.github.io/2016/12/29/bayesian-optimisation/
 
 
 ## Materials on high-dimensional methods
