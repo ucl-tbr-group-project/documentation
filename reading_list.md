@@ -10,12 +10,14 @@
  - https://en.wikipedia.org/wiki/Kriging
  - https://en.wikipedia.org/wiki/Gradient-enhanced_kriging
  
-### Radial Basis Function Networks
+### Radial Basis Functions
  - https://en.wikipedia.org/wiki/Radial_basis_function_network
  - - https://core.ac.uk/download/pdf/37320748.pdf
  - - https://pro.arcgis.com/en/pro-app/help/analysis/geostatistical-analyst/how-radial-basis-functions-work.htm
  - - http://www.jessebett.com/Radial-Basis-Function-USRA/
+ - - - http://www.siam.org/Portals/0/Publications/SIURO/Vol4/Choosing_Basis_Functions_and_Shape_Parameters.pdf?ver=2018-04-06-103239-587
  - - http://www.scholarpedia.org/article/Radial_basis_function#Choice_of_interpolation_as_approximation_method
+ - - RBF under tension: doi:10.1016/j.jat.2004.03.005
  
 ### Space Mapping
  - https://en.wikipedia.org/wiki/Space_mapping
