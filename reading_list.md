@@ -2,6 +2,7 @@
 
 ## Surrogate Model Methods
  - https://en.wikipedia.org/wiki/Surrogate_model
+ - http://www2.imm.dtu.dk/pubdb/views/edoc_download.php/2450/pdf/imm2450.pdf
 
 ### Response Surface Methods
  - https://en.wikipedia.org/wiki/Response_surface_methodology
@@ -21,6 +22,7 @@
  
 ### Space Mapping
  - https://en.wikipedia.org/wiki/Space_mapping
+ - - http://www2.imm.dtu.dk/pubdb/views/edoc_download.php/2450/pdf/imm2450.pdf
  
 ### Bayesian Optimisation
  - https://en.wikipedia.org/wiki/Bayesian_network
