@@ -76,3 +76,7 @@
  - http://www.aco.gatech.edu/sites/default/files/documents/cousins_ben_thesis.pdf
  - https://smartech.gatech.edu/bitstream/handle/1853/58671/COUSINS-DISSERTATION-2017.pdf?sequence=1&isAllowed=y
 
+## Emulators in astro
+
+ - https://www.aanda.org/component/article?access=doi&doi=10.1051/0004-6361/201935973
+
