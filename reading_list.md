@@ -10,6 +10,8 @@
 ### Kriging / GEK
  - https://en.wikipedia.org/wiki/Kriging
  - https://en.wikipedia.org/wiki/Gradient-enhanced_kriging
+ - - Accelerated Kriging and GEK: https://arxiv.org/pdf/1708.02663.pdf
+ - - https://www.researchgate.net/publication/278186460_Improvements_to_gradient-enhanced_kriging_using_a_Bayesian_interpretation
  
 ### Radial Basis Functions
  - https://en.wikipedia.org/wiki/Radial_basis_function_network
