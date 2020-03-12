@@ -77,6 +77,21 @@
  - https://www.econ.pitt.edu/fantin/papers/efficientHD-import-sampling.pdf
  - http://www.aco.gatech.edu/sites/default/files/documents/cousins_ben_thesis.pdf
  - https://smartech.gatech.edu/bitstream/handle/1853/58671/COUSINS-DISSERTATION-2017.pdf?sequence=1&isAllowed=y
+ 
+## Materials on generative methods
+
+### Generative Adversarial Networks
+ - Conditional GANs
+ - Multimodality
+ 
+
+### Markov Chain Monte Carlo
+ - ASMO-PODE: https://www.sciencedirect.com/science/article/pii/S1364815216310830
+ - https://arxiv.org/pdf/1807.05187.pdf
+ - Inverse scattering: https://iopscience.iop.org/article/10.1088/1742-6596/490/1/012007/pdf
+ - Kriging MCMC: https://www.ncbi.nlm.nih.gov/pubmed/30170768
+
+
 
 ## Emulators in astro
 
