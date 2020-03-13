@@ -97,3 +97,18 @@
 
  - https://www.aanda.org/component/article?access=doi&doi=10.1051/0004-6361/201935973
 
+## Generative Adversarial Networks (GANs)
+
+ - https://arxiv.org/abs/1406.2661
+ - https://arxiv.org/abs/1511.06434
+ - https://arxiv.org/abs/1411.1784
+ - https://arxiv.org/abs/1710.10196
+ - https://arxiv.org/abs/1809.11096
+ - https://arxiv.org/abs/1812.04948
+ - https://arxiv.org/abs/1703.10593
+ - https://arxiv.org/abs/1611.07004
+ - https://arxiv.org/abs/1612.03242
+ - https://arxiv.org/abs/1907.13324
+ - https://iopscience.iop.org/article/10.1088/1361-6560/ab3fc1
+ - https://inspirehep.net/record/1723861?ln=en
+
