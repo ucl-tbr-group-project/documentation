@@ -35,6 +35,50 @@ proposal distribution, in order to better focus on problematic regions within
 the domain.
 
 
+\subsection{Metrics}
+\label{sec:metrics}
+
+Aiming to provide objective comparison of a diverse set of surrogate model
+classes, we define a multitude of metrics to be tracked during experiments.
+Following the motivation of this work, we are primarily interested in two
+properties of surrogates: (i) their capability to approximate the expensive
+model well and (ii) their time of evaluation. We strive to maximise the former
+while minimising the latter.
+
+To prevent undesirable bias in results due to training set selection, both
+properties are collected using $k$-fold cross-validation with a standard choice
+of $k=5$. Herein, a sample set is subdivided into 5 disjoint
+folds which are repeatedly interpreted as training and testing sets, maintaining
+a constant ratio of samples. In each such interpretation experiments are
+repeated, and the overall value of each metric of interest is given by the mean
+across all folds.
+
+The remainder of this section provides exhaustive list and description of
+regression performance and evaluation time metrics recorded in the experiments.
+
+\subsubsection{Regression Performance Metrics}
+\label{sec:perf-metrics}
+
+TODO: provide formal definition of each of the following metrics
+
+\begin{description}
+	\item[Mean absolute error]
+	\item[$R^2$ ratio]
+	\item[Adjusted $R^2$ ratio]
+	\item[Standard error of regression]
+\end{description}
+
+
+\subsubsection{Evaluation Time Metrics}
+\label{sec:time-metrics}
+
+TODO: provide formal definition of each of the following metrics
+
+\begin{description}
+	\item[Training time per sample]
+	\item[Prediction time per sample]
+\end{description}
+
 
 \subsection{Model Comparisons}
 \label{sec:model}
