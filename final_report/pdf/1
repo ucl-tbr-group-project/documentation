@@ -20,3 +20,15 @@ No file?
 (evince:21601): GLib-GIO-CRITICAL **: 14:53:43.836: g_dbus_proxy_new: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
 
 (evince:21601): GLib-GIO-CRITICAL **: 14:53:43.836: g_dbus_proxy_new: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+! SyncTeX Error : No file?! SyncTeX Error : No file?
+
+
+(evince:21601): Gtk-CRITICAL **: 16:50:39.581: gtk_tree_view_expand_row: assertion 'tree_view->priv->model != NULL' failed
+
+(evince:21601): Gtk-CRITICAL **: 16:50:39.581: gtk_tree_view_expand_row: assertion 'tree_view->priv->model != NULL' failed
+! SyncTeX Error : ! SyncTeX Error : No file?
+No file?
+! SyncTeX Error : No file?! SyncTeX Error : No file?
+
+! SyncTeX Error : No file?
+! SyncTeX Error : No file?
