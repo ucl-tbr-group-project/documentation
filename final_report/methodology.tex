@@ -1,4 +1,40 @@
-Methodology
+Assuming that input has been appropriately treated to eliminate redundant
+features, we may turn to characterise proposed surrogate models and the criteria
+used for their evaluation. The task all presented surrogates strive to solve can be
+formulated using the language of conventional regression problems. In the scope
+of this work, we explore various possible choices available to us in the
+scheme of supervised and unsupervised learning.
+
+Labeling the expensive Monte Carlo simulation $f(x)$, a surrogate is a mapping
+$\tilde{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
+$\tilde{f}(x)$ minimise a selected similarity metric. Furthermore, in order to
+be considered \textit{viable}, surrogates are required to achieve expected evaluation time
+that does not exceed the expected evaluation time of $f(x)$.
+
+In the supervised learning setting, we first gather a sufficiently large
+training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right) \right)\right\}_{i=1}^N$
+to describe the behaviour of $f(x)$ across its domain.
+Depending on specific model class and appropriate choice of its
+hyperparameters, surrogate models $\tilde{f}(x)$ are trained to minimise
+empirical risk with respect to $\mathcal{T}$ and a model-specific
+loss function $\mathcal{L}$, where empirical risk is defined as
+
+\begin{align}
+	R_{\text{emp.}}(\tilde{f}\mid\mathcal{T},\mathcal{L})
+	=\frac{1}{N}\sum_{i=1}^N
+	\mathcal{L}\left(\tilde{f}(x^{(i)}),f(x^{(i)})\right).
+\end{align}
+
+The unsupervised setting can be viewed as an extension of this procedure.
+Rather than fixing the training set $\mathcal{T}$ for the entire duration of
+training, the points of evaluation $\{x^{(i)}\}_{i=1}^N$ that determine the set
+are first initialised randomly, and continuously extended throughout training. This
+permits the learning algorithm to motivate the choice of new points following the
+evaluation of surrogates trained thus far by appropriately biasing the
+proposal distribution, in order to better focus on problematic regions within
+the domain.
+
+
 
 \subsection{Model Comparisons}
 \label{sec:model}
