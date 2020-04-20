@@ -25,14 +25,17 @@ loss function $\mathcal{L}$, where empirical risk is defined as
 	\mathcal{L}\left(\tilde{f}(x^{(i)}),f(x^{(i)})\right).
 \end{align}
 
-The unsupervised setting can be viewed as an extension of this procedure.
+The unsupervised setting can be viewed as an extension of this method.
 Rather than fixing the training set $\mathcal{T}$ for the entire duration of
-training, the points of evaluation $\{x^{(i)}\}_{i=1}^N$ that determine the set
-are first initialised randomly, and continuously extended throughout training. This
-permits the learning algorithm to motivate the choice of new points following the
-evaluation of surrogates trained thus far by appropriately biasing the
-proposal distribution, in order to better focus on problematic regions within
-the domain.
+training, multiple sets $\{\mathcal{T}_k\}_{k=0}^K$ are used, such that
+$\mathcal{T}_{k-1}\subset\mathcal{T}_k$ for all $k$. The first set
+$\mathcal{T}_0$ is initialised randomly to provide a \textit{burn-in}, and is
+repeatedly extended in epochs. In each epoch, a new surrogate is trained on
+$\mathcal{T}_k$ using the supervised learning procedure, and evaluated.
+This permits the learning algorithm to motivate the choice of new points following the
+evaluation of surrogates trained thus far by appropriately biasing a
+proposal distribution, in order to focus on improvement of complex regions
+within the domain.
 
 
 \subsection{Metrics}
