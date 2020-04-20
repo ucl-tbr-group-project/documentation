@@ -18,12 +18,10 @@ Depending on specific model class and appropriate choice of its
 hyperparameters, surrogate models $\hat{f}(x)$ are trained to minimise
 empirical risk with respect to $\mathcal{T}$ and a model-specific
 loss function $\mathcal{L}$, where empirical risk is defined as
-
-\begin{align}
-	R_{\text{emp.}}(\hat{f}\mid\mathcal{T},\mathcal{L})
+$R_{\text{emp.}}(\hat{f}\mid\mathcal{T},\mathcal{L})
 	=\frac{1}{N}\sum_{i=1}^N
-	\mathcal{L}\left(\hat{f}(x^{(i)}),f(x^{(i)})\right).
-\end{align}
+	\mathcal{L}\left(\hat{f}(x^{(i)}),f(x^{(i)})\right)$.
+
 
 The unsupervised setting can be viewed as an extension of this method.
 Rather than fixing the training set $\mathcal{T}$ for the entire duration of
