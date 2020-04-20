@@ -173,16 +173,52 @@ TODO: define NN architectures
 
 \subsubsection{Experiments}
 
-TODO: single slice hyperparameter optimisation
+The presented surrogate candidates are evaluated in four experimental cases:
 
-TODO: multislice (mixed) hyperparameter optimisation
+\begin{enumerate}
+	
+	\item Hyperparameter tuning in simplified domain,
 
-TODO: retraining for scaling benchmark
+	\item Hyperparameter tuning in full domain,
 
-TODO: retraining on large set
+	\item Scaling benchmark,
 
+	\item Competitive surrogate training.
+\end{enumerate}
 
-\newpage
+The aim of the initial experiments is to use a relatively small subset of
+collected TBR samples to determine hyperparameters of considered surrogates.
+Since this process requires learning the behaviour of an unknown, possibly
+expensive mapping---here a function that assigns cross-validated metrics to a
+point in the hyperparameter domain---it in many aspects mirrors
+the primary task of this work with the notable extension of added utility
+to optimise. In order to avoid undesirable exponential slowdown in exhaustive
+searches of a possibly high-dimensional parameter space, Bayesian
+optimisation is employed as standard hyperparameter tuning algorithm that is considered
+efficient for this purpose. We set its objective to maximise $R^2$.
+
+In the first experiment, efforts are made to maximise the possibility of success
+in surrogates that are prone to suboptimal performance in discontinuous spaces.
+This follows the notion that, if desired, accuracy of such models may be
+replicated at large scale by decomposing the TBR domain into continuous subsets,
+and learning ensemble surrogate comprised of models that are trained on each
+subset independently, incurring exponential complexity penalty in the process.
+To this end, training samples are filtered to only contain a single assignment
+of discrete features that are subsequently completely withheld from evaluated
+surrogates. This is repeated four times to investigate variance in behaviour
+under different feature assignments.
+
+The second experiment conventionally measures surrogate performance on the full
+TBR regression task. In extension of the previous case, surrogates work with
+unfiltered samples comprised of discrete as well as continuous features.
+
+The goal of the last two experiments is to exploit the information gathered by
+hyperparameter tuning for study of scaling properties. In
+the third experiment, the best-performing hyperparameter choices of each class
+are used to learn surrogates using progressively larger training sets. Following
+that, the fourth experiment attempts to produce competitive surrogates by
+retraining several selected well-scaling models on the largest available data set.
+
 
 \subsection{Adaptive Sampling}
 \label{sec:adaptive}
