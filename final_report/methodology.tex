@@ -6,8 +6,8 @@ of this work, we explore various possible choices available to us in the
 scheme of supervised and unsupervised learning.
 
 Labeling the expensive Monte Carlo simulation $f(x)$, a surrogate is a mapping
-$\tilde{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
-$\tilde{f}(x)$ minimise a selected similarity metric. Furthermore, in order to
+$\hat{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
+$\hat{f}(x)$ minimise a selected similarity metric. Furthermore, in order to
 be considered \textit{viable}, surrogates are required to achieve expected evaluation time
 that does not exceed the expected evaluation time of $f(x)$.
 
@@ -15,27 +15,27 @@ In the supervised learning setting, we first gather a sufficiently large
 training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right) \right)\right\}_{i=1}^N$
 to describe the behaviour of $f(x)$ across its domain.
 Depending on specific model class and appropriate choice of its
-hyperparameters, surrogate models $\tilde{f}(x)$ are trained to minimise
+hyperparameters, surrogate models $\hat{f}(x)$ are trained to minimise
 empirical risk with respect to $\mathcal{T}$ and a model-specific
 loss function $\mathcal{L}$, where empirical risk is defined as
 
 \begin{align}
-	R_{\text{emp.}}(\tilde{f}\mid\mathcal{T},\mathcal{L})
+	R_{\text{emp.}}(\hat{f}\mid\mathcal{T},\mathcal{L})
 	=\frac{1}{N}\sum_{i=1}^N
-	\mathcal{L}\left(\tilde{f}(x^{(i)}),f(x^{(i)})\right).
+	\mathcal{L}\left(\hat{f}(x^{(i)}),f(x^{(i)})\right).
 \end{align}
 
 The unsupervised setting can be viewed as an extension of this method.
 Rather than fixing the training set $\mathcal{T}$ for the entire duration of
 training, multiple sets $\{\mathcal{T}_k\}_{k=0}^K$ are used, such that
-$\mathcal{T}_{k-1}\subset\mathcal{T}_k$ for all $k$. The first set
+$\mathcal{T}_{k-1}\subset\mathcal{T}_k$ for all $k>1$. The first set
 $\mathcal{T}_0$ is initialised randomly to provide a \textit{burn-in}, and is
-repeatedly extended in epochs. In each epoch, a new surrogate is trained on
-$\mathcal{T}_k$ using the supervised learning procedure, and evaluated.
-This permits the learning algorithm to motivate the choice of new points following the
-evaluation of surrogates trained thus far by appropriately biasing a
-proposal distribution, in order to focus on improvement of complex regions
-within the domain.
+repeatedly extended in epochs, whereby each epoch trains a new surrogate on
+$\mathcal{T}_k$ using the supervised learning procedure, evaluates its
+performance, and forms a new set $\mathcal{T}_{k+1}$ by adding more samples to
+$\mathcal{T}_k$. This permits the learning algorithm to condition the selection
+of new samples by the results of evaluation in order to focus on improvement of
+surrogate performance in complex regions within the domain.
 
 
 \subsection{Metrics}
@@ -43,48 +43,75 @@ within the domain.
 
 Aiming to provide objective comparison of a diverse set of surrogate model
 classes, we define a multitude of metrics to be tracked during experiments.
-Following the motivation of this work, we are primarily interested in two
-properties of surrogates: (i) their capability to approximate the expensive
-model well and (ii) their time of evaluation. We strive to maximise the former
-while minimising the latter.
+Following the motivation of this work, two desirable properties of surrogates
+arise: (i) their capability to approximate the expensive
+model well and (ii) their time of evaluation. An ideal surrogate would maximise
+the former while minimising the latter.
 
-To prevent undesirable bias in results due to training set selection, both
-properties are collected using $k$-fold cross-validation with a standard choice
-of $k=5$. Herein, a sample set is subdivided into 5 disjoint
-folds which are repeatedly interpreted as training and testing sets, maintaining
-a constant ratio of samples. In each such interpretation experiments are
-repeated, and the overall value of each metric of interest is given by the mean
-across all folds.
+\Cref{tbl:metrics} provides exhaustive listing and description of metrics recorded
+in the experiments. For regression performance analysis, we include a selection
+of absolute metrics to assess the approximation capability of surrogates, and set
+practical bounds on the expected accuracy of their predictions. In addition, we also track
+relative measures that are better-suited for model comparison between works as
+they maintain invariance with respect to the selected domain and image space.
+For analysis of evaluation time, surrogates are assessed in terms of wall time
+elapsed during training and predicition. This closely models the practical use
+case, in which they are trained and used as drop-in replacements for the
+expensive model. Since training set sizes remain to be determined, all times are
+reported per a single sample. Even though some surrogates support acceleration
+by means of parallelisation, measures were taken to ensure sequential
+processing of samples to achieve comparability between considered models.
 
-The remainder of this section provides exhaustive list and description of
-regression performance and evaluation time metrics recorded in the experiments.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{llrl}
+	\toprule
+	Regression performance metrics	& Mathematical formulation / description &
+	\multicolumn{2}{c}{Ideal value} \\
+	\midrule
+	Mean absolute error (MAE)	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0
+								& [TBR] \\
+	Standard error of regression $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
+	\hat{y}^{(i)}| \right\} $	 & 0 & [TBR] \\
+	Coefficient of determination $R^2$	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
+	\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ & 1 & [rel.] \\
+	Adjusted $R^2$	& $1-(1-R^2)(N-1)/(N-P-1)$	& 1 & [rel.] \\
+	\midrule
+	Evaluation time metrics	& {} & {} & {} \\
+	\midrule
+	Mean training time $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
+	$\hat{f}(x)$})/N_0$ 	& 0 & [ms] \\
+	Mean prediction time $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
+	$\hat{f}(x)$})/N$	& 0 & [ms] \\
+	Relative speedup	& $(\text{wall evaluation time of $f(x)$}) /
+	(N\overline{t}_{\text{pred.}})$	&
+	$\to\infty$ & [rel.] \\
+	\bottomrule
+	\end{tabular}
+	\caption{Metrics recorded in supervised learning experiments. In
+	formulations, we work with training set of size $N_0$ and testing set of
+size $N$, TBR values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
+denote images of the $i$th testing sample in the expensive model and the surrogate
+respectively. Furthermore, the mean $\overline{y}=\sum_{i=1}^N y^{(i)}/N$ and $P$ is the
+number of input features.}
+	\label{tbl:metrics}
+\end{table}
 
-\subsubsection{Regression Performance Metrics}
-\label{sec:perf-metrics}
-
-TODO: provide formal definition of each of the following metrics
-
-\begin{description}
-	\item[Mean absolute error]
-	\item[$R^2$ ratio]
-	\item[Adjusted $R^2$ ratio]
-	\item[Standard error of regression]
-\end{description}
+To prevent undesirable bias in results due to training set selection, all metrics
+collected in the scheme of $k$-fold cross-validation with a standard choice of
+$k=5$. Herein, a sample set is subdivided into 5 disjoint folds which are
+repeatedly interpreted as training and testing sets, maintaining a constant
+ratio of samples between the two. In each such interpretation experiments are
+repeated, and the overall value of each metric of interest is reported as the
+mean across all folds.
 
 
-\subsubsection{Evaluation Time Metrics}
-\label{sec:time-metrics}
-
-TODO: provide formal definition of each of the following metrics
-
-\begin{description}
-	\item[Training time per sample]
-	\item[Prediction time per sample]
-\end{description}
+\subsection{Supervised Learning Surrogates}
+\label{sec:surrogates}
 
 
-\subsection{Model Comparisons}
-\label{sec:model}
+\subsection{Hyperparameter Optimisation}
+\label{sec:hyperopt}
 
 
 \subsection{Adaptive Sampling}
