@@ -1,4 +1,87 @@
-Methodology
+Assuming that input has been appropriately treated to eliminate redundant
+features, we may turn to characterise proposed surrogate models and the criteria
+used for their evaluation. The task all presented surrogates strive to solve can be
+formulated using the language of conventional regression problems. In the scope
+of this work, we explore various possible choices available to us in the
+scheme of supervised and unsupervised learning.
+
+Labeling the expensive Monte Carlo simulation $f(x)$, a surrogate is a mapping
+$\tilde{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
+$\tilde{f}(x)$ minimise a selected similarity metric. Furthermore, in order to
+be considered \textit{viable}, surrogates are required to achieve expected evaluation time
+that does not exceed the expected evaluation time of $f(x)$.
+
+In the supervised learning setting, we first gather a sufficiently large
+training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right) \right)\right\}_{i=1}^N$
+to describe the behaviour of $f(x)$ across its domain.
+Depending on specific model class and appropriate choice of its
+hyperparameters, surrogate models $\tilde{f}(x)$ are trained to minimise
+empirical risk with respect to $\mathcal{T}$ and a model-specific
+loss function $\mathcal{L}$, where empirical risk is defined as
+
+\begin{align}
+	R_{\text{emp.}}(\tilde{f}\mid\mathcal{T},\mathcal{L})
+	=\frac{1}{N}\sum_{i=1}^N
+	\mathcal{L}\left(\tilde{f}(x^{(i)}),f(x^{(i)})\right).
+\end{align}
+
+The unsupervised setting can be viewed as an extension of this method.
+Rather than fixing the training set $\mathcal{T}$ for the entire duration of
+training, multiple sets $\{\mathcal{T}_k\}_{k=0}^K$ are used, such that
+$\mathcal{T}_{k-1}\subset\mathcal{T}_k$ for all $k$. The first set
+$\mathcal{T}_0$ is initialised randomly to provide a \textit{burn-in}, and is
+repeatedly extended in epochs. In each epoch, a new surrogate is trained on
+$\mathcal{T}_k$ using the supervised learning procedure, and evaluated.
+This permits the learning algorithm to motivate the choice of new points following the
+evaluation of surrogates trained thus far by appropriately biasing a
+proposal distribution, in order to focus on improvement of complex regions
+within the domain.
+
+
+\subsection{Metrics}
+\label{sec:metrics}
+
+Aiming to provide objective comparison of a diverse set of surrogate model
+classes, we define a multitude of metrics to be tracked during experiments.
+Following the motivation of this work, we are primarily interested in two
+properties of surrogates: (i) their capability to approximate the expensive
+model well and (ii) their time of evaluation. We strive to maximise the former
+while minimising the latter.
+
+To prevent undesirable bias in results due to training set selection, both
+properties are collected using $k$-fold cross-validation with a standard choice
+of $k=5$. Herein, a sample set is subdivided into 5 disjoint
+folds which are repeatedly interpreted as training and testing sets, maintaining
+a constant ratio of samples. In each such interpretation experiments are
+repeated, and the overall value of each metric of interest is given by the mean
+across all folds.
+
+The remainder of this section provides exhaustive list and description of
+regression performance and evaluation time metrics recorded in the experiments.
+
+\subsubsection{Regression Performance Metrics}
+\label{sec:perf-metrics}
+
+TODO: provide formal definition of each of the following metrics
+
+\begin{description}
+	\item[Mean absolute error]
+	\item[$R^2$ ratio]
+	\item[Adjusted $R^2$ ratio]
+	\item[Standard error of regression]
+\end{description}
+
+
+\subsubsection{Evaluation Time Metrics}
+\label{sec:time-metrics}
+
+TODO: provide formal definition of each of the following metrics
+
+\begin{description}
+	\item[Training time per sample]
+	\item[Prediction time per sample]
+\end{description}
+
 
 \subsection{Model Comparisons}
 \label{sec:model}
