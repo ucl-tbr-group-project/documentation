@@ -30,9 +30,23 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{cleveref}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{subcaption}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\incfigwidth}[2]{%
+    \def\svgwidth{#1}
+    \import{./fig/}{#2.pdf_tex}
+}
+\newcommand{\incfigscale}[2]{%
+    \def\svgscale{#1}
+    \import{./fig/}{#2.pdf_tex}
+}
 
 % Files with references for use with biblatex.
 % Note that biber gives an error if it finds empty bib files.
