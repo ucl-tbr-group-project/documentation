@@ -5,22 +5,22 @@ Data
 
 TODO
 \begin{enumerate}
+	\item about single sphere OpenMC sim
 	\item parameter listing
-	\item continuous vs discrete
-	\item embedding of discrete values
+	\item continuous vs discrete features
+	\item discrete embedding
 \end{enumerate}
 
 
-\subsection{Random Sampling}
-\label{sec:sampling}
+\subsection{Dataset Generation}
+\label{sec:dataset-generation}
 
 TODO
 \begin{enumerate}
-	\item about single sphere OpenMC sim
-	\item grid sampling vs random sampling
-	\item continuous vs. discrete features
+	\item grid search vs random sampling
 	\item from a set of sampled points to evaluated TBR values
 	\item tech deployed at Hypatia: dockerised sampler \& dataframe-driven querying
+	\item run 0, 1, 2 parameters
 \end{enumerate}
 
 
@@ -69,10 +69,17 @@ Kriging, or Gaussian process regression, is a geostatistical surrogate modelling
 Figure \ref{fig:var} shows the Matheron semivariance [3] for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits [4] to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
 
 
-** Make sure discrete slices are mentioned before this **
+** TODO: Make sure discrete slices are mentioned before this **
 
 \subsubsection{Autoencoders}
 
-Question: is it accurate to say this represents nonlinear feature extraction? re my intro paragraph
+TODO: Question: is it accurate to say this represents nonlinear feature extraction? re my intro paragraph
 
-\newpage
+TODO
+\begin{enumerate}
+	\item working principle
+	\item application on single slice
+	\item application on mixed slice data
+\end{enumerate}
+
+
