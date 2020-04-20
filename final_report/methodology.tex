@@ -62,30 +62,32 @@ processing of samples to achieve comparability between considered models.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{llrl}
-	\toprule
-	Regression performance metrics	& Mathematical formulation / description &
-	\multicolumn{2}{c}{Ideal value} \\
-	\midrule
-	Mean absolute error (MAE)	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0
-								& [TBR] \\
-	Standard error of regression $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
-	\hat{y}^{(i)}| \right\} $	 & 0 & [TBR] \\
-	Coefficient of determination $R^2$	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
-	\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ & 1 & [rel.] \\
-	Adjusted $R^2$	& $1-(1-R^2)(N-1)/(N-P-1)$	& 1 & [rel.] \\
-	\midrule
-	Evaluation time metrics	& {} & {} & {} \\
-	\midrule
-	Mean training time $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
-	$\hat{f}(x)$})/N_0$ 	& 0 & [ms] \\
-	Mean prediction time $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
-	$\hat{f}(x)$})/N$	& 0 & [ms] \\
-	Relative speedup	& $(\text{wall evaluation time of $f(x)$}) /
-	(N\overline{t}_{\text{pred.}})$	&
-	$\to\infty$ & [rel.] \\
-	\bottomrule
-	\end{tabular}
+	{\footnotesize
+		\begin{tabular}{llrl}
+		\toprule
+		Regression performance metrics	& Mathematical formulation / description &
+		\multicolumn{2}{c}{Ideal value} \\
+		\midrule
+		Mean absolute error (MAE)	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0
+									& [TBR] \\
+		Standard error of regression $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
+		\hat{y}^{(i)}| \right\} $	 & 0 & [TBR] \\
+		Coefficient of determination $R^2$	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
+		\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ & 1 & [rel.] \\
+		Adjusted $R^2$	& $1-(1-R^2)(N-1)/(N-P-1)$	& 1 & [rel.] \\
+		\midrule
+		Evaluation time metrics	& {} & {} & {} \\
+		\midrule
+		Mean training time $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
+		$\hat{f}(x)$})/N_0$ 	& 0 & [ms] \\
+		Mean prediction time $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
+		$\hat{f}(x)$})/N$	& 0 & [ms] \\
+		Relative speedup	& $(\text{wall evaluation time of $f(x)$}) /
+		(N\overline{t}_{\text{pred.}})$	&
+		$\to\infty$ & [rel.] \\
+		\bottomrule
+		\end{tabular}
+	}
 	\caption{Metrics recorded in supervised learning experiments. In
 	formulations, we work with training set of size $N_0$ and testing set of
 size $N$, TBR values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
@@ -121,24 +123,26 @@ operate with TBR samples.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{llll}
-	\toprule
-	Surrogate & Acronym & Implementation & Hyperparameters \\
-	\midrule
-	Support vector machines	& SVM & SciKit Learn & TODO \\
-	Gradient boosted trees	& GBT & SciKit Learn & TODO \\
-	Extremely random trees	& ERT & SciKit Learn & TODO \\
-	AdaBoost	& AB & SciKit Learn & TODO \\
-	Gaussian process regression	& GPR & SciKit Learn & TODO \\
-	$k$ nearest neighbours	& KNN & SciKit Learn & TODO \\
-	Neural networks	& NN & Keras (TensorFlow) & TODO \\
-	Inverse distance weighing & IDW & SMT & TODO \\
-	Radial basis functions & RBF & SMT & TODO \\
-	Stochastic gradient descent & SGD & SciKit Learn & TODO \\
-	Ridge regression & RR & SciKit Learn & TODO \\
-	Kriging & KRG & SMT & TODO \\
-	\bottomrule
-	\end{tabular}
+	{\footnotesize
+		\begin{tabular}{llll}
+		\toprule
+		Surrogate & Acronym & Implementation & Hyperparameters \\
+		\midrule
+		Support vector machines	& SVM & SciKit Learn & TODO \\
+		Gradient boosted trees	& GBT & SciKit Learn & TODO \\
+		Extremely randomized trees	& ERT & SciKit Learn & TODO \\
+		AdaBoosted decision trees	& AB & SciKit Learn & TODO \\
+		Gaussian process regression	& GPR & SciKit Learn & TODO \\
+		$k$ nearest neighbours	& KNN & SciKit Learn & TODO \\
+		Neural networks	& NN & Keras (TensorFlow) & TODO \\
+		Inverse distance weighing & IDW & SMT & TODO \\
+		Radial basis functions & RBF & SMT & TODO \\
+		Stochastic gradient descent & SGD & SciKit Learn & TODO \\
+		Ridge regression & RR & SciKit Learn & TODO \\
+		Kriging & KRG & SMT & TODO \\
+		\bottomrule
+		\end{tabular}
+	}
 	\caption{Considered surrogate model classes.}
 	\label{tbl:surrogates}
 \end{table}
