@@ -48,16 +48,12 @@ arise: (i) their capability to approximate the expensive
 model well and (ii) their time of evaluation. An ideal surrogate would maximise
 the former while minimising the latter.
 
-To prevent undesirable bias in results due to training set selection, metrics
-related to both properties are collected using $k$-fold cross-validation with a
-standard choice of $k=5$. Herein, a sample set is subdivided into 5 disjoint
-folds which are repeatedly interpreted as training and testing sets, maintaining
-a constant ratio of samples between the two. In each such interpretation experiments are
-repeated, and the overall value of each metric of interest is reported as the mean
-across all folds.
-
-\Cref{tbl:metrics} provides exhaustive list and description of
-regression performance and evaluation time metrics recorded in the experiments.
+\Cref{tbl:metrics} provides exhaustive list and description of metrics recorded
+in the experiments. For regression performance analysis, we include a selection
+of absolute metrics to assess the approximation capability of surrogates, and set
+practical bounds on the expected accuracy of their predictions. In addition, we also track
+relative measures that are better-suited for model comparison between works as
+they maintain invariance with respect to the domain and image space.
 
 \begin{table}[h]
 	\centering
@@ -65,27 +61,38 @@ regression performance and evaluation time metrics recorded in the experiments.
 	\toprule
 	Regression performance metrics	& Mathematical formulation / description & Ideal value \\
 	\midrule
-	Mean absolute error	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0 [TBR] \\
+	Mean absolute error (MAE)	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0
+	[TBR] \\
+	Standard error of regression $S$	& $\text{StdDev}_{i=1}^N\left( |y^{(i)} -
+	\hat{y}^{(i)}| \right) $	 & 0 [TBR] \\
 	$R^2$ ratio (coefficient of determination)	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
 	\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ & 1 [rel.] \\
 	Adjusted $R^2$ ratio	& $1-(1-R^2)(N-1)/(N-P-1)$	& 1 [rel.] \\
-	Standard error of regression	& $\text{StdDev}_{i=1}^N\left( |y^{(i)} -
-	\hat{y}^{(i)}| \right) $	 & 0 [TBR] \\
 	\midrule
 	Evaluation time metrics	& {} & {} \\
 	\midrule
-	Mean sample training time	& $(\text{wall training time of $\hat{f}(x)$})/N_0$ 	& 0 [ms] \\
-	Mean sample prediction time	& $(\text{wall evaluation time of $\hat{f}(x)$})/N$	& 0 [ms] \\
+	Mean sample training time	& $(\text{wall training time of
+	$\hat{f}(x)$})/N_0$ 	& 0 [ms] \\
+	Mean sample prediction time	& $(\text{wall evaluation time of
+	$\hat{f}(x)$})/N$	& 0 [ms] \\
 	\bottomrule
 	\end{tabular}
 	\caption{Metrics recorded in supervised learning experiments. In
 	formulations, we work with training set of size $N_0$ and testing set of
 size $N$, TBR values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
-denote images of the $i$th sample in the expensive model and the surrogate
+denote images of the $i$th testing sample in the expensive model and the surrogate
 respectively. Furthermore, the mean $\overline{y}=\sum_{i=1}^N y^{(i)}/N$ and $P$ is the
 number of input features.}
 	\label{tbl:metrics}
 \end{table}
+
+To prevent undesirable bias in results due to training set selection, all metrics
+collected in the scheme of $k$-fold cross-validation with a standard choice of
+$k=5$. Herein, a sample set is subdivided into 5 disjoint folds which are
+repeatedly interpreted as training and testing sets, maintaining a constant
+ratio of samples between the two. In each such interpretation experiments are
+repeated, and the overall value of each metric of interest is reported as the
+mean across all folds.
 
 
 \subsection{Model Comparisons}
