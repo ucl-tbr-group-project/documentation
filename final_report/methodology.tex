@@ -106,13 +106,51 @@ repeated, and the overall value of each metric of interest is reported as the
 mean across all folds.
 
 
-\subsection{Supervised Learning Surrogates}
-\label{sec:surrogates}
+\subsection{Supervised Learning Experiments}
+\label{sec:supervised}
+
+\subsubsection{Considered Surrogates}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{llll}
+	\toprule
+	Surrogate & Acronym & Implementation & Hyperparameters \\
+	\midrule
+	Support vector machines	& SVM & SciKit Learn & TODO \\
+	Gradient boosted trees	& GBT & SciKit Learn & TODO \\
+	Extremely random trees	& ERT & SciKit Learn & TODO \\
+	AdaBoost	& AB & SciKit Learn & TODO \\
+	Gaussian process regression	& GPR & SciKit Learn & TODO \\
+	$k$ nearest neighbours	& KNN & SciKit Learn & TODO \\
+	Neural networks	& NN & Keras (TensorFlow) & TODO \\
+	Inverse distance weighing & IDW & SMT & TODO \\
+	Radial basis functions & RBF & SMT & TODO \\
+	Stochastic gradient descent & SGD & SciKit Learn & TODO \\
+	Ridge regression & RR & SciKit Learn & TODO \\
+	Kriging & KRG & SMT & TODO \\
+	\bottomrule
+	\end{tabular}
+	\caption{TODO}
+	\label{tbl:surrogates}
+\end{table}
+
+TODO: describe classes of surrogates
+
+TODO: reference implementations and original papers
+
+TODO: define NN architectures
 
 
-\subsection{Hyperparameter Optimisation}
-\label{sec:hyperopt}
+\subsubsection{Experiments}
 
+TODO: single slice hyperparameter optimisation
+
+TODO: multislice (mixed) hyperparameter optimisation
+
+TODO: retraining for scaling benchmark
+
+TODO: retraining on large set
 
 \subsection{Adaptive Sampling}
 \label{sec:adaptive}
