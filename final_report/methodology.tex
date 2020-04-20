@@ -104,10 +104,20 @@ repeated, and the overall value of each metric of interest is reported as the
 mean across all folds.
 
 
-\subsection{Supervised Learning Experiments}
+\subsection{Evaluation of Supervised Learning Surrogates}
 \label{sec:supervised}
 
-\subsubsection{Considered Surrogates}
+In our experiments, we evaluate and compare surrogates in effort to
+optimise against metrics described in \cref{sec:metrics}. To attain meaningful
+and practically usable results, we require a sufficiently large and diverse pool
+of surrogate classes to draw from. This is described by the listing in
+\cref{tbl:surrogates}. The presented selection of models includes basic
+techniques suitable for linear regression enhanced by the kernel trick or dimension
+lifting, methods driven by decision trees, instance-based learning models,
+ensemble regressors, randomized algorithms, neural networks and mathematical approaches
+developed specifically for the purposes of surrogate modelling. For each of
+these classes, a state-of-the-art implementation was selected and adapted to
+operate with TBR samples.
 
 \begin{table}[h]
 	\centering
@@ -129,15 +139,18 @@ mean across all folds.
 	Kriging & KRG & SMT & TODO \\
 	\bottomrule
 	\end{tabular}
-	\caption{TODO}
+	\caption{Considered surrogate model classes.}
 	\label{tbl:surrogates}
 \end{table}
 
-TODO: describe classes of surrogates
-
-TODO: reference implementations and original papers
-
-TODO: define NN architectures
+In some rows of the table, a single class in reality represents a multitude of
+fundamentally similar approaches. Good examples of this are kriging methods and neural
+networks. In the case of the former, multiple algorithms such as kriging based on
+partial least squares and gradient-enhanced kriging are considered. In the
+latter, a host of parametric graphs are defined to realise simplistic network
+architecture search (see \cref{fig:nn-archs} for details). Discrimination
+between such options is considered an additional hyperparameter of the
+corresponding surrogate class.
 
 \begin{figure}[h]
 	\centering
@@ -167,8 +180,10 @@ TODO: define NN architectures
 		\caption{$\text{6sym}(W)$}
 	\end{subfigure}
 
-	\caption{TODO}
-	\label{fig:neural-net-architectures}
+	\caption{Various considered parametric neural architectures. All layers use ReLU
+		activation and random initialisation. Information flow is indicated by
+		arrows. Conections between neurons are omitted for clarity.}
+	\label{fig:nn-archs}
 \end{figure}
 
 \subsubsection{Experiments}
