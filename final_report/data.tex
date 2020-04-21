@@ -1,9 +1,9 @@
 The initial step of our work is the study of the existing MC TBR model and its
 behaviour. Following the examination of its features (simulation parameters), we
-present efficient means of evaluating this model on large sets of points in HPC
-environment, preprocessing techniques designed to adapt collected datasets for
-surrogate modelling, and our attempts at feature space reduction to achieve the
-lowest possible number of dimensions.
+present efficient means of evaluating this model on large sets of points in
+high-performance computing (HPC) environment, preprocessing techniques designed
+to adapt collected datasets for surrogate modelling, and our attempts at feature
+space reduction to achieve the lowest possible number of dimensions.
 
 
 \subsection{Expensive Model Description}
@@ -68,19 +68,61 @@ continuous features using standard one-hot encoding. This option is available to
 us since discrete domains that generate our feature space are finite in
 cardinality and relatively small in size. And while it renders all features continuous, the
 modification comes at the expense of increasing the dimensionality of the
-feature space, which is comprised of 27 features from this point on.
+feature space to 27 features in total.
 
 
 \subsection{Dataset Generation}
 \label{sec:dataset-generation}
 
-TODO
-\begin{enumerate}
-	\item grid search vs random sampling
-	\item from a set of sampled points to evaluated TBR values
-	\item tech deployed at Hypatia: dockerised sampler \& dataframe-driven querying
-	\item run 0, 1, 2 parameters
-\end{enumerate}
+While we deliberately make no assumptions about the internal properties of the
+MC TBR simulation, effectively treating it as a black box model, our means of
+studying its behaviour are limited to inspection of its outputs at various
+points in the feature space, and inference thereof. We thus require to
+gather sufficiently large and representative quantities of samples to ensure
+statistical significance of our findings.
+
+With grid search in high-dimensional domain clearly intractable, we decided to
+implement uniform pseudo-random sampling to generate large amounts of feature
+configurations that we consider to be independent and unbiased. For evaluation
+of the expensive MC TBR model, we utilise parallelisation offered by
+the HPC infrastructure available at UCL computing facilities. To this end, we
+implemented the Approximate TBR Evaluator---a Python software package capable of
+sequential evaluation of the multi-threaded OpenMC simulation on batches of
+previously generated points in the feature space.
+We deployed ATE at the UCL Hypatia cluster RCIF partition, which consists of
+4~homogeneous nodes, each containing 40 cores. We completed three data
+generation runs, which are summarised in~\cref{tbl:sampling-runs}.
+
+\begin{table}[h]
+	\centering
+	{\footnotesize
+		\begin{tabular}{rllll}
+		\toprule
+		\#	& Sample count & Job division & Run time (incl. waiting) & Description \\
+		\midrule
+		0 & \num{100000} & $\num{100}\times\num{1000}$ & 2~days, 23~hours &
+		Testing run using older MC TBR version.\\
+		1 & \num{500000} & $\num{500}\times\num{1000}$ & 13~days, 20~hours &
+		Fully uniform sampling in the entire domain.\\
+		2 & \num{400000} & $\num{400}\times\num{1000}$ & 10~days &
+		Mixed sampling, discrete features fixed.\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Parameters of sampling runs.}
+	\label{tbl:sampling-runs}
+\end{table}
+
+Skipping run zero, which was performed using older, fundamentally different
+version of the MC TBR software, and was thus treated as a technical
+proof-of-concept, we generated the total of~\num{900000} samples in two runs.
+While the first run featured fully uniform sampling of the unrestricted feature
+space, the second run used more elaborate strategy. Interested in further study
+of relationships between discrete and continuous features, we selected four
+assignments of discrete features and fixed them for all points, effectively
+slicing the feature space into four corresponding subspaces. In order to achieve
+comparability between these \textit{slices}, the remaining unassigned features
+were sampled only in the first slice, and reused in the other three.
 
 
 \subsection{Preprocessing}
