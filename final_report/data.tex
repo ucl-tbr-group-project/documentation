@@ -99,7 +99,7 @@ generation runs, which are summarised in~\cref{tbl:sampling-runs}.
 	{\footnotesize
 		\begin{tabular}{rllll}
 		\toprule
-		\#	& Sample count & Job division & Run time (incl. waiting) & Description \\
+		\#	& Sample count & Batch division & Run time (incl. waiting) & Description \\
 		\midrule
 		0 & \num{100000} & $\num{100}\times\num{1000}$ & 2~days, 23~hours &
 		Testing run using older MC TBR version.\\
@@ -132,7 +132,7 @@ and reused in the other three.
 		\begin{tabular}{r|lllllll}
 		\toprule
 		{} & \multicolumn{7}{c}{Discrete feature assignment}\\
-		Jobs & BBM & BCM & BMM & BSM & FAM & FCM & FSM \\
+		Batches & BBM & BCM & BMM & BSM & FAM & FCM & FSM \\
 		\midrule
 		0-99 & \ce{Li4SiO4} & \ce{H2O} & \ce{Be12Ti} & eurofer & tungsten & \ce{H2O} & eurofer\\
 		100-199 & \ce{Li4SiO4} & \ce{He} & \ce{Be12Ti} & eurofer & tungsten & \ce{H2O} & eurofer\\
@@ -232,11 +232,11 @@ reducible due to a number of fixed features.
 	% TODO: placeholders only, regenerate when time is available
 	\begin{subfigure}[b]{\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{ae_plot_all_slices_combined}
+		\includegraphics[width=\linewidth]{ae_all_slices}
 	\end{subfigure}
 	\begin{subfigure}[b]{\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{ae_plot_single_slice}
+		\includegraphics[width=\linewidth]{ae_single_slice}
 	\end{subfigure}
 	\caption{Autoencoder loss in two considered cases of dimensional reduction.}
 	\label{fig:autoencoder-loss}
