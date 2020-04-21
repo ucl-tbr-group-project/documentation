@@ -188,17 +188,69 @@ Kriging, or Gaussian process regression, is a geostatistical surrogate modelling
 Figure \ref{fig:var} shows the Matheron semivariance [3] for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits [4] to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
 
 
-** TODO: Make sure discrete slices are mentioned before this **
-
 \subsubsection{Autoencoders}
 
-TODO: Question: is it accurate to say this represents nonlinear feature extraction? re my intro paragraph
+\begin{wrapfigure}{r}{0.25\textwidth}
+	\centering
+	\vspace{-3ex}
+	{\footnotesize \incfigscale{0.8}{autoencoder}}
+	\caption{Autoencoder with input width~$W_0$ and bottleneck width~$W_1$.}
+	\label{fig:autoencoder}
+\end{wrapfigure}
 
-TODO
-\begin{enumerate}
-	\item working principle
-	\item application on single slice
-	\item application on mixed slice data
-\end{enumerate}
+Autoencoders are a family of approaches to feature extraction driven by neural
+networks. Faced with many possible alternatives, we implemented a conventional
+autoencoder, which relies on a three-layer network that is trained to replicate
+the identity mapping. While it follows that the input and output layers of such
+network are sized to accommodate the analysed dataset, the
+hidden layer---also called the bottleneck---allows for variable number of
+neurons that represent a smaller subspace. By scanning
+over a range of bottleneck widths and investigating relative changes in the
+validation loss, we assess the potential for dimensional reduction.
 
+This approach was applied to two sets of samples: (i) a subset of data obtained
+from run~1 and (ii) a subset of a single slice obtained from run~2. Our
+expectation was that while the former case would provide meaningful insight into
+correlations within the feature space, the latter would validate our
+autoencoder implementation by analysing a set of points that are trivially
+reducible due to a number of fixed features.
+
+\begin{wrapfigure}{l}{0.4\textwidth}
+	\centering
+	\vspace{-3ex}
+	% TODO: placeholders only, regenerate when time is available
+	\begin{subfigure}[b]{\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{ae_plot_all_slices_combined}
+	\end{subfigure}
+	\begin{subfigure}[b]{\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{ae_plot_single_slice}
+	\end{subfigure}
+	\caption{Autoencoder loss in two considered cases of dimensional reduction.}
+	\label{fig:autoencoder-loss}
+\end{wrapfigure}
+
+The results of both experiments are shown in~\cref{fig:autoencoder-loss}.
+Consistent with our motivation, in each plot we can clearly identify a constant
+plateau in the region of large dimensionality followed by a point, from which a
+steep increase in loss is observed towards lower dimension counts. We consider
+this critical point to correspond with the largest viable dimensional reduction
+without significant information loss.
+With this methodology we find that the autoencoder was able to reduce the
+datasets into a subspace of 17~dimensions in the first case and 10~dimensions in
+the second case.
+
+Confirming our expectation that in the latter, trivially reducible case the
+autoencoder should achieve stricter dimensional reduction, we are
+encouraged to believe that our implementation is indeed efficient. However, we
+must also conclude that in both examined cases this method failed to produce a
+reduction that would be dominate a naïve approach, in which we eliminate
+7~dimensions due to overdetermined one-hot-encoded features, 2~dimensions due to
+sum-to-one constraints, and in the latter case 7~additional dimensions due to
+artificially fixed features. This supports the findings from PCA as well as the
+presented semivariograms.
+
+
+% TODO: Question: is it accurate to say this represents nonlinear feature extraction? re my intro paragraph
 
