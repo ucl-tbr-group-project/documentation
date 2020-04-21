@@ -159,6 +159,15 @@ independently scaled and offset to attain zero mean and unit variance.
 Model training over high-dimensional parameter spaces may be facilitated by carefully reducing the number of variables used to describe the space. For many applications, feature selection strategies succeed in identifying a sufficiently representative subset of the original input variables; however, all given variables were assumed to be physically relevant to the MC TBR model. Feature extraction methods, on the other hand, aim to identify a transformation from the parameter space which decreases dimensionality; even if no individual parameter is separable from the space, some linear combinations of parameters or nonlinear functions of parameters may be.
 
 \begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{run1_400k_tbr_vs_feat}
+	% TODO: placeholder only, turn into vector
+	\caption{Marginalised dependence of TBR on the choice of continuous
+	features.}
+  \label{fig:tbr-vs-features}
+\end{figure}
+
+\begin{figure}[h]
   \centering
     \includegraphics[width=0.6\linewidth]{fig2_pca.jpg}
     \caption{Cumulative variance for optimal features identified by PCA}
