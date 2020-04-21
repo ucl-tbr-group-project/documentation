@@ -167,6 +167,12 @@ Model training over high-dimensional parameter spaces may be facilitated by care
   \label{fig:tbr-vs-features}
 \end{figure}
 
+\subsubsection{Principal Component Analysis}
+
+To pursue linear feature extraction, principal component analysis (PCA) \cite{Jolliffe2016} was performed via scikit-learn on a set of 300,000 uniform samples of the MC TBR model. 
+
+Figure \cref{fig:pca} shows the resultant cumulative variance of the feature vectors identified by PCA. The similar share of variance among all eleven features demonstrated irreducibility of the TBR model by linear methods.
+
 \begin{figure}[h]
   \centering
     \includegraphics[width=0.6\linewidth]{fig2_pca.jpg}
@@ -175,37 +181,32 @@ Model training over high-dimensional parameter spaces may be facilitated by care
 \end{figure}
 
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-55pt}
+  \vspace{-30pt}
   \begin{center}
     \hspace*{-.3\columnsep}\includegraphics[width=0.58\textwidth]{fig3_allvar.jpg}
 	\caption{Semivariograms for MC TBR data with coolant materials: (a) \ce{He},
 	(b) \ce{H2O}, (c) \ce{D2O}}
     \label{fig:var}
   \end{center}
-  \vspace{-110pt}
+  \vspace{-50pt}
 \end{wrapfigure}
-
-\subsubsection{Principal Component Analysis}
-
-To pursue linear feature extraction, principal component analysis (PCA) was performed via scikit-learn on a set of 300,000 uniform samples of the MC TBR model. 
-
-Figure \ref{fig:pca} shows the resultant cumulative variance of the feature vectors identified by PCA. The similar share of variance among all eleven features demonstrated irreducibility of the TBR model by linear methods.
 
 \subsubsection{Variogram Computations}
 
-Kriging, or Gaussian process regression, is a geostatistical surrogate modelling technique which relies on correlation functions over distance (lag) in the paramater space [2]. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
+Kriging, or Gaussian process regression, is a geostatistical surrogate modelling technique which relies on correlation functions over distance (lag) in the paramater space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
 
-Figure \ref{fig:var} shows the Matheron semivariance [3] for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits [4] to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
+Figure \cref{fig:var} shows the Matheron semivariance \cite{Matheron1963} for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits \cite{KrigingFig} to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
 
 
 \subsubsection{Autoencoders}
 
 \begin{wrapfigure}{r}{0.25\textwidth}
 	\centering
-	\vspace{-3ex}
+	\vspace{-5ex}
 	{\footnotesize \incfigscale{0.8}{autoencoder}}
 	\caption{Autoencoder with input width~$W_0$ and bottleneck width~$W_1$.}
 	\label{fig:autoencoder}
+	\vspace{-9ex}
 \end{wrapfigure}
 
 Autoencoders are a family of approaches to feature extraction driven by neural
@@ -227,7 +228,7 @@ reducible due to a number of fixed features.
 
 \begin{wrapfigure}{l}{0.4\textwidth}
 	\centering
-	\vspace{-3ex}
+	\vspace{-1ex}
 	% TODO: placeholders only, regenerate when time is available
 	\begin{subfigure}[b]{\linewidth}
 		\centering
@@ -239,6 +240,7 @@ reducible due to a number of fixed features.
 	\end{subfigure}
 	\caption{Autoencoder loss in two considered cases of dimensional reduction.}
 	\label{fig:autoencoder-loss}
+	\vspace{-6ex}
 \end{wrapfigure}
 
 The results of both experiments are shown in~\cref{fig:autoencoder-loss}.

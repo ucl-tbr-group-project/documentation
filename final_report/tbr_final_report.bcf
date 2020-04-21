@@ -1995,6 +1995,24 @@
     <bcf:datasource type="file" datatype="bibtex">tbr_final_report.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">Sondergaard2003</bcf:citekey>
+    <bcf:citekey order="2">Myers2002</bcf:citekey>
+    <bcf:citekey order="3">JonathanCollab</bcf:citekey>
+    <bcf:citekey order="4">Hernandez2018</bcf:citekey>
+    <bcf:citekey order="5">Keilhacker1999</bcf:citekey>
+    <bcf:citekey order="6">Coleman2019</bcf:citekey>
+    <bcf:citekey order="7">Coleman2019</bcf:citekey>
+    <bcf:citekey order="8">Hernandez2018</bcf:citekey>
+    <bcf:citekey order="9">Jolliffe2016</bcf:citekey>
+    <bcf:citekey order="10">Bouhlel2018</bcf:citekey>
+    <bcf:citekey order="11">Matheron1963</bcf:citekey>
+    <bcf:citekey order="12">KrigingFig</bcf:citekey>
+    <bcf:citekey order="13">Garud2016</bcf:citekey>
+    <bcf:citekey order="14">Zhou2018</bcf:citekey>
+    <bcf:citekey order="15">Zhang2020</bcf:citekey>
+    <bcf:citekey order="16">Gong2017</bcf:citekey>
+    <bcf:citekey order="17">Ginting2011</bcf:citekey>
+    <bcf:citekey order="18">Solonen2012</bcf:citekey>
     <bcf:citekey order="0" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
