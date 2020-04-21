@@ -2141,12 +2141,16 @@
     <bcf:citekey order="10">Bouhlel2018</bcf:citekey>
     <bcf:citekey order="11">Matheron1963</bcf:citekey>
     <bcf:citekey order="12">KrigingFig</bcf:citekey>
-    <bcf:citekey order="13">Garud2016</bcf:citekey>
-    <bcf:citekey order="14">Zhou2018</bcf:citekey>
-    <bcf:citekey order="15">Zhang2020</bcf:citekey>
-    <bcf:citekey order="16">Gong2017</bcf:citekey>
-    <bcf:citekey order="17">Ginting2011</bcf:citekey>
-    <bcf:citekey order="18">Solonen2012</bcf:citekey>
+    <bcf:citekey order="13">SCHMIDHUBER201585</bcf:citekey>
+    <bcf:citekey order="14">scikit-learn</bcf:citekey>
+    <bcf:citekey order="15">chollet2015keras</bcf:citekey>
+    <bcf:citekey order="16">SMT2019</bcf:citekey>
+    <bcf:citekey order="17">Garud2016</bcf:citekey>
+    <bcf:citekey order="18">Zhou2018</bcf:citekey>
+    <bcf:citekey order="19">Zhang2020</bcf:citekey>
+    <bcf:citekey order="20">Gong2017</bcf:citekey>
+    <bcf:citekey order="21">Ginting2011</bcf:citekey>
+    <bcf:citekey order="22">Solonen2012</bcf:citekey>
     <bcf:citekey order="0" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
