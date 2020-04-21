@@ -62,30 +62,32 @@ processing of samples to achieve comparability between considered models.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{llrl}
-	\toprule
-	Regression performance metrics	& Mathematical formulation / description &
-	\multicolumn{2}{c}{Ideal value} \\
-	\midrule
-	Mean absolute error (MAE)	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0
-								& [TBR] \\
-	Standard error of regression $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
-	\hat{y}^{(i)}| \right\} $	 & 0 & [TBR] \\
-	Coefficient of determination $R^2$	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
-	\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ & 1 & [rel.] \\
-	Adjusted $R^2$	& $1-(1-R^2)(N-1)/(N-P-1)$	& 1 & [rel.] \\
-	\midrule
-	Evaluation time metrics	& {} & {} & {} \\
-	\midrule
-	Mean training time $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
-	$\hat{f}(x)$})/N_0$ 	& 0 & [ms] \\
-	Mean prediction time $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
-	$\hat{f}(x)$})/N$	& 0 & [ms] \\
-	Relative speedup	& $(\text{wall evaluation time of $f(x)$}) /
-	(N\overline{t}_{\text{pred.}})$	&
-	$\to\infty$ & [rel.] \\
-	\bottomrule
-	\end{tabular}
+	{\footnotesize
+		\begin{tabular}{llrl}
+		\toprule
+		Regression performance metrics	& Mathematical formulation / description &
+		\multicolumn{2}{c}{Ideal value [units]} \\
+		\midrule
+		Mean absolute error (MAE)	& $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ & 0
+									& [TBR] \\
+		Standard error of regression $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
+		\hat{y}^{(i)}| \right\} $	 & 0 & [TBR] \\
+		Coefficient of determination $R^2$	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
+		\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ & 1 & [rel.] \\
+		Adjusted $R^2$	& $1-(1-R^2)(N-1)/(N-P-1)$	& 1 & [rel.] \\
+		\midrule
+		Evaluation time metrics	& {} & {} & {} \\
+		\midrule
+		Mean training time $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
+		$\hat{f}(x)$})/N_0$ 	& 0 & [ms] \\
+		Mean prediction time $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
+		$\hat{f}(x)$})/N$	& 0 & [ms] \\
+		Relative speedup	& $(\text{wall evaluation time of $f(x)$}) /
+		(N\overline{t}_{\text{pred.}})$	&
+		$\to\infty$ & [rel.] \\
+		\bottomrule
+		\end{tabular}
+	}
 	\caption{Metrics recorded in supervised learning experiments. In
 	formulations, we work with training set of size $N_0$ and testing set of
 size $N$, TBR values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
@@ -104,85 +106,133 @@ repeated, and the overall value of each metric of interest is reported as the
 mean across all folds.
 
 
-\subsection{Supervised Learning Experiments}
+\subsection{Evaluation of Supervised Learning Surrogates}
 \label{sec:supervised}
 
-\subsubsection{Considered Surrogates}
+In our experiments, we evaluate and compare surrogates in effort to
+optimise against metrics described in \cref{sec:metrics}. To attain meaningful
+and practically usable results, we require a sufficiently large and diverse pool
+of surrogate classes to draw from. This is described by the listing in
+\cref{tbl:surrogates}. The presented selection of models includes basic
+techniques suitable for linear regression enhanced by the kernel trick or dimension
+lifting, methods driven by decision trees, instance-based learning models,
+ensemble regressors, randomized algorithms, neural networks and mathematical approaches
+developed specifically for the purposes of surrogate modelling. For each of
+these classes, a state-of-the-art implementation was selected and adapted to
+operate with TBR samples.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{llll}
-	\toprule
-	Surrogate & Acronym & Implementation & Hyperparameters \\
-	\midrule
-	Support vector machines	& SVM & SciKit Learn & TODO \\
-	Gradient boosted trees	& GBT & SciKit Learn & TODO \\
-	Extremely random trees	& ERT & SciKit Learn & TODO \\
-	AdaBoost	& AB & SciKit Learn & TODO \\
-	Gaussian process regression	& GPR & SciKit Learn & TODO \\
-	$k$ nearest neighbours	& KNN & SciKit Learn & TODO \\
-	Neural networks	& NN & Keras (TensorFlow) & TODO \\
-	Inverse distance weighing & IDW & SMT & TODO \\
-	Radial basis functions & RBF & SMT & TODO \\
-	Stochastic gradient descent & SGD & SciKit Learn & TODO \\
-	Ridge regression & RR & SciKit Learn & TODO \\
-	Kriging & KRG & SMT & TODO \\
-	\bottomrule
-	\end{tabular}
-	\caption{TODO}
+	{\footnotesize
+		\begin{tabular}{llll}
+		\toprule
+		Surrogate & Acronym & Implementation & Hyperparameters \\
+		\midrule
+		Support vector machines	& SVM & SciKit Learn & 3 \\
+		Gradient boosted trees	& GBT & SciKit Learn & 11 \\
+		Extremely randomized trees	& ERT & SciKit Learn & 7 \\
+		AdaBoosted decision trees	& AB & SciKit Learn & 3 \\
+		Gaussian process regression	& GPR & SciKit Learn & 2 \\
+		$k$ nearest neighbours	& KNN & SciKit Learn & 3 \\
+		Neural networks	& NN & Keras (TensorFlow) & 2 \\
+		Inverse distance weighing & IDW & SMT & 1 \\
+		Radial basis functions & RBF & SMT & 3 \\
+		Stochastic gradient descent & SGD & SciKit Learn & 13 \\
+		Ridge regression & RR & SciKit Learn & 4 \\
+		Kriging & KRG & SMT & 4 \\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Considered surrogate model classes.}
 	\label{tbl:surrogates}
 \end{table}
 
-TODO: describe classes of surrogates
-
-TODO: reference implementations and original papers
-
-TODO: define NN architectures
+In some rows of the table, a single class in reality represents a multitude of
+fundamentally similar approaches. Good examples of this are kriging methods and neural
+networks. In the case of the former, multiple algorithms such as kriging based on
+partial least squares and gradient-enhanced kriging are considered. In the
+latter, a host of parametric graphs are defined to realise simplistic network
+architecture search (see \cref{fig:nn-archs} for details). Discrimination
+between such options is considered an additional hyperparameter of the
+corresponding surrogate class.
 
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}[b]{0.20\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
-		{\footnotesize \incfigscale{0.62}{1h3f}}
+		{\scriptsize \incfigscale{0.6}{1h3f}}
 		\caption{$\text{1h3f}(W)$}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.15\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
-		{\footnotesize \incfigscale{0.62}{kf}}
+		{\scriptsize \incfigscale{0.6}{kf}}
 		\caption{$\text{df}(D,W)$}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.15\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
-		{\footnotesize \incfigscale{0.62}{3pyramid}}
+		{\scriptsize \incfigscale{0.6}{3pyramid}}
 		\caption{$\text{3pyr}(W)$}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.20\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
-		{\footnotesize \incfigscale{0.62}{5diam}}
+		{\scriptsize \incfigscale{0.6}{5diam}}
 		\caption{$\text{5diam}(W)$}
-	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.20\textwidth}
-		\centering
-		{\footnotesize \incfigscale{0.62}{kf}} % TODO
-		\caption{$\text{6sym}(W)$}
 	\end{subfigure}
 
-	\caption{TODO}
-	\label{fig:neural-net-architectures}
+	\caption{Selected parametric neural network architectures. All layers except
+		the last use ReLU activation. Prediction information flow is indicated by
+		arrows. Conections between neurons are omitted for clarity.}
+	\label{fig:nn-archs}
 \end{figure}
 
 \subsubsection{Experiments}
 
-TODO: single slice hyperparameter optimisation
+The presented surrogate candidates are evaluated in four experimental cases:
 
-TODO: multislice (mixed) hyperparameter optimisation
+\begin{enumerate}
+	
+	\item Hyperparameter tuning in simplified domain,
 
-TODO: retraining for scaling benchmark
+	\item Hyperparameter tuning in full domain,
 
-TODO: retraining on large set
+	\item Scaling benchmark,
 
+	\item Competitive surrogate training.
+\end{enumerate}
 
-\newpage
+The aim of the initial experiments is to use a relatively small subset of
+collected TBR samples to determine hyperparameters of considered surrogates.
+Since this process requires learning the behaviour of an unknown, possibly
+expensive mapping---here a function that assigns cross-validated metrics to a
+point in the hyperparameter domain---it in many aspects mirrors
+the primary task of this work with the notable extension of added utility
+to optimise. In order to avoid undesirable exponential slowdown in exhaustive
+searches of a possibly high-dimensional parameter space, Bayesian
+optimisation is employed as standard hyperparameter tuning algorithm that is considered
+efficient for this purpose. We set its objective to maximise $R^2$.
+
+In the first experiment, efforts are made to maximise the possibility of success
+in surrogates that are prone to suboptimal performance in discontinuous spaces.
+This follows the notion that, if desired, accuracy of such models may be
+replicated at large scale by decomposing the TBR domain into continuous subsets,
+and learning ensemble surrogate comprised of models that are trained on each
+subset independently, incurring exponential complexity penalty in the process.
+To this end, training samples are filtered to only contain a single assignment
+of discrete features that are subsequently completely withheld from evaluated
+surrogates. This is repeated four times to investigate variance in behaviour
+under different feature assignments.
+
+The second experiment conventionally measures surrogate performance on the full
+TBR regression task. In extension of the previous case, surrogates work with
+unfiltered samples comprised of discrete as well as continuous features.
+
+The goal of the last two experiments is to exploit the information gathered by
+hyperparameter tuning for study of scaling properties. In
+the third experiment, the best-performing hyperparameter choices of each class
+are used to learn surrogates using progressively larger training sets. Following
+that, the fourth experiment attempts to produce competitive surrogates by
+retraining several selected well-scaling models on the largest available data set.
+
 
 \subsection{Adaptive Sampling}
 \label{sec:adaptive}

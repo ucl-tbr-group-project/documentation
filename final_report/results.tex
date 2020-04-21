@@ -1,9 +1,109 @@
-\subsection{Results of Model Comparisons}
+\subsection{Supervised Model Evaluation}
 \label{sec:modelres}
 
+TODO
+
+\subsubsection{Hyperparameter Tuning}
+
+TODO
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{exp1_time_vs_reg}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Experiment 1 (single slice)}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{exp1_time_vs_reg}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Experiment 2 (full dataset)}
+	\end{subfigure}
+	\caption{Regression performance (as $R^2$) plotted against mean
+	prediction time for the best $N$~models of each surrogate class.} % TODO. fill N
+	\label{fig:time-vs-reg}
+\end{figure}
 
 
-\newpage
+\subsubsection{Scaling Benchmark}
+
+TODO
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{scaling_metric_r2}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Regression performance (as $R^2$)}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{scaling_time_train}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Mean training time}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{scaling_time_pred}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Mean prediction time}
+	\end{subfigure}
+	\caption{Various metrics collected during experiment 3 (scaling
+	benchmark) displayed as a function of training set size.}
+	\label{fig:scaling}
+\end{figure}
+
+\subsubsection{Competitive Training}
+
+TODO
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Model 1}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Model 2}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Model 3}
+	\end{subfigure}
+
+	\vspace{0.75ex}
+
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Model 1}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Model 2}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Model 3}
+	\end{subfigure}
+	\caption{Regression performance of the best models trained in experiment~4.}
+	\label{fig:reg-performance}
+\end{figure}
 
 \subsection{Results of Adaptive Sampling}
 \label{sec:adaptiveres}

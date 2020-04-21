@@ -21,20 +21,24 @@
 % Add you own definitions here (file tbr_final_report-defs.sty).
 %\usepackage{tbr_final_report-defs}
 \usepackage{wrapfig}
-%---------------------------------------------------------------------
-
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{bm}
 \usepackage{amsthm}
+\usepackage{bm}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{multirow}
 \usepackage{cleveref}
 \usepackage{import}
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
 \usepackage{subcaption}
+\usepackage{isotope}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+%---------------------------------------------------------------------
+
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -53,7 +57,7 @@
 %\addbibresource{tbr_final_report.bib}
 
 % Paths for figures - do not forget the / at the end of the directory name.
-\graphicspath{{ucldiscdtlatex/logos/}{ucldiscdtlatex/figures/}}
+\graphicspath{{ucldiscdtlatex/logos/}{ucldiscdtlatex/figures/}{./fig/}}
 
 
 %---------------------------------------------------------------------
@@ -83,7 +87,7 @@
 \input{introduction}
 %---------------------------------------------------------------------
 
-\section{Data Preprocessing}
+\section{Data Exploration}
 \label{sec:data}
 \input{data}
 %---------------------------------------------------------------------

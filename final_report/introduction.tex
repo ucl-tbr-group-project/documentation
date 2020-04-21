@@ -9,14 +9,36 @@ For the remainder of Section 1, we will define the TBR and set the context of th
 \subsection{Problem Description}
 \label{sec:problemdescription}
 
-Nuclear fusion technology relies on the production and containment of an extremely hot and dense plasma. In this environment, by design similar to that of a star, hydrogen atoms attain energies sufficient to overcome their usual electrostatic repulsion and fuse to form helium [4]. Early prototype reactors made use of the deuterium ($^2H$) isotope of hydrogen in order to achieve fusion under more accessible conditions, but achieved limited success. The current frontier generation of fusion reactors, such as JET and the under-construction International Thermonuclear Experimental Reactor (ITER), make use of tritium ($^3H$) fuel for further efficiency gain. Experimentation at JET dating back to 1997 [5] has made significant headway in validating deuterium-tritium (D-T) operations and constraining the technology which will be employed in ITER in a scaled up form.
+Nuclear fusion technology relies on the production and containment of an
+extremely hot and dense plasma. In this environment, by design similar to that
+of a star, hydrogen atoms attain energies sufficient to overcome their usual
+electrostatic repulsion and fuse to form helium [4]. Early prototype reactors
+made use of the deuterium (\isotope[2]{H}) isotope of hydrogen in order to
+achieve fusion under more accessible conditions, but achieved limited success.
+The current frontier generation of fusion reactors, such as JET and the
+under-construction International Thermonuclear Experimental Reactor (ITER), make
+use of tritium (\isotope[3]{H}) fuel for further efficiency gain.
+Experimentation at JET dating back to 1997 [5] has made significant headway in
+validating deuterium-tritium (D-T) operations and constraining the technology
+which will be employed in ITER in a scaled up form.
 
-However, tritium is much less readily available as a fuel source than deuterium. While at least one deuterium atom occurs for every 5000 molecules of naturally-sourced water, and may be easily distilled, tritium is extremely rare in nature. It may be produced indirectly through irradiation of heavy water (deuterium oxide) during nuclear fission, but only at very low rates which could never sustain industrial-scale fusion power.
+However, tritium is much less readily available as a fuel source than deuterium.
+While at least one deuterium atom occurs for every 5000 molecules of
+naturally-sourced water, and may be easily distilled, tritium is extremely rare
+in nature. It may be produced indirectly through irradiation of heavy water
+(deuterium oxide) during nuclear fission, but only at very low rates which could
+never sustain industrial-scale fusion power.
 
-Instead, modern D-T reactors rely on tritium breeding blankets, specialised layers of material which partially line the reactor and produce tritium upon neutron bombardment, e.g. by 
+Instead, modern D-T reactors rely on tritium breeding blankets, specialised
+layers of material which partially line the reactor and produce tritium upon
+neutron bombardment, e.g. by 
 \begin{align}
-    ^1_0n + \hspace{3pt} ^6_3Li &\rightarrow \hspace{3pt} ^3_1T + \hspace{3pt} ^4_2He \\
-    ^1_0n + \hspace{3pt} ^7_3Li &\rightarrow \hspace{3pt} ^3_1T + \hspace{3pt} ^4_2He + \hspace{3pt} ^1_0n
+	\isotope[1][0]{n} + \hspace{3pt} \isotope[6][3]{Li} 
+	&\longrightarrow \hspace{3pt} 
+	\isotope[3][1]{T} + \hspace{3pt}\isotope[4][2]{He} \\
+	\isotope[1][0]{n} + \hspace{3pt} \isotope[7][3]{Li} 
+	&\longrightarrow \hspace{3pt} 
+	\isotope[3][1]{T} + \hspace{3pt} \isotope[4][2]{He} + \hspace{3pt} \isotope[1][0]{n}
 \end{align}
 \begin{wrapfigure}{r}{0.45\textwidth}
   \vspace{-20pt}
@@ -27,12 +49,26 @@ Instead, modern D-T reactors rely on tritium breeding blankets, specialised laye
 2 — breeding blankets }
 \label{fig:tokamak}
 \end{wrapfigure}
-where T represents tritium and $^7Li$, $^6Li$ are the more and less frequently occurring isotopes of lithium, respectively. $^6Li$ has the greatest tritium breeding cross-section of all tested isotopes [4], but due to magnetohydrodynamic instability of liquid lithium in the reactor environment, a variety of solid lithium compounds are preferred.
+where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
+less frequently occurring isotopes of lithium, respectively. \isotope[6]{Li} has
+the greatest tritium breeding cross-section of all tested isotopes [4], but due
+to magnetohydrodynamic instability of liquid lithium in the reactor environment,
+a variety of solid lithium compounds are preferred.
 
-The TBR is defined as the ratio between tritium generation in the breeding blanket per unit time and tritium fuel consumption in the reactor. The MC neutronics simulations previously mentioned therefore must account for both the internal plasma dynamics of the fusion reactor and the resultant interactions of neutrons with breeding blanket materials. Neutron paths are traced through a CAD model (e.g. Figure \ref{fig:tokamak}) of a reactor with modifiable geometry.
+The TBR is defined as the ratio between tritium generation in the breeding
+blanket per unit time and tritium fuel consumption in the reactor. The MC
+neutronics simulations previously mentioned therefore must account for both the
+internal plasma dynamics of the fusion reactor and the resultant interactions of
+neutrons with breeding blanket materials. Neutron paths are traced through a CAD
+model (e.g. \cref{fig:tokamak}) of a reactor with modifiable geometry.
 
-The input parameters of the computationally-expensive TBR model therefore fall into two classes. Continuous parameters, including material thicknesses and packing ratios, describe the geometry of a given reactor configuration. Discrete categorical parameters further specify all relevant material sections, including coolants, armours, and neutron multipliers. One notable exception is the enrichment ratio, a continuous parameter denoting the presence of $^6Li$. Our challenge, put simply, was to produce a TBR function which takes these same input parameters and approximates the MC TBR model with the greatest achievable accuracy.
-    
-
-
+The input parameters of the computationally-expensive TBR model therefore fall
+into two classes. Continuous parameters, including material thicknesses and
+packing ratios, describe the geometry of a given reactor configuration. Discrete
+categorical parameters further specify all relevant material sections, including
+coolants, armours, and neutron multipliers. One notable exception is the
+enrichment ratio, a continuous parameter denoting the presence of
+\isotope[6]{Li}. Our challenge, put simply, was to produce a TBR function which
+takes these same input parameters and approximates the MC TBR model with the
+greatest achievable accuracy.
 
