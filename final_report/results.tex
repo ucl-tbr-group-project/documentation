@@ -1,35 +1,81 @@
-\subsection{Supervised Model Evaluation}
+TODO
+
+\subsection{Evaluation of Supervised Learning Surrogates}
 \label{sec:modelres}
 
-TODO
+We begin by evaluating a diverse set of surrogate classes that we proposed
+earlier. In particular, we aim to study considered models in terms of regression
+performance and evaluation complexity.
+Following~\cref{sec:experiment-methodology}, where we proposed four experiments
+that accomplish this task, we present and discuss our results in the next
+several sections.
+
 
 \subsubsection{Hyperparameter Tuning}
 
-TODO
+The first two experiments perform Bayesian optimisation to maximise~$R^2$ in
+cross-validated setting as a function of model hyperparameters. While in the
+first experiment we limit ourselves to the scope of a single slice of the
+domain, in the second experiment we extend the process to the full feature
+space.
+
+The results displayed in~\cref{fig:exp1-time-vs-reg} indicate that in the first
+experiment, gradient boosted trees clearly appear to be the most accurate as
+well as the fastest surrogate class in terms of mean prediction time. Following
+that, we note that extremely randomised trees, support vector machines and
+neural networks also achieved satisfactory results in both examined metrics.
+While the remainder of tested surrogate classes does not exhibit problems in
+complexity, its regression performance falls below average.
 
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}[b]{0.5\textwidth}
+	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{exp1_time_vs_reg}
+		\includegraphics[width=\linewidth]{exp1_slice0}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Experiment 1 (single slice)}
+		\caption{Run 2, batches 0-3}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.5\textwidth}
+	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{exp1_time_vs_reg}
+		\includegraphics[width=\linewidth]{exp1_slice1}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Experiment 2 (full dataset)}
+		\caption{Run 2, batches 100-103}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.333\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{exp1_slice2}
+		% TODO: only a placeholder, regenerate when data becomes available
+		\caption{Run 2, batches 200-203}
 	\end{subfigure}
-	\caption{Regression performance (as $R^2$) plotted against mean
-	prediction time for the best $N$~models of each surrogate class.} % TODO. fill N
-	\label{fig:time-vs-reg}
+	\caption{20~best-performing surrogates per each considered class, plotted in
+	terms of mean prediction time and regression performance (as~$R^2$) on
+	selected slices of run~2, evaluated in experiment~1.}
+	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
+\begin{wrapfigure}{r}{0.333\textwidth}
+	\centering
+	\vspace{-3ex}
+	\includegraphics[width=\linewidth]{exp2_time_vs_reg}
+	% TODO: only a placeholder, regenerate when data becomes available
+	\caption{Results of experiment~2, plotted analogously
+	to~\cref{fig:exp1-time-vs-reg}.}
+	\label{fig:exp2-time-vs-reg}
+\end{wrapfigure}
+
+% TODO: multislice description
+TODO: multislice description
 
 \subsubsection{Scaling Benchmark}
 
-TODO
+In the next experiment we examine surrogate scaling properties correlating
+metrics of interest with progressively increasing training set size. The results
+shown in~\cref{fig:scaling} seem to suggest that in terms of regression performance,
+methods based on decision trees and neural networks offer the best accuracy on
+larger sets overall. This is a curious extension of previous findings, where
+gradient boosted trees were observed to significantly dominate over the rest of
+the examined methods. With increasing training set size, their relative advantage is
+clearly gradually diminished.
 
 \begin{figure}[h]
 	\centering
@@ -56,50 +102,66 @@ TODO
 	\label{fig:scaling}
 \end{figure}
 
-\subsubsection{Competitive Training}
+According to our experiment, the lowest mean training time is generally achieved
+by instance-based learning methods, which seem to offer near-constant scaling
+characterists at the expense of significant performance increase later during
+prediction. Following that, we observe that the majority of tree-based methods also exhibit
+desirable properties. The notable exception here appear to be neural networks,
+which are the only model to utilise parallelisation. As such, their constant
+synchronisation overhead overall hinders performance on small training sets,
+producing misleading results when divided by the number of samples.
+
+In terms of mean prediction time, all tested surrogates except previously mentioned
+instance-based learning methods scale exceptionally well. Tree-based generally
+models appear to perform the fastest.
+
+
+\subsubsection{Competitive Surrogate Training}
 
 TODO
 
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}[b]{0.333\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Model 1}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.333\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Model 2}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.333\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Model 3}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
 	\end{subfigure}
 
-	\vspace{0.75ex}
-
-	\begin{subfigure}[b]{0.333\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Model 1}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.333\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Model 2}
 	\end{subfigure}\hfill%
-	\begin{subfigure}[b]{0.333\textwidth}
+	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
 		% TODO: only a placeholder, regenerate when data becomes available
-		\caption{Model 3}
+	\end{subfigure}\hfill%
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{run1_5ke_1h3f128_4974_performance}
+		% TODO: only a placeholder, regenerate when data becomes available
 	\end{subfigure}
 	\caption{Regression performance of the best models trained in experiment~4.}
 	\label{fig:reg-performance}
