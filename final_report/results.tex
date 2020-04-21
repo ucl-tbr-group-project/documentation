@@ -13,7 +13,21 @@ several sections.
 
 \subsubsection{Hyperparameter Tuning}
 
-TODO
+The first two experiments perform Bayesian optimisation to maximise~$R^2$ in
+cross-validated setting as a function of model hyperparameters. While in the
+first experiment we limit ourselves to the scope of a single slice of the
+domain, in the second experiment we extend the process to the full feature
+space.
+
+The results displayed in~\cref{fig:time-vs-reg} indicate that in the first
+experiment, gradient boosted trees clearly appear to be the most accurate as
+well as the fastest surrogate class in terms of mean prediction time. Following
+that, we note that extremely randomised trees, support vector machines and
+neural networks also achieved satisfactory results in both examined metrics.
+While the remainder of tested surrogate classes does not exhibit problems in
+complexity, its regression performance falls below average.
+
+% TODO: multislice description
 
 \begin{figure}[h]
 	\centering
