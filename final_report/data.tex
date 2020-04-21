@@ -21,32 +21,32 @@ to approximation.
 \begin{table}[h]
 	\centering
 	{\footnotesize
-		\begin{tabular}{l|llll}
+		\begin{tabular}{l|lllll}
 		\toprule
-		{} & Parameter name & Type & Domain & Description\\
+		{} & Parameter name & Acronym & Type & Domain & Description\\
 		\midrule
 		\parbox[t]{2mm}{\multirow{12}{*}{\rotatebox[origin=c]{90}{Blanket}}}
-		& Breeder fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & TODO\\
-		& Breeder \isotope[6]{Li} enrichment fraction & Continuous & $[0,1]$ & {}\\
-		& Breeder material & Discrete & $\{\ce{Li2TiO3}, \ce{Li4SiO4}\}$ & {}\\
-		& Breeder packing fraction & Continuous & $[0,1]$ & {}\\
-		& Coolant fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & {}\\
-		& Coolant material & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
-		& Multiplier fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & {}\\
-		& Multiplier material & Discrete & $\{\ce{Be}, \ce{Be12Ti}\}$ & {}\\
-		& Multiplier packing fraction & Continuous & $[0,1]$ & {}\\
-		& Structural fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & {}\\
-		& Structural material & Discrete & $\{\ce{SiC}, \text{eurofer}\}$ & {}\\
-		& Thickness & Continuous & $[0,500]$ & {}\\
+		   & Breeder fraction\textsuperscript{\textdagger} & BBF & Continuous & $[0,1]$ & TODO\\
+		   & Breeder \isotope[6]{Li} enrichment fraction & BBLEF & Continuous & $[0,1]$ & {}\\
+		   & Breeder material & BBM & Discrete & $\{\ce{Li2TiO3}, \ce{Li4SiO4}\}$ & {}\\
+		   & Breeder packing fraction & BBPF & Continuous & $[0,1]$ & {}\\
+		   & Coolant fraction\textsuperscript{\textdagger} & BCF & Continuous & $[0,1]$ & {}\\
+		   & Coolant material & BCM & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
+		   & Multiplier fraction\textsuperscript{\textdagger} & BMF & Continuous & $[0,1]$ & {}\\
+		   & Multiplier material & BMM & Discrete & $\{\ce{Be}, \ce{Be12Ti}\}$ & {}\\
+		   & Multiplier packing fraction & BMPF & Continuous & $[0,1]$ & {}\\
+		   & Structural fraction\textsuperscript{\textdagger} & BSF & Continuous & $[0,1]$ & {}\\
+		   & Structural material & BSM & Discrete & $\{\ce{SiC}, \text{eurofer}\}$ & {}\\
+		   & Thickness & BT & Continuous & $[0,500]$ & {}\\
 		\midrule
 		\parbox[t]{2mm}{\multirow{7}{*}{\rotatebox[origin=c]{90}{First wall}}}
-		& Armour fraction\textsuperscript{\textdaggerdbl} & Continuous & $[0,1]$ & {}\\
-		& Armour material & Discrete & $\{\text{tungsten}\}$ & {}\\
-		& Coolant fraction\textsuperscript{\textdaggerdbl} & Continuous & $[0,1]$ & {}\\
-		& Coolant material & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
-		& Structural fraction\textsuperscript{\textdaggerdbl} & Continuous & $[0,1]$ & {}\\
-		& Structural material & Discrete & $\{\ce{SiC}, \text{eurofer}\}$ & {}\\
-		& Thickness & Continuous & $[0,20]$ & {}\\
+		   & Armour fraction\textsuperscript{\textdaggerdbl} & FAF & Continuous & $[0,1]$ & {}\\
+		   & Armour material & FAM & Discrete & $\{\text{tungsten}\}$ & {}\\
+		   & Coolant fraction\textsuperscript{\textdaggerdbl} & FCF & Continuous & $[0,1]$ & {}\\
+		   & Coolant material & FCM & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
+		   & Structural fraction\textsuperscript{\textdaggerdbl} & FSF & Continuous & $[0,1]$ & {}\\
+		   & Structural material & FSM & Discrete & $\{\ce{SiC}, \text{eurofer}\}$ & {}\\
+		   & Thickness & FT & Continuous & $[0,20]$ & {}\\
 		\bottomrule
 		\end{tabular}
 	}
@@ -119,10 +119,30 @@ proof-of-concept, we generated the total of~\num{900000} samples in two runs.
 While the first run featured fully uniform sampling of the unrestricted feature
 space, the second run used more elaborate strategy. Interested in further study
 of relationships between discrete and continuous features, we selected four
-assignments of discrete features and fixed them for all points, effectively
-slicing the feature space into four corresponding subspaces. In order to achieve
-comparability between these \textit{slices}, the remaining unassigned features
-were sampled only in the first slice, and reused in the other three.
+assignments of discrete features (listed in~\cref{tbl:slices}) and fixed them
+for all points, effectively slicing the feature space into four corresponding
+subspaces. In order to achieve comparability between these \textit{slices}, the
+remaining unassigned features were uniformly sampled only in the first slice,
+and reused in the other three.
+
+\begin{table}[h]
+	\centering
+	{\footnotesize
+		\begin{tabular}{r|lllllll}
+		\toprule
+		{} & \multicolumn{7}{c}{Discrete feature assignment}\\
+		Jobs & BBM & BCM & BMM & BSM & FAM & FCM & FSM \\
+		\midrule
+		0-99 & \ce{Li4SiO4} & \ce{H2O} & \ce{Be12Ti} & eurofer & tungsten & \ce{H2O} & eurofer\\
+		100-199 & \ce{Li4SiO4} & \ce{He} & \ce{Be12Ti} & eurofer & tungsten & \ce{H2O} & eurofer\\
+		200-299 & \ce{Li4SiO4} & \ce{H2O} & \ce{Be12Ti} & eurofer & tungsten & \ce{He} & eurofer\\
+		300-399 & \ce{Li4SiO4} & \ce{He} & \ce{Be12Ti} & eurofer & tungsten & \ce{He} & eurofer\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Selected discrete feature assignments corresponding to slices in run~2.}
+	\label{tbl:slices}
+\end{table}
 
 
 \subsection{Preprocessing}
