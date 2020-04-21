@@ -17,7 +17,7 @@
 %  paper=a4|letter       Set paper size to A4 (default) or letter.
 
 %---------------------------------------------------------------------% More packages:
-%\usepackage{biblatex}
+\usepackage[backend=biber]{biblatex}
 % Add you own definitions here (file tbr_final_report-defs.sty).
 %\usepackage{tbr_final_report-defs}
 \usepackage{wrapfig}
@@ -54,7 +54,7 @@
 
 % Files with references for use with biblatex.
 % Note that biber gives an error if it finds empty bib files.
-%\addbibresource{tbr_final_report.bib}
+\addbibresource{tbr_final_report.bib}
 
 % Paths for figures - do not forget the / at the end of the directory name.
 \graphicspath{{ucldiscdtlatex/logos/}{ucldiscdtlatex/figures/}{./fig/}}
@@ -107,4 +107,9 @@
 \input{conclusion}
 %---------------------------------------------------------------------
 
+\nocite{*}
+\printbibliography
+
 \end{document}
+
+
