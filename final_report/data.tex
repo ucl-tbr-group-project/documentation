@@ -21,15 +21,38 @@ to approximation.
 \begin{table}[h]
 	\centering
 	{\footnotesize
-		\begin{tabular}{llll}
+		\begin{tabular}{l|llll}
 		\toprule
-		Parameter name & Type & Domain & Description\\
+		{} & Parameter name & Type & Domain & Description\\
 		\midrule
-		TODO & TODO & TODO & TODO\\
+		\parbox[t]{2mm}{\multirow{12}{*}{\rotatebox[origin=c]{90}{Blanket}}}
+		& Breeder fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & TODO\\
+		& Breeder \isotope[6]{Li} enrichment fraction & Continuous & $[0,1]$ & {}\\
+		& Breeder material & Discrete & $\{\ce{Li2TiO3}, \ce{Li4SiO4}\}$ & {}\\
+		& Breeder packing fraction & Continuous & $[0,1]$ & {}\\
+		& Coolant fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & {}\\
+		& Coolant material & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
+		& Multiplier fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & {}\\
+		& Multiplier material & Discrete & $\{\ce{Be}, \ce{Be12Ti}\}$ & {}\\
+		& Multiplier packing fraction & Continuous & $[0,1]$ & {}\\
+		& Structural fraction\textsuperscript{\textdagger} & Continuous & $[0,1]$ & {}\\
+		& Structural material & Discrete & $\{\ce{SiC}, \text{eurofer}\}$ & {}\\
+		& Thickness & Continuous & $[0,500]$ & {}\\
+		\midrule
+		\parbox[t]{2mm}{\multirow{7}{*}{\rotatebox[origin=c]{90}{First wall}}}
+		& Armour fraction\textsuperscript{\textdaggerdbl} & Continuous & $[0,1]$ & {}\\
+		& Armour material & Discrete & $\{\text{tungsten}\}$ & {}\\
+		& Coolant fraction\textsuperscript{\textdaggerdbl} & Continuous & $[0,1]$ & {}\\
+		& Coolant material & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
+		& Structural fraction\textsuperscript{\textdaggerdbl} & Continuous & $[0,1]$ & {}\\
+		& Structural material & Discrete & $\{\ce{SiC}, \text{eurofer}\}$ & {}\\
+		& Thickness & Continuous & $[0,20]$ & {}\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Input parameters supplied to the MC TBR simulation.}
+	\caption{Input parameters supplied to the MC TBR simulation in alphabetical
+		order. Fractions marked with superscripts\textsuperscript{\textdagger
+		\textdaggerdbl} are independently required to sum to one.}
 	\label{tbl:params}
 \end{table}
 
