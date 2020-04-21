@@ -1,4 +1,4 @@
-\subsection{Supervised Model Evaluation}
+\subsection{Evaluation of Supervised Learning Surrogates}
 \label{sec:modelres}
 
 TODO
@@ -29,7 +29,14 @@ TODO
 
 \subsubsection{Scaling Benchmark}
 
-TODO
+In the next experiment we examine surrogate scaling properties correlating
+metrics of interest with progressively increasing training set size. The results
+shown in~\cref{fig:scaling} seem to suggest that in terms of regression performance,
+methods based on decision trees and neural networks offer the best accuracy on
+larger sets overall. This is a curious extension of previous findings, where
+gradient boosted trees were observed to significantly dominate over the rest of
+the examined methods. With increasing training set size, their relative advantage is
+clearly gradually diminished.
 
 \begin{figure}[h]
 	\centering
@@ -56,7 +63,21 @@ TODO
 	\label{fig:scaling}
 \end{figure}
 
-\subsubsection{Competitive Training}
+According to our experiment, the lowest mean training time is generally achieved
+by instance-based learning methods, which seem to offer near-constant scaling
+characterists at the expense of significant performance increase later during
+prediction. Following that, we observe that the majority of tree-based methods also exhibit
+desirable properties. The notable exception here appear to be neural networks,
+which are the only model to utilise parallelisation. As such, their constant
+synchronisation overhead overall hinders performance on small training sets,
+producing misleading results when divided by the number of samples.
+
+In terms of mean prediction time, all tested surrogates except previously mentioned
+instance-based learning methods scale exceptionally well. Tree-based generally
+models appear to perform the fastest.
+
+
+\subsubsection{Competitive Surrogate Training}
 
 TODO
 
