@@ -201,7 +201,7 @@ Figure \cref{fig:pca} shows the resultant cumulative variance of the feature vec
 % TODO: in results, we feature both Kriging and GPR with differing results -
 % clarify their interchangeability here
 
-Kriging, or Gaussian process regression, is a geostatistical surrogate modelling technique which relies on correlation functions over distance (lag) in the paramater space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
+Kriging is a geostatistical surrogate modelling technique which relies on correlation functions over distance (lag) in the paramater space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
 
 \Cref{fig:var} shows the Matheron semivariance \cite{Matheron1963} for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits \cite{KrigingFig} to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
 

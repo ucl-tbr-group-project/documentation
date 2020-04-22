@@ -172,7 +172,7 @@ TODO
   \vspace{-60pt}
   \begin{center}
     \includegraphics[width=0.4\textwidth]{fig5_sintoy.jpg}
-	\caption{Sinusoidal toy TBR model with two continuous parameters, wavenumber 1}
+	\caption{Sinusoidal toy TBR theory over two continuous parameters, wavenumber 1}
     \label{fig:sintoy}
   \end{center}
   \vspace{-30pt}
@@ -210,8 +210,8 @@ The plateau effect in surrogate error on the evaluation set, seen in Figure \ref
 \begin{figure}[h]
   \centering
     \includegraphics[width=0.8\linewidth]{fig7_qasssampling.pdf}
-    \caption{Absolute training error for QASS, uniform random scheme, and mixed scheme}
+    \caption{Absolute training error for QASS, baseline scheme, and mixed scheme}
   \label{fig:qasssampling}
 \end{figure}
 
-Such tests revealed that while QASS has unmatched performance on its own adaptively-sampled training set, it is outperformed by the baseline scheme on uniformly random evaluation sets. We suspected that while QASS excels in learning the most strongly peaked regions of the TBR theory, this comes at the expense of precision in broader, smoother regions where uniformly random sampling suffices. Therefore a mixed scheme was implemented, with half MCMC samples and half uniformly random samples incremented on each iteration, and is also shown in Figure \ref{fig:qasssampling}.
+Such tests revealed that while QASS has unmatched performance on its own adaptively-sampled training set, it is outperformed by the baseline scheme on uniformly random evaluation sets. We suspected that while QASS excels in learning the most strongly peaked regions of the TBR theory, this comes at the expense of precision in broader, smoother regions where uniformly random sampling suffices. Therefore a mixed scheme was implemented, with half MCMC samples and half uniformly random samples incremented on each iteration, which is also shown in Figure \ref{fig:qasssampling}.
