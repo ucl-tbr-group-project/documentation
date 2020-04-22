@@ -10,12 +10,13 @@ space reduction to achieve the lowest possible number of dimensions.
 \label{sec:expensive-model-description}
 
 The MC TBR model that we understand to be the expensive function for our
-surrogate modelling is fundamentally a Monte Carlo simulation based on the OpenMC
-framework. At input the software expects a set of 19~parameters, discrete and
+surrogate modelling is fundamentally a Monte Carlo simulation based on the
+OpenMC framework~\cite{ROMANO201590}. At input the software expects a set of 19~parameters, discrete and
 continuous, that are fully listed in~\cref{tbl:params}. Following a brief period of
-time (usually on the order of tens of seconds), during which a fixed number of events is simulated, the software outputs the
+time (usually on the order of tens of seconds), during which a fixed number of
+events is generated, the simulation outputs the
 mean and the standard deviation of the TBR aggregated over the simulated run. The
-former of these two outputs we accept to be the output TBR value that is subject
+former of these two we accept to be the output TBR value that is subject
 to approximation.
 
 \begin{table}[h]
@@ -78,16 +79,16 @@ in~\cref{sec:dimred}.
 While we deliberately make no assumptions about the internal properties of the
 MC TBR simulation, effectively treating it as a black box model, our means of
 studying its behaviour are limited to inspection of its outputs at various
-points in the feature space, and inference thereof. We thus require to
-gather sufficiently large and representative quantities of samples to ensure
+points in the feature space, and inference thereof. We thus require
+sufficiently large and representative quantities of samples to ensure
 statistical significance of our findings.
 
-With grid search in high-dimensional domain clearly intractable, we decided to
-implement uniform pseudo-random sampling to generate large amounts of feature
+With grid search in high-dimensional domain clearly intractable, we
+selected uniform pseudo-random sampling to generate large amounts of feature
 configurations that we consider to be independent and unbiased. For evaluation
 of the expensive MC TBR model, we utilise parallelisation offered by
 the HPC infrastructure available at UCL computing facilities. To this end, we
-implemented the Approximate TBR Evaluator---a Python software package capable of
+designed and implemented the Approximate TBR Evaluator---a Python software package capable of
 sequential evaluation of the multi-threaded OpenMC simulation on batches of
 previously generated points in the feature space.
 We deployed ATE at the UCL Hypatia cluster RCIF partition, which consists of
@@ -145,11 +146,11 @@ and reused in the other three.
 	\label{tbl:slices}
 \end{table}
 
-Since some methods applied in this work are not scale-invariant or
-perform suboptimally when presented with arbitrarily scaled problems, all results
-produced in the sampling runs were standardised prior to further use. In this
-commonly used statistical procedure, features and regression outputs are
-independently scaled and offset to attain zero mean and unit variance.
+Since some surrogate modelling methods applied in this work are not scale-invariant or
+perform suboptimally with arbitrarily scaled problems, all run results
+were standardised prior to further use. In this commonly used statistical
+procedure, features and regression outputs are independently scaled and offset
+to attain zero mean and unit variance.
 
 
 
@@ -159,7 +160,8 @@ independently scaled and offset to attain zero mean and unit variance.
 % TODO: here maybe mention desirable effects of dim. red. (e.g. speedup,
 % simplification of the problem, better convergence...)
 
-Model training over high-dimensional parameter spaces may be facilitated by carefully reducing the number of variables used to describe the space. For many applications, feature selection strategies succeed in identifying a sufficiently representative subset of the original input variables; however, all given variables were assumed to be physically relevant to the MC TBR model. Feature extraction methods, on the other hand, aim to identify a transformation from the parameter space which decreases dimensionality; even if no individual parameter is separable from the space, some linear combinations of parameters or nonlinear functions of parameters may be.
+Model training over high-dimensional parameter spaces may be improved in many
+aspects by carefully reducing the number of variables used to describe the space. For many applications, feature selection strategies succeed in identifying a sufficiently representative subset of the original input variables; however, all given variables were assumed to be physically relevant to the MC TBR model. Feature extraction methods, on the other hand, aim to identify a transformation from the parameter space which decreases dimensionality; even if no individual parameter is separable from the space, some linear combinations of parameters or nonlinear functions of parameters may be.
 
 \begin{figure}[h]
 	\centering
@@ -176,7 +178,9 @@ To pursue linear feature extraction, principal component analysis (PCA)
 \cite{Jolliffe2016} was performed via SciKit Learn~\cite{scikit-learn} on a set
 of \num{300000} uniform samples of the MC TBR model. % TODO:which run? batch range?
 
-\Cref{fig:pca} shows the resultant cumulative variance of the feature vectors identified by PCA. The similar share of variance among all eleven features demonstrated irreducibility of the TBR model by linear methods.
+\Cref{fig:pca} shows the resultant cumulative variance of the feature vectors
+identified by PCA. The similar share of variance among all eleven features
+demonstrates irreducibility of the TBR model by linear methods.
 
 \begin{figure}[h]
   \centering
@@ -201,7 +205,8 @@ of \num{300000} uniform samples of the MC TBR model. % TODO:which run? batch ran
 % TODO: in results, we feature both Kriging and GPR with differing results -
 % clarify their interchangeability here
 
-Kriging is a geostatistical surrogate modelling technique which relies on correlation functions over distance (lag) in the paramater space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
+Kriging is a geostatistical surrogate modelling technique which relies on
+correlation functions over distance (lag) in the feature space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
 
 \Cref{fig:var} shows the Matheron semivariance \cite{Matheron1963} for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits \cite{KrigingFig} to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
 
@@ -217,12 +222,13 @@ Kriging is a geostatistical surrogate modelling technique which relies on correl
 	\vspace{-9ex}
 \end{wrapfigure}
 
-Autoencoders~\cite{SCHMIDHUBER201585} are a family of approaches to feature extraction driven by neural
-networks. Faced with many possible alternatives, we implemented a conventional
+Autoencoders~\cite{SCHMIDHUBER201585} are a family of approaches to
+dimensionality reduction driven by neural
+networks. Faced with many possible alternatives, we utilised a conventional
 autoencoder, which relies on a three-layer network that is trained to replicate
 the identity mapping. While it follows that the input and output layers of such
 network are sized to accommodate the analysed dataset, the
-hidden layer, also called the bottleneck, allows for variable number of
+hidden layer, also called \textit{the bottleneck}, allows for variable number of
 neurons that represent a smaller subspace. By scanning
 over a range of bottleneck widths and investigating relative changes in the
 validation loss, we assess the potential for dimensional reduction.
@@ -233,7 +239,7 @@ from run~1 and (ii) a subset of a single slice obtained from run~2. Our
 expectation was that while the former case would provide meaningful insights into
 correlations within the feature space, the latter would validate our
 autoencoder implementation by analysing a set of points that are trivially
-reducible due to a number of fixed discrete features.
+reducible in dimensionality due to a number of fixed discrete features.
 
 \begin{wrapfigure}{l}{0.4\textwidth} % TODO: regenerate both plots as described
 	\centering
@@ -264,7 +270,7 @@ With this approach we find that the autoencoder was able to reduce the
 datasets into a subspace of 18~dimensions in the first case and 10~dimensions in
 the second case.
 
-Confirming our expectation that in the latter, trivially reducible case the
+Confirming our expectation that in the latter, trivial case the
 autoencoder should achieve greater dimensional reduction, we are inclined to
 believe that our implementation is indeed operating as intended. However, we
 must also conclude that in both examined cases this method failed to produce a
