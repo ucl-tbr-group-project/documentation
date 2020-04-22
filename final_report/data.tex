@@ -156,6 +156,9 @@ independently scaled and offset to attain zero mean and unit variance.
 \subsection{Dimensionality Reduction}
 \label{sec:dimred}
 
+% TODO: here maybe mention desirable effects of dim. red. (e.g. speedup,
+% simplification of the problem, better convergence...)
+
 Model training over high-dimensional parameter spaces may be facilitated by carefully reducing the number of variables used to describe the space. For many applications, feature selection strategies succeed in identifying a sufficiently representative subset of the original input variables; however, all given variables were assumed to be physically relevant to the MC TBR model. Feature extraction methods, on the other hand, aim to identify a transformation from the parameter space which decreases dimensionality; even if no individual parameter is separable from the space, some linear combinations of parameters or nonlinear functions of parameters may be.
 
 \begin{figure}[h]
@@ -169,7 +172,9 @@ Model training over high-dimensional parameter spaces may be facilitated by care
 
 \subsubsection{Principal Component Analysis}
 
-To pursue linear feature extraction, principal component analysis (PCA) \cite{Jolliffe2016} was performed via scikit-learn on a set of 300,000 uniform samples of the MC TBR model. 
+To pursue linear feature extraction, principal component analysis (PCA)
+\cite{Jolliffe2016} was performed via SciKit Learn~\cite{scikit-learn} on a set
+of \num{300000} uniform samples of the MC TBR model. % TODO:which run? batch range?
 
 Figure \cref{fig:pca} shows the resultant cumulative variance of the feature vectors identified by PCA. The similar share of variance among all eleven features demonstrated irreducibility of the TBR model by linear methods.
 
