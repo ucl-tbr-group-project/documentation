@@ -187,9 +187,13 @@ In order to test our QASS prototype, several functional toy theories for TBR wer
     TBR = mean_{i \in C} \left[ \frac{1 + sin(2*pi*n*(x_i - 1/2)) }{2} \right]
 \end{equation}
 
-plotted in Figure \ref{fig:sintoy} for $n=1$ and two continuous parameters $C$. ANNs trained on this model demonstrated similar performance to those on the expensive MC model. QASS performance was verified by training a 1h3f-256 ANN on the sinusoidal theory for varied quantities of initial, incremental, and MCMC candidate samples. Although the scope of this project did not include thorough searches of this hyperparameter domain, sufficient runs were made to identify some likely trends.
+plotted in~\cref{fig:sintoy} for $n=1$ and two continuous parameters $C$. ANNs trained on this model demonstrated similar performance to those on the expensive MC model. QASS performance was verified by training a 1h3f-256 ANN on the sinusoidal theory for varied quantities of initial, incremental, and MCMC candidate samples. Although the scope of this project did not include thorough searches of this hyperparameter domain, sufficient runs were made to identify some likely trends.
 
-An increase in MCMC candidate samples was seen to have a positive but very weak effect on final surrogate precision, suggesting that the runtime of MCMC on each iteration can be limited for increased efficiency. -- Awaiting test results on initial sample quantity --. The most complex dynamics arose with the adjustment of sample increment, shown in Figure \ref{fig:qassincr}. For each tested initial sample quantity N, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$; the plotted error trends suggest that incremental samples larger than this optimum give slower model improvement on both the training and evaluation sets, and a larger minimum error on the evaluation set. This performance distinction is predicted to be even more significant when trained on the expensive MC model, where the number of sample evaluations will serve as the primary bottleneck for computation time.
+An increase in MCMC candidate samples was seen to have a positive but very weak
+effect on final surrogate precision, suggesting that the runtime of MCMC on each
+iteration can be limited for increased efficiency. -- Awaiting test results on
+initial sample quantity --. The most complex dynamics arose with the adjustment
+of sample increment, shown in~\cref{fig:qassincr}. For each tested initial sample quantity N, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$; the plotted error trends suggest that incremental samples larger than this optimum give slower model improvement on both the training and evaluation sets, and a larger minimum error on the evaluation set. This performance distinction is predicted to be even more significant when trained on the expensive MC model, where the number of sample evaluations will serve as the primary bottleneck for computation time.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
@@ -205,7 +209,17 @@ An increase in MCMC candidate samples was seen to have a positive but very weak 
     \label{fig:qassincr}
 \end{figure}
 
-The plateau effect in surrogate error on the evaluation set, seen in Figure \ref{fig:qassincr}, was universal to all configurations and thought to warrant further investigation. At first this was suspected to be a residual effect of retraining the same ANN instance without adjustment to data normalisation; a "Goldilocks scheme" for checking normalisation drift was implemented and tested, but did not affect QASS performance. Schemes in which the ANN is periodically retrained were also discarded, as the retention of network weights from one iteration to the next was demonstrated to greatly benefit QASS efficiency. Further insight came from direct comparison between QASS and a baseline scheme with uniformly random incremental samples, shown in Figure \ref{fig:qasssampling}.
+The plateau effect in surrogate error on the evaluation set, seen
+in~\cref{fig:qassincr}, was universal to all configurations and thought to
+warrant further investigation. At first this was suspected to be a residual
+effect of retraining the same ANN instance without adjustment to data
+normalisation; a "Goldilocks scheme" for checking normalisation drift was
+implemented and tested, but did not affect QASS performance. Schemes in which
+the ANN is periodically retrained were also discarded, as the retention of
+network weights from one iteration to the next was demonstrated to greatly
+benefit QASS efficiency. Further insight came from direct comparison between
+QASS and a baseline scheme with uniformly random incremental samples, shown
+in~\cref{fig:qasssampling}.
 
 \begin{figure}[h]
   \centering
@@ -214,4 +228,11 @@ The plateau effect in surrogate error on the evaluation set, seen in Figure \ref
   \label{fig:qasssampling}
 \end{figure}
 
-Such tests revealed that while QASS has unmatched performance on its own adaptively-sampled training set, it is outperformed by the baseline scheme on uniformly random evaluation sets. We suspected that while QASS excels in learning the most strongly peaked regions of the TBR theory, this comes at the expense of precision in broader, smoother regions where uniformly random sampling suffices. Therefore a mixed scheme was implemented, with half MCMC samples and half uniformly random samples incremented on each iteration, which is also shown in Figure \ref{fig:qasssampling}.
+Such tests revealed that while QASS has unmatched performance on its own
+adaptively-sampled training set, it is outperformed by the baseline scheme on
+uniformly random evaluation sets. We suspected that while QASS excels in
+learning the most strongly peaked regions of the TBR theory, this comes at the
+expense of precision in broader, smoother regions where uniformly random
+sampling suffices. Therefore a mixed scheme was implemented, with half MCMC
+samples and half uniformly random samples incremented on each iteration, which
+is also shown in~\cref{fig:qasssampling}.
