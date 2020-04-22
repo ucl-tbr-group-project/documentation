@@ -1,15 +1,14 @@
-Assuming that input has been appropriately treated to eliminate redundant
-features, we may turn to characterise proposed surrogate models and the criteria
+Assuming that data is appropriately treated to eliminate redundant
+features, we proceed to propose surrogate models and criteria
 used for their evaluation. The task all presented surrogates strive to solve can be
-formulated using the language of conventional regression problems. In the scope
-of this work, we explore various possible choices available to us in the
-scheme of supervised and unsupervised learning.
+formulated using the language of conventional regression problems. In this section,
+we focus on interpretation in the scheme of supervised and unsupervised learning.
 
-Labeling the expensive Monte Carlo simulation $f(x)$, a surrogate is a mapping
+Labeling the expensive MC TBR model $f(x)$, a surrogate is a mapping
 $\hat{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
 $\hat{f}(x)$ minimise a selected similarity metric. Furthermore, in order to
 be considered \textit{viable}, surrogates are required to achieve expected evaluation time
-that does not exceed the expected evaluation time of $f(x)$.
+lower than that of $f(x)$.
 
 In the supervised learning setting, we first gather a sufficiently large
 training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right) \right)\right\}_{i=1}^N$
@@ -32,8 +31,8 @@ repeatedly extended in epochs, whereby each epoch trains a new surrogate on
 $\mathcal{T}_k$ using the supervised learning procedure, evaluates its
 performance, and forms a new set $\mathcal{T}_{k+1}$ by adding more samples to
 $\mathcal{T}_k$. This permits the learning algorithm to condition the selection
-of new samples by the results of evaluation in order to focus on improvement of
-surrogate performance in complex regions within the domain.
+of new samples on the evaluation results in order to maximise improvement of
+surrogate performance over complex regions within the domain.
 
 
 \subsection{Metrics}
@@ -42,8 +41,7 @@ surrogate performance in complex regions within the domain.
 Aiming to provide objective comparison of a diverse set of surrogate model
 classes, we define a multitude of metrics to be tracked during experiments.
 Following the motivation of this work, two desirable properties of surrogates
-arise: (i) their capability to approximate the expensive
-model well and (ii) their time of evaluation. An ideal surrogate would maximise
+arise: (i) their capability to approximate the TBR MC model well and (ii) their time of evaluation. An ideal surrogate would maximise
 the former while minimising the latter.
 
 \Cref{tbl:metrics} provides exhaustive listing and description of metrics recorded
@@ -53,12 +51,15 @@ practical bounds on the expected accuracy of their predictions. In addition, we 
 relative measures that are better-suited for model comparison between works as
 they maintain invariance with respect to the selected domain and image space.
 For analysis of evaluation time, surrogates are assessed in terms of wall time
-elapsed during training and predicition. This closely models the practical use
-case, in which they are trained and used as drop-in replacements for the
-expensive model. Since training set sizes remain to be determined, all times are
+elapsed during training and predicition. This is motivated by common practical use
+cases of our work, where models are trained and used as drop-in replacements for the
+expensive MC TBR model. Since training set sizes remain to be determined, all times are
 reported per a single sample. Even though some surrogates support acceleration
 by means of parallelisation, measures were taken to ensure sequential
-processing of samples to achieve comparability between considered models.
+processing of samples to achieve comparability between considered
+models.\footnote{The only exception to this are artificial neural networks, which are
+notoriously slow to train on conventional CPU architectures in serialised
+setting.}
 
 \begin{table}[h]
 	\centering
@@ -101,22 +102,22 @@ To prevent undesirable bias in results due to training set selection, all metric
 are collected in the scheme of $k$-fold cross-validation with a standard choice of
 $k=5$. Herein, a sample set is subdivided into 5 disjoint folds which are
 repeatedly interpreted as training and testing sets, maintaining a constant
-ratio of samples between the two. In each such interpretation experiments are
-repeated, and the overall value of each metric of interest is reported as the
-mean across all folds.
+ratio of samples between the two.\footnote{Unless explicitly stated otherwise, we use 1
+fold for testing and the $k-1$ remaining folds for training. This gives 80\% to
+20\% train-test ratio.} In each such interpretation experiments are
+repeated, and the overall value of each metric is reported as the mean across all folds.
 
 
 \subsection{Evaluation of Supervised Learning Surrogates}
 \label{sec:supervised}
 
 In our experiments, we evaluate and compare surrogates in effort to
-optimise against metrics described in \cref{sec:metrics}. To attain meaningful
+optimise against metrics described in~\cref{sec:metrics}. To attain meaningful
 and practically usable results, we require a sufficiently large and diverse pool
-of surrogate classes to draw from. This is described by the listing in
-\cref{tbl:surrogates}. The presented selection of models includes basic
+of surrogate classes to draw from. This is described by the listing in~\cref{tbl:surrogates}. The presented selection of models includes basic
 techniques suitable for linear regression enhanced by the kernel trick or dimension
 lifting, methods driven by decision trees, instance-based learning models,
-ensemble regressors, randomized algorithms, neural networks and mathematical approaches
+ensemble regressors, randomized algorithms, artificial neural networks and mathematical approaches
 developed specifically for the purposes of surrogate modelling. For each of
 these classes, a state-of-the-art implementation was selected and adapted to
 operate with TBR samples.
@@ -134,7 +135,7 @@ operate with TBR samples.
 		AdaBoosted decision trees	& AB & SciKit Learn & 3 \\
 		Gaussian process regression	& GPR & SciKit Learn & 2 \\
 		$k$ nearest neighbours	& KNN & SciKit Learn & 3 \\
-		Neural networks	& NN & Keras (TensorFlow)~\cite{chollet2015keras} & 2 \\
+		Artificial neural networks	& ANN & Keras (TensorFlow)~\cite{chollet2015keras} & 2 \\
 		Inverse distance weighing & IDW & SMT~\cite{SMT2019} & 1 \\
 		Radial basis functions & RBF & SMT & 3 \\
 		Stochastic gradient descent & SGD & SciKit Learn & 13 \\
@@ -147,12 +148,12 @@ operate with TBR samples.
 	\label{tbl:surrogates}
 \end{table}
 
-In some rows of the table, a single class in reality represents a multitude of
-fundamentally similar approaches. Good examples of this are kriging methods and neural
+In some rows of~\cref{tbl:surrogates}, a single class in reality represents a
+family of fundamentally similar approaches. Good examples of this are kriging methods and neural
 networks. In the case of the former, multiple algorithms such as kriging based on
 partial least squares and gradient-enhanced kriging are considered. In the
 latter, a host of parametric graphs are defined to realise simplistic network
-architecture search (see \cref{fig:nn-archs} for details). Discrimination
+architecture search (see~\cref{fig:nn-archs} for details). Discrimination
 between such options is considered an additional hyperparameter of the
 corresponding surrogate class.
 
@@ -181,17 +182,15 @@ corresponding surrogate class.
 
 	\caption{Selected parametric neural network architectures. All layers except
 		the last use ReLU activation. Prediction information flow is indicated by
-		arrows. Conections between neurons are omitted for clarity.}
+		arrows. Connections between neurons are omitted for clarity.}
 	\label{fig:nn-archs}
 \end{figure}
 
 \subsubsection{Experiments}
 \label{sec:experiment-methodology}
 
-The presented surrogate candidates are evaluated in four experimental cases:
-
+The presented surrogate candidates are evaluated in four experimental cases:%
 \begin{enumerate}
-	
 	\item Hyperparameter tuning in simplified domain,
 
 	\item Hyperparameter tuning in full domain,
@@ -209,28 +208,32 @@ point in the hyperparameter domain---it in many aspects mirrors
 the primary task of this work with the notable extension of added utility
 to optimise. In order to avoid undesirable exponential slowdown in exhaustive
 searches of a possibly high-dimensional parameter space, Bayesian
-optimisation is employed as standard hyperparameter tuning algorithm that is considered
-efficient for this purpose. We set its objective to maximise $R^2$.
+optimisation is employed as a standard hyperparameter tuning algorithm. We set
+its objective to maximise $R^2$ and perform 1000~iterations.\footnote{Tuning of
+	each surrogate class was artificially terminated after 2~days. Instances
+	which reached this limit are marked in the results.}
+
+% TODO: mark instances that timed out in results
 
 In the first experiment, efforts are made to maximise the possibility of success
 in surrogates that are prone to suboptimal performance in discontinuous spaces.
 This follows the notion that, if desired, accuracy of such models may be
 replicated at large scale by decomposing the TBR domain into continuous subsets,
-and learning ensemble surrogate comprised of models that are trained on each
+and learning ensemble surrogate comprised of identical models that are trained on each
 subset independently, incurring exponential complexity penalty in the process.
-To this end, training samples are filtered to only contain a single assignment
-of discrete features that are subsequently completely withheld from evaluated
-surrogates. This is repeated four times to investigate variance in behaviour
-under different feature assignments.
+To this end, data are limited to a single slice from run~2, and discrete
+features are completely withheld from evaluated
+surrogates. This is repeated for each of the four available slices to
+investigate variance in behaviour under different discrete feature assignments.
 
 The second experiment conventionally measures surrogate performance on the full
-TBR regression task. In extension of the previous case, surrogates work with
-unfiltered samples comprised of discrete as well as continuous features.
+feature space. Here, in extension of the previous case, surrogates work with
+samples comprised of discrete as well as continuous features.
 
 The goal of the last two experiments is to exploit the information gathered by
 hyperparameter tuning for study of scaling properties. In
-the third experiment, the best-performing hyperparameter choices of each class
-are used to learn surrogates using progressively larger training sets. Following
+the third experiment, 20~best-performing hyperparameter choices of each class
+(in $R^2$) are used to learn surrogates using progressively larger training sets. Following
 that, the fourth experiment attempts to produce competitive surrogates by
 retraining several selected well-scaling models on the largest available data set.
 
@@ -238,11 +241,37 @@ retraining several selected well-scaling models on the largest available data se
 \subsection{Adaptive Sampling}
 \label{sec:adaptive}
 
-All of the surrogate modelling techniques studied in this project face a shared challenge: their accuracy is limited by the quantity of training samples which are available from the expensive MC model. Adaptive sampling procedures can improve upon this limitation by taking advantage of statistical information which is accumulated during the training of any surrogate model. Rather than training the surrogate on a single sample set generated according to a fixed strategy, sample locations are chosen incrementally so as to best suit the model under consideration.
+All of the surrogate modelling techniques studied in this project face a shared
+challenge: their accuracy is limited by the quantity of training samples which
+are available from the expensive MC TBR model. Adaptive sampling procedures can
+improve upon this limitation by taking advantage of statistical information
+which is accumulated during the training of any surrogate model. Rather than
+training the surrogate on a single sample set generated according to a fixed
+strategy, sample locations are chosen incrementally so as to best suit the model
+under consideration.
 
-Adaptive sampling techniques are widespread in the literature and have been specialised for surrogate modelling. Garud's \cite{Garud2016} "Smart Sampling Algorithm" achieved notable success by incorporating surrogate quality and crowding distance scoring to identify optimal new samples, but was only tested on a single-parameter domain. We theorised that a nondeterministic sample generation approach, built around Markov Chain Monte Carlo methods (MCMC), would fare better for high-dimensional models by more thoroughly exploring all local optima in the parameter space. MCMC produces a progressive chain of sample points, each drawn according to the same symmetric proposal distribution\footnote{An adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal distribution to fit the posterior, was also implemented but not fully tested.} from the prior point. These sample points will converge to a desired posterior distribution, so long as the acceptance probability for these draws has a particular functional dependence on that posterior value (see \cite{Zhou2018} for a review). 
+Adaptive sampling techniques are widespread in the literature and have been
+specialised for surrogate modelling. Garud's \cite{Garud2016} "Smart Sampling
+Algorithm" achieved notable success by incorporating surrogate quality and
+crowding distance scoring to identify optimal new samples, but was only tested
+on a single-parameter domain. We theorised that a nondeterministic sample
+generation approach, built around Markov Chain Monte Carlo methods (MCMC), would
+fare better for high-dimensional models by more thoroughly exploring all local
+optima in the feature space. MCMC produces a progressive chain of sample points,
+each drawn according to the same symmetric proposal distribution\footnote{An
+adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal
+distribution to fit the posterior, was also implemented but not fully tested.}
+from the prior point. These sample points will converge to a desired posterior
+distribution, so long as the acceptance probability for these draws has a
+particular functional dependence on that posterior value (see \cite{Zhou2018}
+for a review).
 
-Many researchers have embedded surrogate methods into MCMC strategies for parameter optimisation \cite{Zhang2020}\cite{Gong2017}, in particular the ASMO-PODE algorithm \cite{Ginting2011} which makes use of MCMC-based adaptive sampling to attain greater surrogate precision around prospective optima. Our novel approach draws inspiration from ASMO-PODE, but instead uses MCMC to generate samples which increase surrogate precision throughout the entire parameter space.
+Many researchers have embedded surrogate methods into MCMC strategies for
+parameter optimisation \cite{Zhang2020,Gong2017}, in particular the ASMO-PODE
+algorithm \cite{Ginting2011} which makes use of MCMC-based adaptive sampling to
+attain greater surrogate precision around prospective optima. Our novel approach
+draws inspiration from ASMO-PODE, but instead uses MCMC to generate samples
+which increase surrogate precision throughout the entire parameter space.
 
 \begin{wrapfigure}{r}{0.55\textwidth}
   \vspace{-35pt}
@@ -254,7 +283,12 @@ Many researchers have embedded surrogate methods into MCMC strategies for parame
   \vspace{-80pt}
 \end{wrapfigure}
 
-We designed the Quality-Adaptive Surrogate Sampling algorithm (QASS, \cref{fig:qassplan}) to iteratively increment the training/test set with sample points which maximise surrogate error and minimise a crowding distance metric (CDM) \cite{Solonen2012} in parameter space. On each iteration following an initial training of the surrogate on $N$ uniformly random samples, the surrogate was trained and AE calculated. MCMC was then performed on the error function generated by performing nearest-neighbor interpolation on these test error points. The resultant samples were culled by $50\%$ according to the CDM, and then the $n$ highest-error candidates were selected for reintegration with the training/test set, beginning another training epoch. Validation was also performed during each iteration on independent, uniformly-random sample sets.
+% TODO: explain AE
+
+We designed the Quality-Adaptive Surrogate Sampling algorithm (QASS,
+\cref{fig:qassplan}) to iteratively increment the training/test set with sample
+points which maximise surrogate error and minimise a crowding distance metric
+(CDM) \cite{Solonen2012} in feature space. On each iteration following an initial training of the surrogate on $N$ uniformly random samples, the surrogate was trained and AE calculated. MCMC was then performed on the error function generated by performing nearest-neighbor interpolation on these test error points. The resultant samples were culled by $50\%$ according to the CDM, and then the $n$ highest-error candidates were selected for reintegration with the training/test set, beginning another training epoch. Validation was also performed during each iteration on independent, uniformly-random sample sets.
 
 % Adaptive multi-chain MCMC: \cite{Zhang2012}
 
