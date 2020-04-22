@@ -52,6 +52,12 @@ complexity, its regression performance falls below average.
 	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
+% TODO: add table here or in appendix with hard numbers, for each class take 20
+% best performing models from each slice, concatenate and calculate mean and std
+% for each metric
+
+% TODO: do the same thing for the second experiment
+
 \begin{wrapfigure}{r}{0.333\textwidth}
 	\centering
 	\vspace{-3ex}
@@ -114,6 +120,10 @@ producing misleading results when divided by the number of samples.
 In terms of mean prediction time, all tested surrogates except previously mentioned
 instance-based learning methods scale exceptionally well. Tree-based generally
 models appear to perform the fastest.
+
+% TODO: add tables here or in appendix with scaling results; for each metric
+% create a table with rows = classes, columns = training set size, cells = mean +/- std
+% it may be a lot, decide on placement and layout!
 
 
 \subsubsection{Competitive Surrogate Training}
