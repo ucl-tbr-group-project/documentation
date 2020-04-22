@@ -219,48 +219,52 @@ neurons that represent a smaller subspace. By scanning
 over a range of bottleneck widths and investigating relative changes in the
 validation loss, we assess the potential for dimensional reduction.
 
-This approach was applied to two sets of samples: (i) a subset of data obtained
+This approach was applied to two sets\footnote{Each set contained
+\num{100000}~samples from batches 0-99 of the corresponding runs.} of samples: (i) a subset of data obtained
 from run~1 and (ii) a subset of a single slice obtained from run~2. Our
-expectation was that while the former case would provide meaningful insight into
+expectation was that while the former case would provide meaningful insights into
 correlations within the feature space, the latter would validate our
 autoencoder implementation by analysing a set of points that are trivially
-reducible due to a number of fixed features.
+reducible due to a number of fixed discrete features.
 
-\begin{wrapfigure}{l}{0.4\textwidth}
+\begin{wrapfigure}{l}{0.4\textwidth} % TODO: regenerate both plots as described
 	\centering
 	\vspace{-1ex}
-	% TODO: placeholders only, regenerate when time is available
 	\begin{subfigure}[b]{\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{ae_all_slices}
+		\includegraphics[width=\linewidth,trim={0 48px 0 0},clip]{ae_mixed}
 	\end{subfigure}
+
+	\vspace{-0.2ex}
+
 	\begin{subfigure}[b]{\linewidth}
-		\centering
 		\includegraphics[width=\linewidth]{ae_single_slice}
 	\end{subfigure}
-	\caption{Autoencoder loss in two considered cases of dimensional reduction.}
+
+	\caption{Autoencoder loss scan on the full feature space (top) and a single slice
+		(bottom). Dimensional reduction is indicated by a green arrow.}
 	\label{fig:autoencoder-loss}
 	\vspace{-6ex}
 \end{wrapfigure}
 
 The results of both experiments are shown in~\cref{fig:autoencoder-loss}.
 Consistent with our motivation, in each plot we can clearly identify a constant
-plateau in the region of large dimensionality followed by a point, from which a
-steep increase in loss is observed towards lower dimension counts. We consider
-this critical point to correspond with the largest viable dimensional reduction
-without significant information loss.
-With this methodology we find that the autoencoder was able to reduce the
-datasets into a subspace of 17~dimensions in the first case and 10~dimensions in
+plateau of low error in the region of large dimensionality followed by a point,
+from which a steep increase is observed.
+We consider this \textit{critical point} to mark the largest viable
+dimensional reduction without significant information loss.
+With this approach we find that the autoencoder was able to reduce the
+datasets into a subspace of 18~dimensions in the first case and 10~dimensions in
 the second case.
 
 Confirming our expectation that in the latter, trivially reducible case the
-autoencoder should achieve stricter dimensional reduction, we are
-encouraged to believe that our implementation is indeed efficient. However, we
+autoencoder should achieve greater dimensional reduction, we are inclined to
+believe that our implementation is indeed efficient. However, we
 must also conclude that in both examined cases this method failed to produce a
-reduction that would be dominate a naïve approach, in which we eliminate
-7~dimensions due to overdetermined one-hot-encoded features, 2~dimensions due to
-sum-to-one constraints, and in the latter case 7~additional dimensions due to
-artificially fixed features. This supports the findings from PCA as well as the
+reduction that would be superior to a naïve approach.\footnote{In both tested cases we
+	can trivially eliminate 7~dimensions due to overdetermined one-hot-encoded
+	features and 2~dimensions due to sum-to-one constraints. Furthermore, in the
+	single slice case we may omit 7~additional dimensions due to artificially fixed
+features.} This supports the findings from PCA as well as the
 presented semivariograms.
 
 
