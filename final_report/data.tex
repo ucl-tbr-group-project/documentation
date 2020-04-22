@@ -96,26 +96,30 @@ We deployed ATE at the UCL Hypatia cluster RCIF partition, which consists of
 generation runs, which are summarised in~\cref{tbl:sampling-runs}.
 
 \begin{table}[h]
+	\sisetup{round-mode=places,round-precision=2}
 	\centering
 	{\footnotesize
-		\begin{tabular}{rllll}
+		\begin{tabular}{rlllll}
 		\toprule
-		\#	& Sample count & Batch division & Run time (incl. waiting) & Description \\
+		\#	& Samples & Batch division & Total run time & MET [\si{\second}] & Description \\
 		\midrule
-		0 & \num{100000} & $\num{100}\times\num{1000}$ & 2~days, 23~hours &
+		0 & \num{100000} & $\num{100}\times\num{1000}$ & 2~days, 23~h 
+		  & $\num{7.877122043981347} \pm \num{2.749485948560108}$ &
 		Testing run using older MC TBR version.\\
-		1 & \num{500000} & $\num{500}\times\num{1000}$ & 13~days, 20~hours &
+		1 & \num{500000} & $\num{500}\times\num{1000}$ & 13~days, 20~h
+		  & $\num{7.777049573054314} \pm \num{2.8103592103930337}$ &
 		Fully uniform sampling in the entire domain.\\
-		2 & \num{400000} & $\num{400}\times\num{1000}$ & 10~days &
+		2 & \num{400000} & $\num{400}\times\num{1000}$ & 10~days 
+		  & $\num{7.944379778103232} \pm \num{2.601428571503671}$ &
 		Mixed sampling, discrete features fixed.\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Parameters of sampling runs.}
+	\caption{Parameters of sampling runs. Total run time includes waiting in
+	the processing queue. MET stands for mean evaluation time (per single
+	sampled point).}
 	\label{tbl:sampling-runs}
 \end{table}
-
-% TODO: find a way to mention average time per sample and std
 
 Skipping run zero, which was performed using older, fundamentally different
 version of the MC TBR software, and was thus treated as a technical
