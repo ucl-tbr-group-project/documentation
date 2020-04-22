@@ -37,6 +37,7 @@
 \usepackage{isotope}
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
+\usepackage{multicol}
 %---------------------------------------------------------------------
 
 
@@ -110,7 +111,9 @@
 %---------------------------------------------------------------------
 
 \nocite{*}
-\printbibliography
+\begin{multicols}{2}[\section*{References}]
+\printbibliography[heading=none]
+\end{multicols}
 
 \end{document}
 
