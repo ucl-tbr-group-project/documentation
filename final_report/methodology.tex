@@ -258,13 +258,15 @@ on a single-parameter domain. We theorised that a nondeterministic sample
 generation approach, built around Markov Chain Monte Carlo methods (MCMC), would
 fare better for high-dimensional models by more thoroughly exploring all local
 optima in the feature space. MCMC produces a progressive chain of sample points,
-each drawn according to the same symmetric proposal distribution\footnote{An
-adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal
-distribution to fit the posterior, was also implemented but not fully tested.}
+each drawn according to the same symmetric proposal distribution
 from the prior point. These sample points will converge to a desired posterior
 distribution, so long as the acceptance probability for these draws has a
 particular functional dependence on that posterior value (see \cite{Zhou2018}
 for a review).
+
+%\footnote{An
+%adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal
+%distribution to fit the posterior, was also implemented but not fully tested.}
 
 Many researchers have embedded surrogate methods into MCMC strategies for
 parameter optimisation \cite{Zhang2020,Gong2017}, in particular the ASMO-PODE

@@ -2014,12 +2014,11 @@
     <bcf:citekey order="17">chollet2015keras</bcf:citekey>
     <bcf:citekey order="18">SMT2019</bcf:citekey>
     <bcf:citekey order="19">Garud2016</bcf:citekey>
-    <bcf:citekey order="20">Zhang2012</bcf:citekey>
-    <bcf:citekey order="21">Zhou2018</bcf:citekey>
-    <bcf:citekey order="22">Zhang2020</bcf:citekey>
-    <bcf:citekey order="22">Gong2017</bcf:citekey>
-    <bcf:citekey order="23">Ginting2011</bcf:citekey>
-    <bcf:citekey order="24">Solonen2012</bcf:citekey>
+    <bcf:citekey order="20">Zhou2018</bcf:citekey>
+    <bcf:citekey order="21">Zhang2020</bcf:citekey>
+    <bcf:citekey order="21">Gong2017</bcf:citekey>
+    <bcf:citekey order="22">Ginting2011</bcf:citekey>
+    <bcf:citekey order="23">Solonen2012</bcf:citekey>
     <bcf:citekey order="0" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
