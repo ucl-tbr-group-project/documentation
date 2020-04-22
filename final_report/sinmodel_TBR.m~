@@ -1,0 +1,15 @@
+x = linspace(0,1,100);
+y = linspace(0,1,100);
+
+for i = 1:100
+    for j = 1:100
+        z(i,j) = sin(2*pi*(x(i)-0.5))/2 + sin(2*pi*(y(j)-0.5))/2 + 1;
+        
+    end
+end
+surf(x,y,z)
+
+f=@(x,y) sin(2*pi*(x(i)-0.5))/2 + sin(2*pi*(y(j)-0.5))/2 + 1;
+[X,Y]=meshgrid(0:0.001:1);
+z=f(X,Y);
+contour(X,Y,z,[1:6])
