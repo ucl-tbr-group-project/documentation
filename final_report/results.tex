@@ -168,6 +168,8 @@ TODO
 	\label{fig:reg-performance}
 \end{figure}
 
+\newpage
+
 \begin{wrapfigure}{r}{0.4\textwidth}
   \vspace{-60pt}
   \begin{center}
@@ -205,7 +207,7 @@ An increase in MCMC candidate samples was seen to have a positive but very weak 
     \label{fig:qassincr}
 \end{figure}
 
-The plateau effect in surrogate error on the evaluation set, seen in Figure \ref{fig:qassincr}, was universal to all configurations and thought to warrant further investigation. At first this was suspected to be a residual effect of retraining the same ANN instance without adjustment to data normalisation; a "Goldilocks scheme" for checking normalisation drift was implemented and tested, but did not affect QASS performance. Schemes in which the ANN is periodically retrained were also discarded, as the retention of network weights from one iteration to the next was demonstrated to greatly benefit QASS efficiency. Further insight came from direct comparison between QASS and a baseline scheme with uniformly random incremental samples, shown in Figure \ref{fig:qasssampling}.
+The plateau effect in surrogate error on the evaluation set, seen in Figure \ref{fig:qassincr}, was universal to all configurations and thought to warrant further investigation. At first this was suspected to be a residual effect of retraining the same ANN instance without adjustment to data normalisation; a ``Goldilocks scheme" for checking normalisation drift was implemented and tested, but did not affect QASS performance. Schemes in which the ANN is periodically retrained were also discarded, as the retention of network weights from one iteration to the next was demonstrated to greatly benefit QASS efficiency. Further insight came from direct comparison between QASS and a baseline scheme with uniformly random incremental samples, shown in Figure \ref{fig:qasssampling}.
 
 \begin{figure}[h]
   \centering
