@@ -198,9 +198,12 @@ Figure \cref{fig:pca} shows the resultant cumulative variance of the feature vec
 
 \subsubsection{Variogram Computations}
 
+% TODO: in results, we feature both Kriging and GPR with differing results -
+% clarify their interchangeability here
+
 Kriging, or Gaussian process regression, is a geostatistical surrogate modelling technique which relies on correlation functions over distance (lag) in the paramater space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
 
-Figure \cref{fig:var} shows the Matheron semivariance \cite{Matheron1963} for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits \cite{KrigingFig} to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
+\Cref{fig:var} shows the Matheron semivariance \cite{Matheron1963} for three discrete slices with coolant material varied, but all other discrete parameters fixed. Fits \cite{KrigingFig} to the Matérn covariance model confirmed numerically that the coolant material is the discrete parameter with the greatest distinguishability in the MC TBR model. 
 
 
 \subsubsection{Autoencoders}
@@ -219,12 +222,12 @@ networks. Faced with many possible alternatives, we implemented a conventional
 autoencoder, which relies on a three-layer network that is trained to replicate
 the identity mapping. While it follows that the input and output layers of such
 network are sized to accommodate the analysed dataset, the
-hidden layer---also called the bottleneck---allows for variable number of
+hidden layer, also called the bottleneck, allows for variable number of
 neurons that represent a smaller subspace. By scanning
 over a range of bottleneck widths and investigating relative changes in the
 validation loss, we assess the potential for dimensional reduction.
 
-This approach was applied to two sets\footnote{Each set contained
+In particular, we consider two equally-sized sets\footnote{Each set contained
 \num{100000}~samples from batches 0-99 of the corresponding runs.} of samples: (i) a subset of data obtained
 from run~1 and (ii) a subset of a single slice obtained from run~2. Our
 expectation was that while the former case would provide meaningful insights into
@@ -263,14 +266,13 @@ the second case.
 
 Confirming our expectation that in the latter, trivially reducible case the
 autoencoder should achieve greater dimensional reduction, we are inclined to
-believe that our implementation is indeed efficient. However, we
+believe that our implementation is indeed operating as intended. However, we
 must also conclude that in both examined cases this method failed to produce a
 reduction that would be superior to a naïve approach.\footnote{In both tested cases we
 	can trivially eliminate 7~dimensions due to overdetermined one-hot-encoded
 	features and 2~dimensions due to sum-to-one constraints. Furthermore, in the
 	single slice case we may omit 7~additional dimensions due to artificially fixed
-features.} This supports the findings from PCA as well as the
-presented semivariograms.
+features.} This is consistent with previous results obtained by PCA and kriging.
 
 
 % TODO: Question: is it accurate to say this represents nonlinear feature extraction? re my intro paragraph
