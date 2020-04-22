@@ -128,14 +128,14 @@ operate with TBR samples.
 		\toprule
 		Surrogate & Acronym & Implementation & Hyperparameters \\
 		\midrule
-		Support vector machines	& SVM & SciKit Learn & 3 \\
+		Support vector machines	& SVM & SciKit Learn~\cite{scikit-learn} & 3 \\
 		Gradient boosted trees	& GBT & SciKit Learn & 11 \\
 		Extremely randomized trees	& ERT & SciKit Learn & 7 \\
 		AdaBoosted decision trees	& AB & SciKit Learn & 3 \\
 		Gaussian process regression	& GPR & SciKit Learn & 2 \\
 		$k$ nearest neighbours	& KNN & SciKit Learn & 3 \\
-		Neural networks	& NN & Keras (TensorFlow) & 2 \\
-		Inverse distance weighing & IDW & SMT & 1 \\
+		Neural networks	& NN & Keras (TensorFlow)~\cite{chollet2015keras} & 2 \\
+		Inverse distance weighing & IDW & SMT~\cite{SMT2019} & 1 \\
 		Radial basis functions & RBF & SMT & 3 \\
 		Stochastic gradient descent & SGD & SciKit Learn & 13 \\
 		Ridge regression & RR & SciKit Learn & 4 \\
@@ -171,12 +171,12 @@ corresponding surrogate class.
 	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		{\scriptsize \incfigscale{0.6}{3pyramid}}
-		\caption{$\text{3pyr}(W)$}
+		\caption{$\text{3pyramid}(W)$}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.25\textwidth}
 		\centering
 		{\scriptsize \incfigscale{0.6}{5diam}}
-		\caption{$\text{5diam}(W)$}
+		\caption{$\text{5diamond}(W)$}
 	\end{subfigure}
 
 	\caption{Selected parametric neural network architectures. All layers except
