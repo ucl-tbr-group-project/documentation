@@ -39,6 +39,7 @@
 \usepackage{siunitx}
 \usepackage{multicol}
 \usepackage{inconsolata}
+\usepackage[toc,page]{appendix}
 %---------------------------------------------------------------------
 
 
@@ -115,6 +116,17 @@
 \begin{multicols}{2}[\section*{References}]
 \printbibliography[heading=none]
 \end{multicols}
+%---------------------------------------------------------------------
+
+\begin{appendices}
+	\section{Detailed Model Results}
+	\label{app:detailed-results}
+	\input{appendix_results}
+
+	\section{Overview of Online Resources}
+	\label{app:online-overview}
+	\input{appendix_online}
+\end{appendices}
 
 \end{document}
 
