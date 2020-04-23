@@ -101,7 +101,8 @@ generation runs, which are summarised in~\cref{tbl:sampling-runs}.
 	{\footnotesize
 		\begin{tabular}{rlllll}
 		\toprule
-		\#	& Samples & Batch division & Total run time & MET [\si{\second}] & Description \\
+		\#	& Samples & Batch division & $t_{\text{run}} $ 
+			& $\overline{t}_{\text{eval.}}$ [\si{\second}] & Description \\
 		\midrule
 		0 & \num{100000} & $\num{100}\times\num{1000}$ & 2~days, 23~h 
 		  & $\num{7.877122043981347} \pm \num{2.749485948560108}$ &
@@ -115,9 +116,10 @@ generation runs, which are summarised in~\cref{tbl:sampling-runs}.
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Parameters of sampling runs. Total run time includes waiting in
-	the processing queue. MET stands for mean evaluation time (per single
-	sampled point).}
+	\caption{Parameters of sampling runs. Here, $t_{\text{run}}$ denotes the total run
+		time (including waiting in the processing queue), and
+		$\overline{t}_{\text{eval.}}$ is the mean evaluation time of MC TBR (per single
+		sampled point).}
 	\label{tbl:sampling-runs}
 \end{table}
 
@@ -136,9 +138,10 @@ and reused in the other three.
 \begin{table}[h]
 	\centering
 	{\footnotesize
-		\begin{tabular}{r|lllllll}
+		\begin{tabular}{rlllllll}
 		\toprule
 		{} & \multicolumn{7}{c}{Discrete feature assignment}\\
+		\cmidrule(lr){2-8}
 		Batches & BBM & BCM & BMM & BSM & FAM & FCM & FSM \\
 		\midrule
 		0-99 & \ce{Li4SiO4} & \ce{H2O} & \ce{Be12Ti} & eurofer & tungsten & \ce{H2O} & eurofer\\
