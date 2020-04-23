@@ -12,3 +12,36 @@ TODO: include result figures for experiments
 		classes, columns training set sizes
 	\item experiment 4: hyperparameters, metrics, and times of 8 presented models
 \end{enumerate}
+
+\begin{table}[h]
+	\centering
+	\sisetup{round-mode=places,round-precision=2}
+	{\footnotesize
+		\begin{tabular}{lrrrrrrr}
+		\toprule
+		{} & {} & \multicolumn{4}{c}{Regression performance} &
+		\multicolumn{2}{c}{Evaluation time}\\
+		\cmidrule(lr){3-6}
+		\cmidrule(lr){7-8}
+		Surrogate class & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+						& $\overline{t}_{\text{trn.}}$ [ms] &
+						$\overline{t}_{\text{pred.}}$ [ms]\\
+		\midrule
+		Boosted decision TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Results of experiment 1. The column \# gives the number of
+		Bayesian optimisation iterations.
+		While regression performance metrics are reported for the best instance
+		per surrogate class, evaluation times are given in terms of mean and standard deviation over all tested instances.}
+	\label{tbl:exp1-detailed-results}
+\end{table}
