@@ -1,18 +1,3 @@
-TODO: include result figures for experiments
-
-\begin{enumerate}
-	\item experiment 1: per each surrogate class (row)
-		show the accuracy metrics of the best instance, and mean times (+ std
-		dev) over all instances
-	\item experiment 2: same table as in experiment 1, but also include std dev
-		of accuracy metrics of the concatenation of 20 best models per each
-		slice (should show variation per slices), aggregate times over all
-		instances in all slices
-	\item experiment 3: one table per each metric and times, rows surrogate
-		classes, columns training set sizes
-	\item experiment 4: hyperparameters, metrics, and times of 8 presented models
-\end{enumerate}
-
 \begin{table}[h]
 	\centering
 	\sisetup{round-mode=places,round-precision=2}
@@ -20,7 +5,7 @@ TODO: include result figures for experiments
 		\begin{tabular}{lrrrrrrr}
 		\toprule
 		{} & {} & \multicolumn{4}{c}{Regression performance} &
-		\multicolumn{2}{c}{Evaluation time}\\
+		\multicolumn{2}{c}{Complexity}\\
 		\cmidrule(lr){3-6}
 		\cmidrule(lr){7-8}
 		Surrogate class & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
@@ -36,13 +21,67 @@ TODO: include result figures for experiments
 						& $\num{1.23456} \pm \num{1.23456}$
 						& $\num{1.23456} \pm \num{1.23456}$
 		\\
+		GBT TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& \num{1.23456}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~1. The column \# gives the number of
-		Bayesian optimisation iterations.
-		While regression performance metrics are reported for the best instance
-		per surrogate class, evaluation times are given in terms of mean and standard deviation over all tested instances.}
+	\caption{Results of experiment~1 (single slice hyperparameter tuning).
+		Column \# gives the number of Bayesian optimisation iterations.
+		While regression performance is reported for the best instance
+		per surrogate class, complexity is given in terms of mean and standard deviation over all tested instances.}
 	\label{tbl:exp1-detailed-results}
 \end{table}
 
@@ -53,7 +92,7 @@ TODO: include result figures for experiments
 		\begin{tabular}{lrrrrrrr}
 		\toprule
 		{} & {} & \multicolumn{4}{c}{Regression performance} &
-		\multicolumn{2}{c}{Evaluation time}\\
+		\multicolumn{2}{c}{Complexity}\\
 		\cmidrule(lr){3-6}
 		\cmidrule(lr){7-8}
 		Surrogate class & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
@@ -69,10 +108,64 @@ TODO: include result figures for experiments
 						& $\num{1.23456} \pm \num{1.23456}$
 						& $\num{1.23456} \pm \num{1.23456}$
 		\\
+		GBT TODO
+						& \num{1234}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& \num{1234}
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Experiment~2 results displayed analogously
+	\caption{Results of experiment~2 (full feature space hyperparameter tuning), displayed analogously
 		to~\cref{tbl:exp1-detailed-results}. Here, regression performance
 		metrics are reported as means and standard deviations of the best-performing
 		models (in $R^2$) across 4~tested slices.}
@@ -105,11 +198,64 @@ TODO: include result figures for experiments
 						& $\num{1.23456} \pm \num{1.23456}$
 						& $\num{1.23456} \pm \num{1.23456}$
 		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Experiment~3 results in terms of~$R^2$. Means and standard
-	deviations are aggregated over 5~folds.}
+	\caption{Results of experiment~3 (scaling benchmark) in terms of~$R^2$.}
 	\label{tbl:exp3-detailed-results-r2}
 \end{table}
 
@@ -119,7 +265,7 @@ TODO: include result figures for experiments
 	{\footnotesize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
-		{} & \multicolumn{7}{c}{Training time as $\overline{t}_{\text{trn.}}$~[ms] by cross-validation set size}\\
+		{} & \multicolumn{7}{c}{Complexity as $\overline{t}_{\text{trn.}}$~[ms] by cross-validation set size}\\
 		\cmidrule(lr){2-8}
 		Surrogate class
 						& \num{1000}
@@ -139,13 +285,68 @@ TODO: include result figures for experiments
 						& $\num{1.23456} \pm \num{1.23456}$
 						& $\num{1.23456} \pm \num{1.23456}$
 		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Experiment~3 results in terms of~$\overline{t}_{\text{trn.}}$,
+	\caption{Results of experiment~3 (scaling benchmark) in terms of~$\overline{t}_{\text{trn.}}$,
 	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
 	\label{tbl:exp3-detailed-results-t-train}
 \end{table}
+
 
 \begin{table}[h]
 	\centering
@@ -153,7 +354,7 @@ TODO: include result figures for experiments
 	{\footnotesize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
-		{} & \multicolumn{7}{c}{Prediction time as $\overline{t}_{\text{pred.}}$~[ms] by cross-validation set size}\\
+		{} & \multicolumn{7}{c}{Complexity as $\overline{t}_{\text{pred.}}$~[ms] by cross-validation set size}\\
 		\cmidrule(lr){2-8}
 		Surrogate class
 						& \num{1000}
@@ -173,10 +374,160 @@ TODO: include result figures for experiments
 						& $\num{1.23456} \pm \num{1.23456}$
 						& $\num{1.23456} \pm \num{1.23456}$
 		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Experiment~3 results in terms of~$\overline{t}_{\text{pred.}}$,
+	\caption{Results of experiment~3 (scaling benchmark) in terms of~$\overline{t}_{\text{pred.}}$,
 	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
 	\label{tbl:exp3-detailed-results-t-pred}
 \end{table}
+
+
+\begin{table}[h]
+	\centering
+	\sisetup{round-mode=places,round-precision=2}
+	{\footnotesize
+		\begin{tabular}{llrrrrrrr}
+		\toprule
+		{} & {} & \multicolumn{4}{c}{Regression performance} &
+		\multicolumn{3}{c}{Complexity}\\
+		\cmidrule(lr){3-6}
+		\cmidrule(lr){7-9}
+		Surrogate & Class & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+						& $\overline{t}_{\text{trn.}}$ [ms] &
+		$\overline{t}_{\text{pred.}}$ [ms] & $\sigma$ [rel.]\\
+		\midrule
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		Model 1
+						& TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1234}\times$
+		\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Results of experiment~4 (competitive training) displayed analogously
+		to~\cref{tbl:exp2-detailed-results}. In addition, we also report
+		relative speedup with respect to the MC TBR model with baseline $X$.} % TODO: select and justify X
+	\label{tbl:exp4-detailed-results}
+\end{table}
+
+% TODO: list hyperparameters?
