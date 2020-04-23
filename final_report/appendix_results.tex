@@ -78,3 +78,105 @@ TODO: include result figures for experiments
 		models (in $R^2$) across 4~tested slices.}
 	\label{tbl:exp2-detailed-results}
 \end{table}
+
+\begin{table}[h]
+	\centering
+	\sisetup{round-mode=places,round-precision=2}
+	{\footnotesize
+		\begin{tabular}{lrrrrrrrr}
+		\toprule
+		{} & \multicolumn{7}{c}{Regression performance as $R^2$~[rel.] by cross-validation set size}\\
+		\cmidrule(lr){2-8}
+		Surrogate class
+						& \num{1000}
+						& \num{2000}
+						& \num{5000}
+						& \num{10000}
+						& \num{12000}
+						& \num{15000}
+						& \num{20000}\\
+		\midrule
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Experiment~3 results in terms of~$R^2$. Means and standard
+	deviations are aggregated over 5~folds.}
+	\label{tbl:exp3-detailed-results-r2}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\sisetup{round-mode=places,round-precision=2}
+	{\footnotesize
+		\begin{tabular}{lrrrrrrrr}
+		\toprule
+		{} & \multicolumn{7}{c}{Training time as $\overline{t}_{\text{trn.}}$~[ms] by cross-validation set size}\\
+		\cmidrule(lr){2-8}
+		Surrogate class
+						& \num{1000}
+						& \num{2000}
+						& \num{5000}
+						& \num{10000}
+						& \num{12000}
+						& \num{15000}
+						& \num{20000}\\
+		\midrule
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Experiment~3 results in terms of~$\overline{t}_{\text{trn.}}$,
+	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
+	\label{tbl:exp3-detailed-results-t-train}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\sisetup{round-mode=places,round-precision=2}
+	{\footnotesize
+		\begin{tabular}{lrrrrrrrr}
+		\toprule
+		{} & \multicolumn{7}{c}{Prediction time as $\overline{t}_{\text{pred.}}$~[ms] by cross-validation set size}\\
+		\cmidrule(lr){2-8}
+		Surrogate class
+						& \num{1000}
+						& \num{2000}
+						& \num{5000}
+						& \num{10000}
+						& \num{12000}
+						& \num{15000}
+						& \num{20000}\\
+		\midrule
+		GBT TODO
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+						& $\num{1.23456} \pm \num{1.23456}$
+		\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Experiment~3 results in terms of~$\overline{t}_{\text{pred.}}$,
+	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
+	\label{tbl:exp3-detailed-results-t-pred}
+\end{table}
