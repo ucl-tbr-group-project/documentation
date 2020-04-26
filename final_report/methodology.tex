@@ -130,17 +130,15 @@ operate with TBR samples.
 		\toprule
 		Surrogate & Acronym & Implementation & Hyperparameters \\
 		\midrule
-		Support vector machines	& SVM & SciKit Learn~\cite{scikit-learn} & 3 \\
-		Gradient boosted trees	& GBT & SciKit Learn & 11 \\
-		Extremely randomized trees	& ERT & SciKit Learn & 7 \\
-		AdaBoosted decision trees	& AB & SciKit Learn & 3 \\
-		Gaussian process regression	& GPR & SciKit Learn & 2 \\
+		Support vector machines~\cite{fan2008liblinear}	& SVM & SciKit Learn~\cite{scikit-learn} & 3 \\
+		Gradient boosted trees~\cite{friedman2001greedy,friedman1999stochastic,hastie2009elements}	& GBT & SciKit Learn & 11 \\
+		Extremely randomized trees~\cite{geurts2006extremely}	& ERT & SciKit Learn & 7 \\
+		AdaBoosted decision trees~\cite{drucker1997improving}	& ABT & SciKit Learn & 3 \\
+		Gaussian process regression~\cite{williams2006gaussian}	& GPR & SciKit Learn & 2 \\
 		$k$ nearest neighbours	& KNN & SciKit Learn & 3 \\
 		Artificial neural networks	& ANN & Keras (TensorFlow)~\cite{chollet2015keras} & 2 \\
 		Inverse distance weighing~\cite{shepard1968two} & IDW & SMT~\cite{SMT2019} & 1 \\
 		Radial basis functions & RBF & SMT & 3 \\
-		Stochastic gradient descent & SGD & SciKit Learn & 13 \\
-		Ridge regression & RR & SciKit Learn & 4 \\
 		Kriging~\cite{sacks1989designs,wold1975soft,bouhlel2016improving,bouhlel2016improved} & KRG & SMT & 4 \\
 		\bottomrule
 		\end{tabular}
