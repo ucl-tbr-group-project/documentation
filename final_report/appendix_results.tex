@@ -140,86 +140,20 @@
 		\multicolumn{3}{c}{Complexity}\\
 		\cmidrule(lr){3-6}
 		\cmidrule(lr){7-9}
-		Surrogate & Class & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+		Model & Set size & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
 						& $\overline{t}_{\text{trn.}}$ [ms] &
 		$\overline{t}_{\text{pred.}}$ [ms] & $\sigma$ [rel.]\\
 		\midrule
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
-		Model 1
-						& TODO
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1.23456} \pm \num{1.23456}$
-						& $\num{1234}\times$
-		\\
+		\input{tbl/table11}
 		\bottomrule
 		\end{tabular}
 	}
 	\caption{Results of experiment~4 (competitive training) displayed analogously
-		to~\cref{tbl:exp2-detailed-results}. In addition, we also report
-		relative speedup with respect to the MC TBR model with baseline $X$.} % TODO: select and justify X
+		to~\cref{tbl:exp2-detailed-results}. Here, means and standard deviation
+		are reported across 5~cross-validation folds. In addition, we also give
+		used cross-validation set size and relative speedup with respect to the
+		MC TBR model mean evaluation time \SI{7.777049573054314}{\second} (per
+		sample) measured during run~1.}
 	\label{tbl:exp4-detailed-results}
 \end{table}
 
