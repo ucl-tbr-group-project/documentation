@@ -6,7 +6,7 @@ we focus on interpretation in the scheme of supervised and unsupervised learning
 
 Labeling the expensive MC TBR model $f(x)$, a surrogate is a mapping
 $\hat{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
-$\hat{f}(x)$ minimise a selected similarity metric. Furthermore, in order to
+$\hat{f}(x)$ minimise a selected dissimilarity metric. Furthermore, in order to
 be considered \textit{viable}, surrogates are required to achieve expected evaluation time
 lower than that of $f(x)$.
 
@@ -15,14 +15,14 @@ training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right)
 to describe the behaviour of $f(x)$ across its domain.
 Depending on specific model class and appropriate choice of its
 hyperparameters, surrogate models $\hat{f}(x)$ are trained to minimise
-empirical risk with respect to $\mathcal{T}$ and a model-specific
-loss function $\mathcal{L}$, where empirical risk is defined as
+the empirical risk~$R_{\text{emp.}}$ with respect to $\mathcal{T}$ and a model-specific
+loss function $\mathcal{L}$, where the empirical risk is defined as
 $R_{\text{emp.}}(\hat{f}\mid\mathcal{T},\mathcal{L})
 	=\frac{1}{N}\sum_{i=1}^N
 	\mathcal{L}\left(\hat{f}(x^{(i)}),f(x^{(i)})\right)$.
 
 
-The unsupervised setting can be viewed as an extension of this method.
+The unsupervised setting can be viewed as a more general problem.
 Rather than fixing the training set $\mathcal{T}$ for the entire duration of
 training, multiple sets $\{\mathcal{T}_k\}_{k=0}^K$ are used, such that
 $\mathcal{T}_{k-1}\subset\mathcal{T}_k$ for all $k>1$. The first set
@@ -45,7 +45,7 @@ arise: (i) their capability to approximate the TBR MC model well and (ii) their
 complexity. An ideal surrogate would maximise
 the former while minimising the latter.
 
-\Cref{tbl:metrics} provides exhaustive listing and description of metrics recorded
+\Cref{tbl:metrics} provides an exhaustive listing and description of metrics recorded
 in the experiments. For regression performance analysis, we include a selection
 of absolute metrics to assess the approximation capability of surrogates, and set
 practical bounds on the expected accuracy of their predictions. In addition, we also track
@@ -55,7 +55,7 @@ For complexity analysis, surrogates are assessed in terms of wall time
 elapsed during training and predicition. This is motivated by common practical use
 cases of our work, where models are trained and used as drop-in replacements for the
 expensive MC TBR model. Since training set sizes remain to be determined, all times are
-reported per a single sample. Even though some surrogates support acceleration
+reported per a single datapoint. Even though some surrogates support acceleration
 by means of parallelisation, measures were taken to ensure sequential
 processing of samples to achieve comparability between considered
 models.\footnote{The only exception to this are artificial neural networks, which are
@@ -91,7 +91,7 @@ setting.}
 		\end{tabular}
 	}
 	\caption{Metrics recorded in supervised learning experiments. In
-	formulations, we work with training set of size $N_0$ and testing set of
+	formulations, we work with a training set of size $N_0$ and a test set of
 size $N$, TBR values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
 denote images of the $i$th testing sample in the expensive model and the surrogate
 respectively. Furthermore, the mean $\overline{y}=\sum_{i=1}^N y^{(i)}/N$ and $P$ is the
@@ -101,12 +101,12 @@ number of input features.}
 
 To prevent undesirable bias in results due to training set selection, all metrics
 are collected in the scheme of $k$-fold cross-validation with a standard choice of
-$k=5$. Herein, a sample set is subdivided into 5 disjoint folds which are
-repeatedly interpreted as training and testing sets, maintaining a constant
-ratio of samples between the two.\footnote{Unless explicitly stated otherwise, we use 1
+$k=5$. Herein, a sample set is subdivided into 5 disjoint foldsi, each of which
+is used as a test set for the model trained on the remaining 4.\footnote{Unless explicitly stated otherwise, we use 1
 fold for testing and the $k-1$ remaining folds for training. This gives 80\% to
-20\% train-test ratio.} In each such interpretation experiments are
-repeated, and the overall value of each metric is reported as the mean across all folds.
+20\% train-test ratio.} In each such run experiments are
+repeated, and the overall value of each metric is reported as the mean and
+standard deviation over all folds.
 
 
 \subsection{Evaluation of Supervised Learning Surrogates}
@@ -115,12 +115,12 @@ repeated, and the overall value of each metric is reported as the mean across al
 In our experiments, we evaluate and compare surrogates in effort to
 optimise against metrics described in~\cref{sec:metrics}. To attain meaningful
 and practically usable results, we require a sufficiently large and diverse pool
-of surrogate classes to draw from. This is described by the listing in~\cref{tbl:surrogates}. The presented selection of models includes basic
+of surrogate families to draw from. This is described by the listing in~\cref{tbl:surrogates}. The presented selection of models includes basic
 techniques suitable for linear regression enhanced by the kernel trick or dimension
 lifting, methods driven by decision trees, instance-based learning models,
 ensemble regressors, randomized algorithms, artificial neural networks and mathematical approaches
 developed specifically for the purposes of surrogate modelling. For each of
-these classes, a state-of-the-art implementation was selected and adapted to
+these families, a state-of-the-art implementation was selected and adapted to
 operate with TBR samples.
 
 \begin{table}[h]
@@ -142,7 +142,7 @@ operate with TBR samples.
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Considered surrogate model classes.}
+	\caption{Considered surrogate model families.}
 	\label{tbl:surrogates}
 \end{table}
 
@@ -189,11 +189,11 @@ corresponding surrogate class.
 
 The presented surrogate candidates are evaluated in four experimental cases:%
 \begin{enumerate}
-	\item Hyperparameter tuning in simplified domain,
+	\item Hyperparameter tuning in a simplified domain.
 
-	\item Hyperparameter tuning in full domain,
+	\item Hyperparameter tuning in full domain.
 
-	\item Scaling benchmark,
+	\item Scaling benchmark.
 
 	\item Competitive surrogate training.
 \end{enumerate}
@@ -229,8 +229,8 @@ feature space. Here, in extension of the previous case, surrogates work with
 samples comprised of discrete as well as continuous features.
 
 The goal of the last two experiments is to exploit the information gathered by
-hyperparameter tuning for study of scaling properties. In
-the third experiment, 20~best-performing hyperparameter choices of each class
+hyperparameter tuning to investigate scaling properties. In
+the third experiment, the 20~best-performing hyperparameter choices of each class
 (in $R^2$) are used to learn surrogates using progressively larger training sets. Following
 that, the fourth experiment attempts to produce competitive surrogates by
 retraining several selected well-scaling models on the largest available data set.

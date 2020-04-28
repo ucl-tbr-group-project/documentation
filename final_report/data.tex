@@ -11,9 +11,9 @@ space reduction to achieve the lowest possible number of dimensions.
 
 The MC TBR model that we understand to be the expensive function for our
 surrogate modelling is fundamentally a Monte Carlo simulation based on the
-OpenMC framework~\cite{ROMANO201590}. At input the software expects a set of 19~parameters, discrete and
+OpenMC framework~\cite{ROMANO201590}. As input the software expects a set of 19~parameters, discrete and
 continuous, that are fully listed in~\cref{tbl:params}. Following a brief period of
-time (usually on the order of tens of seconds), during which a fixed number of
+time (usually of the order of tens of seconds), during which a fixed number of
 events is generated, the simulation outputs the
 mean and the standard deviation of the TBR aggregated over the simulated run. The
 former of these two we accept to be the output TBR value that is subject
@@ -42,7 +42,6 @@ to approximation.
 		\midrule
 		\parbox[t]{2mm}{\multirow{7}{*}{\rotatebox[origin=c]{90}{First wall}}}
 		   & Armour fraction\textsuperscript{\textdaggerdbl} & FAF & Continuous & $[0,1]$ & {}\\
-		   & Armour material & FAM & Discrete & $\{\text{tungsten}\}$ & {}\\
 		   & Coolant fraction\textsuperscript{\textdaggerdbl} & FCF & Continuous & $[0,1]$ & {}\\
 		   & Coolant material & FCM & Discrete & $\{\ce{D2O}, \ce{H2O}, \ce{He}\}$ & {}\\
 		   & Structural fraction\textsuperscript{\textdaggerdbl} & FSF & Continuous & $[0,1]$ & {}\\
@@ -52,7 +51,7 @@ to approximation.
 		\end{tabular}
 	}
 	\caption{Input parameters supplied to the MC TBR simulation in alphabetical
-		order. Fractions marked with superscripts\textsuperscript{\textdagger
+		order. Groups of fractions marked\textsuperscript{\textdagger
 		\textdaggerdbl} are independently required to sum to one.}
 	\label{tbl:params}
 \end{table}
@@ -83,7 +82,7 @@ points in the feature space, and inference thereof. We thus require
 sufficiently large and representative quantities of samples to ensure
 statistical significance of our findings.
 
-With grid search in high-dimensional domain clearly intractable, we
+With grid search in such a high-dimensional domain clearly intractable, we
 selected uniform pseudo-random sampling to generate large amounts of feature
 configurations that we consider to be independent and unbiased. For evaluation
 of the expensive MC TBR model, we utilise parallelisation offered by
@@ -108,7 +107,7 @@ generation runs, which are summarised in~\cref{tbl:sampling-runs}.
 		\midrule
 		0 & \num{100000} & $\num{100}\times\num{1000}$ & 2~days, 23~h 
 		  & $\num{7.877122043981347} \pm \num{2.749485948560108}$ &
-		Testing run using older MC TBR version.\\
+		Testing run using old MC TBR version.\\
 		1 & \num{500000} & $\num{500}\times\num{1000}$ & 13~days, 20~h
 		  & $\num{7.777049573054314} \pm \num{2.8103592103930337}$ &
 		Fully uniform sampling in the entire domain.\\
@@ -125,11 +124,11 @@ generation runs, which are summarised in~\cref{tbl:sampling-runs}.
 	\label{tbl:sampling-runs}
 \end{table}
 
-Skipping run zero, which was performed using older, fundamentally different
+Skipping run zero, which was performed using an older, fundamentally different
 version of the MC TBR software, and was thus treated as a technical
-proof-of-concept, we generated the total of~\num{900000} samples in two runs.
+proof-of-concept, we generated a total of~\num{900000} samples in two runs.
 While the first run featured fully uniform sampling of the unrestricted feature
-space, the second run used more elaborate strategy. Interested in further study
+space, the second run used a more elaborate strategy. Interested in further study
 of relationships between discrete and continuous features, we selected four
 assignments of discrete features (listed in~\cref{tbl:slices}) and fixed them
 for all points, effectively slicing the feature space into four corresponding
@@ -158,10 +157,10 @@ and reused in the other three.
 \end{table}
 
 Since some surrogate modelling methods applied in this work are not scale-invariant or
-perform suboptimally with arbitrarily scaled problems, all run results
-were standardised prior to further use. In this commonly used statistical
-procedure, features and regression outputs are independently scaled and offset
-to attain zero mean and unit variance.
+perform suboptimally with arbitrarily scaled inputs, all obtained TBR~samples
+(features and TBR~values) were standardised prior to further use. In this
+commonly used statistical procedure, features and regression outputs are
+independently scaled and offset to attain zero mean and unit variance.
 
 
 
@@ -172,7 +171,12 @@ to attain zero mean and unit variance.
 % simplification of the problem, better convergence...)
 
 Model training over high-dimensional parameter spaces may be improved in many
-aspects by carefully reducing the number of variables used to describe the space. For many applications, feature selection strategies succeed in identifying a sufficiently representative subset of the original input variables; however, all given variables were assumed to be physically relevant to the MC TBR model. Feature extraction methods, on the other hand, aim to identify a transformation from the parameter space which decreases dimensionality; even if no individual parameter is separable from the space, some linear combinations of parameters or nonlinear functions of parameters may be.
+aspects by carefully reducing the number of variables used to describe the
+space. For many applications, feature selection strategies succeed in
+identifying a sufficiently representative subset of the original input
+variables; however, all given variables were assumed to be physically relevant
+to the MC TBR model. Feature extraction methods, on the other hand, aim to
+identify a transformation of the parameter space which decreases dimensionality; even if no individual parameter is separable from the space, some linear combinations of parameters or nonlinear functions of parameters may be.
 
 \begin{figure}[h]
 	\centering
