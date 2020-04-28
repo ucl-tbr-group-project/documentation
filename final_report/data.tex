@@ -79,8 +79,8 @@ While we deliberately make no assumptions about the internal properties of the
 MC TBR simulation, effectively treating it as a black box model, our means of
 studying its behaviour are limited to inspection of its outputs at various
 points in the feature space, and inference thereof. We thus require
-sufficiently large and representative quantities of samples to ensure
-statistical significance of our findings.
+sufficiently large and representative quantities of samples to ensure that
+surrogates can be trained to approximate the MC TBR model.
 
 With grid search in such a high-dimensional domain clearly intractable, we
 selected uniform pseudo-random sampling\footnote{Continuous and discrete
@@ -219,9 +219,6 @@ reveals irreducibility of the TBR model by linear methods.
 
 \subsubsection{Variogram Computations}
 
-% TODO: in results, we feature both Kriging and GPR with differing results -
-% clarify their interchangeability here
-
 Kriging is a geostatistical surrogate modelling technique which relies on
 correlation functions over distance (lag) in the feature space \cite{Bouhlel2018}. Although kriging performed poorly for our use case due to high dimensionality, these correlation measures gave insight into similarities between discrete-parameter slices of the data.
 
@@ -241,9 +238,9 @@ correlation functions over distance (lag) in the feature space \cite{Bouhlel2018
 
 Autoencoders~\cite{SCHMIDHUBER201585} are a family of approaches to
 dimensionality reduction driven by artificial neural
-networks (ANNs). Faced with many possible alternatives, we utilised a conventional
-autoencoder, which relies on a three-layer network that is trained to replicate
-the identity mapping. While it follows that the input and output layers of such
+networks (ANNs). Faced with a broad selection of alternatives, we opted for a
+conventional autoencoder architecture with a single hidden layer. While it
+follows that the input and output layers of such
 network are sized to accommodate the analysed dataset, the
 hidden layer, also called \textit{the bottleneck}, allows for variable number of
 neurons that represent a smaller subspace. By scanning

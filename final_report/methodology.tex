@@ -2,7 +2,8 @@ Assuming that data is appropriately treated to eliminate redundant
 features, we proceed to propose surrogate models and criteria
 used for their evaluation. The task all presented surrogates strive to solve can be
 formulated using the language of conventional regression problems. In this section,
-we focus on interpretation in the scheme of supervised and unsupervised learning.
+we focus on interpretation in the scheme of supervised learning with decoupled
+and adaptive sampling.
 
 Labeling the expensive MC TBR model $f(x)$, a surrogate is a mapping
 $\hat{f}(x)$ that yields similar images as $f(x)$. In other words, $f(x)$ and
@@ -10,7 +11,8 @@ $\hat{f}(x)$ minimise a selected dissimilarity metric. Furthermore, in order to
 be considered \textit{viable}, surrogates are required to achieve expected evaluation time
 lower than that of $f(x)$.
 
-In the supervised learning setting, we first gather a sufficiently large
+In the decoupled sampling approach that is further described
+in~\cref{sec:supervised}, we first gather a sufficiently large
 training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right) \right)\right\}_{i=1}^N$
 to describe the behaviour of $f(x)$ across its domain.
 Depending on specific model class and appropriate choice of its
@@ -22,7 +24,7 @@ $R_{\text{emp.}}(\hat{f}\mid\mathcal{T},\mathcal{L})
 	\mathcal{L}\left(\hat{f}(x^{(i)}),f(x^{(i)})\right)$.
 
 
-The unsupervised setting can be viewed as a more general problem.
+The adaptive sampling approach that we characterise in~\cref{sec:adaptive} can be viewed as a more general problem.
 Rather than fixing the training set $\mathcal{T}$ for the entire duration of
 training, multiple sets $\{\mathcal{T}_k\}_{k=0}^K$ are used, such that
 $\mathcal{T}_{k-1}\subset\mathcal{T}_k$ for all $k>1$. The first set
@@ -42,14 +44,14 @@ Aiming to provide objective comparison of a diverse set of surrogate model
 classes, we define a multitude of metrics to be tracked during experiments.
 Following the motivation of this work, two desirable properties of surrogates
 arise: (i) their capability to approximate the TBR MC model well and (ii) their
-complexity. An ideal surrogate would maximise
+prediction time. An ideal surrogate would maximise
 the former while minimising the latter.
 
 \Cref{tbl:metrics} provides an exhaustive listing and description of metrics recorded
 in the experiments. For regression performance analysis, we include a selection
 of absolute metrics to assess the approximation capability of surrogates, and set
 practical bounds on the expected accuracy of their predictions. In addition, we also track
-relative measures that are better-suited for model comparison between works as
+relative measures that are better-suited for comparison between this work and others, as
 they maintain invariance with respect to the selected domain and image space.
 For complexity analysis, surrogates are assessed in terms of wall time
 elapsed during training and predicition. This is motivated by common practical use
@@ -109,7 +111,7 @@ repeated, and the overall value of each metric is reported as the mean and
 standard deviation over all folds.
 
 
-\subsection{Evaluation of Supervised Learning Surrogates}
+\subsection{Decoupled Sampling}
 \label{sec:supervised}
 
 In our experiments, we evaluate and compare surrogates in effort to

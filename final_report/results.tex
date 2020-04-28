@@ -1,6 +1,6 @@
 TODO
 
-\subsection{Evaluation of Supervised Learning Surrogates}
+\subsection{Results of Decoupled Sampling}
 \label{sec:modelres}
 
 We begin by evaluating a diverse set of surrogate classes that we proposed
@@ -31,24 +31,23 @@ complexity, its regression performance falls below average.
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice0}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Run 2, batches 0-3}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice1}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Run 2, batches 100-103}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice2}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Run 2, batches 200-203}
 	\end{subfigure}
 	\caption{20~best-performing surrogates per each considered class, plotted in
 		terms of complexity (as $\overline{t}_{\text{pred.}}$) and regression
-		performance (as~$R^2$) on selected slices of run~2, evaluated in experiment~1.}
+		performance (as~$R^2$) on selected slices of run~2, evaluated in
+	experiment~1. Here, batches refer to subsets of training and test datasets that
+	may be matched to slices using~\cref{tbl:slices}.}
 	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
