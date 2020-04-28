@@ -2155,16 +2155,12 @@
     <bcf:citekey order="22">chollet2015keras</bcf:citekey>
     <bcf:citekey order="23">shepard1968two</bcf:citekey>
     <bcf:citekey order="24">SMT2019</bcf:citekey>
-    <bcf:citekey order="25">sacks1989designs</bcf:citekey>
-    <bcf:citekey order="25">wold1975soft</bcf:citekey>
-    <bcf:citekey order="25">bouhlel2016improving</bcf:citekey>
-    <bcf:citekey order="25">bouhlel2016improved</bcf:citekey>
-    <bcf:citekey order="26">Garud2016</bcf:citekey>
-    <bcf:citekey order="27">Zhou2018</bcf:citekey>
-    <bcf:citekey order="28">Zhang2020</bcf:citekey>
-    <bcf:citekey order="28">Gong2017</bcf:citekey>
-    <bcf:citekey order="29">Ginting2011</bcf:citekey>
-    <bcf:citekey order="30">Solonen2012</bcf:citekey>
+    <bcf:citekey order="25">Garud2016</bcf:citekey>
+    <bcf:citekey order="26">Zhou2018</bcf:citekey>
+    <bcf:citekey order="27">Zhang2020</bcf:citekey>
+    <bcf:citekey order="27">Gong2017</bcf:citekey>
+    <bcf:citekey order="28">Ginting2011</bcf:citekey>
+    <bcf:citekey order="29">Solonen2012</bcf:citekey>
     <bcf:citekey order="0" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
