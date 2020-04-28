@@ -8,9 +8,9 @@
 		\multicolumn{2}{c}{Complexity}\\
 		\cmidrule(lr){3-6}
 		\cmidrule(lr){7-8}
-		Surrogate class & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
-						& $\overline{t}_{\text{trn.}}$ [ms] &
-						$\overline{t}_{\text{pred.}}$ [ms]\\
+		Family & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+						& $\overline{t}_{\text{trn.}}$ [\si{\milli\second}] &
+						$\overline{t}_{\text{pred.}}$ [\si{\milli\second}]\\
 		\midrule
 		\input{tbl/table6}
 		\bottomrule
@@ -34,9 +34,9 @@
 		\multicolumn{2}{c}{Complexity}\\
 		\cmidrule(lr){3-6}
 		\cmidrule(lr){7-8}
-		Surrogate class & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
-						& $\overline{t}_{\text{trn.}}$ [ms] &
-						$\overline{t}_{\text{pred.}}$ [ms]\\
+		Family & \# & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+						& $\overline{t}_{\text{trn.}}$ [\si{\milli\second}] &
+						$\overline{t}_{\text{pred.}}$ [\si{\milli\second}]\\
 		\midrule
 		\input{tbl/table7}
 		\bottomrule
@@ -56,7 +56,7 @@
 		\toprule
 		{} & \multicolumn{7}{c}{Regression performance as $R^2$~[rel.] by cross-validation set size}\\
 		\cmidrule(lr){2-8}
-		Surrogate class
+		Family
 						& \num{1000}
 						& \num{2000}
 						& \num{5000}
@@ -69,7 +69,7 @@
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~3 (scaling benchmark) in terms of~$R^2$.}
+	\caption{Results of experiment~3 (scaling benchmark) in ter\si{\milli\second} of~$R^2$.}
 	\label{tbl:exp3-detailed-results-r2}
 	% TODO: add KRG
 \end{table}
@@ -80,9 +80,9 @@
 	{\footnotesize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
-		{} & \multicolumn{7}{c}{Complexity as $\overline{t}_{\text{trn.}}$~[ms] by cross-validation set size}\\
+		{} & \multicolumn{7}{c}{Complexity as $\overline{t}_{\text{trn.}}$~[\si{\milli\second}] by cross-validation set size}\\
 		\cmidrule(lr){2-8}
-		Surrogate class
+		Family
 						& \num{1000}
 						& \num{2000}
 						& \num{5000}
@@ -95,7 +95,7 @@
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~3 (scaling benchmark) in terms of~$\overline{t}_{\text{trn.}}$,
+	\caption{Results of experiment~3 (scaling benchmark) in ter\si{\milli\second} of~$\overline{t}_{\text{trn.}}$,
 	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
 	\label{tbl:exp3-detailed-results-t-train}
 	% TODO: add KRG
@@ -108,9 +108,9 @@
 	{\footnotesize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
-		{} & \multicolumn{7}{c}{Complexity as $\overline{t}_{\text{pred.}}$~[ms] by cross-validation set size}\\
+		{} & \multicolumn{7}{c}{Complexity as $\overline{t}_{\text{pred.}}$~[\si{\milli\second}] by cross-validation set size}\\
 		\cmidrule(lr){2-8}
-		Surrogate class
+		Family
 						& \num{1000}
 						& \num{2000}
 						& \num{5000}
@@ -123,7 +123,7 @@
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~3 (scaling benchmark) in terms of~$\overline{t}_{\text{pred.}}$,
+	\caption{Results of experiment~3 (scaling benchmark) in ter\si{\milli\second} of~$\overline{t}_{\text{pred.}}$,
 	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
 	\label{tbl:exp3-detailed-results-t-pred}
 	% TODO: add KRG
@@ -132,17 +132,18 @@
 
 \begin{table}[h]
 	\centering
-	\sisetup{round-mode=places,round-precision=2}
-	{\footnotesize
+	\sisetup{round-mode=places,round-precision=3}
+	\setlength\tabcolsep{4pt}
+	{\scriptsize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
 		{} & {} & \multicolumn{4}{c}{Regression performance} &
 		\multicolumn{3}{c}{Complexity}\\
 		\cmidrule(lr){3-6}
 		\cmidrule(lr){7-9}
-		Model & Set size & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
-						& $\overline{t}_{\text{trn.}}$ [ms] &
-		$\overline{t}_{\text{pred.}}$ [ms] & $\sigma$ [rel.]\\
+		Model & $|\mathcal{T}|$ & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+						& $\overline{t}_{\text{trn.}}$ [\si{\milli\second}] &
+		$\overline{t}_{\text{pred.}}$ [\si{\milli\second}] & $\sigma$ [rel.]\\
 		\midrule
 		\input{tbl/table11}
 		\bottomrule
@@ -151,7 +152,8 @@
 	\caption{Results of experiment~4 (competitive training) displayed analogously
 		to~\cref{tbl:exp2-detailed-results}. Here, means and standard deviation
 		are reported over 5~cross-validation folds. In addition, we also give
-		used cross-validation set size and relative speedup with respect to the
+		used cross-validation set size $|\mathcal{T}|$ (in thousands of data
+		points) and relative speedup $\sigma$ with respect to the
 		MC TBR model mean evaluation time \SI{7.777049573054314}{\second} (per
 		sample) measured during run~1.}
 	\label{tbl:exp4-detailed-results}
