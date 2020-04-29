@@ -74,55 +74,69 @@ time. We observe that extremely randomised trees and radial basis functions also
 demonstrated satisfactory results, outperforming the remaining surrogates in
 terms of regression performance, and in some cases also in prediction time.
 
+Following both hyperparameter tuning experiments, we conclude that while domain
+restrictions employed in the first case have proven effective in improving the
+regression performance of some methods, this result has fluctuated considerably
+depending on the selected slices. Furthermore, in all instances the best
+results were achieved by families of surrogates that were nearly unaffected by
+this modification.
+
 
 \subsubsection{Scaling Benchmark}
 
-In the next experiment we examine surrogate scaling properties correlating
-metrics of interest with progressively increasing training set size. The results
-shown in~\cref{fig:scaling} seem to suggest that in terms of regression performance,
-methods based on decision trees and artificial neural networks offer the best regression performance on
-larger sets overall. This is a curious extension of the previous findings, where
-gradient boosted trees were observed to significantly dominate over the rest of
-the examined methods. With increasing training set size, their relative advantage is
-clearly gradually diminished.
+In the third experiment we examine surrogate scaling properties by correlating
+metrics of interest with training set size. First, the results shown 
+in~\cref{fig:scaling-r2} suggest that the most accurate families from the previous experiments
+consistently maintain their relative advantage over others, even as we introduce
+more training data. While such families achieve nearly comparable regression
+performance on the largest dataset, in the opposite case methods based on
+decision trees clearly outperform neural networks. This can be observed
+particularly on training sets of sizes up to~\num{6000}.
 
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{scaling_metric_r2}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Regression performance (as $R^2$)}
+		\label{fig:scaling-r2}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{scaling_time_train}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Complexity (as~$\overline{t}_{\text{trn.}}$)}
+		\label{fig:scaling-trn}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{scaling_time_pred}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Complexity (as~$\overline{t}_{\text{pred.}}$)}
+		\label{fig:scaling-pred}
 	\end{subfigure}
 	\caption{Various metrics collected during experiment 3 (scaling
 	benchmark) displayed as a function of training set size.}
 	\label{fig:scaling}
 \end{figure}
 
-According to our experiment, the lowest mean training time is generally achieved
-by instance-based learning methods, which seem to offer near-constant scaling
-characteristics at the expense of significant performance increase later during
-prediction. Following that, we observe that the majority of tree-based methods also exhibit
-desirable properties. The notable exception here appear to be artificial neural networks,
-which are the only model to utilise parallelisation. As such, their constant
-synchronisation overhead presumably hinders performance on small training sets,
-producing misleading results when divided by the number of samples.
+Next, we examine scaling behaviour in terms of the mean training time (displayed
+in~\cref{fig:scaling-trn}). Consistent with our expectation, the shortest times
+were achieved by instance-based learning methods (e.g. KNN, IDW) that
+are trained trivially at the expense of increased lookup complexity later during prediction.
+Furthermore, we observe that the majority of tree-based algorithms also exhibit
+desirable properties unlike radial basis functions and gaussian process
+regression, which appear to scale superlinearly. We note that artificial neural networks,
+which are the only family to utilise parallelisation during training, show an
+inverse scaling characteristic. Our conjecture is that this effect may be caused
+by a constant multi-threading overhead that possibly dominates the training process
+on relatively small training sets.
 
-In terms of mean prediction time, all tested surrogates except previously mentioned
-instance-based learning methods scale exceptionally well. Tree-based generally
-models appear to perform the fastest.
+Lastly, we study scaling with respect to the mean prediction time (shown
+in~\cref{fig:scaling-pred}). Our initial observation is that all tested
+surrogate families with the exception of previously mentioned instance-based
+learning methods offer desirable characteristics overall. Analogous to previous
+experiments, gradient boosted trees and artificial neural networks again
+appear to be tied, as they not only exhibit comparable times but also similar
+scaling slopes.
 
 
 \subsubsection{Model Comparison}
