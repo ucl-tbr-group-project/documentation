@@ -209,18 +209,16 @@ the primary task of this work with the notable extension of added utility
 to optimise. In order to avoid undesirable exponential slowdown in exhaustive
 searches of a possibly high-dimensional parameter space, Bayesian
 optimisation is employed as a standard hyperparameter tuning algorithm. We set
-its objective to maximise $R^2$ and perform 1000~iterations.\footnote{Tuning of
-	each surrogate class was artificially terminated after 2~days. Instances
-	which reached this limit are marked in the results.}
-
-% TODO: mark instances that timed out in results
+its objective to maximise $R^2$ and perform
+1000~iterations.\footnote{Hyperparameter tuning of each surrogate family was
+	terminated after 2~days. Instances that reached this limit may be identified
+	in~\cref{tbl:exp1-detailed-results,tbl:exp2-detailed-results}.}
 
 In the first experiment, efforts are made to maximise the possibility of success
 in surrogates that are prone to suboptimal performance in discontinuous spaces.
 This follows the notion that, if desired, accuracy of such models may be
-replicated at large scale by decomposing the TBR domain into continuous subsets,
-and learning ensemble surrogate comprised of identical models that are trained on each
-subset independently, incurring exponential complexity penalty in the process.
+replicated by training separate instances to model each continuous subregion of
+the domain independently.
 To this end, data are limited to a single slice from run~2, and discrete
 features are completely withheld from evaluated
 surrogates. This is repeated for each of the four available slices to
