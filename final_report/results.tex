@@ -62,7 +62,7 @@ complexity, its regression performance falls below average.
 \end{wrapfigure}
 
 The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
-seem to confirm our expectations. Compared to the previous experiment, we observe
+seem to confirm our expectations. Compared to the previous case, we observe
 that many surrogate families consistently achieved worse regression
 performance and prediction times in a more complex, unrestricted domain. The least
 affected models appear to be gradient boosted trees, artificial neural networks and extremely
@@ -70,9 +70,9 @@ randomised trees, which are known to be capable of capturing relationships
 involving mixed feature types that were deliberately withheld in the first
 experiment. With only negligible differences, the first two of these families
 appear to be tied for the best performance as well as the shortest prediction
-time. While extremely randomised trees and radial basis functions also
-demonstrated satisfactory properties, other families failed to achieve
-comparable regression performance, and in some cases also prediction time.
+time. We observe that extremely randomised trees and radial basis functions also
+demonstrated satisfactory results, outperforming the remaining surrogates in
+terms of regression performance, and in some cases also in prediction time.
 
 
 \subsubsection{Scaling Benchmark}
