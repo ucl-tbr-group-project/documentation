@@ -3,20 +3,20 @@ TODO
 \subsection{Results of Decoupled Sampling}
 \label{sec:modelres}
 
-We begin by evaluating a diverse set of surrogate families that we proposed
-earlier. In particular, we aim to study considered models in terms of regression
-performance and prediction time.
-Following~\cref{sec:experiment-methodology}, where we proposed four experiments
-that accomplish this task, we present and discuss our results in the next
-sections.
+We begin by comparing a diverse set of surrogate families that we proposed
+to evaluate on previously collected samples of the expensive MC TBR model.
+Through the four experimental cases described
+in~\cref{sec:experiment-methodology}, we aim to study properties of the
+considered models in terms of regression performance, training and prediction
+time. In the next sections, we present and discuss our results.
 
 
 \subsubsection{Hyperparameter Tuning}
 
 The first two experiments perform Bayesian optimisation to maximise~$R^2$ in
 a cross-validation setting as a function of model hyperparameters. While in the
-first experiment we limit training and testing sets to the scope of four slices of the
-feature space, in the second experiment we lift this restriction.
+first experiment we limit training and test sets to the scope of four selected
+slices of the feature space, in the second experiment we lift this restriction.
 
 The results displayed in~\cref{fig:exp1-time-vs-reg} indicate that in the first
 experiment, gradient boosted trees clearly appear to be the most accurate as
@@ -51,8 +51,6 @@ complexity, its regression performance falls below average.
 	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
-% TODO: do the same thing for the second experiment
-\newpage
 \begin{wrapfigure}{r}{0.333\textwidth}
 	\centering
 	\vspace{-3ex}
@@ -63,8 +61,19 @@ complexity, its regression performance falls below average.
 	\vspace{-4ex}
 \end{wrapfigure}
 
-% TODO: multislice description
-TODO: multislice description
+The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
+seem to confirm our expectations. Compared to the previous experiment, we observe
+that many surrogate families consistently achieved worse regression
+performance and prediction times in a more complex, unrestricted domain. The least
+affected models appear to be gradient boosted trees, artificial neural networks and extremely
+randomised trees, which are known to be capable of capturing relationships
+involving mixed feature types that were deliberately withheld in the first
+experiment. With only negligible differences, the first two of these families
+appear to be tied for the best performance as well as the shortest prediction
+time. While extremely randomised trees and radial basis functions also
+demonstrated satisfactory properties, other families failed to achieve
+comparable regression performance, and in some cases also prediction time.
+
 
 \subsubsection{Scaling Benchmark}
 
