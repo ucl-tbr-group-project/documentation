@@ -50,7 +50,7 @@ the former while minimising the latter.
 \Cref{tbl:metrics} provides an exhaustive listing and description of metrics recorded
 in the experiments. For regression performance analysis, we include a selection
 of absolute metrics to assess the approximation capability of surrogates, and set
-practical bounds on the expected accuracy of their predictions. In addition, we also track
+practical bounds on the expected uncertainty of their predictions. In addition, we also track
 relative measures that are better-suited for comparison between this work and others, as
 they maintain invariance with respect to the selected domain and image space.
 For complexity analysis, surrogates are assessed in terms of wall time
@@ -216,7 +216,7 @@ its objective to maximise $R^2$ and perform
 
 In the first experiment, efforts are made to maximise the possibility of success
 in surrogates that are prone to suboptimal performance in discontinuous spaces.
-This follows the notion that, if desired, accuracy of such models may be
+This follows the notion that, if desired, performance of such models may be
 replicated by training separate instances to model each continuous subregion of
 the domain independently.
 To this end, data are limited to a single slice from run~2, and discrete
