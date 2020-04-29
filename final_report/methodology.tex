@@ -15,7 +15,7 @@ In the decoupled sampling approach that is further described
 in~\cref{sec:supervised}, we first gather a sufficiently large
 training set of samples $\mathcal{T}=\left\{\left( x^{(i)},f\left(x^{(i)}\right) \right)\right\}_{i=1}^N$
 to describe the behaviour of $f(x)$ across its domain.
-Depending on specific model class and appropriate choice of its
+Depending on specific model family and appropriate choice of its
 hyperparameters, surrogate models $\hat{f}(x)$ are trained to minimise
 the empirical risk~$R_{\text{emp.}}$ with respect to $\mathcal{T}$ and a model-specific
 loss function $\mathcal{L}$, where the empirical risk is defined as
@@ -41,7 +41,7 @@ surrogate performance over complex regions within the domain.
 \label{sec:metrics}
 
 Aiming to provide objective comparison of a diverse set of surrogate model
-classes, we define a multitude of metrics to be tracked during experiments.
+families, we define a multitude of metrics to be tracked during experiments.
 Following the motivation of this work, two desirable properties of surrogates
 arise: (i) their capability to approximate the TBR MC model well and (ii) their
 prediction time. An ideal surrogate would maximise
@@ -148,14 +148,13 @@ operate with TBR samples.
 	\label{tbl:surrogates}
 \end{table}
 
-In some rows of~\cref{tbl:surrogates}, a single class in reality represents a
-family of fundamentally similar approaches. Good examples of this are kriging methods and neural
-networks. In the case of the former, multiple algorithms such as kriging based on
-partial least squares and gradient-enhanced kriging are considered. In the
-latter, a host of parametric graphs are defined to realise simplistic network
-architecture search (see~\cref{fig:nn-archs} for details). Discrimination
-between such options is considered an additional hyperparameter of the
-corresponding surrogate class.
+While some of the presented model families are clearly determined by an explicit
+choice of a learning algorithm, others may vary considerably depending on
+hyperparameter configuration. A good example of the latter group are artificial neural
+networks, which in addition to conventional hyperparameters enable to control network
+architecture through selection from various parametric graph templates
+(see~\cref{fig:nn-archs} for details). This allows us to realise a simplistic
+network architecture search during the hyperparameter optimisation procedure.
 
 \begin{figure}[h]
 	\centering
@@ -230,7 +229,7 @@ samples comprised of discrete as well as continuous features.
 
 The goal of the last two experiments is to exploit the information gathered by
 hyperparameter tuning to investigate scaling properties. In
-the third experiment, the 20~best-performing hyperparameter choices of each class
+the third experiment, the 20~best-performing hyperparameter choices of each family
 (in $R^2$) are used to learn surrogates using progressively larger training sets. Following
 that, the fourth experiment aims to produce surrogates for practical use by
 retraining selected well-scaling models to further optimise their properties.

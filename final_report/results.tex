@@ -3,7 +3,7 @@ TODO
 \subsection{Results of Decoupled Sampling}
 \label{sec:modelres}
 
-We begin by evaluating a diverse set of surrogate classes that we proposed
+We begin by evaluating a diverse set of surrogate families that we proposed
 earlier. In particular, we aim to study considered models in terms of regression
 performance and prediction time.
 Following~\cref{sec:experiment-methodology}, where we proposed four experiments
@@ -20,10 +20,10 @@ feature space, in the second experiment we lift this restriction.
 
 The results displayed in~\cref{fig:exp1-time-vs-reg} indicate that in the first
 experiment, gradient boosted trees clearly appear to be the most accurate as
-well as the fastest surrogate class in terms of mean prediction time. Following
+well as the fastest surrogate family in terms of mean prediction time. Following
 that, we note that extremely randomised trees, support vector machines and
 artificial neural networks also achieved satisfactory results with respect to both examined metrics.
-While the remainder of tested surrogate classes does not exhibit problems in
+While the remainder of tested surrogate families does not exhibit problems in
 complexity, its regression performance falls below average.
 
 \begin{figure}[h]
@@ -43,7 +43,7 @@ complexity, its regression performance falls below average.
 		\includegraphics[width=\linewidth]{exp1_slice2}
 		\caption{Run 2, batches 200-203}
 	\end{subfigure}
-	\caption{20~best-performing surrogates per each considered class, plotted in
+	\caption{20~best-performing surrogates per each considered family, plotted in
 		terms of complexity (as $\overline{t}_{\text{pred.}}$) and regression
 		performance (as~$R^2$) on selected slices of run~2, evaluated in
 	experiment~1. Here, batches refer to subsets of training and test datasets that
@@ -114,10 +114,6 @@ producing misleading results when divided by the number of samples.
 In terms of mean prediction time, all tested surrogates except previously mentioned
 instance-based learning methods scale exceptionally well. Tree-based generally
 models appear to perform the fastest.
-
-% TODO: add tables here or in appendix with scaling results; for each metric
-% create a table with rows = classes, columns = training set size, cells = mean +/- std
-% it may be a lot, decide on placement and layout!
 
 
 \subsubsection{Model Comparison}
