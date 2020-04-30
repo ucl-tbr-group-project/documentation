@@ -20,7 +20,8 @@ a cross-validation setting as a function of model hyperparameters. While in the
 first experiment we limit training and test sets to the scope of four selected
 slices of the feature space, in the second experiment we lift this restriction.
 
-The results displayed in~\cref{fig:exp1-time-vs-reg} indicate that in the first
+The results displayed in~\cref{fig:exp1-time-vs-reg} (and listed
+in~\cref{tbl:exp1-detailed-results} in the Appendix) indicate that in the first
 experiment, GBTs clearly appear to be the most accurate as
 well as the fastest surrogate family in terms of mean prediction time. Following
 that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
@@ -52,7 +53,8 @@ complexity, its regression performance falls below average.
 	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
-The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
+The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg} (and listed
+in~\cref{tbl:exp2-detailed-results} in the Appendix),
 seem to confirm our expectations. Compared to the previous case, we observe
 that many surrogate families consistently achieved worse regression
 performance and prediction times in a more complex, unrestricted domain. The least
@@ -85,7 +87,8 @@ this modification.
 
 In the third experiment we examine surrogate scaling properties by correlating
 metrics of interest with training set size. First, the results shown 
-in~\cref{fig:scaling-r2} suggest that the most accurate families from the previous experiments
+in~\cref{fig:scaling-r2} (and listed in~\cref{tbl:exp3-detailed-results-r2} in
+the Appendix) suggest that the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as we introduce
 more training data. While such families achieve nearly comparable regression
 performance on the largest dataset, in the opposite case methods based on
@@ -118,7 +121,8 @@ particularly on training sets of sizes up to~\num{6000}.
 \end{figure}
 
 Next, we examine scaling behaviour in terms of the mean training time (displayed
-in~\cref{fig:scaling-trn}). Consistent with our expectation, the shortest times
+in~\cref{fig:scaling-trn} and listed in~\cref{tbl:exp3-detailed-results-t-train} in
+the Appendix). Consistent with our expectation, the shortest times
 were achieved by instance-based learning methods (e.g. KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
 Furthermore, we observe that the majority of tree-based algorithms also exhibit
@@ -130,7 +134,8 @@ by a constant multi-threading overhead that possibly dominates the training proc
 on relatively small training sets.
 
 Lastly, we study scaling with respect to the mean prediction time (shown
-in~\cref{fig:scaling-pred}). Our initial observation is that all tested
+in~\cref{fig:scaling-pred} and listed in~\cref{tbl:exp3-detailed-results-t-pred} in
+the Appendix). Our initial observation is that all tested
 surrogate families with the exception of previously mentioned instance-based
 learning methods offer desirable characteristics overall. Analogous to previous
 experiments, GBTs and ANNs again
@@ -140,13 +145,13 @@ scaling slopes.
 
 \subsubsection{Model Comparison}
 
-In the fourth and final experiment, we exploit previously collected information
+In the fourth experiment, we exploit previously collected information
 to produce surrogates with desirable properties for practical use. We
 aim to create models that yield: (i)~the best regression performance regardless
 of other features, (ii)~acceptable performance with the shortest mean
 prediction time, or (iii)~acceptable performance with the smallest training set.
 To this end, we trained 8~surrogates that are presented in~\cref{fig:reg-performance}
-(more details are given in~\cref{tbl:exp4-detailed-results} in the Appendix).
+(and listed in~\cref{tbl:exp4-detailed-results} in the Appendix).
 
 \begin{figure}[h]
 	\centering
@@ -239,7 +244,7 @@ some likely trends.
 
 An increase in MCMC candidate samples was seen to have a positive but very weak
 effect on final surrogate precision, suggesting that the runtime of MCMC on each
-iteration can be limited for increased efficiency. -- Awaiting test results on
+iteration can be limited for increased efficiency. -- Awaiting test results on % TODO
 initial sample quantity --. The most complex dynamics arose with the adjustment
 of sample increment, shown in~\cref{fig:qassincr}. For each tested initial sample quantity N, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$; the plotted error trends suggest that incremental samples larger than this optimum give slower model improvement on both the training and evaluation sets, and a larger minimum error on the evaluation set. This performance distinction is predicted to be even more significant when trained on the expensive MC model, where the number of sample evaluations will serve as the primary bottleneck for computation time.
 \begin{figure}[h!]
