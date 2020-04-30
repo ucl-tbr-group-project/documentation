@@ -170,7 +170,8 @@ independently scaled and offset to attain zero mean and unit variance.
 % TODO: here maybe mention desirable effects of dim. red. (e.g. speedup,
 % simplification of the problem, better convergence...)
 
-Model training over high-dimensional parameter spaces may be improved in many
+Model training over high-dimensional parameter spaces (illustrated
+in~\cref{fig:tbr-vs-features}) may be improved in many
 aspects by carefully reducing the number of variables used to describe the
 space. For many applications, feature selection strategies succeed in
 identifying a sufficiently representative subset of the original input
@@ -182,11 +183,10 @@ identify a transformation of the parameter space which decreases dimensionality;
 	\centering
 	\includegraphics[width=\linewidth]{run1_500k_tbr_vs_feat}
 	\caption{Marginalised dependence of TBR on the choice of continuous
-	features.}
+	features in \num{500000}~points collected in run~1. Points are coloured by density.}
   \label{fig:tbr-vs-features}
 \end{figure}
 
-% TODO: tie the figure above to the paragraph above
 
 \subsubsection{Principal Component Analysis}
 
