@@ -2154,12 +2154,13 @@
     <bcf:citekey order="21">chollet2015keras</bcf:citekey>
     <bcf:citekey order="22">shepard1968two</bcf:citekey>
     <bcf:citekey order="23">SMT2019</bcf:citekey>
-    <bcf:citekey order="24">Garud2016</bcf:citekey>
-    <bcf:citekey order="25">Zhou2018</bcf:citekey>
-    <bcf:citekey order="26">Zhang2020</bcf:citekey>
-    <bcf:citekey order="26">Gong2017</bcf:citekey>
-    <bcf:citekey order="27">Ginting2011</bcf:citekey>
-    <bcf:citekey order="28">Solonen2012</bcf:citekey>
+    <bcf:citekey order="24">movckus1975bayesian</bcf:citekey>
+    <bcf:citekey order="25">Garud2016</bcf:citekey>
+    <bcf:citekey order="26">Zhou2018</bcf:citekey>
+    <bcf:citekey order="27">Zhang2020</bcf:citekey>
+    <bcf:citekey order="27">Gong2017</bcf:citekey>
+    <bcf:citekey order="28">Ginting2011</bcf:citekey>
+    <bcf:citekey order="29">Solonen2012</bcf:citekey>
     <bcf:citekey order="0" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
