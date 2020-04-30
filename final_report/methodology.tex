@@ -86,7 +86,7 @@ setting.}
 		$\hat{f}(x)$})/N_0$ 	& 0 & [ms] \\
 		Mean prediction time $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
 		$\hat{f}(x)$})/N$	& 0 & [ms] \\
-		Relative speedup $\sigma$	& $(\text{wall evaluation time of $f(x)$}) /
+		Relative speedup $\omega$	& $(\text{wall evaluation time of $f(x)$}) /
 		(N\overline{t}_{\text{pred.}})$	&
 		$\to\infty$ & [rel.] \\
 		\bottomrule
@@ -103,9 +103,9 @@ number of input features.}
 
 To prevent undesirable bias in results due to training set selection, all metrics
 are collected in the scheme of $k$-fold cross-validation with a standard choice of
-$k=5$. Herein, a sample set is subdivided into 5 disjoint foldsi, each of which
+$k=5$. Herein, a sample set is subdivided into 5 disjoint folds, each of which
 is used as a test set for the model trained on the remaining 4.\footnote{Unless explicitly stated otherwise, we use 1
-fold for testing and the $k-1$ remaining folds for training. This gives 80\% to
+fold for testing and the 4 remaining folds for training. This gives 80\% to
 20\% train-test ratio.} In each such run experiments are
 repeated, and the overall value of each metric is reported as the mean and
 standard deviation over all folds.
@@ -222,7 +222,6 @@ To this end, data are limited to a single slice from run~2, and discrete
 features are completely withheld from evaluated
 surrogates. This is repeated for each of the four available slices to
 investigate variance in behaviour under different discrete feature assignments.
-
 The second experiment conventionally measures surrogate performance on the full
 feature space. Here, in extension of the previous case, surrogates work with
 samples comprised of discrete as well as continuous features.
@@ -230,7 +229,7 @@ samples comprised of discrete as well as continuous features.
 The goal of the last two experiments is to exploit the information gathered by
 hyperparameter tuning to investigate scaling properties. In
 the third experiment, the 20~best-performing hyperparameter choices of each family
-(in $R^2$) are used to learn surrogates using progressively larger training sets. Following
+(in $R^2$) are used to train surrogates using progressively larger training sets. Following
 that, the fourth experiment aims to produce surrogates for practical use by
 retraining selected well-scaling models to further optimise their properties.
 
@@ -265,6 +264,14 @@ for a review).
 %adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal
 %distribution to fit the posterior, was also implemented but not fully tested.}
 
+\begin{wrapfigure}[22]{r}{0.55\textwidth}
+	\centering
+	\vspace{-5ex}
+	\includegraphics[width=0.7\textwidth]{fig4_qassplan.png}
+	\caption{Schematic of QASS algorithm}
+	\label{fig:qassplan}
+\end{wrapfigure}
+
 Many researchers have embedded surrogate methods into MCMC strategies for
 parameter optimisation \cite{Zhang2020,Gong2017}, in particular the ASMO-PODE
 algorithm \cite{Ginting2011} which makes use of MCMC-based adaptive sampling to
@@ -272,6 +279,7 @@ attain greater surrogate precision around prospective optima. Our novel approach
 draws inspiration from ASMO-PODE, but instead uses MCMC to generate samples
 which increase surrogate precision throughout the entire parameter space.
 
+<<<<<<< HEAD
 \begin{wrapfigure}{r}{0.55\textwidth}
   \vspace{-35pt}
   \begin{center}
@@ -281,6 +289,9 @@ which increase surrogate precision throughout the entire parameter space.
   \end{center}
   \vspace{-80pt}
 \end{wrapfigure}
+=======
+% TODO: explain AE
+>>>>>>> a8aa361ad44249d94cd86fe2d10a7f27c74ef277
 
 We designed the Quality-Adaptive Surrogate Sampling algorithm (QASS,
 \cref{fig:qassplan}) to iteratively increment the training/test set with sample

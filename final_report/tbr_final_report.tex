@@ -39,7 +39,8 @@
 \usepackage{siunitx}
 \usepackage{multicol}
 \usepackage{inconsolata}
-\usepackage[toc,page]{appendix}
+\usepackage[toc,title]{appendix}
+\usepackage[section]{placeins}
 %---------------------------------------------------------------------
 
 
@@ -118,14 +119,15 @@
 \end{multicols}
 %---------------------------------------------------------------------
 
+\clearpage
 \begin{appendices}
-	\section{Detailed Results}
-	\label{app:detailed-results}
-	\input{appendix_results}
-
 	\section{Online Materials Overview}
 	\label{app:online-overview}
 	\input{appendix_online}
+
+	\section{Detailed Results}
+	\label{app:detailed-results}
+	\input{appendix_results}
 \end{appendices}
 
 \end{document}

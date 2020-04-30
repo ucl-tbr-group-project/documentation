@@ -1,4 +1,7 @@
-TODO
+Having outlined a variety of models and metrics tracked for the
+purposes of their objective comparison, we proceed to present and discuss our
+results in the next sections.
+
 
 \subsection{Results of Decoupled Sampling}
 \label{sec:modelres}
@@ -8,8 +11,7 @@ to evaluate on previously collected samples of the expensive MC TBR model.
 Through the four experimental cases described
 in~\cref{sec:experiment-methodology}, we aim to study properties of the
 considered models in terms of regression performance, training and prediction
-time. In the next sections, we present and discuss our results.
-
+time.
 
 \subsubsection{Hyperparameter Tuning}
 
@@ -19,10 +21,9 @@ first experiment we limit training and test sets to the scope of four selected
 slices of the feature space, in the second experiment we lift this restriction.
 
 The results displayed in~\cref{fig:exp1-time-vs-reg} indicate that in the first
-experiment, gradient boosted trees clearly appear to be the most accurate as
+experiment, GBTs clearly appear to be the most accurate as
 well as the fastest surrogate family in terms of mean prediction time. Following
-that, we note that extremely randomised trees, support vector machines and
-artificial neural networks also achieved satisfactory results with respect to both examined metrics.
+that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
 While the remainder of tested surrogate families does not exhibit problems in
 complexity, its regression performance falls below average.
 
@@ -31,103 +32,121 @@ complexity, its regression performance falls below average.
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice0}
-		\caption{Run 2, batches 0-3}
+		\caption{Run 2, batches 0-2}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice1}
-		\caption{Run 2, batches 100-103}
+		\caption{Run 2, batches 100-102}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice2}
-		\caption{Run 2, batches 200-203}
+		\caption{Run 2, batches 200-202}
 	\end{subfigure}
 	\caption{20~best-performing surrogates per each considered family, plotted in
-		terms of complexity (as $\overline{t}_{\text{pred.}}$) and regression
+		terms of complexity (as~$\overline{t}_{\text{pred.}}$) and regression
 		performance (as~$R^2$) on selected slices of run~2, evaluated in
 	experiment~1. Here, batches refer to subsets of training and test datasets that
 	may be matched to slices using~\cref{tbl:slices}.}
 	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
-\begin{wrapfigure}{r}{0.333\textwidth}
+The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
+seem to confirm our expectations. Compared to the previous case, we observe
+that many surrogate families consistently achieved worse regression
+performance and prediction times in a more complex, unrestricted domain. The least
+affected models appear to be GBTs, ANNs and ERTs, which are known to be capable of capturing relationships
+involving mixed feature types that were deliberately withheld in the first
+experiment. With only negligible differences, the first two of these families
+appear to be tied for the best performance as well as the shortest prediction
+time. We observe that ERTs trees and RBFs also
+demonstrated satisfactory results, outperforming the remaining surrogates in
+terms of regression performance, and in some cases also in prediction time.
+
+\begin{wrapfigure}[10]{r}{0.333\textwidth}
 	\centering
-	\vspace{-3ex}
+	\vspace{-2ex}
 	\includegraphics[width=\linewidth]{exp2_time_vs_reg}
 	\caption{Results of experiment~2, plotted analogously
 	to~\cref{fig:exp1-time-vs-reg}.}
 	\label{fig:exp2-time-vs-reg}
-	\vspace{-4ex}
 \end{wrapfigure}
 
-The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
-seem to confirm our expectations. Compared to the previous experiment, we observe
-that many surrogate families consistently achieved worse regression
-performance and prediction times in a more complex, unrestricted domain. The least
-affected models appear to be gradient boosted trees, artificial neural networks and extremely
-randomised trees, which are known to be capable of capturing relationships
-involving mixed feature types that were deliberately withheld in the first
-experiment. With only negligible differences, the first two of these families
-appear to be tied for the best performance as well as the shortest prediction
-time. While extremely randomised trees and radial basis functions also
-demonstrated satisfactory properties, other families failed to achieve
-comparable regression performance, and in some cases also prediction time.
+Following both hyperparameter tuning experiments, we conclude that while domain
+restrictions employed in the first case have proven effective in improving the
+regression performance of some methods, this result has fluctuated considerably
+depending on the selected slices. Furthermore, in all instances the best
+results were achieved by families of surrogates that were nearly unaffected by
+this modification.
 
 
 \subsubsection{Scaling Benchmark}
 
-In the next experiment we examine surrogate scaling properties correlating
-metrics of interest with progressively increasing training set size. The results
-shown in~\cref{fig:scaling} seem to suggest that in terms of regression performance,
-methods based on decision trees and artificial neural networks offer the best regression performance on
-larger sets overall. This is a curious extension of the previous findings, where
-gradient boosted trees were observed to significantly dominate over the rest of
-the examined methods. With increasing training set size, their relative advantage is
-clearly gradually diminished.
+In the third experiment we examine surrogate scaling properties by correlating
+metrics of interest with training set size. First, the results shown 
+in~\cref{fig:scaling-r2} suggest that the most accurate families from the previous experiments
+consistently maintain their relative advantage over others, even as we introduce
+more training data. While such families achieve nearly comparable regression
+performance on the largest dataset, in the opposite case methods based on
+decision trees clearly outperform neural networks. This can be observed
+particularly on training sets of sizes up to~\num{6000}.
 
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{scaling_metric_r2}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Regression performance (as $R^2$)}
+		\label{fig:scaling-r2}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{scaling_time_train}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Complexity (as~$\overline{t}_{\text{trn.}}$)}
+		\label{fig:scaling-trn}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{scaling_time_pred}
-		% TODO: only a placeholder, regenerate when data becomes available
 		\caption{Complexity (as~$\overline{t}_{\text{pred.}}$)}
+		\label{fig:scaling-pred}
 	\end{subfigure}
 	\caption{Various metrics collected during experiment 3 (scaling
 	benchmark) displayed as a function of training set size.}
 	\label{fig:scaling}
 \end{figure}
 
-According to our experiment, the lowest mean training time is generally achieved
-by instance-based learning methods, which seem to offer near-constant scaling
-characteristics at the expense of significant performance increase later during
-prediction. Following that, we observe that the majority of tree-based methods also exhibit
-desirable properties. The notable exception here appear to be artificial neural networks,
-which are the only model to utilise parallelisation. As such, their constant
-synchronisation overhead presumably hinders performance on small training sets,
-producing misleading results when divided by the number of samples.
+Next, we examine scaling behaviour in terms of the mean training time (displayed
+in~\cref{fig:scaling-trn}). Consistent with our expectation, the shortest times
+were achieved by instance-based learning methods (e.g. KNN, IDW) that
+are trained trivially at the expense of increased lookup complexity later during prediction.
+Furthermore, we observe that the majority of tree-based algorithms also exhibit
+desirable properties unlike RBFs and gaussian process
+regression, which appear to scale superlinearly. We note that ANNs,
+which are the only family to utilise parallelisation during training, show an
+inverse scaling characteristic. Our conjecture is that this effect may be caused
+by a constant multi-threading overhead that possibly dominates the training process
+on relatively small training sets.
 
-In terms of mean prediction time, all tested surrogates except previously mentioned
-instance-based learning methods scale exceptionally well. Tree-based generally
-models appear to perform the fastest.
+Lastly, we study scaling with respect to the mean prediction time (shown
+in~\cref{fig:scaling-pred}). Our initial observation is that all tested
+surrogate families with the exception of previously mentioned instance-based
+learning methods offer desirable characteristics overall. Analogous to previous
+experiments, GBTs and ANNs again
+appear to be tied, as they not only exhibit comparable times but also similar
+scaling slopes.
 
 
 \subsubsection{Model Comparison}
 
-TODO
+In the fourth and final experiment, we exploit previously collected information
+to produce surrogates with desirable properties for practical use. We
+aim to create models that yield: (i)~the best regression performance regardless
+of other features, (ii)~acceptable performance with the shortest mean
+prediction time, or (iii)~acceptable performance with the smallest training set.
+To this end, we trained 8~surrogates that are presented in~\cref{fig:reg-performance}
+(more details are given in~\cref{tbl:exp4-detailed-results} in the Appendix).
 
 \begin{figure}[h]
 	\centering
@@ -172,16 +191,33 @@ TODO
 	\label{fig:reg-performance}
 \end{figure}
 
-\newpage
+Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of the
+experiments~2-3, we utilised the best-performing hyperparameter
+assignments and training sets of varying sizes. In attempts to satisfy
+goals~(i) and~(ii) within cross-validation setting, our best surrogate
+achieved~$R^2=\num{0.998}$ and mean prediction
+time~$\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$. These correspond
+to the standard error of regression~$S=\num{0.013}$ and a relative speedup~$\omega=\num{8659251} \times$
+with respect to the MC TBR evaluation baseline measured during run~1
+(see~\cref{tbl:sampling-runs} for details). While this particular surrogate
+was trained on the entire available set of~\num{500000} datapoints, in attempts to satisfy
+goal~(iii) we also trained a more simplified model that achieved~$R^2=\num{0.913}$,
+$\overline{t}_{\text{pred.}}=\SI{6}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
+with only a set of size~\num{10000}.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-  \vspace{-60pt}
-  \begin{center}
-    \includegraphics[width=0.4\textwidth]{fig5_sintoy.jpg}
+Overall we found that due to their excellent performance, boosted tree-based
+approaches seem to be advantageous for fast surrogate modelling on relatively small training
+sets (up to the order of~$10^4$). Conversely, while neural networks perform
+poorly in such a setting, both their regression performance and prediction times
+have proven superior on larger training sets (at least of the order of~$10^5$).
+
+
+\begin{wrapfigure}[13]{r}{0.4\textwidth}
+	\centering
+	\vspace{-12ex}
+	\includegraphics[width=0.4\textwidth]{fig5_sintoy.jpg}
 	\caption{Sinusoidal toy TBR theory over two continuous parameters, wavenumber 1}
-    \label{fig:sintoy}
-  \end{center}
-  \vspace{-10pt}
+	\label{fig:sintoy}
 \end{wrapfigure}
 
 \subsection{Results of Adaptive Sampling}
@@ -212,7 +248,7 @@ of sample increment, shown in~\cref{fig:qassincr}. For each tested initial sampl
         \centering
         \includegraphics[width=1.1\linewidth]{fig6a_qassincrsamp.pdf}
     \end{subfigure}%
-    ~ 
+    \hfill
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.1\linewidth]{fig6b_qassincrtime.pdf}
@@ -235,7 +271,7 @@ in~\cref{fig:qasssampling}.
 
 \begin{figure}[h]
   \centering
-    \includegraphics[width=0.8\linewidth]{fig7_qasssampling.pdf}
+    \includegraphics[width=0.78\linewidth]{fig7_qasssampling.pdf}
     \caption{Absolute training error for QASS, baseline scheme, and mixed scheme}
   \label{fig:qasssampling}
 \end{figure}
