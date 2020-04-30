@@ -13,5 +13,5 @@ set(gca,'xticklabel',[0,1])
 set(gca,'ytick',[0,1])
 set(gca,'yticklabel',[0,1])
 
-xlabel('Continuous parameter A')
-ylabel('Continuous parameter B')
+xlabel('Continuous parameter x_1')
+ylabel('Continuous parameter x_2')
