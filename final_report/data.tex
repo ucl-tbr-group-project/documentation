@@ -198,21 +198,18 @@ of \num{300000} uniform samples of the MC TBR model. % TODO:which run? batch ran
 reveals irreducibility of the TBR model by linear methods.
 
 \begin{figure}[h]
-  \centering
-    \includegraphics[width=0.6\linewidth]{fig2_pca.jpg}
-    \caption{Cumulative variance for optimal features identified by PCA}
-  \label{fig:pca}
+	\centering
+	\includegraphics[width=0.6\linewidth]{fig2_pca.jpg}
+	\caption{Cumulative variance for optimal features identified by PCA}
+	\label{fig:pca}
 \end{figure}
 
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-30pt}
-  \begin{center}
-    \hspace*{-.3\columnsep}\includegraphics[width=0.58\textwidth]{fig3_allvar.jpg}
+	\centering
+	\hspace*{-.3\columnsep}\includegraphics[width=0.58\textwidth]{fig3_allvar.jpg}
 	\caption{Semivariograms for MC TBR data with coolant materials: (a) \ce{He},
 	(b) \ce{H2O}, (c) \ce{D2O}}
-    \label{fig:var}
-  \end{center}
-  \vspace{-50pt}
+	\label{fig:var}
 \end{wrapfigure}
 
 \subsubsection{Variogram Computations}
@@ -227,12 +224,10 @@ correlation functions over distance (lag) in the feature space \cite{Bouhlel2018
 
 \begin{wrapfigure}{r}{0.25\textwidth}
 	\centering
-	\vspace{-5ex}
 	{\footnotesize \incfigscale{0.8}{autoencoder}}
 	\caption{Autoencoder with input width~$W_0$ and bottleneck width~$W_1$.
 	Here, $\text{Dense}(N)$ denotes a fully-connected layer of $N$ neurons.}
 	\label{fig:autoencoder}
-	\vspace{-9ex}
 \end{wrapfigure}
 
 Autoencoders~\cite{SCHMIDHUBER201585} are a family of approaches to
@@ -254,9 +249,8 @@ correlations within the feature space, the latter would validate our
 autoencoder implementation by analysing a set of points that are trivially
 reducible in dimensionality due to a number of fixed discrete features.
 
-\begin{wrapfigure}{r}{0.4\textwidth} % TODO: regenerate both plots as described
+\begin{wrapfigure}{r}{0.4\textwidth}
 	\centering
-	\vspace{-1ex}
 	\begin{subfigure}[b]{\linewidth}
 		\includegraphics[width=\linewidth,trim={0 48px 0 0},clip]{ae_mixed}
 	\end{subfigure}
@@ -270,7 +264,6 @@ reducible in dimensionality due to a number of fixed discrete features.
 	\caption{Autoencoder loss scan on the full feature space (top) and a single slice
 		(bottom). Dimensional reduction is indicated by a green arrow.}
 	\label{fig:autoencoder-loss}
-	\vspace{-10ex}
 \end{wrapfigure}
 
 The results of both experiments are shown in~\cref{fig:autoencoder-loss}.
