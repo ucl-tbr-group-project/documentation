@@ -204,7 +204,7 @@ reveals irreducibility of the TBR model by linear methods.
 	\label{fig:pca}
 \end{figure}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
+\begin{wrapfigure}[30]{r}{0.5\textwidth}
 	\centering
 	\hspace*{-.3\columnsep}\includegraphics[width=0.58\textwidth]{fig3_allvar.jpg}
 	\caption{Semivariograms for MC TBR data with coolant materials: (a) \ce{He},
@@ -222,14 +222,6 @@ correlation functions over distance (lag) in the feature space \cite{Bouhlel2018
 
 \subsubsection{Autoencoders}
 
-\begin{wrapfigure}{r}{0.25\textwidth}
-	\centering
-	{\footnotesize \incfigscale{0.8}{autoencoder}}
-	\caption{Autoencoder with input width~$W_0$ and bottleneck width~$W_1$.
-	Here, $\text{Dense}(N)$ denotes a fully-connected layer of $N$ neurons.}
-	\label{fig:autoencoder}
-\end{wrapfigure}
-
 Autoencoders~\cite{SCHMIDHUBER201585} are a family of approaches to
 dimensionality reduction driven by artificial neural
 networks (ANNs). Faced with a broad selection of alternatives, we opted for a
@@ -241,16 +233,27 @@ neurons that represent a smaller subspace. By scanning
 over a range of bottleneck widths and investigating relative changes in the
 validation loss, we assess the potential for dimensional reduction.
 
+\begin{wrapfigure}[15]{l}{0.25\textwidth}
+	\centering
+	{\footnotesize \incfigscale{0.8}{autoencoder}}
+	\caption{Autoencoder with input width~$W_0$ and bottleneck width~$W_1$.
+	Here, $\text{Dense}(N)$ denotes a fully-connected layer of $N$ neurons.}
+	\label{fig:autoencoder}
+\end{wrapfigure}
+
 In particular, we consider two equally-sized sets\footnote{Each set contained
-\num{100000}~samples from batches 0-99 of the corresponding runs.} of samples: (i) a subset of data obtained
-from run~1 and (ii) a subset of a single slice obtained from run~2. Our
+\num{100000}~samples from batches 0-99 of the corresponding runs.} of samples:
+(i)~a subset of data obtained
+from run~1 and (ii)~a subset of a single slice obtained from run~2. Our
 expectation was that while the former case would provide meaningful insights into
 correlations within the feature space, the latter would validate our
 autoencoder implementation by analysing a set of points that are trivially
 reducible in dimensionality due to a number of fixed discrete features.
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{wrapfigure}[22]{r}{0.4\textwidth}
 	\centering
+	\vspace{-4ex}
+
 	\begin{subfigure}[b]{\linewidth}
 		\includegraphics[width=\linewidth,trim={0 48px 0 0},clip]{ae_mixed}
 	\end{subfigure}

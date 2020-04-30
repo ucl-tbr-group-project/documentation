@@ -264,19 +264,20 @@ for a review).
 %adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal
 %distribution to fit the posterior, was also implemented but not fully tested.}
 
+\begin{wrapfigure}[22]{r}{0.55\textwidth}
+	\centering
+	\vspace{-5ex}
+	\includegraphics[width=0.7\textwidth]{fig4_qassplan.png}
+	\caption{Schematic of QASS algorithm}
+	\label{fig:qassplan}
+\end{wrapfigure}
+
 Many researchers have embedded surrogate methods into MCMC strategies for
 parameter optimisation \cite{Zhang2020,Gong2017}, in particular the ASMO-PODE
 algorithm \cite{Ginting2011} which makes use of MCMC-based adaptive sampling to
 attain greater surrogate precision around prospective optima. Our novel approach
 draws inspiration from ASMO-PODE, but instead uses MCMC to generate samples
 which increase surrogate precision throughout the entire parameter space.
-
-\begin{wrapfigure}{r}{0.55\textwidth}
-	\centering
-	\includegraphics[width=0.7\textwidth]{fig4_qassplan.png}
-	\caption{Schematic of QASS algorithm}
-	\label{fig:qassplan}
-\end{wrapfigure}
 
 % TODO: explain AE
 

@@ -52,14 +52,6 @@ complexity, its regression performance falls below average.
 	\label{fig:exp1-time-vs-reg}
 \end{figure}
 
-\begin{wrapfigure}{r}{0.333\textwidth}
-	\centering
-	\includegraphics[width=\linewidth]{exp2_time_vs_reg}
-	\caption{Results of experiment~2, plotted analogously
-	to~\cref{fig:exp1-time-vs-reg}.}
-	\label{fig:exp2-time-vs-reg}
-\end{wrapfigure}
-
 The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
 seem to confirm our expectations. Compared to the previous case, we observe
 that many surrogate families consistently achieved worse regression
@@ -71,6 +63,15 @@ appear to be tied for the best performance as well as the shortest prediction
 time. We observe that ERTs trees and RBFs also
 demonstrated satisfactory results, outperforming the remaining surrogates in
 terms of regression performance, and in some cases also in prediction time.
+
+\begin{wrapfigure}[10]{r}{0.333\textwidth}
+	\centering
+	\vspace{-2ex}
+	\includegraphics[width=\linewidth]{exp2_time_vs_reg}
+	\caption{Results of experiment~2, plotted analogously
+	to~\cref{fig:exp1-time-vs-reg}.}
+	\label{fig:exp2-time-vs-reg}
+\end{wrapfigure}
 
 Following both hyperparameter tuning experiments, we conclude that while domain
 restrictions employed in the first case have proven effective in improving the
@@ -211,15 +212,16 @@ poorly in such a setting, both their regression performance and prediction times
 have proven superior on larger training sets (at least of the order of~$10^5$).
 
 
-\subsection{Results of Adaptive Sampling}
-\label{sec:adaptiveres}
-
-\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{wrapfigure}[13]{r}{0.4\textwidth}
 	\centering
+	\vspace{-12ex}
 	\includegraphics[width=0.4\textwidth]{fig5_sintoy.jpg}
 	\caption{Sinusoidal toy TBR theory over two continuous parameters, wavenumber 1}
 	\label{fig:sintoy}
 \end{wrapfigure}
+
+\subsection{Results of Adaptive Sampling}
+\label{sec:adaptiveres}
 
 In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory with adjustable wavenumber parameter $n$:
 
@@ -246,7 +248,7 @@ of sample increment, shown in~\cref{fig:qassincr}. For each tested initial sampl
         \centering
         \includegraphics[width=1.1\linewidth]{fig6a_qassincrsamp.pdf}
     \end{subfigure}%
-    ~ 
+    \hfill
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.1\linewidth]{fig6b_qassincrtime.pdf}
@@ -269,7 +271,7 @@ in~\cref{fig:qasssampling}.
 
 \begin{figure}[h]
   \centering
-    \includegraphics[width=0.8\linewidth]{fig7_qasssampling.pdf}
+    \includegraphics[width=0.78\linewidth]{fig7_qasssampling.pdf}
     \caption{Absolute training error for QASS, baseline scheme, and mixed scheme}
   \label{fig:qasssampling}
 \end{figure}
