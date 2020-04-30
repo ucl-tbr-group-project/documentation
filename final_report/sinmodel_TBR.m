@@ -1,3 +1,6 @@
+pos = get(gca, 'Position');
+set(gca, 'Position', [pos(1) pos(2)+0.01 pos(3) pos(4)-0.01]);
+
 wn=1
 
 f=@(x,y) sin(wn*2*pi*(x-0.5))/2 + sin(wn*2*pi*(y-0.5))/2 + 1;
@@ -15,3 +18,5 @@ set(gca,'yticklabel',[0,1])
 
 xlabel('Continuous parameter x_1')
 ylabel('Continuous parameter x_2')
+
+savefig('asd.pdf')
