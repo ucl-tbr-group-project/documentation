@@ -19,10 +19,9 @@ first experiment we limit training and test sets to the scope of four selected
 slices of the feature space, in the second experiment we lift this restriction.
 
 The results displayed in~\cref{fig:exp1-time-vs-reg} indicate that in the first
-experiment, gradient boosted trees clearly appear to be the most accurate as
+experiment, GBTs clearly appear to be the most accurate as
 well as the fastest surrogate family in terms of mean prediction time. Following
-that, we note that extremely randomised trees, support vector machines and
-artificial neural networks also achieved satisfactory results with respect to both examined metrics.
+that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
 While the remainder of tested surrogate families does not exhibit problems in
 complexity, its regression performance falls below average.
 
@@ -65,12 +64,11 @@ The results of the second experiment, shown in~\cref{fig:exp2-time-vs-reg},
 seem to confirm our expectations. Compared to the previous case, we observe
 that many surrogate families consistently achieved worse regression
 performance and prediction times in a more complex, unrestricted domain. The least
-affected models appear to be gradient boosted trees, artificial neural networks and extremely
-randomised trees, which are known to be capable of capturing relationships
+affected models appear to be GBTs, ANNs and ERTs, which are known to be capable of capturing relationships
 involving mixed feature types that were deliberately withheld in the first
 experiment. With only negligible differences, the first two of these families
 appear to be tied for the best performance as well as the shortest prediction
-time. We observe that extremely randomised trees and radial basis functions also
+time. We observe that ERTs trees and RBFs also
 demonstrated satisfactory results, outperforming the remaining surrogates in
 terms of regression performance, and in some cases also in prediction time.
 
@@ -123,8 +121,8 @@ in~\cref{fig:scaling-trn}). Consistent with our expectation, the shortest times
 were achieved by instance-based learning methods (e.g. KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
 Furthermore, we observe that the majority of tree-based algorithms also exhibit
-desirable properties unlike radial basis functions and gaussian process
-regression, which appear to scale superlinearly. We note that artificial neural networks,
+desirable properties unlike RBFs and gaussian process
+regression, which appear to scale superlinearly. We note that ANNs,
 which are the only family to utilise parallelisation during training, show an
 inverse scaling characteristic. Our conjecture is that this effect may be caused
 by a constant multi-threading overhead that possibly dominates the training process
@@ -134,7 +132,7 @@ Lastly, we study scaling with respect to the mean prediction time (shown
 in~\cref{fig:scaling-pred}). Our initial observation is that all tested
 surrogate families with the exception of previously mentioned instance-based
 learning methods offer desirable characteristics overall. Analogous to previous
-experiments, gradient boosted trees and artificial neural networks again
+experiments, GBTs and ANNs again
 appear to be tied, as they not only exhibit comparable times but also similar
 scaling slopes.
 

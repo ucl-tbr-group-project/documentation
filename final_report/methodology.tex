@@ -103,9 +103,9 @@ number of input features.}
 
 To prevent undesirable bias in results due to training set selection, all metrics
 are collected in the scheme of $k$-fold cross-validation with a standard choice of
-$k=5$. Herein, a sample set is subdivided into 5 disjoint foldsi, each of which
+$k=5$. Herein, a sample set is subdivided into 5 disjoint folds, each of which
 is used as a test set for the model trained on the remaining 4.\footnote{Unless explicitly stated otherwise, we use 1
-fold for testing and the $k-1$ remaining folds for training. This gives 80\% to
+fold for testing and the 4 remaining folds for training. This gives 80\% to
 20\% train-test ratio.} In each such run experiments are
 repeated, and the overall value of each metric is reported as the mean and
 standard deviation over all folds.
