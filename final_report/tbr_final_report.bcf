@@ -2022,11 +2022,12 @@
     <bcf:citekey order="23">SMT2019</bcf:citekey>
     <bcf:citekey order="24">movckus1975bayesian</bcf:citekey>
     <bcf:citekey order="25">Garud2016</bcf:citekey>
-    <bcf:citekey order="26">Zhou2018</bcf:citekey>
-    <bcf:citekey order="27">Zhang2020</bcf:citekey>
-    <bcf:citekey order="27">Gong2017</bcf:citekey>
-    <bcf:citekey order="28">Ginting2011</bcf:citekey>
-    <bcf:citekey order="29">Solonen2012</bcf:citekey>
+    <bcf:citekey order="26">Zhang2012</bcf:citekey>
+    <bcf:citekey order="27">Zhou2018</bcf:citekey>
+    <bcf:citekey order="28">Zhang2020</bcf:citekey>
+    <bcf:citekey order="28">Gong2017</bcf:citekey>
+    <bcf:citekey order="29">Ginting2011</bcf:citekey>
+    <bcf:citekey order="30">Solonen2012</bcf:citekey>
     <bcf:citekey order="0" nocite="1">*</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
