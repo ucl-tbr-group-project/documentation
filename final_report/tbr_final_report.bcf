@@ -2136,4 +2136,47 @@
     <bcf:citekey order="5">Keilhacker1999</bcf:citekey>
     <bcf:citekey order="6">Coleman2019</bcf:citekey>
     <bcf:citekey order="7">Coleman2019</bcf:citekey>
-    <bcf:citekey 
+    <bcf:citekey order="8">Hernandez2018</bcf:citekey>
+    <bcf:citekey order="9">ROMANO201590</bcf:citekey>
+    <bcf:citekey order="10">Jolliffe2016</bcf:citekey>
+    <bcf:citekey order="11">scikit-learn</bcf:citekey>
+    <bcf:citekey order="12">Bouhlel2018</bcf:citekey>
+    <bcf:citekey order="13">Matheron1963</bcf:citekey>
+    <bcf:citekey order="14">KrigingFig</bcf:citekey>
+    <bcf:citekey order="15">SCHMIDHUBER201585</bcf:citekey>
+    <bcf:citekey order="16">fan2008liblinear</bcf:citekey>
+    <bcf:citekey order="17">scikit-learn</bcf:citekey>
+    <bcf:citekey order="18">friedman2001greedy</bcf:citekey>
+    <bcf:citekey order="18">friedman1999stochastic</bcf:citekey>
+    <bcf:citekey order="18">hastie2009elements</bcf:citekey>
+    <bcf:citekey order="19">geurts2006extremely</bcf:citekey>
+    <bcf:citekey order="20">drucker1997improving</bcf:citekey>
+    <bcf:citekey order="21">williams2006gaussian</bcf:citekey>
+    <bcf:citekey order="22">chollet2015keras</bcf:citekey>
+    <bcf:citekey order="23">shepard1968two</bcf:citekey>
+    <bcf:citekey order="24">SMT2019</bcf:citekey>
+    <bcf:citekey order="25">Garud2016</bcf:citekey>
+    <bcf:citekey order="26">Zhou2018</bcf:citekey>
+    <bcf:citekey order="27">Zhang2020</bcf:citekey>
+    <bcf:citekey order="27">Gong2017</bcf:citekey>
+    <bcf:citekey order="28">Ginting2011</bcf:citekey>
+    <bcf:citekey order="29">Solonen2012</bcf:citekey>
+    <bcf:citekey order="0" nocite="1">*</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="none">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
