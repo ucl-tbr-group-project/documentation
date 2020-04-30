@@ -1,4 +1,7 @@
-TODO
+Having outlined a variety of models and metrics tracked for the
+purposes of their objective comparison, we proceed to present and discuss our
+results in the next sections.
+
 
 \subsection{Results of Decoupled Sampling}
 \label{sec:modelres}
@@ -8,8 +11,7 @@ to evaluate on previously collected samples of the expensive MC TBR model.
 Through the four experimental cases described
 in~\cref{sec:experiment-methodology}, we aim to study properties of the
 considered models in terms of regression performance, training and prediction
-time. In the next sections, we present and discuss our results.
-
+time.
 
 \subsubsection{Hyperparameter Tuning}
 
@@ -30,17 +32,17 @@ complexity, its regression performance falls below average.
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice0}
-		\caption{Run 2, batches 0-3}
+		\caption{Run 2, batches 0-2}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice1}
-		\caption{Run 2, batches 100-103}
+		\caption{Run 2, batches 100-102}
 	\end{subfigure}\hfill%
 	\begin{subfigure}[b]{0.333\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp1_slice2}
-		\caption{Run 2, batches 200-203}
+		\caption{Run 2, batches 200-202}
 	\end{subfigure}
 	\caption{20~best-performing surrogates per each considered family, plotted in
 		terms of complexity (as $\overline{t}_{\text{pred.}}$) and regression
