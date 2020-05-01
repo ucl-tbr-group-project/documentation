@@ -205,15 +205,14 @@ time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
 to a standard error of regression~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
 with respect to the MC TBR evaluation baseline measured during run~1
 (see~\cref{tbl:sampling-runs} for details). Satisfying
-goal~(b), the fastest model (no.~2, ANN) features~$R^2=\num{0.985}$,
+goal~(b), the fastest model (no.~2, ANN) achieves~$R^2=\num{0.985}$,
 $\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$, $S=\num{0.033}$
 and~$\omega=\num{8659251} \times$.
 While these surrogates
-were trained on the entire available set of~\num{500000} datapoints, in our
-attempts to satisfy goal~(c) we also trained a more simplified model (no.~4, GBT)
+were trained on the entire available set of~\num{500000} datapoints, to satisfy goal~(c) we also trained a more simplified model (no.~4, GBT)
 that achieved~$R^2=\num{0.913}$,
 $\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
-with only a set of size~\num{10000}.
+with a set of size only~\num{10000}.
 
 \begin{table}[h]
 	\centering
@@ -265,7 +264,7 @@ and mean prediction time.
 In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory with adjustable wavenumber parameter $n$:
 
 \begin{equation}
-	\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[ \frac{1 + \sin(2\pi n (x_i - 1/2)) }{2} \right]
+	\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 \end{equation}
 
 plotted in~\cref{fig:sintoy} for $n=1$ and two continuous parameters $C$.
