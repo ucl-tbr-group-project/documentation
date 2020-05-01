@@ -326,6 +326,6 @@ learning the most strongly peaked regions of the TBR theory, this comes at the
 expense of precision in broader, smoother regions where uniformly random
 sampling suffices. Therefore a mixed scheme was implemented, with half MCMC
 samples and half uniformly random samples incremented on each iteration, which
-is also shown in~\cref{fig:qasssampling}. An increase in initial sample size was observed to also resolve precision in these smooth regions of the toy theory, as the initial samples were obtained from a uniform random distribution. As shown in ~\cref{fig:qasssampling100k}, with~\num{100000} initial samples it was possible to obtain a ${\sim}40\%$ decrease in error as compared to the baseline scheme. Comparing at the point of termination for QASS, this corresponds to a ${\sim}6\%$ decrease in the number of total samples needed to train a surrogate with the same error. 
+is also shown in~\cref{fig:qasssampling}. An increase in initial sample size was observed to also resolve precision in these smooth regions of the toy theory, as the initial samples were obtained from a uniform random distribution. As shown in ~\cref{fig:qasssampling100k}, with~\num{100000} initial samples it was possible to obtain a ${\sim}40\%$ decrease in error as compared to the baseline scheme, from 0.0025 to 0.0015 mean averaged error. Comparing at the point of termination for QASS, this corresponds to a ${\sim}6\%$ decrease in the number of total samples needed to train a surrogate with the same error. 
 
 
