@@ -204,11 +204,12 @@ time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
 to a standard error~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
 with respect to the MC TBR evaluation baseline measured during run~1
 (see~\cref{tbl:sampling-runs} for details). Satisfying
-goal~(b), the fastest model (no.~2, ANN) achieves~$R^2=\num{0.985}$,
+goal~(b), the fastest model (no.~2, ANN) achieved~$R^2=\num{0.985}$,
 $\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$, $S=\num{0.033}$
 and~$\omega=\num{8659251} \times$.
 While these surrogates
-were trained on the entire available set of~\num{500000} datapoints, to satisfy goal~(c) we also trained a simplified model (no.~4, GBT)
+were trained on the entire available set of~\num{500000} datapoints, to satisfy
+goal~(c) we also trained a more simplified model (no.~4, GBT)
 that achieved~$R^2=\num{0.913}$,
 $\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
 with a set of size only~\num{10000}.
@@ -243,7 +244,7 @@ with a set of size only~\num{10000}.
 
 Overall we found that due to their superior performance, boosted tree-based
 approaches seem to be advantageous for fast surrogate modelling on relatively small training
-sets (up to the order of~$10^4$). Conversely, while ANNs perform
+sets (up to the order of~$10^4$). Conversely, while neural networks perform
 poorly in such a setting, they dominate on larger training sets (at least of the
 order of~$10^5$) both in terms of regression performance and mean prediction time.
 
