@@ -21,19 +21,20 @@
  The tritium breeding ratio (TBR) is an essential quantity for the design of
  modern and next-generation Tokamak nuclear fusion reactors. Representing the
  ratio between tritium fuel generated in breeding blankets and fuel consumed
- during reactor runtime, the TBR depends in a
- complex manner on reactor geometry and material properties. We explored the
+ during reactor runtime, the TBR depends on reactor geometry and material
+ properties in a complex manner. In this work, we explored the
  training of surrogate models to produce a cheap but high-quality approximation
  for a Monte Carlo TBR model in use at the UK Atomic Energy Authority. We
- investigated possibilities for dimensional reduction on the feature space of
- this model, reviewed 9~families of surrogate models for potential
- applicability and performed hyperparameter optimisation. Here we present the
+ investigated possibilities for dimensional reduction of its feature space, reviewed
+ 9~families of surrogate models for potential
+ applicability, and performed hyperparameter optimisation. Here we present the
  performance and scaling properties of these
- models, the best of which demonstrated~$R^2=\num{0.998}$ and a mean
+ models, the fastest of which, an artificial neural network,
+ demonstrated~$R^2=\num{0.985}$ and a mean
  prediction time of~$\SI{0.898}{\micro\second}$, representing a relative speedup of $8\cdot 10^6$
  with respect to the expensive MC model. We further present a novel adaptive
- sampling algorithm, QASS, capable
- of interfacing with any of the individual studied models. Our preliminary
+ sampling algorithm, Quality-Adaptive Surrogate Sampling, capable
+ of interfacing with any of the individually studied surrogates. Our preliminary
  testing on a toy TBR theory has demonstrated the efficacy of this algorithm for
  accelerating the surrogate modelling process.
 }
@@ -41,8 +42,8 @@
 
 % Authors and list of contributors to the analysis
 \usepackage{authblk}
-\author[a]{Petr Mánek}
 \author[a]{Graham Van Goffrier}
+\author[a]{Petr Mánek}
 \affil[a]{University College London}
 
 

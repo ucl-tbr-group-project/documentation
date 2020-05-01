@@ -43,7 +43,7 @@ surrogate performance over complex regions within the domain.
 Aiming to provide objective comparison of a diverse set of surrogate model
 families, we define a multitude of metrics to be tracked during experiments.
 Following the motivation of this work, two desirable properties of surrogates
-arise: (i) their capability to approximate the TBR MC model well and (ii) their
+arise: (a) their capability to approximate the TBR MC model well and (b) their
 prediction time. An ideal surrogate would maximise
 the former while minimising the latter.
 
@@ -102,8 +102,8 @@ number of input features.}
 \end{table}
 
 To prevent undesirable bias in results due to training set selection, all metrics
-are collected in the scheme of $k$-fold cross-validation with a standard choice of
-$k=5$. Herein, a sample set is subdivided into 5 disjoint folds, each of which
+are collected in the scheme of $k$-fold cross-validation with a conventional choice of
+$k=5$. In this setting, a sample set is divided into 5 disjoint folds, each of which
 is used as a test set for the model trained on the remaining 4.\footnote{Unless explicitly stated otherwise, we use 1
 fold for testing and the 4 remaining folds for training. This gives 80\% to
 20\% train-test ratio.} In each such run experiments are
@@ -202,8 +202,8 @@ The presented surrogate candidates are evaluated in four experimental cases:%
 The aim of the initial experiments is to use a relatively small subset of
 collected TBR samples to determine hyperparameters of considered surrogates.
 Since this process requires learning the behaviour of an unknown, possibly
-expensive mapping---here a function that assigns cross-validated metrics to a
-point in the hyperparameter domain---it in many aspects mirrors
+expensive mapping -- here a function that assigns cross-validated metrics to a
+point in the hyperparameter domain -- it in many aspects mirrors
 the primary task of this work with the notable extension of added utility
 to optimise. In order to avoid undesirable exponential slowdown in exhaustive
 searches of a possibly high-dimensional parameter space, Bayesian
@@ -211,7 +211,8 @@ optimisation~\cite{movckus1975bayesian} is employed as a standard hyperparameter
 its objective to maximise $R^2$ and perform
 1000~iterations.\footnote{Hyperparameter tuning of each surrogate family was
 	terminated after 2~days. Instances that reached this limit may be identified
-	in~\cref{tbl:exp1-detailed-results,tbl:exp2-detailed-results}.}
+	in~\cref{tbl:exp1-detailed-results,tbl:exp2-detailed-results} in the
+	Appendix.}
 
 In the first experiment, efforts are made to maximise the possibility of success
 in surrogates that are prone to suboptimal performance in discontinuous spaces.
@@ -245,7 +246,7 @@ retraining selected well-scaling models to further optimise their properties.
 	\label{fig:qassplan}
 \end{wrapfigure}
 
-All of the surrogate modelling techniques studied in this project face a shared
+All of the surrogate modelling techniques studied in this project face a common
 challenge: their accuracy is limited by the quantity of training samples which
 are available from the expensive MC TBR model. Adaptive sampling procedures can
 improve upon this limitation by taking advantage of statistical information
@@ -255,25 +256,25 @@ strategy, sample locations are chosen periodically during training so as to best
 under consideration.
 
 Adaptive sampling techniques appear frequently in the literature and have been
-specialised for surrogate modelling. Garud's \cite{Garud2016} "Smart Sampling
-Algorithm" achieved notable success by incorporating surrogate quality and
+specialised for surrogate modelling. Garud's~\cite{Garud2016} ``Smart Sampling
+Algorithm'' achieved notable success by incorporating surrogate quality and
 crowding distance scoring to identify optimal new samples, but was only tested
 on a single-parameter domain. We theorised that a nondeterministic sample
 generation approach, built around Markov Chain Monte Carlo methods (MCMC), would
 fare better for high-dimensional models by more thoroughly exploring all local
 optima in the feature space. MCMC produces a progressive chain of sample points,
 each drawn according to the same symmetric proposal distribution\footnote{An
-adaptive MCMC procedure \cite{Zhang2012}, which adjusts an ellipsoidal proposal
+adaptive MCMC procedure~\cite{Zhang2012}, which adjusts an ellipsoidal proposal
 distribution to fit the posterior, was also implemented but not fully tested.}
 from the prior point. These sample points will converge to a desired posterior
 distribution, so long as the acceptance probability for these draws has a
-particular functional dependence on that posterior value (see \cite{Zhou2018}
+particular functional dependence on that posterior value (see~\cite{Zhou2018}
 for a review).
 
 
 Many researchers have embedded surrogate methods into MCMC strategies for
-parameter optimisation \cite{Zhang2020,Gong2017}, in particular the ASMO-PODE
-algorithm \cite{Ginting2011} which makes use of MCMC-based adaptive sampling to
+parameter optimisation~\cite{Zhang2020,Gong2017}, in particular the ASMO-PODE
+algorithm~\cite{Ginting2011} which makes use of MCMC-based adaptive sampling to
 attain greater surrogate precision around prospective optima. Our novel approach
 draws inspiration from ASMO-PODE, but instead uses MCMC to generate samples
 which increase surrogate precision throughout the entire parameter space.
@@ -283,9 +284,9 @@ which increase surrogate precision throughout the entire parameter space.
 We designed the Quality-Adaptive Surrogate Sampling algorithm (QASS,
 \cref{fig:qassplan}) to iteratively increment the training/test set with sample
 points which maximise surrogate error and minimise a crowding distance metric
-(CDM) \cite{Solonen2012} in feature space. On each iteration following an initial training of the surrogate on $N$ uniformly random samples, the surrogate was trained and absolute error calculated. MCMC was then performed on the error function generated by performing nearest-neighbor interpolation on these test error points. The resultant samples were culled by $50\%$ according to the CDM, and then the $n$ highest-error candidates were selected for reintegration with the training/test set, beginning another training epoch. Validation was also performed during each iteration on independent, uniformly-random sample sets.
+(CDM)~\cite{Solonen2012} in feature space. On each iteration following an initial training of the surrogate on $N$ uniformly random samples, the surrogate was trained and absolute error calculated. MCMC was then performed on the error function generated by performing nearest-neighbor interpolation on these test error points. The resultant samples were culled by $50\%$ according to the CDM, and then the $n$ highest-error candidates were selected for reintegration with the training/test set, beginning another training epoch. Validation was also performed during each iteration on independent, uniformly-random sample sets.
 
-% Adaptive multi-chain MCMC: \cite{Zhang2012}
+% Adaptive multi-chain MCMC:~\cite{Zhang2012}
 
 
 

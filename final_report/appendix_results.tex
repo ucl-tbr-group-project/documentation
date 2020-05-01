@@ -1,6 +1,6 @@
 \begin{table}[!hbt]
 	\centering
-	\sisetup{round-mode=places,round-precision=3}
+	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	{\scriptsize
 		\begin{tabular}{lrrrrrrr}
 		\toprule
@@ -21,12 +21,11 @@
 		optimisation iterations. While regression performance is reported for the
 		best instance (in $R^2$) per surrogate family, complexity is measured over all tested instances.}
 	\label{tbl:exp1-detailed-results}
-	% TODO: do we report std's as std(values from 5 folds) or mean(std's of 5 folds)?
 \end{table}
 
 \begin{table}[!hbt]
 	\centering
-	\sisetup{round-mode=places,round-precision=3}
+	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	{\scriptsize
 		\begin{tabular}{lrrrrrrr}
 		\toprule
@@ -49,8 +48,8 @@
 
 \begin{table}[!hbt]
 	\centering
-	\setlength\tabcolsep{5pt}
-	\sisetup{round-mode=places,round-precision=3}
+	\setlength\tabcolsep{2pt}
+	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	{\scriptsize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
@@ -69,14 +68,16 @@
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~3 (scaling benchmark) in ter\si{\milli\second} of~$R^2$.}
+	\caption{Results of experiment~3 (scaling benchmark) in
+		terms of~$R^2$. The best-performing family (or families) for each set
+		size is highlighted in bold.}
 	\label{tbl:exp3-detailed-results-r2}
 \end{table}
 
 \begin{table}[!hbt]
 	\centering
-	\setlength\tabcolsep{5pt}
-	\sisetup{round-mode=places,round-precision=3}
+	\setlength\tabcolsep{2pt}
+	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	{\scriptsize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
@@ -95,7 +96,7 @@
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~3 (scaling benchmark) in ter\si{\milli\second} of~$\overline{t}_{\text{trn.}}$,
+	\caption{Results of experiment~3 (scaling benchmark) in terms of~$\overline{t}_{\text{trn.}}$,
 	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
 	\label{tbl:exp3-detailed-results-t-train}
 \end{table}
@@ -103,8 +104,8 @@
 
 \begin{table}[!hbt]
 	\centering
-	\setlength\tabcolsep{5pt}
-	\sisetup{round-mode=places,round-precision=3}
+	\setlength\tabcolsep{2pt}
+	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	{\scriptsize
 		\begin{tabular}{lrrrrrrrr}
 		\toprule
@@ -123,38 +124,9 @@
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~3 (scaling benchmark) in ter\si{\milli\second} of~$\overline{t}_{\text{pred.}}$,
+	\caption{Results of experiment~3 (scaling benchmark) in terms of~$\overline{t}_{\text{pred.}}$,
 	displayed analogously to~\cref{tbl:exp3-detailed-results-r2}.}
 	\label{tbl:exp3-detailed-results-t-pred}
 \end{table}
 
-
-\begin{table}[!hbt]
-	\centering
-	\sisetup{round-mode=places,round-precision=3}
-	\setlength\tabcolsep{4pt}
-	{\scriptsize
-		\begin{tabular}{lrrrrrrrr}
-		\toprule
-		{} & {} & \multicolumn{4}{c}{Regression performance} &
-		\multicolumn{3}{c}{Complexity}\\
-		\cmidrule(lr){3-6}
-		\cmidrule(lr){7-9}
-		Model & $|\mathcal{T}|$ & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
-						& $\overline{t}_{\text{trn.}}$ [\si{\milli\second}] &
-		$\overline{t}_{\text{pred.}}$ [\si{\milli\second}] & $\omega$ [rel.]\\
-		\midrule
-		\input{tbl/table11}
-		\bottomrule
-		\end{tabular}
-	}
-	\caption{Results of experiment~4 (model comparison) displayed analogously
-		to~\cref{tbl:exp2-detailed-results}. Here, means and standard deviation
-		are reported over 5~cross-validation folds. In addition, we also give
-		cross-validation set size $|\mathcal{T}|$ (in thousands of data
-		points) and relative speedup $\omega$ with respect to the
-		MC TBR model mean evaluation time \SI{7.777049573054314}{\second} (per
-		sample) measured during run~1.}
-	\label{tbl:exp4-detailed-results}
-\end{table}
 
