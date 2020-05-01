@@ -12,7 +12,7 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-In this internship project, in coordination with the UK Atomic Energy Authority (UKAEA), we sought to develop a surrogate model for the tritium breeding ratio (TBR) in a Tokamak nuclear fusion reactor. Our expensive model was an MC-based neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator Jonathan Shimwell, at UKAEA.}, which returns a prediction of the TBR for a given configuration of a spherical Tokamak. We took an empirical approach to the construction of this surrogate, and no results described here are explicitly dependent on prior physics knowledge.
+In this project, in coordination with the UK Atomic Energy Authority (UKAEA), we sought to develop a surrogate model for the tritium breeding ratio (TBR) in a Tokamak nuclear fusion reactor. Our expensive model was an MC-based neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator Jonathan Shimwell, at UKAEA.}, which returns a prediction of the TBR for a given configuration of a spherical Tokamak. We took an empirical approach to the construction of this surrogate, and no results described here are explicitly dependent on prior physics knowledge.
 
 For the remainder of Section 1, we will define the TBR and set the context of this work within the goals of the UKAEA. In Section 2 we will describe our datasets generated from the expensive model for training and validation purposes, and the dimensionality reduction methods employed to develop our understanding of the parameter domain. In Section 3 we will present our methodologies for the comparison testing of a wide variety of surrogate modelling techniques, as well as a novel adaptive sampling procedure suited to this application. After delivering the results of these approaches in Section 4, we will give our final conclusions and recommendations for further work.
 
@@ -77,8 +77,8 @@ into two classes. Continuous parameters, including material thicknesses and
 packing ratios, describe the geometry of a given reactor configuration. Discrete
 categorical parameters further specify all relevant material sections, including
 coolants, armours, and neutron multipliers. One notable exception is the
-enrichment ratio, a continuous parameter denoting the presence of
-\isotope[6]{Li}. Our challenge, put simply, was to produce a TBR function which
-takes these same input parameters and approximates the MC TBR model with the
-greatest achievable regression performance.
+enrichment ratio, a continuous parameter denoting the presence
+of~\isotope[6]{Li}. Our challenge, put simply, was to produce a fast TBR
+function which takes these same input parameters and approximates the MC TBR
+model with the greatest achievable regression performance.
 

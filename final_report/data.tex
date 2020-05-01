@@ -12,7 +12,7 @@ space reduction to achieve the lowest possible number of dimensions.
 The expensive MC TBR model is fundamentally a Monte Carlo simulation based on the
 OpenMC framework~\cite{ROMANO201590}. As input the software expects 18~parameters, discrete and
 continuous, that are fully listed in~\cref{tbl:params}. During evaluation, which
-usually takes units of seconds, a fixed number of events is simulated, and the
+usually takes units of seconds, a fixed number of neutron events is generated, and the
 results are given in terms of the mean and the standard deviation of the~TBR aggregated
 over the simulated run. The former of these two we accept to be the output TBR
 value that is subject to approximation.
@@ -77,7 +77,7 @@ MC TBR simulation, effectively treating it as a black box model. This limits our
 means of studying its behaviour to inspection of its outputs at various
 points in the feature space. We therefore require
 sufficiently large and representative quantities of samples to ensure that
-surrogates can be trained to approximate the MC TBR model.
+surrogates can be trained to approximate the MC TBR model accurately.
 
 With a grid search in such a high-dimensional domain clearly intractable, we
 selected uniform pseudo-random sampling\footnote{Continuous and discrete
@@ -89,11 +89,11 @@ the HPC infrastructure available at UCL computing facilities. To this end, we
 designed and implemented the Approximate TBR Evaluator---a Python software package capable of
 sequential evaluation of the multi-threaded OpenMC simulation on batches of
 previously generated points in the feature space.
-Having deployed ATE at the UCL Hypatia cluster,\footnote{The Hypatia RCIF
+Having deployed ATE at the UCL Hypatia cluster\footnote{The Hypatia RCIF
 	partition is comprised of 4~homogeneous nodes. Each node is installed with
 	376~GB RAM and 40~Intel\textsuperscript{\textregistered}
 	Xeon\textsuperscript{\textregistered} Gold 6148 CPUs of clock frequency
-	2.40~GHz.} we completed 3~data
+	2.40~GHz.}, we completed three data
 generation runs that are summarised in~\cref{tbl:sampling-runs}.
 
 \begin{table}[h]
@@ -119,8 +119,8 @@ generation runs that are summarised in~\cref{tbl:sampling-runs}.
 	}
 	\caption{Parameters of sampling runs. Here, $t_{\text{run}}$ denotes the total run
 		time (including waiting in the processing queue), and
-		$\overline{t}_{\text{eval.}}$ is the mean evaluation time of MC TBR (per single
-		sampled point).}
+		$\overline{t}_{\text{eval.}}$ is the mean evaluation time of the MC TBR
+		model (per single sampled point).}
 	\label{tbl:sampling-runs}
 \end{table}
 
@@ -182,7 +182,7 @@ identify a transformation of the parameter space which decreases dimensionality;
 	\centering
 	\includegraphics[width=\linewidth]{run1_500k_tbr_vs_feat}
 	\caption{Marginalised dependence of TBR on the choice of continuous
-	features in \num{500000}~points collected in run~1. Points are coloured by density.}
+	features in \num{500000}~points generated in run~1. Points are coloured by density.}
   \label{fig:tbr-vs-features}
 \end{figure}
 
@@ -236,14 +236,14 @@ validation loss, we assess the potential for dimensional reduction.
 	\centering
 	{\footnotesize \incfigscale{0.8}{autoencoder}}
 	\caption{Autoencoder with input width~$W_0$ and bottleneck width~$W_1$.
-	Here, $\text{Dense}(N)$ denotes a fully-connected layer of $N$ neurons.}
+	Here, $\text{Dense}(N)$ denotes a fully-connected layer of $N$~neurons.}
 	\label{fig:autoencoder}
 \end{wrapfigure}
 
 In particular, we consider two equally-sized sets\footnote{Each set contained
 \num{100000}~samples from batches 0-99 of the corresponding runs.} of samples:
-(a)~a subset of data obtained
-from run~1 and (B)~A SUBSet of a single slice obtained from run~2. Our
+(a)~a~subset of data obtained
+from run~1 and (b)~a~subset of a single slice obtained from run~2. Our
 expectation was that while the former case would provide meaningful insights into
 correlations within the feature space, the latter would validate our
 autoencoder implementation by analysing a set of points that are trivially
@@ -282,11 +282,11 @@ Confirming our expectation that in the latter, trivial case the
 autoencoder should achieve greater dimensional reduction, we are inclined to
 believe that our implementation is indeed operating as intended. However, we
 must also conclude that in both examined cases this method failed to produce a
-reduction that would be superior to a naïve approach.\footnote{In both tested cases we
-	can trivially eliminate 7~dimensions due to overdetermined one-hot-encoded
-	features and 2~dimensions due to sum-to-one constraints. Furthermore, in the
-	single slice case we may omit 7~additional dimensions due to artificially fixed
-features.} This is consistent with previous results obtained by PCA and kriging.
+reduction that would prove superior to a naïve approach.\footnote{In both tested cases we
+	can trivially eliminate 6~dimensions due to overdetermination of one-hot-encoded
+	categorical features, and 2~dimensions corresponding to sum-to-one constraints. Furthermore, in the
+	single slice case we may omit 6~additional dimensions due to fixed feature
+	assignment.} This is consistent with previous results obtained by PCA and kriging.
 
 
 % TODO: Question: is it accurate to say this represents nonlinear feature extraction? re my intro paragraph
