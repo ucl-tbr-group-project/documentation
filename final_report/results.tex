@@ -86,7 +86,7 @@ this modification.
 \subsubsection{Scaling Benchmark}
 
 In the third experiment we examine surrogate scaling properties by correlating
-metrics of interest with training set size. First, the results shown 
+metrics of interest with training set size. Firstly, the results shown 
 in~\cref{fig:scaling-r2} (and listed in~\cref{tbl:exp3-detailed-results-r2} in
 the Appendix) suggest that the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as we introduce
@@ -126,32 +126,31 @@ the Appendix). Consistent with our expectation, the shortest times
 were achieved by instance-based learning methods (e.g. KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
 Furthermore, we observe that the majority of tree-based algorithms also exhibit
-desirable properties unlike RBFs and gaussian process
-regression, which appear to scale superlinearly. We note that ANNs,
+desirable properties unlike RBFs and GPR, which appear to scale superlinearly. We note that ANNs,
 which are the only family to utilise parallelisation during training, show an
 inverse scaling characteristic. Our conjecture is that this effect may be caused
 by a constant multi-threading overhead that possibly dominates the training process
 on relatively small training sets.
 
-Lastly, we study scaling with respect to the mean prediction time (shown
+Finally, we study scaling with respect to the mean prediction time (shown
 in~\cref{fig:scaling-pred} and listed in~\cref{tbl:exp3-detailed-results-t-pred} in
 the Appendix). Our initial observation is that all tested
 surrogate families with the exception of previously mentioned instance-based
 learning methods offer desirable characteristics overall. Analogous to previous
-experiments, GBTs and ANNs again
-appear to be tied, as they not only exhibit comparable times but also similar
+experiments, GBTs and ANNs again appear to be tied, as they not only exhibit comparable times but also similar
 scaling slopes.
 
 
 \subsubsection{Model Comparison}
 
-In the fourth experiment, we exploit previously collected information
+In the fourth experiment proposed
+in~\cref{sec:experiment-methodology}, we exploit previously collected information
 to produce surrogates with desirable properties for practical use. We
-aim to create models that yield: (i)~the best regression performance regardless
-of other features, (ii)~acceptable performance with the shortest mean
-prediction time, or (iii)~acceptable performance with the smallest training set.
+aim to create models that yield: (a)~the best regression performance regardless
+of other features, (b)~acceptable performance with the shortest mean
+prediction time, or (c)~acceptable performance with the smallest training set.
 To this end, we trained 8~surrogates that are presented in~\cref{fig:reg-performance}
-(and listed in~\cref{tbl:exp4-detailed-results} in the Appendix).
+and~\cref{tbl:exp4-detailed-results}.
 
 \begin{figure}[h]
 	\centering
@@ -190,33 +189,68 @@ To this end, we trained 8~surrogates that are presented in~\cref{fig:reg-perform
 	\end{subfigure}
 	\caption{Regression performance of models 1-4 (row 1, from the left) and 5-8
 		(row 2) trained in experiment~4 (model comparison), viewed
-		as true vs. predicted TBR on a test set of a selected cross-validation
+		as true vs.~predicted TBR on a test set of a selected cross-validation
 		fold. Points are coloured by density.}
 	\label{fig:reg-performance}
 \end{figure}
 
-Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of the
+Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of
 experiments~2-3, we utilised the best-performing hyperparameter
-assignments and training sets of varying sizes. In attempts to satisfy
-goals~(i) and~(ii) within cross-validation setting, our best surrogate
-achieved~$R^2=\num{0.998}$ and mean prediction
-time~$\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$. These correspond
-to the standard error of regression~$S=\num{0.013}$ and a relative speedup~$\omega=\num{8659251} \times$
+assignments. Trained to satisfy
+goal~(a), the best surrogate (no.~1,
+ANN) achieved~$R^2=\num{0.998}$ and mean prediction
+time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
+to standard error~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
 with respect to the MC TBR evaluation baseline measured during run~1
-(see~\cref{tbl:sampling-runs} for details). While this particular surrogate
-was trained on the entire available set of~\num{500000} datapoints, in attempts to satisfy
-goal~(iii) we also trained a more simplified model that achieved~$R^2=\num{0.913}$,
+(see~\cref{tbl:sampling-runs} for details). Satisfying
+goal~(b), the fastest model (no.~2, ANN) features~$R^2=\num{0.985}$,
+$\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$, $S=\num{0.033}$
+and~$\omega=\num{8659251} \times$.
+While these surrogates
+were trained on the entire available set of~\num{500000} datapoints, pursuing
+goal~(c) we also trained a simplified model (no.~5, GBT) that achieved~$R^2=\num{0.913}$,
 $\overline{t}_{\text{pred.}}=\SI{6}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
 with only a set of size~\num{10000}.
 
-Overall we found that due to their excellent performance, boosted tree-based
+\begin{table}[h]
+	\centering
+	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
+	\setlength\tabcolsep{2pt}
+	{\scriptsize
+		\begin{tabular}{lrrrrrrrr}
+		\toprule
+		{} & {} & \multicolumn{4}{c}{Regression performance} &
+		\multicolumn{3}{c}{Complexity}\\
+		\cmidrule(lr){3-6}
+		\cmidrule(lr){7-9}
+		Model & $|\mathcal{T}|$ & MAE [TBR] & $S$ [TBR] & $R^2$ [rel.] & $R^2_{\text{adj.}}$ [rel.]
+						& $\overline{t}_{\text{trn.}}$ [\si{\milli\second}] &
+		$\overline{t}_{\text{pred.}}$ [\si{\milli\second}] & $\omega$ [rel.]\\
+		\midrule
+		\input{tbl/table11}
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Results of experiment~4. Here, means and
+		standard deviations are reported over 5~cross-validation folds. In addition, we also give
+		cross-validation set size $|\mathcal{T}|$ (in thousands of datapoints)
+		and relative speedup $\omega$ with respect to the
+		MC TBR model mean evaluation time \SI{7.777049573054314}{\second} (per
+		sample) measured during run~1 (see~\cref{tbl:sampling-runs} for details).
+		The best-performing metrics are highlighted in bold.}
+	\label{tbl:exp4-detailed-results}
+\end{table}
+
+Overall we found that due to their superior performance, boosted tree-based
 approaches seem to be advantageous for fast surrogate modelling on relatively small training
 sets (up to the order of~$10^4$). Conversely, while neural networks perform
-poorly in such a setting, both their regression performance and prediction times
-have proven superior on larger training sets (at least of the order of~$10^5$).
+poorly in such a setting, they become dominant on larger training
+sets (at least of the order of~$10^5$) both in terms of regression performance
+and mean prediction time.
 
-
-\begin{wrapfigure}[11]{r}{0.42\textwidth}
+\subsection{Results of Adaptive Sampling}
+\label{sec:adaptiveres}
+\begin{wrapfigure}[10]{r}{0.42\textwidth}
 	\centering
 	\vspace{-13ex}
 	\includegraphics[width=0.42\textwidth]{fig5_sintoy}
@@ -225,16 +259,15 @@ have proven superior on larger training sets (at least of the order of~$10^5$).
 	\label{fig:sintoy}
 \end{wrapfigure}
 
-\subsection{Results of Adaptive Sampling}
-\label{sec:adaptiveres}
-
 In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory with adjustable wavenumber parameter $n$:
 
 \begin{equation}
-	\text{TBR} = \text{Mean}_{i \in C} \left[ \frac{1 + \sin(2\pi n (x_i - 1/2)) }{2} \right]
+	\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[ \frac{1 + \sin(2\pi n (x_i - 1/2)) }{2} \right]
 \end{equation}
 
-plotted in~\cref{fig:sintoy} for $n=1$ and two continuous parameters $C$. ANNs
+plotted in~\cref{fig:sintoy} for $n=1$ and two continuous parameters $C$.
+
+ANNs
 trained on this model demonstrated similar performance to those on the expensive
 MC model. QASS performance was verified by training a $\text{1h3f}(256)$ ANN on
 the sinusoidal theory for varied quantities of initial, incremental, and MCMC
@@ -246,7 +279,14 @@ An increase in MCMC candidate samples was seen to have a positive but very weak
 effect on final surrogate precision, suggesting that the runtime of MCMC on each
 iteration can be limited for increased efficiency. -- Awaiting test results on % TODO
 initial sample quantity --. The most complex dynamics arose with the adjustment
-of sample increment, shown in~\cref{fig:qassincr}. For each tested initial sample quantity N, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$; the plotted error trends suggest that incremental samples larger than this optimum give slower model improvement on both the training and evaluation sets, and a larger minimum error on the evaluation set. This performance distinction is predicted to be even more significant when trained on the expensive MC model, where the number of sample evaluations will serve as the primary bottleneck for computation time.
+of sample increment, shown in~\cref{fig:qassincr}. For each tested initial
+sample quantity N, the optimal number of step samples was seen to be
+well-approximated by $\sqrt{N}$. The plotted error trends suggest that
+incremental samples larger than this optimum give slower model improvement on
+both the training and evaluation sets, and a larger minimum error on the
+evaluation set. This performance distinction is predicted to be even more
+significant when trained on the expensive MC model, where the number of sample
+evaluations will serve as the primary bottleneck for computation time.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[t]{0.5\textwidth}
@@ -266,7 +306,7 @@ The plateau effect in surrogate error on the evaluation set, seen
 in~\cref{fig:qassincr}, was universal to all configurations and thought to
 warrant further investigation. At first this was suspected to be a residual
 effect of retraining the same ANN instance without adjustment to data
-normalisation; a ``Goldilocks scheme'' for checking normalisation drift was
+normalisation. A ``Goldilocks scheme'' for checking normalisation drift was
 implemented and tested, but did not affect QASS performance. Schemes in which
 the ANN is periodically retrained were also discarded, as the retention of
 network weights from one iteration to the next was demonstrated to greatly
@@ -277,7 +317,8 @@ in~\cref{fig:qasssampling}.
 \begin{figure}[h]
   \centering
     \includegraphics[width=0.78\linewidth]{fig7_qasssampling.pdf}
-    \caption{Absolute training error for QASS, baseline scheme, and mixed scheme}
+    \caption{Absolute training error for QASS, baseline scheme, and mixed
+	scheme.}
   \label{fig:qasssampling}
 \end{figure}
 
