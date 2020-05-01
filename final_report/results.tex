@@ -91,9 +91,9 @@ metrics of interest with training set size. Firstly, the results shown
 in~\cref{fig:scaling-r2} (and listed in~\cref{tbl:exp3-detailed-results-r2} in
 the Appendix) suggest that the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as we introduce
-more training points. While such families achieve nearly comparable regression
-performance on the largest dataset, in the opposite case methods based on
-decision trees clearly outperform neural networks. This can be observed
+more training points. While such families achieve nearly comparable
+performance on the largest dataset, in the opposite case tree-based approaches
+clearly outperform ANNs. This can be observed
 particularly on sets of sizes up to~\num{6000}.
 
 \begin{figure}[h]
@@ -136,8 +136,8 @@ on relatively small training sets.
 Finally, we study scaling with respect to the mean prediction time (shown
 in~\cref{fig:scaling-pred} and listed in~\cref{tbl:exp3-detailed-results-t-pred} in
 the Appendix). Our initial observation is that all tested
-surrogate families with the exception of previously mentioned instance-based
-learning methods offer desirable characteristics overall. Analogous to previous
+families with the exception of previously mentioned instance-based
+models offer desirable characteristics overall. Analogous to previous
 experiments, GBTs, ABTs and ANNs appear to be tied, as they not only exhibit
 comparable times but also similar scaling slopes. Following that, we notice a
 clear hierarchy of ERTs, SVMs, GPR and RBFs, trailed by IDW and KNNs.
@@ -197,18 +197,18 @@ and~\cref{tbl:exp4-detailed-results}.
 \end{figure}
 
 Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of
-experiments~2-3, we utilised the best-performing hyperparameter
-assignments. In pursuit of goal~(a), the best approximator (no.~1,
+experiments~2-3, we utilised the best-performing hyperparameters.
+In pursuit of goal~(a), the best approximator (no.~1,
 ANN) achieved~$R^2=\num{0.998}$ and mean prediction
 time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
-to a standard error of regression~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
+to a standard error~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
 with respect to the MC TBR evaluation baseline measured during run~1
 (see~\cref{tbl:sampling-runs} for details). Satisfying
 goal~(b), the fastest model (no.~2, ANN) achieves~$R^2=\num{0.985}$,
 $\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$, $S=\num{0.033}$
 and~$\omega=\num{8659251} \times$.
 While these surrogates
-were trained on the entire available set of~\num{500000} datapoints, to satisfy goal~(c) we also trained a more simplified model (no.~4, GBT)
+were trained on the entire available set of~\num{500000} datapoints, to satisfy goal~(c) we also trained a simplified model (no.~4, GBT)
 that achieved~$R^2=\num{0.913}$,
 $\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
 with a set of size only~\num{10000}.
@@ -232,34 +232,32 @@ with a set of size only~\num{10000}.
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Results of experiment~4. Here, means and
-		standard deviations are reported over 5~cross-validation folds. In addition, we also give
-		cross-validation set size $|\mathcal{T}|$ (in thousands of datapoints)
-		and relative speedup $\omega$ with respect to the
-		MC TBR model mean evaluation time \SI{7.777049573054314}{\second} (per
-		sample) measured during run~1 (see~\cref{tbl:sampling-runs} for details).
+	\caption{Results of experiment~4. Here, figures are reported over 5~cross-validation folds,
+		$|\mathcal{T}|$~denotes cross-validation set size ($\times 10^3$)
+		and $\omega$ is a relative speedup with respect to
+		$\overline{t}_{\text{eval.}}=\SI{7.777049573054314}{\second}$
+		measured in the MC TBR model during run~1 (see~\cref{tbl:sampling-runs}).
 		The best-performing metrics are highlighted in bold.}
 	\label{tbl:exp4-detailed-results}
 \end{table}
 
 Overall we found that due to their superior performance, boosted tree-based
 approaches seem to be advantageous for fast surrogate modelling on relatively small training
-sets (up to the order of~$10^4$). Conversely, while neural networks perform
-poorly in such a setting, they become dominant on larger training
-sets (at least of the order of~$10^5$) both in terms of regression performance
-and mean prediction time.
+sets (up to the order of~$10^4$). Conversely, while ANNs perform
+poorly in such a setting, they dominate on larger training sets (at least of the
+order of~$10^5$) both in terms of regression performance and mean prediction time.
 
-\subsection{Results of Adaptive Sampling}
-\label{sec:adaptiveres}
-\begin{wrapfigure}[10]{r}{0.42\textwidth}
+\begin{wrapfigure}[10]{r}{0.4\textwidth}
 	\centering
-	\vspace{-13ex}
-	\includegraphics[width=0.42\textwidth]{fig5_sintoy}
+	\vspace{-16ex}
+	\includegraphics[width=\linewidth]{fig5_sintoy}
 	\caption{Sinusoidal toy TBR theory over two continuous parameters,
 	$n=1$.}
 	\label{fig:sintoy}
 \end{wrapfigure}
 
+\subsection{Results of Adaptive Sampling}
+\label{sec:adaptiveres}
 In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory with adjustable wavenumber parameter $n$:
 
 \begin{equation}
@@ -267,30 +265,36 @@ In order to test our QASS prototype, several functional toy theories for TBR wer
 \end{equation}
 
 plotted in~\cref{fig:sintoy} for $n=1$ and two continuous parameters $C$.
-
-ANNs
-trained on this model demonstrated similar performance to those on the expensive
+ANNs trained on this model demonstrated similar performance to those on the expensive
 MC model. QASS performance was verified by training a $\text{1h3f}(256)$ ANN on
 the sinusoidal theory for varied quantities of initial, incremental, and MCMC
 candidate samples. Although the scope of this project did not include thorough
 searches of this hyperparameter domain, sufficient runs were made to identify
 some likely trends.
 
-An increase in initial samples with increment held constant had a strong impact on final surrogate precision, an early confirmation of basic functionality. An increase in MCMC candidate samples was seen to have a positive but very weak effect on final surrogate precision, suggesting that the runtime of MCMC on each iteration can be limited for increased efficiency. The most complex dynamics arose with the adjustment of sample increment, shown in~\cref{fig:qassincr}. For each tested initial sample quantity N, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$. The plotted error trends suggest that
+An increase in initial samples with increment held constant had a strong impact
+on final surrogate precision, an early confirmation of basic functionality. An
+increase in MCMC candidate samples was seen to have a positive but very weak
+effect on final surrogate precision, suggesting that the runtime of MCMC on each
+iteration can be limited for increased efficiency. The most complex dynamics
+arose with the adjustment of sample increment, shown in~\cref{fig:qassincr}. For
+each tested initial sample quantity $N$, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$. The plotted error trends suggest that
 incremental samples larger than this optimum give slower model improvement on both the training and evaluation sets, and a larger minimum error on the evaluation set. This performance distinction is predicted to be even more significant when trained on the expensive MC model, where the number of sample evaluations will serve as the primary bottleneck for computation time.
 \begin{figure}[h!]
     \centering
+    \vspace{-1ex}
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.1\linewidth]{fig6a_qassincrsamp.pdf}
     \end{subfigure}%
-    \hfill
+    \hfill%
     \begin{subfigure}[t]{0.5\textwidth}
         \centering
         \includegraphics[width=1.1\linewidth]{fig6b_qassincrtime.pdf}
     \end{subfigure}
     \caption{QASS absolute training error over total sample quantity (left) and number of iterations (right). MAE represents surrogate error on the adaptively-sampled training/test set, and E\_MAE on the independent evaluation sets.}
     \label{fig:qassincr}
+    \vspace{-1ex}
 \end{figure}
 
 The plateau effect in surrogate error on the evaluation set, seen
@@ -306,18 +310,20 @@ QASS and a baseline scheme with uniformly random incremental samples, shown
 in~\cref{fig:qasssampling}.
 
 \begin{figure}[h]
+\centering
+\begin{minipage}{.48\textwidth}
   \centering
-    \includegraphics[width=0.78\linewidth]{fig7_qasssampling.pdf}
-    \caption{Absolute training error for QASS, baseline scheme, and mixed
-	scheme.}
+  \includegraphics[width=1.1\linewidth]{fig7_qasssampling.pdf}
+  \captionof{figure}{Absolute training error for QASS, baseline scheme, and mixed scheme.}
   \label{fig:qasssampling}
-\end{figure}
-
-\begin{figure}[h]
+\end{minipage}%
+\hfill%
+\begin{minipage}{.48\textwidth}
   \centering
-    \includegraphics[width=0.78\linewidth]{fig8_qasssampling100k.pdf}
-    \caption{Absolute training error for QASS and baseline scheme, with 100k initial samples.}
+  \includegraphics[width=1.1\linewidth]{fig8_qasssampling100k.pdf}
+  \captionof{figure}{Absolute training error for QASS and baseline scheme, with 100k initial samples.}
   \label{fig:qasssampling100k}
+\end{minipage}
 \end{figure}
 
 Such tests revealed that while QASS has unmatched performance on its own
