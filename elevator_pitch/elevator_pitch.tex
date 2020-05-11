@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage[margin=2cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=1cm,bottom=1cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{siunitx}
@@ -20,6 +20,7 @@
 \begin{document}
 
 \maketitle
+\thispagestyle{empty}
 
 The tritium breeding ratio (TBR) is an essential quantity for the design of
 modern and next-generation Tokamak nuclear fusion reactors. Representing the
@@ -52,7 +53,7 @@ accelerating the surrogate modelling process.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.55\textwidth]{exp4_model6}
+	\includegraphics[width=0.6\textwidth]{exp4_model6}
 	\caption{Regression performance of the most accurate evaluated surrogate
 		(artificial neural network), viewed as true vs.~predicted TBR on a test
 		set of a selected cross-validation fold (out of 5). Points are coloured by density.}
