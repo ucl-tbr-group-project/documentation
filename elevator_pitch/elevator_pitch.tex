@@ -13,8 +13,8 @@
 \title{Surrogate Modelling of the Tritium Breeding Ratio}
 \date{2020\\ January -- April}
 \author{
-	Graham Van Goffrier, University College London\\
-	\and Petr Mánek, University College London
+	Petr Mánek, University College London\\
+	\and Graham Van Goffrier, University College London
 }
 
 \begin{document}
@@ -31,9 +31,9 @@ training of surrogate models to produce a cheap but high-quality approximation
 for a Monte Carlo TBR model in use at the UK Atomic Energy Authority.
 
 Having implemented and deployed our sampling software on a high performance cluster, we
-used the MC TBR model to generate over~$9\cdot 10^5$ datapoints for training and
+used the MC TBR model to generate over~\num{900000} datapoints for training and
 test purposes. On this set, we investigated possibilities for
-dimensional reduction using Principal Component Analysis, Kriging and
+dimensional reduction using Principal Component Analysis, variograms and
 autoencoders, and concluded that no straightforward reduction was possible
 without significant information loss. We reviewed 9~families of surrogate models for potential
 applicability, benchmarked their behaviour as a function of training set size and tuned their
@@ -44,9 +44,9 @@ models, the fastest of which, an artificial neural network,
 demonstrated~$R^2=\num{0.985}$ and a mean
 prediction time of~$\SI{0.898}{\micro\second}$, representing a relative speedup of $8\cdot 10^6$
 with respect to the expensive MC TBR model. While this surrogate was trained on
-a set of size $5\cdot 10^5$, we demonstrated that comparable results can also be
-achieved using only $10^4$ datapoints. We further present a novel adaptive
-sampling algorithm, Quality-Adaptive Surrogate Sampling, capable
+a set of size~\num{500000}, we demonstrated that comparable results can also be
+achieved using only~\num{10000} datapoints. We further present a novel adaptive
+sampling algorithm, Quality-Adaptive Surrogate Sampling, which applies Markov chain Monte Carlo methods to probe high-error regions of the surrogate during training, and is capable
 of interfacing with any of the individually studied surrogates. Our preliminary
 testing on a toy TBR theory has demonstrated the efficacy of this algorithm for
 accelerating the surrogate modelling process.
