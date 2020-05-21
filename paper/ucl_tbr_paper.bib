@@ -1,0 +1,383 @@
+@article{Gong2017,
+abstract = {Parameter distribution estimation has long been a hot issue for the uncertainty quantification of environmental models. Traditional approaches such as MCMC (Markov Chain Monte Carlo) are prohibitive to be applied to large complex dynamic models because of the high computational cost of computing resources. To reduce the number of model evaluations required, we proposed an adaptive surrogate modeling-based sampling strategy for parameter distribution estimation, named ASMO-PODE (Adaptive Surrogate Modeling-based Optimization – Parameter Optimization and Distribution Estimation). The ASMO-PODE can provide an estimation of the parameter distribution using as little as one percent of the model evaluations required by a regular MCMC approach. The effectiveness and efficiency of the ASMO-PODE approach have been evaluated with 2 test problems and one land surface model, the Common Land Model. The results demonstrated that the ASMO-PODE method is an economic way for parameter optimization and distribution estimation.},
+author = {Gong, Wei and Duan, Qingyun},
+%doi = {10.1016/J.ENVSOFT.2017.05.005},
+%file = {:home/me/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Gong, Duan - 2017 - An adaptive surrogate modeling-based sampling strategy for parameter optimization and distribution estimation (ASMO-.pdf:pdf},
+issn = {1364-8152},
+journal = {Environmental Modelling {\&} Software},
+month = {sep},
+pages = {61--75},
+publisher = {Elsevier},
+title = {{An adaptive surrogate modeling-based sampling strategy for parameter optimization and distribution estimation (ASMO-PODE)}},
+%url = {https://www.sciencedirect.com/science/article/pii/S1364815216310830},
+volume = {95},
+year = {2017}
+}
+@article{Zhang2020,
+abstract = {Abstract Bayesian inverse modeling is important for a better understanding of hydrological processes. However, this approach can be computationally demanding, as it usually requires a large number of model evaluations. To address this issue, one can take advantage of surrogate modeling techniques. Nevertheless, when approximation error of the surrogate model is neglected, the inversion result will be biased. In this paper, we develop a surrogate-based Bayesian inversion framework that explicitly quantifies and gradually reduces the approximation error of the surrogate. Specifically, two strategies are proposed to quantify the surrogate error. The first strategy works by quantifying the surrogate prediction uncertainty with a Bayesian method, while the second strategy uses another surrogate to simulate and correct the approximation error of the primary surrogate. By adaptively refining the surrogate over the posterior distribution, we can gradually reduce the surrogate approximation error to a small level. Demonstrated with three case studies involving high dimensionality, multimodality, and a real-world application, it is found that both strategies can reduce the bias introduced by surrogate approximation error, while the second strategy that integrates two methods (i.e., polynomial chaos expansion and Gaussian process in this work) that complement each other shows the best performance.},
+annote = {doi: 10.1029/2019WR025721},
+author = {Zhang, Jiangjiang and Zheng, Qiang and Chen, Dingjiang and Wu, Laosheng and Zeng, Lingzao},
+%doi = {10.1029/2019WR025721},
+issn = {0043-1397},
+journal = {Water Resources Research},
+month = {jan},
+number = {1},
+pages = {e2019WR025721},
+publisher = {John Wiley {\&} Sons, Ltd},
+title = {{Surrogate-Based Bayesian Inverse Modeling of the Hydrological System: An Adaptive Approach Considering Surrogate Approximation Error}},
+%url = {https://doi.org/10.1029/2019WR025721},
+volume = {56},
+year = {2020}
+}
+@article{Zhou2018,
+abstract = {Groundwater reactive transport models that consider the coupling of hydraulic and biochemical processes are vital tools for predicting the fate of groundwater contaminants and effective groundwater management. The models involve a large number of parameters whose specification greatly affects the model performance. Thus model parameters calibration is crucial to its successful application. The Bayesian inference framework implemented by Markov chain Monte Carlo (MCMC) sampling provides a comprehensive framework to estimate the model parameters. However, its application is hampered by the large computational requirements caused by repeated evaluations of the model in MCMC sampling. This study develops an adaptive Kriging-based MCMC method to overcome the bottleneck of Bayesian inference by replacing the simulation model with a computationally inexpensive Kriging surrogate model. In the adaptive Kriging-based MCMC method, instead of constructing a globally accurate surrogate of the simulation model, we sequentially build a locally accurate surrogate with an iterative refinement to the high probability regions. The performance of the proposed method is demonstrated using a synthetic groundwater reactive transport model for describing sequential Kinetic degradation of Tetrachloroethene (PCE), whose hydraulic and biochemical parameters are jointly estimated. The results suggest that the adaptive Kriging-based MCMC method is able to achieve an accurate Bayesian inference with a hundredfold reduction in the computational cost compared to the conventional MCMC method.},
+author = {Zhou, Jun and Su, Xiaosi and Cui, Geng},
+%doi = {10.1016/J.JCONHYD.2018.08.005},
+issn = {0169-7722},
+journal = {Journal of Contaminant Hydrology},
+month = {sep},
+pages = {50--57},
+publisher = {Elsevier},
+title = {{An adaptive Kriging surrogate method for efficient joint estimation of hydraulic and biochemical parameters in reactive transport modeling}},
+%url = {https://www.sciencedirect.com/science/article/pii/S0169772218300317?via{\%}3Dihub},
+volume = {216},
+year = {2018}
+}
+@article{Garud2016,
+author = {Garud, Sushant and Karimi, Iftekhar and Kraft, Markus},
+%doi = {10.1016/j.compchemeng.2016.10.006},
+journal = {Computers {\&} Chemical Engineering},
+month = {oct},
+title = {{Smart Sampling Algorithm for Surrogate Model Development}},
+volume = {96},
+year = {2016}
+}
+@article{Zhang2012,
+abstract = {The determination of complex underlying relationships between system parameters from simulated and/or recorded data requires advanced interpolating functions, also known as surrogates. The development of surrogates for such complex relationships often requires the modeling of high dimensional and non-smooth functions using limited information. To this end, the hybrid surrogate modeling paradigm, where different surrogate models are combined, offers an effective solution. In this paper, we develop a new high fidelity surrogate modeling technique that we call the Adaptive Hybrid Functions (AHF). The AHF formulates a reliable Crowding Distance-Based Trust Region (CD-TR), and adaptively combines the favorable characteristics of different surrogate models. The weight of each contributing surrogate model is determined based on the local measure of accuracy for that surrogate model in the pertinent trust region. Such an approach is intended to exploit the advantages of each component surrogate. This approach seeks to simultaneously capture the global trend of the function as well as the local deviations. In this paper, the AHF combines four component surrogate models: (i) the Quadratic Response Surface Model (QRSM), (ii) the Radial Basis Functions (RBF), (iii) the Extended Radial Basis Functions (E-RBF), and (iv) the Kriging model. The AHF is applied to standard test problems and to a complex engineering design problem. Subsequent evaluations of the Root Mean Squared Error (RMSE) and the Maximum Absolute Error (MAE) illustrate the promising potential of this hybrid surrogate modeling approach.},
+author = {Zhang, Jie and Chowdhury, Souma and Messac, Achille},
+%doi = {10.1007/s00158-012-0764-x},
+issn = {1615-1488},
+journal = {Structural and Multidisciplinary Optimization},
+number = {2},
+pages = {223--238},
+title = {{An adaptive hybrid surrogate model}},
+%url = {https://doi.org/10.1007/s00158-012-0764-x},
+volume = {46},
+year = {2012}
+}
+@article{Ginting2011,
+abstract = {In this paper, we develop a procedure for subsurface characterization of a fractured porous medium. The characterization involves sampling from a representation of a fracture's permeability that has been suitably adjusted to the dynamic tracer cut measurement data. We propose to use a type of dual-porosity, dual-permeability model for tracer flow. This model is built into the Markov chain Monte Carlo (MCMC) method in which the permeability is sampled. The Bayesian statistical framework is used to set the acceptance criteria of these samples and is enforced through sampling from the posterior distribution of the permeability fields conditioned to dynamic tracer cut data. In order to get a sample from the distribution, we must solve a series of problems which requires a fine-scale solution of the dual model. As direct MCMC is a costly method with the possibility of a low acceptance rate, we introduce a two-stage MCMC alternative which requires a suitable coarse-scale solution method of the dual model. With this filtering process, we are able to decrease our computational time as well as increase the proposal acceptance rate. A number of numerical examples are presented to illustrate the performance of the method.},
+author = {Ginting, Victor and Pereira, Felipe and Presho, Michael and Wo, Shaochang},
+%doi = {10.1007/s10596-011-9236-4},
+issn = {1573-1499},
+journal = {Computational Geosciences},
+number = {4},
+pages = {691},
+title = {{Application of the two-stage Markov chain Monte Carlo method for characterization of fractured reservoirs using a surrogate flow model}},
+%url = {https://doi.org/10.1007/s10596-011-9236-4},
+volume = {15},
+year = {2011}
+}
+@article{Solonen2012,
+abstract = {The emergence of Markov chain Monte Carlo (MCMC) methods has opened a 
+      way for Bayesian analysis of complex models. Running MCMC samplers 
+      typically requires thousands of model evaluations, which can exceed 
+      available computer resources when this evaluation is computationally 
+      intensive. We will discuss two generally applicable techniques to 
+      improve the efficiency of MCMC. First, we consider a parallel version 
+      of the adaptive MCMC algorithm of Haario et al. (2001), implementing 
+      the idea of inter-chain adaptation introduced by Craiu et al. (2009). 
+      Second, we present an early rejection (ER) approach, where model 
+      simulation is stopped as soon as one can conclude that the proposed 
+      parameter value will be rejected by the MCMC algorithm. This work is 
+      motivated by practical needs in estimating parameters of climate and 
+      Earth system models. These computationally intensive models involve 
+      non-linear expressions of the geophysical and biogeochemical processes
+      of the Earth system. Modeling of these processes, especially those 
+      operating in scales smaller than the model grid, involves a number of 
+      specified parameters, or 'tunables'. MCMC methods are applicable for 
+      estimation of these parameters, but they are computationally very 
+      demanding. Efficient MCMC variants are thus needed to obtain reliable 
+      results in reasonable time. Here we evaluate the computational gains 
+      attainable through parallel adaptive MCMC and Early Rejection using 
+      both simple examples and a realistic climate model.},
+author = {Solonen, Antti and Ollinaho, Pirkka and Laine, Marko and Haario, Heikki and Tamminen, Johanna and Jarvinen, Heikki},
+%doi = {10.1214/12-BA724},
+issn = {1936-0975},
+journal = {Bayesian Anal.},
+keywords = {Adaptive MCMC,Climate Models,Early Rejection,Parallel MCMC},
+language = {en},
+number = {3},
+pages = {715--736},
+publisher = {International Society for Bayesian Analysis},
+title = {{Efficient MCMC for Climate Model Parameter Estimation: Parallel Adaptive Chains and Early Rejection}},
+%url = {https://projecteuclid.org:443/euclid.ba/1346158781},
+volume = {7},
+year = {2012}
+}
+@article{Matheron1963,
+abstract = {Knowledge of ore grades and ore reserves as well as error estimation of these values, is fundamental for mining engineers and mining geologists. Until now no appropriate scientific approach to those estimation problems has existed: geostatistics, the principles of which are summarized in this paper, constitutes a new science leading to such an approach. The author criticizes classical statistical methods still in use, and shows some of the main results given by geostatistics. Any ore deposit evaluation as well as proper decision of starting mining operations should be preceded by a geostatistical investigation which may avoid economic failures.},
+author = {Matheron, Georges},
+%doi = {10.2113/gsecongeo.58.8.1246},
+issn = {0361-0128},
+journal = {Economic Geology},
+month = {dec},
+number = {8},
+pages = {1246--1266},
+title = {{Principles of geostatistics}},
+%url = {https://doi.org/10.2113/gsecongeo.58.8.1246},
+volume = {58},
+year = {1963}
+}
+@misc{KrigingFig,
+title = {{Kriging Variogram Model}},
+url = {https://vsp.pnnl.gov/help/Vsample/Kriging{\_}Variogram{\_}Model.htm},
+urldate = {2020-04-20}
+}
+@article{Jolliffe2016,
+annote = {doi: 10.1098/rsta.2015.0202},
+author = {Jolliffe, Ian T and Cadima, Jorge},
+%doi = {10.1098/rsta.2015.0202},
+journal = {Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences},
+month = {apr},
+number = {2065},
+pages = {20150202},
+publisher = {Royal Society},
+title = {{Principal component analysis: a review and recent developments}},
+%url = {https://doi.org/10.1098/rsta.2015.0202},
+volume = {374},
+year = {2016}
+}
+@article{Bouhlel2018,
+author = {Bouhlel, Mohamed Amine and Martins, Joaquim},
+%doi = {10.1007/s00366-018-0590-x},
+journal = {Engineering with Computers},
+month = {feb},
+title = {{Gradient-enhanced kriging for high-dimensional problems}},
+year = {2018}
+}
+@article{Coleman2019,
+abstract = {The European DEMO fusion power reactor (EU-DEMO) is still in the pre-conceptual design phase. The design strategy for the EU-DEMO hinges on investigating multiple reactor designs and technologies in parallel, progressively down-selecting these in the mid-2020s, in preparation for the conceptual design phase. The present implementation of the strategy centres around a baseline single-null design, which is configuration controlled and iterated approximately every two years. The majority of resources are dedicated to studying the baseline design; changing it is expensive, and takes months to do. Competing technologies for different sub-systems (e.g. blankets, magnets) are forced to co-exist within the same physical confines (CAD models), and conform to the same set of performance criteria. Meanwhile, the alternative reactor designs are only loosely defined, with no agreed set of parameters, no CAD models, and no formal framework for study. We argue that the EU-DEMO design strategy is best served by a more efficient implementation methodology which would enable more comprehensive exploration of the DEMO design space. We make the case for a change in approach to the design of DEMO-class reactors in Europe, and propose a solution which bears some resemblance to the present methodology, yet automates and accelerates the sequence of design and analysis activities when generating a design configuration. We present our preliminary attempts to demonstrate the feasibility of our idea, in the form of a new fusion reactor design code: BLUEPRINT. We demonstrate that the typical activities required to generate a DEMO design point can be sped up by four orders of magnitude—from months to minutes—paving the way for a rigorous and broad exploration of the design space.},
+author = {Coleman, M. and McIntosh, S.},
+%doi = {10.1016/J.FUSENGDES.2018.12.036},
+issn = {0920-3796},
+journal = {Fusion Engineering and Design},
+month = {feb},
+pages = {26--38},
+publisher = {North-Holland},
+title = {{BLUEPRINT: A novel approach to fusion reactor design}},
+%url = {https://www.sciencedirect.com/science/article/abs/pii/S0920379618308019?via{\%}3Dihub},
+volume = {139},
+year = {2019}
+}
+@article{Keilhacker1999,
+author = {Keilhacker, M},
+%doi = {10.1098/rsta.1999.0335},
+journal = {Philosophical Transactions of The Royal Society A: Mathematical, Physical and Engineering Sciences},
+month = {mar},
+pages = {415--442},
+title = {{JET deuterium: tritium results and their implications}},
+volume = {357},
+year = {1999}
+}
+@article{Hernandez2018,
+abstract = {The current breeding blankets proposed in the different conceptual fusion power plants are based mainly on the use of Li4SiO4 and/or Li2TiO3 as tritium breeder and Be/Be12Ti as neutron multiplier or an eutectic Li17Pb83 for as a hybrid tritium and neutron multiplier. While these materials offer some tritium breeding capabilities, some recent studies show that the tritium self-sufficiency may not be ensured with these materials due to the strong reduction of blanket coverage after the integration of other in-vessel reactor systems (heating and current drive, limiters, large or double-null divertor systems, etc.). Also, some materials like Be raises several key feasibility concerns. The goal of this paper is to perform an update of the screening for tritium breeder and neutron multiplier materials and to assess the tritium breeding performance of the selected compounds in order to reveal new options. As for the neutron multiplier materials, a new subdivision between solid and liquid multipliers is proposed. For the selected compounds, detailed 3D heterogeneous neutronic analyses have been performed with MCNP5-1.60 assuming the architecture of the current EU DEMO Helium Cooled Pebble Bed (HCPB) as a benchmark breeding blanket. From the point of view of ceramic breeders, Li8ZrO6 has been found to outperform Li4SiO4 by more than 4{\%} in terms of tritium breeding, having 6{\%} higher melting point. From the point of view of solid neutron multipliers, Be12Cr, Be12V, Be13Zr and Be13Y show a similar performance as Be12Ti, while LaPb3, Zr5Pb4 and YPb2 offer a solution for a Be-free blanket. As for liquid multipliers, Pb in combination with a ceramic breeder shows a very promising option. Moreover, Pb compounds like Pb90Mn10 and Pb95Ba5 offer similar performance as Pb with a lower melting point (290 °C). Due to the significant advantages of molten Pb as neutron multiplier, future work will be conducted to define a design of a helium cooled Molten Lead Ceramic Breeder blanket, as simple, cost effective blanket concept.},
+author = {Hern{\'{a}}ndez, F.A. and Pereslavtsev, P.},
+%doi = {10.1016/J.FUSENGDES.2018.09.014},
+issn = {0920-3796},
+journal = {Fusion Engineering and Design},
+month = {dec},
+pages = {243--256},
+publisher = {North-Holland},
+title = {{First principles review of options for tritium breeder and neutron multiplier materials for breeding blankets in fusion reactors}},
+%url = {https://www.sciencedirect.com/science/article/abs/pii/S0920379618306392?via{\%}3Dihub},
+volume = {137},
+year = {2018}
+}
+@book{Myers2002,
+address = {New York},
+author = {Myers, R.H. and Montgomery, D.C.},
+edition = {2nd},
+publisher = {John Wiley {\&} Sons},
+title = {{Response Surface Methodology: Product and Process Optimization Using Designed Experiments}},
+year = {2002}
+}
+@phdthesis{Sondergaard2003,
+author = {S{\o}ndergaard, Jacob},
+school = {Technical University of Denmark},
+title = {{Optimization Using Surrogate Models}},
+year = {2003}
+}
+@article{scikit-learn,
+ title={Scikit-learn: Machine Learning in {P}ython},
+ author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
+         and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
+         and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
+         Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+ journal={Journal of Machine Learning Research},
+ volume={12},
+ pages={2825--2830},
+ year={2011}
+}
+@article{SMT2019,
+        Author = {Mohamed Amine Bouhlel and John T. Hwang and Nathalie Bartoli and Rémi Lafage and Joseph Morlier and Joaquim R. R. A. Martins},
+        Journal = {Advances in Engineering Software},
+        Title = {A Python surrogate modeling framework with derivatives},
+        pages = {102662},
+        year = {2019},
+        issn = {0965-9978},
+        %doi = {https://doi.org/10.1016/j.advengsoft.2019.03.005},
+        Year = {2019}}
+@misc{chollet2015keras,
+  title={Keras},
+  author={Chollet, Fran\c{c}ois and others},
+  year={2015},
+  howpublished={\url{https://keras.io}},
+}
+@article{SCHMIDHUBER201585,
+title = "Deep learning in neural networks: An overview",
+journal = "Neural Networks",
+volume = "61",
+pages = "85 - 117",
+year = "2015",
+issn = "0893-6080",
+%doi = "https://doi.org/10.1016/j.neunet.2014.09.003",
+%url = "http://www.sciencedirect.com/science/article/pii/S0893608014002135",
+author = "Jürgen Schmidhuber",
+keywords = "Deep learning, Supervised learning, Unsupervised learning, Reinforcement learning, Evolutionary computation",
+abstract = "In recent years, deep artificial neural networks (including recurrent ones) have won numerous contests in pattern recognition and machine learning. This historical survey compactly summarizes relevant work, much of it from the previous millennium. Shallow and Deep Learners are distinguished by the depth of their credit assignment paths, which are chains of possibly learnable, causal links between actions and effects. I review deep supervised learning (also recapitulating the history of backpropagation), unsupervised learning, reinforcement learning & evolutionary computation, and indirect search for short programs encoding deep and large networks."
+}
+@article{ROMANO201590,
+title = "OpenMC: A state-of-the-art Monte Carlo code for research and development",
+journal = "Annals of Nuclear Energy",
+volume = "82",
+pages = "90 - 97",
+year = "2015",
+note = "Joint International Conference on Supercomputing in Nuclear Applications and Monte Carlo 2013, SNA + MC 2013. Pluri- and Trans-disciplinarity, Towards New Modeling and Numerical Simulation Paradigms",
+issn = "0306-4549",
+author = "Paul K. Romano and Nicholas E. Horelik and Bryan R. Herman and Adam G. Nelson and Benoit Forget and Kord Smith",
+keywords = "Monte Carlo, Neutron transport, OpenMC, Parallel, XML, HDF5",
+abstract = "This paper gives an overview of OpenMC, an open source Monte Carlo particle transport code recently developed at the Massachusetts Institute of Technology. OpenMC uses continuous-energy cross sections and a constructive solid geometry representation, enabling high-fidelity modeling of nuclear reactors and other systems. Modern, portable input/output file formats are used in OpenMC: XML for input, and HDF5 for output. High performance parallel algorithms in OpenMC have demonstrated near-linear scaling to over 100,000 processors on modern supercomputers. Other topics discussed in this paper include plotting, CMFD acceleration, variance reduction, eigenvalue calculations, and software development processes."
+}
+
+@inproceedings{shepard1968two,
+  title={A two-dimensional interpolation function for irregularly-spaced data},
+  author={Shepard, Donald},
+  booktitle={Proceedings of the 1968 23rd ACM national conference},
+  pages={517--524},
+  year={1968}
+}
+
+@article{sacks1989designs,
+  title={Designs for computer experiments},
+  author={Sacks, Jerome and Schiller, Susannah B and Welch, William J},
+  journal={Technometrics},
+  volume={31},
+  number={1},
+  pages={41--47},
+  year={1989},
+  publisher={Taylor \& Francis Group}
+}
+
+@article{wold1975soft,
+  title={Soft modelling by latent variables: the non-linear iterative partial least squares (NIPALS) approach},
+  author={Wold, Herman},
+  journal={Journal of Applied Probability},
+  volume={12},
+  number={S1},
+  pages={117--142},
+  year={1975},
+  publisher={Cambridge University Press}
+}
+
+@article{bouhlel2016improving,
+  title={Improving kriging surrogates of high-dimensional design models by Partial Least Squares dimension reduction},
+  author={Bouhlel, Mohamed Amine and Bartoli, Nathalie and Otsmane, Abdelkader and Morlier, Joseph},
+  journal={Structural and Multidisciplinary Optimization},
+  volume={53},
+  number={5},
+  pages={935--952},
+  year={2016},
+  publisher={Springer}
+}
+
+@article{bouhlel2016improved,
+  title={An improved approach for estimating the hyperparameters of the kriging model for high-dimensional problems through the partial least squares method},
+  author={Bouhlel, Mohamed Amine and Bartoli, Nathalie and Otsmane, Abdelkader and Morlier, Joseph},
+  journal={Mathematical Problems in Engineering},
+  volume={2016},
+  year={2016},
+  publisher={Hindawi}
+}
+
+@article{fan2008liblinear,
+  title={LIBLINEAR: A library for large linear classification},
+  author={Fan, Rong-En and Chang, Kai-Wei and Hsieh, Cho-Jui and Wang, Xiang-Rui and Lin, Chih-Jen},
+  journal={Journal of machine learning research},
+  volume={9},
+  number={Aug},
+  pages={1871--1874},
+  year={2008}
+}
+
+@article{friedman2001greedy,
+  title={Greedy function approximation: a gradient boosting machine},
+  author={Friedman, Jerome H},
+  journal={Annals of statistics},
+  pages={1189--1232},
+  year={2001},
+  publisher={JSTOR}
+}
+
+@misc{friedman1999stochastic,
+  title={Stochastic Gradient Boosting Technical Report},
+  author={Friedman, JH},
+  year={1999},
+  publisher={Stanford, CA: Department of Statistics, Stanford University}
+}
+
+@book{hastie2009elements,
+  title={The elements of statistical learning: data mining, inference, and prediction},
+  author={Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome},
+  year={2009},
+  publisher={Springer Science \& Business Media}
+}
+
+@article{geurts2006extremely,
+  title={Extremely randomized trees},
+  author={Geurts, Pierre and Ernst, Damien and Wehenkel, Louis},
+  journal={Machine learning},
+  volume={63},
+  number={1},
+  pages={3--42},
+  year={2006},
+  publisher={Springer}
+}
+
+@inproceedings{drucker1997improving,
+  title={Improving regressors using boosting techniques},
+  author={Drucker, Harris},
+  booktitle={ICML},
+  volume={97},
+  pages={107--115},
+  year={1997}
+}
+
+@book{williams2006gaussian,
+  title={Gaussian processes for machine learning},
+  author={Williams, Christopher KI and Rasmussen, Carl Edward},
+  volume={2},
+  number={3},
+  year={2006},
+  publisher={MIT press Cambridge, MA}
+}
+
+@inproceedings{movckus1975bayesian,
+  title={On Bayesian methods for seeking the extremum},
+  author={Mo{\v{c}}kus, Jonas},
+  booktitle={Optimization techniques IFIP technical conference},
+  pages={400--404},
+  year={1975},
+  organization={Springer}
+}
+
