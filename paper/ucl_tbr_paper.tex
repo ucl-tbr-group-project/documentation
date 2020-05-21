@@ -1,10 +1,19 @@
 \documentclass[12pt]{iopart}
 
 \usepackage{iopams}
+
+\makeatletter
+\@namedef{ver@amsmath.sty}{}
+\makeatother
+
 \usepackage{siunitx}
 \usepackage[colorinlistoftodos]{todonotes} % TODO: remove me before submitting
+\usepackage{isotope}
+\usepackage{fixltx2e}
+
 
 \providecommand{\keywords}[1]{\textbf{\textit{Index terms---}} #1}
+\newcommand{\DDO}{D\textsubscript{2}O}
 
 \begin{document}
 
@@ -80,7 +89,6 @@ Tritium Breeding Ratio in Tokamak Fusion Reactors} % TODO: revise this
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BACK MATTER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \section{Acknowledgements}
 \label{sec:acknowledgements}

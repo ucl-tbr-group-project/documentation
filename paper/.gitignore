@@ -2,3 +2,4 @@
 *.fls
 *.fdb_latexmk
 *.aux
+*.out
