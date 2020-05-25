@@ -90,60 +90,32 @@ number of input features.}
 \end{table}
 
 
+\subsection{Decoupled Approach}\label{sec:experiment-methodology}
 
-\subsection{Decoupled Sampling}
-\label{sec:experiment-methodology}
-\todo{This section needs to be shortened}
+Experiments related to the decoupled approach are organised in four parts,
+further described in this section. In summary, we aim to optimise hyperparameters of
+each surrogate family separately and later use the best found results to compare surrogate
+families among themselves.
 
-The presented surrogate candidates are evaluated in four experimental cases:%
-\begin{enumerate}
-	\item Hyperparameter tuning in a simplified domain.
+The objective of the first experiment is to simplify the regression task for
+surrogates prone to suboptimal performance in discontinuous spaces.
+To this end, training points are filtered to a single selected discrete feature
+assignment, and surrogates are trained only on the remaining continuous features.
+This is repeated for 4~distinct assignments to explore variances in behaviour.
+The second experiment conventionally measures surrogate performance on the full,
+unrestricted feature space. In both cases, hyperparameter tuning is
+facilitated by Bayesian optimisation~\cite{movckus1975bayesian}. We set its
+objective to maximise $R^2$ and terminate the process after 1000~iterations or
+2~days, whichever condition is satisfied first.
 
-	\item Hyperparameter tuning in full domain.
+In the third experiment, the 20~best-performing hyperparameter configurations
+per each family are used to train surrogates on sets of various sizes to
+investigate their scaling properties. Following that, the fourth experiment aims
+to produce surrogates suitable for practical use by retraining selected
+well-scaling instances on large training sets in order to satisfy the goals of this work.
 
-	\item Scaling benchmark.
 
-	\item Model comparison.
-\end{enumerate}
-
-The aim of the initial experiments is to use a relatively small subset of
-collected TBR samples to determine hyperparameters of considered surrogates.
-Since this process requires learning the behaviour of an unknown, possibly
-expensive mapping -- here a function that assigns cross-validated metrics to a
-point in the hyperparameter domain -- it in many aspects mirrors
-the primary task of this work with the notable extension of added utility
-to optimise. In order to avoid undesirable exponential slowdown in exhaustive
-searches of a possibly high-dimensional parameter space, Bayesian
-optimisation~\cite{movckus1975bayesian} is employed as a standard hyperparameter tuning algorithm. We set
-its objective to maximise $R^2$ and perform
-1000~iterations.\footnote{Hyperparameter tuning of each surrogate family was
-	terminated after 2~days. Instances that reached this limit may be identified
-	in Table~\ref{tbl:exp1-detailed-results,tbl:exp2-detailed-results} in the
-	Appendix.}
-
-In the first experiment, efforts are made to maximise the possibility of success
-in surrogates that are prone to suboptimal performance in discontinuous spaces.
-This follows the notion that, if desired, performance of such models may be
-replicated by training separate instances to model each continuous subregion of
-the domain independently.
-To this end, data are limited to a single slice from run~2, and discrete
-features are completely withheld from evaluated
-surrogates. This is repeated for each of the four available slices to
-investigate variance in behaviour under different discrete feature assignments.
-The second experiment conventionally measures surrogate performance on the full
-feature space. Here, in extension of the previous case, surrogates work with
-samples comprised of discrete as well as continuous features.
-
-The objective of the last two experiments is to exploit the information gathered by
-hyperparameter tuning. In the third experiment, the 20~best-performing
-hyperparameter configurations of each family (with respect to~$R^2$) are used to
-perform training on progressively larger sets to investigate their scaling
-properties. Following that, the fourth experiment aims to produce surrogates
-suitable for practical use by retraining selected well-scaling instances on large
-training sets to satisfy the goals of this work.
-
-\subsection{Adaptive Sampling}
-\label{sec:adaptive}
+\subsection{Adaptive Approach}\label{sec:adaptive}
 \todo{This section needs to be shortened}
 
 \begin{figure}[h]
