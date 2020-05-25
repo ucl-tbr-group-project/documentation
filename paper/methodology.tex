@@ -60,7 +60,7 @@ selection, all metrics are collected in the scheme of 5-fold cross-validation.
 	formulations, we work with a training set of size $N_0$ and a test set of
 size $N$, values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
 denote images of the $i$th testing sample in the MC TBR model and the surrogate
-respectively. Furthermore, the mean $\overline{y}=\sum_{i=1}^N y^{(i)}/N$ and $P$ is the
+respectively. Furthermore, the mean $\overline{y}=N^{-1}\sum_{i=1}^N y^{(i)}$ and $P$ is the
 number of input features.}
 	\begin{indented}
 	\item[]
@@ -68,12 +68,13 @@ number of input features.}
 		\toprule
 		Regression perf. metrics& Notation	& Mathematical formulation\\
 		\midrule
-		Mean absolute error	& MAE & $\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|/N$ \\
+		Mean absolute error	& MAE & $N^{-1}\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|$ \\
 		Standard error of regression & $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
 		\hat{y}^{(i)}| \right\} $ \\
-			Coefficient of determination & $R^2$	& $1-\sum_{i=1}^N \left(y^{(i)}-\hat{y}^{(i)} \right)^2 /
-		\sum_{i=1}^N \left( y^{(i)}-\overline{y} \right)^2 $ \\
-			Adjusted $R^2$ & $R^2_\text{adj.}$	& $1-(1-R^2)(N-1)/(N-P-1)$ \\
+			Coefficient of determination & $R^2$	& $1-\sum_{i=1}^N
+			\left(y^{(i)}-\hat{y}^{(i)} \right)^2\left[\sum_{i=1}^N \left(
+			y^{(i)}-\overline{y} \right)^2\right]^{-1} $ \\
+			Adjusted $R^2$ & $R^2_\text{adj.}$	& $1-(1-R^2)(N-1)(N-P-1)^{-1}$ \\
 		\midrule
 		Complexity metrics	& {}	& {} \\
 		\midrule
