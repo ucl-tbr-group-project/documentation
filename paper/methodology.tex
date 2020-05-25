@@ -15,7 +15,7 @@ We note that each presented algorithm defines hyperparameters that may influence
 performance. Since their optimal values for this problem are unknown, we explore
 their assignments prior to other experiments.
 
-\begin{table}[h]
+\begin{table*}[t]
 	\caption{\label{tbl:surrogates}Considered surrogate model families.
 	$\mathcal{H}$ denotes hyperparameter set.}
 	\begin{indented}
@@ -36,7 +36,7 @@ their assignments prior to other experiments.
 		\bottomrule
 		\end{tabular}
 	\end{indented}
-\end{table}
+\end{table*}
 
 To compare quality of produced surrogates, we define a number of metrics listed
 in~\tref{tbl:metrics}. For regression performance analysis, we include a
@@ -55,12 +55,12 @@ ANNs, which require considerable amount of processing power for training on
 conventional CPU architectures. Lastly, to prevent undesirable bias by training set
 selection, all metrics are collected in the scheme of 5-fold cross-validation.
 
-\begin{table}[h]
+\begin{table*}[t]
 	\caption{\label{tbl:metrics}Metrics recorded in experiments. In
 	formulations, we work with a training set of size $N_0$ and a test set of
 size $N$, values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
 denote images of the $i$th testing sample in the MC TBR model and the surrogate
-respectively. Furthermore, the mean $\overline{y}=N^{-1}\sum_{i=1}^N y^{(i)}$ and $P$ is the
+respectively. The mean $\overline{y}=N^{-1}\sum_{i=1}^N y^{(i)}$ and $P$ is the
 number of input features.}
 	\begin{indented}
 	\item[]
@@ -87,7 +87,7 @@ number of input features.}
 		\bottomrule
 		\end{tabular}
 	\end{indented}
-\end{table}
+\end{table*}
 
 
 \subsection{Decoupled Approach}\label{sec:experiment-methodology}
@@ -120,7 +120,7 @@ well-scaling instances on large training sets in order to satisfy the goals of t
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\textwidth]{fig4_qassplan.png}
+	\includegraphics[width=\linewidth]{fig4_qassplan.png}
 	\caption{Schematic of QASS algorithm}
 	\label{fig:qassplan}
 \end{figure}

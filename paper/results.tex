@@ -1,66 +1,30 @@
-\todo{This entire section needs to be shortened.}
+\todo{Need any introduction here?}
 
-Having outlined a variety of models and metrics tracked for the
-purposes of their objective comparison, we proceed to present and discuss our
-results in the next sections.
-
-
-\subsection{Results of Decoupled Sampling}
+\subsection{Decoupled Approach}
 \label{sec:modelres}
-
-We begin by comparing the performance of a diverse set of surrogate families on previously generated samples of the expensive MC TBR model.
-Through the four experimental cases described
-in~\sref{sec:experiment-methodology}, we aim to study properties of the
-considered models in terms of regression performance, training and prediction
-time.
-
 
 \subsubsection{Hyperparameter Tuning}
 
-The first two experiments perform Bayesian optimisation to maximise~$R^2$ in
-a cross-validation setting as a function of model hyperparameters. While in the
-first experiment we limit training and test sets to the scope of four selected
-slices of the feature space, in the second experiment we lift this restriction
-to examine surrogate capability to model a more complex domain.
-
-The results displayed in~\fref{fig:exp1-time-vs-reg} (and listed
-in~\tref{tbl:exp1-detailed-results} in the Appendix) indicate that in the first
-experiment, GBTs clearly appear to be the most accurate as
+The results displayed in~\fref{fig:exp1-time-vs-reg} indicate that in the first,
+simplified case GBTs clearly appear to be the most accurate as
 well as the fastest surrogate family in terms of mean prediction time. Following
 that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
 While the remainder of tested surrogate families does not exhibit problems in
 complexity, its regression performance falls below average.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\begin{minipage}{0.333\textwidth}
-		%\centering
-		\includegraphics[width=\linewidth]{exp1_slice0}
-		%\caption{Run 2, batches 0-2}
-	\end{minipage}\hfill%
-	\begin{minipage}{0.333\textwidth}
-		%\centering
-		\includegraphics[width=\linewidth]{exp1_slice1}
-		%\caption{Run 2, batches 100-102}
-	\end{minipage}\hfill%
-	\begin{minipage}{0.333\textwidth}
-		%\centering
-		\includegraphics[width=\linewidth]{exp1_slice2}
-		%\caption{Run 2, batches 200-202}
-	\end{minipage}
-	\caption{20~best-performing surrogates per each considered family, plotted in
+	\includegraphics[width=0.9\linewidth]{exp1_slice0}
+	\includegraphics[width=0.9\linewidth]{exp1_slice1}
+	\includegraphics[width=0.9\linewidth]{exp1_slice2}
+	\caption{\label{fig:exp1-time-vs-reg}20~best-performing surrogates per each considered family, plotted in
 		terms of complexity (as~$\overline{t}_{\text{pred.}}$) and regression
-		performance (as~$R^2$) on selected slices of run~2, evaluated in
-	experiment~1. Here, batches refer to subsets of training and test datasets that
-	may be matched to slices using~\tref{tbl:slices}.}
-	\label{fig:exp1-time-vs-reg}
+		performance (as~$R^2$) with 3~selected discrete feature assignments.}
 \end{figure}
 
-The results of the second experiment, shown in~\fref{fig:exp2-time-vs-reg} (and listed
-in~\tref{tbl:exp2-detailed-results} in the Appendix),
-seem to confirm our expectations. Compared to the previous case, we observe
-that many surrogate families consistently achieved worse regression
-performance and prediction times. The least
+Comparing these results with those of the second, unrestricted experiment (shown
+in~\fref{fig:exp2-time-vs-reg}), we observe that many surrogate families
+consistently underperformed. The least
 affected models appear to be GBTs, ANNs and ERTs, which are known to be capable of capturing relationships
 involving mixed feature types that were deliberately withheld in the first
 experiment. With only negligible differences, the first two of these families
@@ -71,10 +35,9 @@ terms of regression performance, and in some cases also in prediction time.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{exp2_time_vs_reg}
-	\caption{Results of experiment~2, plotted analogously
+	\includegraphics[width=0.9\linewidth]{exp2_time_vs_reg}
+	\caption{\label{fig:exp2-time-vs-reg}Results of experiment~2, plotted analogously
 	to~\fref{fig:exp1-time-vs-reg}.}
-	\label{fig:exp2-time-vs-reg}
 \end{figure}
 
 Following both hyperparameter tuning experiments, we conclude that while domain
@@ -87,45 +50,27 @@ this modification.
 
 \subsubsection{Scaling Benchmark}
 
-In the third experiment we examine surrogate scaling properties by correlating
-metrics of interest with training set size. Firstly, the results shown 
-in~\fref{fig:scaling-r2} (and listed in~\tref{tbl:exp3-detailed-results-r2} in
-the Appendix) suggest that the most accurate families from the previous experiments
+The results shown in~\fref{fig:scaling} suggest that in terms of regression
+performance the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as we introduce
 more training points. While such families achieve nearly comparable
 performance on the largest dataset, in the opposite case tree-based approaches
 clearly outperform ANNs. This can be observed
 particularly on sets of sizes up to~\num{6000}.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\begin{minipage}{0.333\textwidth}
-		%\centering
-		\includegraphics[width=\linewidth]{scaling_metric_r2}
-		%\caption{Regression performance (as $R^2$)}
-		%\label{fig:scaling-r2}
-	\end{minipage}\hfill%
-	\begin{minipage}{0.333\textwidth}
-		%\centering
-		\includegraphics[width=\linewidth]{scaling_time_train}
-		%\caption{Complexity (as~$\overline{t}_{\text{trn.}}$)}
-		%\label{fig:scaling-trn}
-	\end{minipage}\hfill%
-	\begin{minipage}{0.333\textwidth}
-		%\centering
-		\includegraphics[width=\linewidth]{scaling_time_pred}
-		%\caption{Complexity (as~$\overline{t}_{\text{pred.}}$)}
-		%\label{fig:scaling-pred}
-	\end{minipage}
-	\caption{Various metrics collected during experiment 3 (scaling
-	benchmark) displayed as a function of training set size.}
+	\includegraphics[width=0.9\linewidth]{scaling_metric_r2}
+	\includegraphics[width=0.9\linewidth]{scaling_time_train}
+	\includegraphics[width=0.9\linewidth]{scaling_time_pred}
+	\caption{Results of the scaling benchmark displayed as a function of
+	training set size. From top to bottom, regression performance (as $R^2$),
+	mean training time and mean prediction time.}
 	\label{fig:scaling}
 \end{figure}
 
-Next, we examine scaling behaviour in terms of the mean training time (displayed
-in~\fref{fig:scaling-trn} and listed in~\tref{tbl:exp3-detailed-results-t-train} in
-the Appendix). Consistent with our expectation, the shortest times
-were achieved by instance-based learning methods (e.g. KNN, IDW) that
+Consistent with our expectation, the shortest training times were achieved by
+instance-based learning methods (e.g. KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
 Furthermore, we observe that the majority of tree-based algorithms also perform
 and scale well, unlike RBFs and GPR which appear to behave superlinearly. We note that ANNs,
@@ -134,17 +79,15 @@ inverse scaling characteristic. Our conjecture is that this effect may be caused
 by a constant multi-threading overhead that possibly dominates the training process
 on relatively small training sets.
 
-Finally, we study scaling with respect to the mean prediction time (shown
-in~\fref{fig:scaling-pred} and listed in~\tref{tbl:exp3-detailed-results-t-pred} in
-the Appendix). Our initial observation is that all tested
-families with the exception of previously mentioned instance-based
-models offer desirable characteristics overall. Analogous to previous
-experiments, GBTs, ABTs and ANNs appear to be tied, as they not only exhibit
-comparable times but also similar scaling slopes. Following that, we notice a
+Finally, all tested families with the exception of previously mentioned instance-based
+models offer desirable prediction times. Analogous to previous experiments,
+GBTs, ABTs and ANNs appear to be tied, as they not only exhibit
+comparable times but also similar scaling slopes. Following that, we note a
 clear hierarchy of ERTs, SVMs, GPR and RBFs, trailed by IDW and KNNs.
 
 
 \subsubsection{Model Comparison}
+\todo{This section needs to be shortened.}
 
 In the fourth experiment proposed
 in~\sref{sec:experiment-methodology}, we exploit previously collected information
@@ -157,39 +100,42 @@ and~\tref{tbl:exp4-detailed-results}.
 
 \begin{figure}[h]
 	\centering
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model6}
 	\end{minipage}\hfill%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model7}
-	\end{minipage}\hfill%
-	\begin{minipage}{0.25\textwidth}
+	\end{minipage}
+
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model1}
 	\end{minipage}\hfill%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model3}
 	\end{minipage}
 
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model4}
 	\end{minipage}\hfill%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model5}
-	\end{minipage}\hfill%
-	\begin{minipage}{0.25\textwidth}
+	\end{minipage}
+
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model2}
 	\end{minipage}\hfill%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{exp4_model8}
 	\end{minipage}
+
 	\caption{Regression performance of models 1-4 (row 1, from the left) and 5-8
 		(row 2) trained in experiment~4 (model comparison), viewed
 		as true vs.~predicted TBR on a test set of a selected cross-validation
@@ -215,7 +161,7 @@ that achieved~$R^2=\num{0.913}$,
 $\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
 with a set of size only~\num{10000}.
 
-\begin{table}[h]
+\begin{table*}[t]
 	\centering
 	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	\setlength\tabcolsep{2pt}
@@ -241,7 +187,7 @@ with a set of size only~\num{10000}.
 		measured in the MC TBR model during run~1 (see~\tref{tbl:sampling-runs}).
 		The best-performing metrics are highlighted in bold.}
 	\label{tbl:exp4-detailed-results}
-\end{table}
+\end{table*}
 
 Overall we found that due to their superior performance, boosted tree-based
 approaches seem to be advantageous for fast surrogate modelling on relatively small training
@@ -257,12 +203,13 @@ order of~$10^5$) both in terms of regression performance and mean prediction tim
 	\label{fig:sintoy}
 \end{figure}
 
-\subsection{Results of Adaptive Sampling}
-\label{sec:adaptiveres}
+\subsection{Adaptive Approach}\label{sec:adaptiveres}
+\todo{This section needs to be shortened.}
+
 In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory with adjustable wavenumber parameter $n$:
 
 \begin{equation}
-	\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
+	\text{TBR} = |C|^{-1}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 \end{equation}
 
 plotted in~\fref{fig:sintoy} for $n=1$ and two continuous parameters $C$.
