@@ -15,28 +15,30 @@ We note that each presented algorithm defines hyperparameters that may influence
 performance. Since their optimal values for this problem are unknown, we explore
 their assignments prior to other experiments.
 
-\begin{table*}[t]
-	\caption{\label{tbl:surrogates}Considered surrogate model families.
-	$\mathcal{H}$ denotes hyperparameter set.}
+\begin{table}[t]
+	\setlength\tabcolsep{2pt}
+	\caption{\label{tbl:surrogates}Considered surrogate model families, their
+		selected abbreviations and implementations. $\mathcal{H}$~denotes the
+		set of hyperparameters.}
 	\begin{indented}
 	\item[]
 		\begin{tabular}{lllr}
 		\toprule
-		Surrogate & Acronym & Implementation & $|\mathcal{H}|$ \\
+		Surrogate family & Abbr. & Impl. & $|\mathcal{H}|$ \\
 		\midrule
-		Support vector machines~\cite{fan2008liblinear}	& SVM & SciKit Learn~\cite{scikit-learn} & 3 \\
-		Gradient boosted trees~\cite{friedman2001greedy,friedman1999stochastic,hastie2009elements}	& GBT & SciKit Learn & 11 \\
-		Extremely randomised trees~\cite{geurts2006extremely}	& ERT & SciKit Learn & 7 \\
-		AdaBoosted decision trees~\cite{drucker1997improving}	& ABT & SciKit Learn & 3 \\
-		Gaussian process regression~\cite{williams2006gaussian}	& GPR & SciKit Learn & 2 \\
-		$k$ nearest neighbours	& KNN & SciKit Learn & 3 \\
-		Artificial neural networks	& ANN & Keras (TensorFlow)~\cite{chollet2015keras} & 2 \\
+		Support vector machines~\cite{fan2008liblinear}	& SVM & SciKit~\cite{scikit-learn} & 3 \\
+		Gradient boosted trees~\cite{friedman2001greedy,friedman1999stochastic,hastie2009elements}	& GBT & SciKit & 11 \\
+		Extremely randomised trees~\cite{geurts2006extremely}	& ERT & SciKit & 7 \\
+		AdaBoosted decision trees~\cite{drucker1997improving}	& ABT & SciKit & 3 \\
+		Gaussian process regression~\cite{williams2006gaussian}	& GPR & SciKit & 2 \\
+		$k$ nearest neighbours	& KNN & SciKit & 3 \\
+		Artificial neural networks	& ANN & Keras~\cite{chollet2015keras} & 2 \\
 		Inverse distance weighing~\cite{shepard1968two} & IDW & SMT~\cite{SMT2019} & 1 \\
 		Radial basis functions & RBF & SMT & 3 \\
 		\bottomrule
 		\end{tabular}
 	\end{indented}
-\end{table*}
+\end{table}
 
 To compare quality of produced surrogates, we define a number of metrics listed
 in~\tref{tbl:metrics}. For regression performance analysis, we include a
@@ -66,7 +68,7 @@ number of input features.}
 	\item[]
 		\begin{tabular}{lrl}
 		\toprule
-		Regression perf. metrics& Notation	& Mathematical formulation\\
+		Regression performance metrics& Notation	& Mathematical formulation\\
 		\midrule
 		Mean absolute error	& MAE & $N^{-1}\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|$ \\
 		Standard error of regression & $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
@@ -79,11 +81,11 @@ number of input features.}
 		Complexity metrics	& {}	& {} \\
 		\midrule
 		Mean training time & $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
-		$\hat{f}(x)$})/N_0$  \\
+		$\hat{f}(x)$})N_0^{-1}$  \\
 			Mean prediction time & $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
-		$\hat{f}(x)$})/N$ \\
-				Relative speedup & $\omega$	& $(\text{wall evaluation time of $f(x)$}) /
-		(N\overline{t}_{\text{pred.}})$ \\
+			$\hat{f}(x)$})N^{-1}$ \\
+				Relative speedup & $\omega$	& $(\text{wall evaluation time of $f(x)$})
+				(N\overline{t}_{\text{pred.}})^{-1}$ \\
 		\bottomrule
 		\end{tabular}
 	\end{indented}
@@ -121,8 +123,7 @@ well-scaling instances on large training sets in order to satisfy the goals of t
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{fig4_qassplan.png}
-	\caption{Schematic of QASS algorithm}
-	\label{fig:qassplan}
+	\caption{\label{fig:qassplan}Schematic of QASS algorithm}
 \end{figure}
 
 All of the surrogate modelling techniques studied in this project face a common

@@ -1,0 +1,29 @@
+\todo{This section needs to be reformulated.}
+
+Over the course of this project, we employed a broad spectrum of data
+analysis and machine learning techniques to develop fast and high-quality
+surrogates for a~MC TBR simulation in use at~UKAEA. Having implemented a sampling
+software to efficiently evaluate this expensive MC~model, we deployed it on a
+high performance cluster to generate over~\num{900000}
+datapoints for training and test purposes. We
+investigated possibilities for simplification of the parameter space, and
+concluded that no straightforward reduction was possible. After reviewing
+9~surrogate model families, examining their behaviour on constrained and
+unrestricted feature space, and studying their scaling properties, we retrained
+the best-performing instances to produce properties desirable for
+practical use. The fastest surrogate, an artificial neural network trained
+on~\num{500000} datapoints, featured~$R^2=\num{0.985}$ with mean prediction time
+of~$\SI{0.898}{\micro\second}$, representing a relative
+speedup of $8\cdot 10^6$ with respect to the MC model. Alternatively, we
+also demonstrated the possibility of achieving comparable results using only a
+training set of size~\num{10000}.
+
+After a thorough review of the literature, we developed a novel adaptive
+sampling algorithm, QASS, capable of interfacing with any of the studied
+surrogates. Preliminary testing on a toy theory, qualitatively comparable to
+the MC TBR model, demonstrated the effectiveness of QASS and behavioural trends
+consistent with the design of the algorithm. With~\num{100000} initial samples and 100 incremental samples per iteration, QASS achieved a ${\sim}40\%$ decrease in surrogate error as compared with a baseline random sampling scheme. Equivalently, the same surrogate error as the baseline could be achieved with ${\sim}6\%$ fewer total samples of the expensive theory. Further optimisation over the hyperparameter space has strong
+potential to increase this performance, in particular by decreasing the required quantity of initial samples. This will allow for future deployment of QASS
+in coalition with any of the most effective identified surrogates to facilitate
+learning during evaluation of the MC TBR model.
+
