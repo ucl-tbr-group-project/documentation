@@ -1,5 +1,3 @@
-\todo{Need any introduction here?}
-
 \subsection{Decoupled Approach}
 \label{sec:modelres}
 
@@ -191,54 +189,29 @@ poorly in such a setting, they dominate on larger training sets (at least of the
 order of~$10^5$) both in terms of regression performance and mean prediction time.
 
 \subsection{Adaptive Approach}\label{sec:adaptiveres}
-\todo{This section needs to be shortened.}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\linewidth]{fig5_sintoy}
-	\caption{Sinusoidal toy TBR theory over 2 continuous parameters,
-	$n=1$.}
-	\label{fig:sintoy}
-\end{figure}
 
-In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory with adjustable wavenumber parameter $n$:
+In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. By far the most robust of these was the following sinusoidal theory over continuous parameters $C$, with adjustable wavenumber parameter $n$:
 
 \begin{equation}
 	\text{TBR} = |C|^{-1}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 \end{equation}
 
-plotted in~\fref{fig:sintoy} for $n=1$ and two continuous parameters $C$.
 ANNs trained on this model demonstrated similar performance to those on the expensive
 MC model. QASS performance was verified by training a $\text{1h3f}(256)$ ANN on
 the sinusoidal theory for varied quantities of initial, incremental, and MCMC
-candidate samples. Although the scope of this project did not include thorough
-searches of this hyperparameter domain, sufficient runs were made to identify
-some likely trends.
+candidate samples.
 
 An increase in initial samples with increment held constant had a strong impact
 on final surrogate precision, an early confirmation of basic functionality. An
 increase in MCMC candidate samples was seen to have a positive but very weak
 effect on final surrogate precision, suggesting that the runtime of MCMC on each
-iteration can be limited for increased efficiency. The most complex dynamics
-arose with the adjustment of sample increment, shown in~\fref{fig:qassincr}. For
-each tested initial sample quantity $N$, the optimal number of step samples was seen to be well-approximated by $\sqrt{N}$. The plotted error trends suggest that
-incremental samples larger than this optimum give slower model improvement on
-both the training and evaluation sets, and a larger minimum error on the
-evaluation set. This performance distinction is predicted to be even more
-significant when trained on the expensive MC model, where the number of sample
-evaluations will serve as the primary bottleneck for computation time.
+iteration could be limited for increased efficiency. We also found that an optimum increment exists and is monotonic with initial sample quantity, above or below which models showed slower improvement on both the training and evaluation sets, and a larger minimum error on the
+evaluation set. This performance distinction will be far more
+significant for an expensive model such as Paramak, where the number of sample
+evaluations is the primary computational bottleneck.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{fig6a_qassincrsamp.pdf}
-	\includegraphics[width=\linewidth]{fig6b_qassincrtime.pdf}
-    \caption{QASS absolute training error over total sample quantity (left) and number of iterations (right). MAE represents surrogate error on the adaptively-sampled training/test set, and E\_MAE on the independent evaluation sets.}
-    \label{fig:qassincr}
-\end{figure}
-
-The plateau effect in surrogate error on the evaluation set, seen
-in~\fref{fig:qassincr}, was universal to all configurations and thought to
-warrant further investigation. At first this was suspected to be a residual
+A plateau effect in surrogate error on the evaluation set was universal to all configurations, and initially suspected to be a residual
 effect of retraining the same ANN instance without adjustment to data
 normalisation. A ``Goldilocks scheme'' for checking normalisation drift was
 implemented and tested, but did not affect QASS performance. Schemes in which
