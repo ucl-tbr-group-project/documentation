@@ -24,6 +24,9 @@ We sought to develop an empirical surrogate model for the tritium breeding ratio
     \label{fig:model_diagram}
 \end{figure}
 
+A point source with a Muir energy distribution \cite{openmcmuir} around 14.06MeV was used to approximate a DT plasma neutron source. 
+The inner radius of the void region was 10m, the first wall thickness was 2.7cm and the blanket thickness was 2m.
+
 For the remainder of Section 1, we will define the TBR and further motivate our research. In Section 2 we will present our methodologies for the comparison testing of a wide variety of surrogate modelling techniques, as well as a novel adaptive sampling procedure suited to this application. After delivering the results of these approaches in Section 3, we will give our final conclusions and recommendations for further work.
 
 \subsection{Problem Description}
@@ -51,7 +54,7 @@ neutron bombardment, e.g. by
 where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
 less common isotopes of lithium, respectively. The TBR is defined as the ratio between tritium generation in the breeding blanket and consumption in the reactor, whose input parameters in the-expensive MC model fall
 into two classes. Continuous parameters, including material thicknesses and
-packing fraction, describe the geometry of a given reactor configuration. Discrete
+packing fraction, describe the geometry of a given reactor configuration **TODO**add all the parameters here*****. Discrete
 categorical parameters then specify material selections, including
 coolants, armours, and neutron multipliers. We set out to produce a fast TBR
 function which takes these same input parameters and approximates the MC TBR
