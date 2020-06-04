@@ -9,7 +9,20 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-We sought to develop an empirical surrogate model for the tritium breeding ratio (TBR) in a Tokamak nuclear fusion reactor. Our expensive model was a Monte Carlo (MC) neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator Jonathan Shimwell, at UKAEA.}, which returns a prediction of the TBR for a given configuration of a spherical Tokamak.
+We sought to develop an empirical surrogate model for the tritium breeding ratio (TBR) in a Inertial confinement fusion (ICF) nuclear fusion reactor. Our expensive model was a Monte Carlo (MC) neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator Jonathan Shimwell, at UKAEA.}, which returns a prediction of the TBR for a given configuration of a spherical (ICF) reactor.
+
+\begin{figure}[!ht]
+  \centering
+    \begin{tikzpicture}
+    \fill[green!40!white]  (0,0) circle (3cm);
+    \fill[blue!40!white]  (0,0) circle (2cm);
+    \fill[white!40!white]  (0,0) circle (1.9cm);
+    \fill[red!40!white]  (0,0) circle (0.1cm);
+    \end{tikzpicture}
+
+    \caption{Diagram of the simple sphere geometry (not to scale) where the blanket is \fcolorbox{white}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}}, the firstwall is \fcolorbox{white}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} and the neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}.}
+    \label{fig:model_diagram}
+\end{figure}
 
 For the remainder of Section 1, we will define the TBR and further motivate our research. In Section 2 we will present our methodologies for the comparison testing of a wide variety of surrogate modelling techniques, as well as a novel adaptive sampling procedure suited to this application. After delivering the results of these approaches in Section 3, we will give our final conclusions and recommendations for further work.
 
@@ -38,7 +51,7 @@ neutron bombardment, e.g. by
 where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
 less common isotopes of lithium, respectively. The TBR is defined as the ratio between tritium generation in the breeding blanket and consumption in the reactor, whose input parameters in the-expensive MC model fall
 into two classes. Continuous parameters, including material thicknesses and
-packing ratios, describe the geometry of a given reactor configuration. Discrete
+packing fraction, describe the geometry of a given reactor configuration. Discrete
 categorical parameters then specify material selections, including
 coolants, armours, and neutron multipliers. We set out to produce a fast TBR
 function which takes these same input parameters and approximates the MC TBR
