@@ -40,12 +40,12 @@ their assignments prior to other experiments.
 	\end{indented}
 \end{table}
 
-To compare quality of produced surrogates, we define a number of metrics listed
+To compare the quality of the produced surrogates, we define a number of metrics listed
 in~\Tref{tbl:metrics}. For regression performance analysis, we include a
-selection of absolute metrics to assess their approximation capability and set
+selection of absolute metrics to assess the models' approximation capability and set
 practical bounds on the expected uncertainty of their predictions. In addition, we also track
 relative measures that are better-suited for comparison between this work and others as
-they maintain invariance with respect to the selected domain and image space.
+they are invariant with respect to the selected domain and image space.
 For complexity analysis, surrogates are assessed in terms of wall
 time (captured by the Python~\texttt{time} package). This is motivated by common practical use
 cases of our work, where models are trained and used as drop-in replacements for the
@@ -95,7 +95,7 @@ number of input features.}
 \subsection{Decoupled Approach}\label{sec:experiment-methodology}
 
 Experiments related to the decoupled approach are organised in four parts,
-further described in this section. In summary, we aim to optimise hyperparameters of
+further described in this section. In summary, we aim to optimise the hyperparameters of
 each surrogate family separately and later use the best found results to compare surrogate
 families among themselves.
 
@@ -106,8 +106,9 @@ assignment, and surrogates are trained only on the remaining continuous features
 This is repeated for 4~distinct assignments to explore variances in behaviour.
 The second experiment conventionally measures surrogate performance on the full,
 unrestricted feature space. In both cases, hyperparameter tuning is
-facilitated by Bayesian optimisation~\cite{movckus1975bayesian}. We set its
-objective to maximise $R^2$ and terminate the process after 1000~iterations or
+facilitated by Bayesian optimisation~\cite{movckus1975bayesian}. We select the
+hyperparameter configuration that produces the model that maximises $R^2$. The
+process is terminated after 1000~iterations or
 2~days, whichever condition is satisfied first.
 
 In the third experiment, the 20~best-performing hyperparameter configurations

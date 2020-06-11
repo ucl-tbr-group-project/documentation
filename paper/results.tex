@@ -7,7 +7,7 @@ The results displayed in~\Fref{fig:exp1-time-vs-reg} indicate that in the first,
 simplified case GBTs clearly appear to be the most accurate as
 well as the fastest surrogate family in terms of mean prediction time. Following
 that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
-While the remainder of tested surrogate families does not exhibit problems in
+While the remainder of tested surrogate families does not exhibit prohibitive
 complexity, its regression performance falls below average.
 
 \begin{figure}
@@ -22,13 +22,13 @@ complexity, its regression performance falls below average.
 
 Comparing these results with those of the second, unrestricted experiment (shown
 in~\Fref{fig:exp2-time-vs-reg}), we observe that many surrogate families
-consistently underperformed. The least
+consistently underperform. The least
 affected models appear to be GBTs, ANNs and ERTs, which are known to be capable of capturing relationships
 involving mixed feature types that were deliberately withheld in the first
 experiment. With only negligible differences, the first two of these families
 appear to be tied for the best performance as well as the shortest prediction
 time. We observe that ERTs and RBFs also
-demonstrated satisfactory results, relatively outperforming the remaining surrogates in
+demonstrated satisfactory results, clearly outperforming the remaining surrogates in
 terms of regression performance, and in some cases also in prediction time.
 
 \begin{figure}
@@ -40,10 +40,10 @@ terms of regression performance, and in some cases also in prediction time.
 
 Following both hyperparameter tuning experiments, we conclude that while domain
 restrictions employed in the first case have proven effective in improving the
-regression performance of some methods, this result has fluctuated considerably
+regression performance of some methods, their performance fluctuates considerably
 depending on the selected slices. Furthermore, in all instances the best
-results were achieved by families of surrogates that were nearly unaffected by
-this modification.
+results are achieved by families of surrogates that do not benefit from this
+restriction (GBTs, ANNs, ERTs).
 
 
 \subsubsection{Scaling Benchmark}
@@ -52,7 +52,7 @@ The results shown in~\Fref{fig:scaling} suggest that in terms of regression
 performance the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as
 more training points are introduced. While such families achieve nearly comparable
-performance on the largest dataset, in the opposite case tree-based approaches
+performance on the largest dataset, in the opposite case tree-based ensemble approaches
 clearly outperform ANNs. This can be observed
 particularly on sets of sizes up to~\num{6000}.
 
@@ -70,7 +70,7 @@ particularly on sets of sizes up to~\num{6000}.
 Consistent with our expectation, the shortest training times were achieved by
 instance-based learning methods (KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
-Furthermore, we observe that the majority of tree-based algorithms also perform
+Furthermore, we observe that the majority of tree-based ensemble algorithms also perform
 and scale well, unlike RBFs and GPR which appear to behave superlinearly. We note that ANNs,
 which are the only family to utilise parallelisation during training, show an
 inverse scaling characteristic. We suspect that this effect may be caused
@@ -80,7 +80,7 @@ on relatively small sets.
 Finally, all tested families with the exception of previously mentioned instance-based
 models offer desirable prediction times. Analogous to previous experiments,
 GBTs, ABTs and ANNs appear to be tied, as they not only exhibit
-comparable times but also similar scaling slopes. Following that, we note a
+comparable times but also similar scaling slopes. Following those, we note a
 clear hierarchy of ERTs, SVMs, GPR and RBFs, trailed by IDW and KNNs.
 
 
@@ -93,17 +93,17 @@ To this end, we trained 8~surrogates that are presented in~\Fref{fig:reg-perform
 and~\Tref{tbl:exp4-detailed-results}.
 Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of
 experiments~2-3, we utilised the best-performing hyperparameters.
-In pursuit of goal~(a), the best approximator (no.~1,
+In pursuit of goal~(a), the best approximator (Model~1,
 ANN) achieved~$R^2=\num{0.998}$ and mean prediction
 time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
 to a standard error~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
 with respect to the MC TBR evaluation baseline. Satisfying
-goal~(b), the fastest model (no.~2, ANN) achieved~$R^2=\num{0.985}$,
+goal~(b), the fastest model (Model~2, ANN) achieved~$R^2=\num{0.985}$,
 $\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$, $S=\num{0.033}$
 and~$\omega=\num{8659251} \times$.
 While these surrogates
 were trained on the entire available set of~\num{500000} datapoints, to satisfy
-goal~(c) we also trained a more simplified model (no.~4, GBT)
+goal~(c) we also trained a more simplified model (Model~4, GBT)
 that achieved~$R^2=\num{0.913}$,
 $\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
 with a set of size only~\num{10000}.
@@ -111,12 +111,13 @@ with a set of size only~\num{10000}.
 \begin{table*}
 	\centering
 	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
-	\caption{\label{tbl:exp4-detailed-results}Results of experiment~4. Here, figures are reported over 5~cross-validation folds,
+	\caption{\label{tbl:exp4-detailed-results}Results of experiment~4. Here,
+		average values and standard deviations are reported over 5~cross-validation folds,
 		$|\mathcal{T}|$~denotes cross-validation set size ($\times 10^3$)
 		and $\omega$ is a relative speedup with respect to
 		$\overline{t}_{\text{eval.}}=\SI{7.777049573054314}{\second}$
 		measured in the MC TBR model during run~1 (see~\Tref{tbl:sampling-runs}).
-		The best-performing metrics are highlighted in bold.}
+	The best-performing method(s) under each are highlighted in bold.}
 	\setlength\tabcolsep{4pt}
 	\begin{indented}
 	\item[]
@@ -175,7 +176,7 @@ with a set of size only~\num{10000}.
 		\includegraphics[width=\linewidth]{exp4_model8_rasterized}
 	\end{minipage}
 
-	\caption{Regression performance of models 1-8 (from left to right, top to
+	\caption{Regression performance of Models 1-8 (from left to right, top to
 		bottom) trained in the model comparison experiment, viewed
 		as true vs.~predicted TBR on a test set of a selected cross-validation
 		fold. Points are coloured by density.}
