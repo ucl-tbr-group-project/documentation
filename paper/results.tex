@@ -3,7 +3,7 @@
 
 \subsubsection{Hyperparameter Tuning}
 
-The results displayed in~\fref{fig:exp1-time-vs-reg} indicate that in the first,
+The results displayed in~\Fref{fig:exp1-time-vs-reg} indicate that in the first,
 simplified case GBTs clearly appear to be the most accurate as
 well as the fastest surrogate family in terms of mean prediction time. Following
 that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
@@ -21,7 +21,7 @@ complexity, its regression performance falls below average.
 \end{figure}
 
 Comparing these results with those of the second, unrestricted experiment (shown
-in~\fref{fig:exp2-time-vs-reg}), we observe that many surrogate families
+in~\Fref{fig:exp2-time-vs-reg}), we observe that many surrogate families
 consistently underperformed. The least
 affected models appear to be GBTs, ANNs and ERTs, which are known to be capable of capturing relationships
 involving mixed feature types that were deliberately withheld in the first
@@ -35,7 +35,7 @@ terms of regression performance, and in some cases also in prediction time.
 	\centering
 	\includegraphics[width=0.9\linewidth]{exp2_time_vs_reg}
 	\caption{\label{fig:exp2-time-vs-reg}Results of experiment~2, plotted analogously
-	to~\fref{fig:exp1-time-vs-reg}.}
+	to~\Fref{fig:exp1-time-vs-reg}.}
 \end{figure}
 
 Following both hyperparameter tuning experiments, we conclude that while domain
@@ -48,7 +48,7 @@ this modification.
 
 \subsubsection{Scaling Benchmark}
 
-The results shown in~\fref{fig:scaling} suggest that in terms of regression
+The results shown in~\Fref{fig:scaling} suggest that in terms of regression
 performance the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as
 more training points are introduced. While such families achieve nearly comparable
@@ -89,8 +89,8 @@ In the fourth experiment, we aim to create models that yield:
 (a)~the best regression performance regardless
 of other features, (b)~acceptable performance with the shortest mean
 prediction time, or (c)~acceptable performance with the smallest training set.
-To this end, we trained 8~surrogates that are presented in~\fref{fig:reg-performance}
-and~\tref{tbl:exp4-detailed-results}.
+To this end, we trained 8~surrogates that are presented in~\Fref{fig:reg-performance}
+and~\Tref{tbl:exp4-detailed-results}.
 Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of
 experiments~2-3, we utilised the best-performing hyperparameters.
 In pursuit of goal~(a), the best approximator (no.~1,
@@ -115,7 +115,7 @@ with a set of size only~\num{10000}.
 		$|\mathcal{T}|$~denotes cross-validation set size ($\times 10^3$)
 		and $\omega$ is a relative speedup with respect to
 		$\overline{t}_{\text{eval.}}=\SI{7.777049573054314}{\second}$
-		measured in the MC TBR model during run~1 (see~\tref{tbl:sampling-runs}).
+		measured in the MC TBR model during run~1 (see~\Tref{tbl:sampling-runs}).
 		The best-performing metrics are highlighted in bold.}
 	\setlength\tabcolsep{4pt}
 	\begin{indented}
@@ -219,7 +219,7 @@ the ANN is periodically retrained were also discarded, as the retention of
 network weights from one iteration to the next was demonstrated to greatly
 benefit QASS efficiency. Further insight came from direct comparison between
 QASS and a baseline scheme with uniformly random incremental samples, shown
-in~\fref{fig:qasssampling}.
+in~\Fref{fig:qasssampling}.
 
 \begin{figure}
 	\centering
@@ -240,10 +240,10 @@ learning the most strongly peaked regions of the TBR theory, this comes at the
 expense of precision in broader, smoother regions where uniformly random
 sampling suffices. Therefore a mixed scheme was implemented, with half MCMC
 samples and half uniformly random samples incremented on each iteration, which
-is also shown in~\fref{fig:qasssampling}. An increase in initial sample size was
+is also shown in~\Fref{fig:qasssampling}. An increase in initial sample size was
 observed to also resolve precision in these smooth regions of the toy theory, as
 the initial samples were obtained from a uniform random distribution. As shown
-in ~\fref{fig:qasssampling100k}, with~\num{100000} initial samples it was
+in ~\Fref{fig:qasssampling100k}, with~\num{100000} initial samples it was
 possible to obtain a ${\sim}40\%$ decrease in error as compared to the baseline
 scheme, from 0.0025 to 0.0015 mean averaged error. Comparing at the point of
 termination for QASS, this corresponds to a ${\sim}6\%$ decrease in the number
