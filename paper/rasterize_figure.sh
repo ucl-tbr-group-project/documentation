@@ -1,4 +1,5 @@
 #!/bin/bash
+# courtesy of: https://stackoverflow.com/questions/9607687/replacing-vector-images-in-a-pdf-with-raster-images
 
 set -e
 
