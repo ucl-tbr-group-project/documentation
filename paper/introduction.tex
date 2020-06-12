@@ -9,7 +9,11 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-We sought to develop an empirical surrogate model for the tritium breeding ratio (TBR) in a Inertial confinement fusion (ICF) nuclear fusion reactor. Our expensive model was a Monte Carlo (MC) neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator Jonathan Shimwell, at UKAEA.}, which returns a prediction of the TBR for a given configuration of a spherical (ICF) reactor.
+In this work, we develop an empirical surrogate model for the tritium breeding
+ratio (TBR) in a Inertial confinement fusion (ICF) nuclear fusion reactor. The
+expensive model (which our surrogate model approximates) is a Monte Carlo (MC)
+neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator
+Jonathan Shimwell, at UKAEA.}\todo{IOP guidelines discourage footnotes}, which returns a prediction of the TBR for a given configuration of a spherical (ICF) reactor.
 
 \begin{figure}[!ht]
   \centering
@@ -56,7 +60,7 @@ less common isotopes of lithium, respectively. The TBR is defined as the ratio b
 into two classes. Continuous parameters, such as material thicknesses and
 packing fraction, describe the geometry of a given reactor configuration.
 \todo{add all the parameters here} Discrete
-categorical parameters then specify material selections, such as
+categorical parameters specify material selections, such as
 coolants, armours, and neutron multipliers. We set out to produce a fast TBR
 function which takes these same input parameters and approximates the MC TBR
 model with the greatest achievable regression performance.

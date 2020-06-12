@@ -34,7 +34,7 @@ terms of regression performance, and in some cases also in prediction time.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\linewidth]{exp2_time_vs_reg}
-	\caption{\label{fig:exp2-time-vs-reg}Results of experiment~2, plotted analogously
+	\caption{\label{fig:exp2-time-vs-reg}Results of Experiment~2, plotted analogously
 	to~\Fref{fig:exp1-time-vs-reg}.}
 \end{figure}
 
@@ -85,14 +85,14 @@ clear hierarchy of ERTs, SVMs, GPR and RBFs, trailed by IDW and KNNs.
 
 
 \subsubsection{Model Comparison}
-In the fourth experiment, we aim to create models that yield:
+In Experiment~4, we aim to create models that yield:
 (a)~the best regression performance regardless
 of other features, (b)~acceptable performance with the shortest mean
 prediction time, or (c)~acceptable performance with the smallest training set.
 To this end, we trained 8~surrogates that are presented in~\Fref{fig:reg-performance}
 and~\Tref{tbl:exp4-detailed-results}.
 Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of
-experiments~2-3, we utilised the best-performing hyperparameters.
+Experiments~2 \&~3, we utilised the best-performing hyperparameters.
 In pursuit of goal~(a), the best approximator (Model~1,
 ANN) achieved~$R^2=\num{0.998}$ and mean prediction
 time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
@@ -111,12 +111,13 @@ with a set of size only~\num{10000}.
 \begin{table*}
 	\centering
 	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
-	\caption{\label{tbl:exp4-detailed-results}Results of experiment~4. Here,
+	\caption{\label{tbl:exp4-detailed-results}Results of Experiment~4. Here,
 		average values and standard deviations are reported over 5~cross-validation folds,
 		$|\mathcal{T}|$~denotes cross-validation set size ($\times 10^3$)
 		and $\omega$ is a relative speedup with respect to
-		$\overline{t}_{\text{eval.}}=\SI{7.777049573054314}{\second}$
-		measured in the MC TBR model during run~1 (see~\Tref{tbl:sampling-runs}).
+		$\overline{t}_{\text{eval.}}=\num{7.777049573054314} \pm
+		\num{2.8103592103930337} \text{ s}$
+		measured in the MC TBR model over~\num{500000} samples.
 	The best-performing method(s) under each are highlighted in bold.}
 	\setlength\tabcolsep{4pt}
 	\begin{indented}
@@ -176,8 +177,8 @@ with a set of size only~\num{10000}.
 		\includegraphics[width=\linewidth]{exp4_model8_rasterized}
 	\end{minipage}
 
-	\caption{Regression performance of Models 1-8 (from left to right, top to
-		bottom) trained in the model comparison experiment, viewed
+	\caption{Regression performance of Models~1-8 (from left to right, top to
+		bottom) trained in Experiment~4, viewed
 		as true vs.~predicted TBR on a test set of a selected cross-validation
 		fold. Points are coloured by density.}
 	\label{fig:reg-performance}
