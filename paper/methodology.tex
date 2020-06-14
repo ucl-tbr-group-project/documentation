@@ -74,12 +74,12 @@ respectively. The mean $\overline{y}=N^{-1}\sum_{i=1}^N y^{(i)}$ and $P$ is the
 number of input features.}
 	\begin{indented}
 	\item[]
-		\begin{tabular}{lrl}
+		\begin{tabularx}{\textwidth}{Xrl}
 		\toprule
 		Regression performance metrics& Notation	& Mathematical formulation\\
 		\midrule
 		Mean absolute error	& MAE & $N^{-1}\sum_{i=1}^N |y^{(i)}-\hat{y}^{(i)}|$ \\
-		Standard error of regression & $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
+		Standard deviation of error & $S$	& $\text{StdDev}_{i=1}^N\left\{ |y^{(i)} -
 		\hat{y}^{(i)}| \right\} $ \\
 			Coefficient of determination & $R^2$	& $1-\sum_{i=1}^N
 			\left(y^{(i)}-\hat{y}^{(i)} \right)^2\left[\sum_{i=1}^N \left(
@@ -92,10 +92,13 @@ number of input features.}
 		$\hat{f}(x)$})N_0^{-1}$  \\
 			Mean prediction time & $\overline{t}_{\text{pred.}}$	& $(\text{wall prediction time of
 			$\hat{f}(x)$})N^{-1}$ \\
-				Relative speedup & $\omega$	& $(\text{wall evaluation time of $f(x)$})
+				Relative speedup & $\omega$	& $(\text{wall evaluation$^\text{b}$ time of $f(x)$})
 				(N\overline{t}_{\text{pred.}})^{-1}$ \\
 		\bottomrule
-		\end{tabular}
+		\end{tabularx}\\%
+		{\footnotesize $^\text{b}$This corresponds to evaluation of the
+		expensive MC TBR model on all points of the test set. In surrogates, the
+		same time period is referred to as ``prediction time.''}
 	\end{indented}
 \end{table*}
 
