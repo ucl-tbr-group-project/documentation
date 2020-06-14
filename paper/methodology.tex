@@ -10,10 +10,11 @@ multiple epochs of sampling and training.
 
 For both methods, we selected state-of-the-art regression algorithms to perform
 surrogate training on sampled point sets. Listed in~\Tref{tbl:surrogates}, these
-implementations define nine surrogate families that are later reviewed in~\Sref{sec:results}.
+implementations define 9~surrogate families that are later reviewed in~\Sref{sec:results}.
 We note that each presented algorithm defines hyperparameters that may influence its
-performance. Since their optimal values for this problem are unknown, we explore
-their assignments prior to other experiments.
+performance. Their problem-specific optimal values are searched within the scope
+of this work, in particular Experiments~1 \&~2 that are outlined
+in~\Sref{sec:experiment-methodology}.
 
 \begin{table}[t]
 	\setlength\tabcolsep{2pt}
@@ -29,14 +30,15 @@ their assignments prior to other experiments.
 		Support vector machines~\cite{fan2008liblinear}	& SVM & SciKit~\cite{scikit-learn} & 3 \\
 		Gradient boosted trees~\cite{friedman2001greedy,friedman1999stochastic,hastie2009elements}	& GBT & SciKit & 11 \\
 		Extremely randomised trees~\cite{geurts2006extremely}	& ERT & SciKit & 7 \\
-		AdaBoosted decision trees~\cite{drucker1997improving}	& ABT & SciKit & 3 \\
+		AdaBoosted decision trees$^\text{a}$~\cite{drucker1997improving}	& ABT & SciKit & 3 \\
 		Gaussian process regression~\cite{williams2006gaussian}	& GPR & SciKit & 2 \\
 		$k$ nearest neighbours	& KNN & SciKit & 3 \\
 		Artificial neural networks	& ANN & Keras~\cite{chollet2015keras} & 2 \\
 		Inverse distance weighing~\cite{shepard1968two} & IDW & SMT~\cite{SMT2019} & 1 \\
 		Radial basis functions & RBF & SMT & 3 \\
 		\bottomrule
-		\end{tabular}
+		\end{tabular}\\%
+		{\footnotesize $^\text{a}$Note that ABTs can be viewed as a subclass of GBTs.}
 	\end{indented}
 \end{table}
 
@@ -46,16 +48,22 @@ selection of absolute metrics to assess the models' approximation capability and
 practical bounds on the expected uncertainty of their predictions. In addition, we also track
 relative measures that are better-suited for comparison between this work and others as
 they are invariant with respect to the selected domain and image space.
-For complexity analysis, surrogates are assessed in terms of wall
+For analysis of computational complexity, surrogates are assessed in terms of wall
 time (captured by the Python~\texttt{time} package). This is motivated by common practical use
 cases of our work, where models are trained and used as drop-in replacements for the
-expensive MC TBR model. Since training set sizes remain to be determined, all times are
-reported per a single datapoint. Even though some surrogates support acceleration
-by means of parallelisation, sequential processing of samples was ensured to
-achieve comparability between considered models. The only exception to this are
-ANNs, which require considerable amount of processing power for training on
-conventional CPU architectures. Lastly, to prevent undesirable bias by training set
-selection, all metrics are collected in the scheme of 5-fold cross-validation.
+expensive MC TBR model. All times reported (training, test, evaluation) are
+normalized by the corresponding dataset size, i.e.~correspond to ``time to
+process a single datapoint.''
+Even though some surrogates support acceleration by means of parallelisation, we
+used non-parallelized implementations. The only exception to this are ANNs,
+which require a considerable amount of processing power for training on
+conventional CPU architectures. Lastly, to prevent undesirable bias by training
+set selection, all reported metrics are obtained via 5-fold cross-validation.
+In this setting, a sample set is uniformly divided into 5 disjoint folds, each of which
+is used as a test set for models trained on the remaining 4. Having repeated the
+same experiment for each such run, the overall value of individual metrics is
+reported in terms of their mean and standard deviation over all folds.
+
 
 \begin{table*}[t]
 	\caption{\label{tbl:metrics}Metrics recorded in experiments. In
@@ -78,7 +86,7 @@ number of input features.}
 			y^{(i)}-\overline{y} \right)^2\right]^{-1} $ \\
 			Adjusted $R^2$ & $R^2_\text{adj.}$	& $1-(1-R^2)(N-1)(N-P-1)^{-1}$ \\
 		\midrule
-		Complexity metrics	& {}	& {} \\
+		Computational complexity metrics	& {}	& {} \\
 		\midrule
 		Mean training time & $\overline{t}_{\text{trn.}}$	& $(\text{wall training time of
 		$\hat{f}(x)$})N_0^{-1}$  \\
@@ -94,26 +102,26 @@ number of input features.}
 
 \subsection{Decoupled Approach}\label{sec:experiment-methodology}
 
-Experiments related to the decoupled approach are organised in four parts,
+Experiments related to the decoupled approach are organised in 4~parts,
 further described in this section. In summary, we aim to optimise the hyperparameters of
 each surrogate family separately and later use the best found results to compare surrogate
 families among themselves.
 
-The objective of the first experiment is to simplify the regression task for
+The objective of the Experiment~1 is to simplify the regression task for
 surrogates prone to suboptimal performance in discontinuous spaces.
 To this end, training points are filtered to a single selected discrete feature
 assignment, and surrogates are trained only on the remaining continuous features.
 This is repeated for 4~distinct assignments to explore variances in behaviour.
-The second experiment conventionally measures surrogate performance on the full,
+Experiment~2 conventionally measures surrogate performance on the full,
 unrestricted feature space. In both cases, hyperparameter tuning is
 facilitated by Bayesian optimisation~\cite{movckus1975bayesian}. We select the
 hyperparameter configuration that produces the model that maximises $R^2$. The
 process is terminated after 1000~iterations or
 2~days, whichever condition is satisfied first.
 
-In the third experiment, the 20~best-performing hyperparameter configurations
+In Experiment~3, the 20~best-performing hyperparameter configurations
 per each family are used to train surrogates on sets of various sizes to
-investigate their scaling properties. Following that, the fourth experiment aims
+investigate their scaling properties. Following that, Experiment~4 aims
 to produce surrogates suitable for practical use by retraining selected
 well-scaling instances on large training sets in order to satisfy the goals of this work.
 
