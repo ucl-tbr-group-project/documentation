@@ -2,6 +2,7 @@
 \label{sec:modelres}
 
 \subsubsection{Hyperparameter Tuning}
+\label{sec:res-exp12}
 
 The results displayed in~\Fref{fig:exp1-time-vs-reg} indicate that in the first,
 simplified case GBTs clearly appear to be the most accurate as
@@ -15,9 +16,10 @@ complexity, its regression performance falls below average.
 	\includegraphics[width=0.9\linewidth]{exp1_slice0}
 	\includegraphics[width=0.9\linewidth]{exp1_slice1}
 	\includegraphics[width=0.9\linewidth]{exp1_slice2}
-	\caption{\label{fig:exp1-time-vs-reg}20~best-performing surrogates per each considered family, plotted in
+	\caption{\label{fig:exp1-time-vs-reg}Results of Experiment~1, 20~best-performing surrogates per each considered family, plotted in
 		terms of computational complexity (as~$\overline{t}_{\text{pred.}}$) and regression
-		performance (as~$R^2$) with 3~selected discrete feature assignments.}
+		performance (as~$R^2$) with 3~selected discrete feature assignments out
+		of~4.}
 \end{figure}
 
 Comparing these results with those of the second, unrestricted experiment (shown
@@ -47,6 +49,7 @@ restriction (GBTs, ANNs, ERTs).
 
 
 \subsubsection{Scaling Benchmark}
+\label{sec:res-exp3}
 
 The results shown in~\Fref{fig:scaling} suggest that in terms of regression
 performance the most accurate families from the previous experiments
@@ -85,6 +88,8 @@ clear hierarchy of ERTs, SVMs, GPR and RBFs, trailed by IDW and KNNs.
 
 
 \subsubsection{Model Comparison}
+\label{sec:res-exp4}
+
 In Experiment~4, we aim to create models that yield:
 (a)~the best regression performance regardless
 of other features, (b)~acceptable performance with the shortest mean
@@ -225,13 +230,13 @@ in~\Fref{fig:qasssampling}.
 
 \begin{figure}
 	\centering
-	\hspace*{-1.5em}\includegraphics[width=1.15\linewidth]{fig7_qasssampling.pdf}
+	\hspace*{-1.4em}\includegraphics[width=1.15\linewidth]{fig7_qasssampling.pdf}
 	\caption{\label{fig:qasssampling}Absolute training error for QASS, baseline scheme, and mixed scheme.}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\hspace*{-1.5em}\includegraphics[width=1.15\linewidth]{fig8_qasssampling100k.pdf}
+	\hspace*{-1.4em}\includegraphics[width=1.15\linewidth]{fig8_qasssampling100k.pdf}
 	\caption{\label{fig:qasssampling100k}Absolute training error for QASS and baseline scheme, with 100k initial samples.}
 \end{figure}
 
