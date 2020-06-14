@@ -10,10 +10,10 @@ knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
 In this work, we develop an empirical surrogate model for the tritium breeding
-ratio (TBR) in a Inertial confinement fusion (ICF) nuclear fusion reactor. The
-expensive model (which our surrogate model approximates) is a Monte Carlo (MC)
-neutronics simulation, \textit{Paramak}\footnote{Provided by collaborator
-Jonathan Shimwell, at UKAEA.}\todo{IOP guidelines discourage footnotes}, which returns a prediction of the TBR for a given configuration of a spherical (ICF) reactor.
+ratio (TBR) in an inertial confinement fusion (ICF) reactor. The
+expensive model which our surrogate model approximates is a Monte Carlo (MC)
+neutronics simulation, \textit{Paramak} (provided by collaborator
+Jonathan Shimwell at UKAEA) which returns a prediction of the TBR for a given configuration of a spherical ICF reactor.
 
 \begin{figure}[!ht]
   \centering
@@ -28,7 +28,7 @@ Jonathan Shimwell, at UKAEA.}\todo{IOP guidelines discourage footnotes}, which r
     \label{fig:model_diagram}
 \end{figure}
 
-A point source with a Muir energy distribution \cite{openmcmuir} around 14.06MeV was used to approximate a DT plasma neutron source. 
+A point source with a Muir energy distribution \cite{openmcmuir} around 14.06MeV was used to approximate a Deuterium-Tritium (D-T) plasma neutron source. 
 The inner radius of the void region was 10m, the first wall thickness was 2.7cm and the blanket thickness was 2m.
 
 For the remainder of Section 1, we will define the TBR and further motivate our research. In Section 2 we will present our methodologies for the comparison testing of a wide variety of surrogate modelling techniques, as well as a novel adaptive sampling procedure suited to this application. After delivering the results of these approaches in Section 3, we will give our final conclusions and recommendations for further work.
@@ -56,12 +56,9 @@ neutron bombardment, e.g. by
 \end{eqnarray}
 
 where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
-less common isotopes of lithium, respectively. The TBR is defined as the ratio between tritium generation in the breeding blanket and consumption in the reactor, whose input parameters in the-expensive MC model fall
-into two classes. Continuous parameters, such as material thicknesses and
-packing fraction, describe the geometry of a given reactor configuration.
-\todo{add all the parameters here} Discrete
-categorical parameters specify material selections, such as
-coolants, armours, and neutron multipliers. We set out to produce a fast TBR
+less common isotopes of lithium, respectively. The TBR is defined as the ratio between tritium generation in the breeding blanket and consumption in the reactor, whose input parameters in the expensive MC model fall
+into two classes. The geometry of a given reactor is described by continuous parameters: the thicknesses of the firstwall and blanket; the proportions of armour, structural, and coolant materials in the firstwall proportions of multiplier, breeder, structural, and coolant materials in the blanket; and sphere-packing fractions for the blanket breeder and multiplier materials. Material selections for all firstwall and blanket materials listed above are specified by discrete
+categorical parameters. The enrichment ratio of $Li$ in the blanket breeder material is specified by an additional continuous parameter. We set out to produce a fast TBR
 function which takes these same input parameters and approximates the MC TBR
 model with the greatest achievable regression performance.
 
