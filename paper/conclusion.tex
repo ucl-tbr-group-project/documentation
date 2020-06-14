@@ -1,7 +1,7 @@
 We employed a broad spectrum of data
 analysis and machine learning techniques to develop fast and high-quality
 surrogates for the Paramak TBR model. After reviewing
-nine surrogate model families, examining their behaviour on a constrained and
+9~surrogate model families, examining their behaviour on a constrained and
 unrestricted feature space, and studying their scaling properties, we retrained
 the best-performing instances to produce properties desirable for
 practical use. The fastest surrogate, an artificial neural network trained
@@ -18,3 +18,6 @@ consistent with the design of the algorithm. With~\num{100000} initial samples
 and 100 incremental samples per iteration, QASS achieved a ${\sim}40\%$ decrease
 in surrogate error compared to a baseline random sampling scheme. Further optimisation over the hyperparameter space has strong potential to increase this performance, in particular by decreasing the required quantity of initial samples. This will allow for future deployment of QASS on the Paramak TBR model in coalition with any of the most effective identified surrogates.
 
+Relevant source code, model instances and datasets are freely
+available online as well as a more detailed technical
+report~\cite{github,finalreport}.
