@@ -1,7 +1,7 @@
 Surrogate models were developed to resolve computational limitations in the analysis of massive datasets by replacing a resource-expensive procedure with a much cheaper approximation
 \cite{Sondergaard2003}. They are especially useful in applications where
 numerous evaluations of an expensive procedure are required over the same or
-similar domains, e.g. in the parameter optimisation of a theoretical model. The
+similar domains, e.g.~in the parameter optimisation of a theoretical model. The
 term ``metamodel'' proves especially meaningful in this case, when the surrogate
 model approximates a computational process which is itself a model for a
 (perhaps unknown) physical process~\cite{Myers2002}. There exists a spectrum
@@ -28,10 +28,16 @@ Jonathan Shimwell at UKAEA) which returns a prediction of the TBR for a given co
     \label{fig:model_diagram}
 \end{figure}
 
-A point source with a Muir energy distribution \cite{openmcmuir} around 14.06MeV was used to approximate a Deuterium-Tritium (D-T) plasma neutron source. 
-The inner radius of the void region was 10m, the first wall thickness was 2.7cm and the blanket thickness was 2m.
+A point source with a Muir energy distribution \cite{openmcmuir} around~\SI{14.06}{\mega\electronvolt} was used to approximate a Deuterium-Tritium (D-T) plasma neutron source. 
+The inner radius of the void region was~\SI{10}{\metre}, the first wall
+thickness was~\SI{2.7}{\centi\metre} and the blanket thickness
+was~\SI{2}{\metre}.
 
-For the remainder of Section 1, we will define the TBR and further motivate our research. In Section 2 we will present our methodologies for the comparison testing of a wide variety of surrogate modelling techniques, as well as a novel adaptive sampling procedure suited to this application. After delivering the results of these approaches in Section 3, we will give our final conclusions and recommendations for further work.
+For the remainder of Section~1, we will define the TBR and further motivate our
+research. In Section~2 we will present our methodologies for the comparison
+testing of a wide variety of surrogate modelling techniques, as well as a novel
+adaptive sampling procedure suited to this application. After delivering the
+results of these approaches in Section~3, we will give our final conclusions and recommendations for further work.
 
 \subsection{Problem Description}
 \label{sec:problemdescription}
@@ -45,7 +51,7 @@ never sustain industrial-scale fusion power.
 
 Instead, modern D-T reactors rely on tritium breeding blankets, specialised
 layers of material which partially line the reactor and produce tritium upon
-neutron bombardment, e.g. by 
+neutron bombardment, e.g.~by 
 \begin{eqnarray}
 	\isotope[1][0]{n} + \hspace{3pt} \isotope[6][3]{Li} 
 	&\longrightarrow \hspace{3pt} 
