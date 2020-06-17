@@ -127,7 +127,7 @@ hyperparameter configuration that produces the model that maximises $R^2$. The
 process is terminated after 1000~iterations or 2~days, whichever condition is satisfied first.
 The results of Experiments~1 \&~2 are depicted
 in Figures~\ref{fig:exp1-time-vs-reg} \&~\ref{fig:exp2-time-vs-reg}
-respectively, and described in~\Sref{sec:res-exp12}
+respectively, and described in~\Sref{sec:res-exp12}.
 
 In Experiment~3, the 20~best-performing hyperparameter configurations
 per each model family are used to train surrogates on sets of various sizes to
@@ -135,13 +135,14 @@ investigate their scaling properties. In particular, we consider sets of
 sizes~$\{1,2,5,10,12,15,20\}$ in thousands of samples to better characterize the
 relationship of each family between sample count and the metrics of interest
 listed in~\Tref{tbl:metrics}.
-The results are shown in~\Fref{fig:scaling} and discussed in~\Sref{sec:res-exp3}
+The results are shown in~\Fref{fig:scaling} and discussed
+in~\Sref{sec:res-exp3}.
 
 Finally, Experiment~4 aims
 to produce surrogates suitable for practical use by retraining selected
 well-scaling instances on large training sets in order to satisfy the goals of this work.
 The results are displayed in~\Fref{fig:reg-performance} and
-in~\Tref{tbl:exp4-detailed-results}, and summarized in~\Sref{sec:res-exp4}
+in~\Tref{tbl:exp4-detailed-results}, and summarized in~\Sref{sec:res-exp4}.
 
 
 \subsection{Adaptive Approach}\label{sec:adaptive}
