@@ -62,9 +62,49 @@ neutron bombardment, e.g.~by
 \end{eqnarray}
 
 where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
-less common isotopes of lithium, respectively. The TBR is defined as the ratio between tritium generation in the breeding blanket and consumption in the reactor, whose input parameters in the expensive MC model fall
-into two classes. The geometry of a given reactor is described by continuous parameters: the thicknesses of the firstwall and blanket; the proportions of armour, structural, and coolant materials in the firstwall proportions of multiplier, breeder, structural, and coolant materials in the blanket; and sphere-packing fractions for the blanket breeder and multiplier materials. Material selections for all firstwall and blanket materials listed above are specified by discrete
-categorical parameters. The enrichment ratio of \isotope{Li} in the blanket breeder material is specified by an additional continuous parameter. We set out to produce a fast TBR
+less common isotopes of lithium, respectively. The TBR is defined as the ratio
+between tritium generation in the breeding blanket and consumption in the
+reactor, whose input parameters (exhaustively listed in~\Tref{tbl:params}) in the expensive MC model fall
+into 2~classes. While the geometry of a given reactor is described by continuous
+parameters, material selections are specified by discrete
+categorical parameters. We set out to produce a fast TBR
 function which takes these same input parameters and approximates the MC TBR
 model with the greatest achievable regression performance.
+
+\begin{table}[t]
+	\setlength\tabcolsep{2pt}
+	\caption{\label{tbl:params}Input parameters supplied to the MC TBR simulation in alphabetical
+		order. Groups of fractions marked\textsuperscript{\textdagger
+		\textdaggerdbl} are independently required to sum to 1.}
+	\begin{indented}
+	\item[]
+		\begin{tabular}{l|ll}
+		\toprule
+		{} & Parameter name & Domain\\
+		\midrule
+		\parbox[t]{2mm}{\hspace{-2pt}\multirow{12}{*}{\rotatebox[origin=c]{90}{Blanket}}}
+		   & Breeder fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Breeder \isotope[6]{Li} enrichment fraction & $[0,1]$\\
+		   & Breeder material & $\{\text{Li}_2\text{TiO}_3, \text{Li}_4\text{SiO}_4\}$\\
+		   & Breeder packing fraction & $[0,1]$\\
+		   & Coolant fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Coolant material & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Multiplier fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Multiplier material & $\{\text{Be}, \text{Be}_{12}\text{Ti}\}$\\
+		   & Multiplier packing fraction & $[0,1]$\\
+		   & Structural fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
+		   & Thickness & $[0,500]$\\
+		\midrule
+		\parbox[t]{2mm}{\hspace{-2pt}\multirow{6}{*}{\rotatebox[origin=c]{90}{First wall}}}
+		   & Armour fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
+		   & Coolant fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
+		   & Coolant material & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Structural fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
+		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
+		   & Thickness & $[0,20]$\\
+		\bottomrule
+		\end{tabular}
+	\end{indented}
+\end{table}
 
