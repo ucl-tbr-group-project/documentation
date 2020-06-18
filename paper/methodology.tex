@@ -2,19 +2,11 @@ Labeling the expensive MC TBR model $f(x)$, a surrogate is a mapping
 $\hat{f}(x)$ such that $f(x)$ and $\hat{f}(x)$ minimise a selected dissimilarity
 metric. In order to be considered \textit{viable}, $\hat{f}(x)$ is required to
 achieve expected evaluation time lower than that of~$f(x)$. In this work, we
-consider two methods of producing viable surrogates: (1) a conventional decoupled
+consider 2~methods of producing viable surrogates: (1)~a conventional decoupled
 approach, which evaluates $f(x)$ on a set of randomly sampled points and
-trains surrogates in a supervised scheme, and (2) an adaptive approach, which attempts to
+trains surrogates in a supervised scheme, and (2)~an adaptive approach, which attempts to
 compensate for localised regression performance insuficiencies by interleaving
 multiple epochs of sampling and training.
-
-For both methods, we selected state-of-the-art regression algorithms to perform
-surrogate training on sampled point sets. Listed in~\Tref{tbl:surrogates}, these
-implementations define 9~surrogate families that are later reviewed in~\Sref{sec:results}.
-We note that each presented algorithm defines hyperparameters that may influence its
-performance. Their problem-specific optimal values are searched within the scope
-of this work, in particular in Experiments~1 \&~2 that are outlined
-in~\Sref{sec:experiment-methodology}.
 
 \begin{table}[t]
 	\setlength\tabcolsep{2pt}
@@ -42,29 +34,6 @@ in~\Sref{sec:experiment-methodology}.
 		{\footnotesize $^\text{a}$Note that ABTs can be viewed as a subclass of GBTs.}
 	\end{indented}
 \end{table}
-
-To compare the quality of the produced surrogates, we define a number of metrics listed
-in~\Tref{tbl:metrics}. For regression performance analysis, we include a
-selection of absolute metrics to assess the models' approximation capability and set
-practical bounds on the expected uncertainty of their predictions. In addition, we also track
-relative measures that are better-suited for comparison between this work and others as
-they are invariant with respect to the selected domain and image space.
-For analysis of computational complexity, surrogates are assessed in terms of wall
-time (captured by the Python~\texttt{time} package). This is motivated by common practical use
-cases of our work, where models are trained and used as drop-in replacements for the
-expensive MC TBR model. All times reported (training, test, evaluation) are
-normalized by the corresponding dataset size, i.e.~correspond to ``time to
-process a single datapoint.''
-Even though some surrogates support acceleration by means of parallelisation, we
-used non-parallelized implementations. The only exception to this are ANNs,
-which require a considerable amount of processing power for training on
-conventional CPU architectures. Lastly, to prevent undesirable bias by training
-set selection, all reported metrics are obtained via 5-fold cross-validation.
-In this setting, a sample set is uniformly divided into 5 disjoint folds, each of which
-is used as a test set for models trained on the remaining 4. Having repeated the
-same experiment for each such run, the overall value of individual metrics is
-reported in terms of their mean and standard deviation over all folds.
-
 
 \begin{table*}[t]
 	\renewcommand{\arraystretch}{0.95}
@@ -98,11 +67,43 @@ number of input features.}
 				(N\overline{t}_{\text{pred.}})^{-1}$ \\
 		\bottomrule
 		\end{tabularx}\\%
-		{\footnotesize $^\text{b}$This corresponds to evaluation of the
-		expensive MC TBR model on all points of the test set. In surrogates, the
-		same time period is referred to as ``prediction time.''}
+		{\footnotesize $^\text{b}$This corresponds to evaluation of Paramak
+		 on all points of the test set. In surrogates, the equivalent
+		time period is referred to as ``prediction time.''}
 	\end{indented}
 \end{table*}
+
+For both methods, we selected state-of-the-art regression algorithms to perform
+surrogate training on sampled point sets. Listed in~\Tref{tbl:surrogates}, these
+implementations define 9~surrogate families that are later reviewed in~\Sref{sec:results}.
+We note that each presented algorithm defines hyperparameters that may influence its
+performance. Their problem-specific optimal values are searched within the scope
+of this work, in particular in Experiments~1 \&~2 that are outlined
+in~\Sref{sec:experiment-methodology}.
+
+To compare the quality of the produced surrogates, we define a number of metrics listed
+in~\Tref{tbl:metrics}. For regression performance analysis, we include a
+selection of absolute metrics to assess the models' approximation capability and set
+practical bounds on the expected uncertainty of their predictions. In addition, we also track
+relative measures that are better-suited for comparison between this work and others as
+they are invariant with respect to the selected domain and image space.
+For analysis of computational complexity, surrogates are assessed in terms of wall
+time (captured by the Python~3 \texttt{time} package). This is motivated by common practical use
+cases of our work, where models are trained and used as drop-in replacements for
+Paramak. All times reported (training, test, evaluation) are
+normalized by the corresponding dataset size, i.e.~correspond to ``time to
+process a single datapoint.''
+
+Even though some surrogates support acceleration by means of parallelisation, we
+used non-parallelized implementations. The only exception to this are ANNs,
+which require a considerable amount of processing power for training on
+conventional CPU architectures. Lastly, to prevent undesirable bias by training
+set selection, all reported metrics are obtained via 5-fold cross-validation.
+In this setting, a sample set is uniformly divided into 5 disjoint folds, each of which
+is used as a test set for models trained on the remaining 4. Having repeated the
+same experiment for each division, the overall value of individual metrics is
+reported in terms of their mean and standard deviation over all folds.
+
 
 
 \subsection{Decoupled Approach}\label{sec:experiment-methodology}
@@ -122,7 +123,7 @@ first wall coolant materials to one
 of:~$\{\text{H\textsubscript{2}O},\isotope{He}\}$.
 Experiment~2 conventionally measures surrogate performance on the full feature
 space without any parameter restrictions. In both experiments, hyperparameter tuning is
-facilitated by Bayesian optimisation~\cite{movckus1975bayesian}. We select the
+facilitated by Bayesian optimisation~\cite{movckus1975bayesian}, where we select the
 hyperparameter configuration that produces the model that maximises $R^2$. The
 process is terminated after 1000~iterations or 2~days, whichever condition is satisfied first.
 The results of Experiments~1 \&~2 are depicted
@@ -135,23 +136,17 @@ investigate their scaling properties. In particular, we consider sets of
 sizes~$\{1,2,5,10,12,15,20\}$ in thousands of samples to better characterize the
 relationship of each family between sample count and the metrics of interest
 listed in~\Tref{tbl:metrics}.
-The results are shown in~\Fref{fig:scaling} and discussed
+The results of this experiment are shown in~\Fref{fig:scaling} and discussed
 in~\Sref{sec:res-exp3}.
 
 Finally, Experiment~4 aims
 to produce surrogates suitable for practical use by retraining selected
 well-scaling instances on large training sets in order to satisfy the goals of this work.
-The results are displayed in~\Fref{fig:reg-performance} and
+The results of this process are displayed in~\Fref{fig:reg-performance} and
 in~\Tref{tbl:exp4-detailed-results}, and summarized in~\Sref{sec:res-exp4}.
 
 
 \subsection{Adaptive Approach}\label{sec:adaptive}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1.2\linewidth]{fig4_qassplan.png}
-	\caption{\label{fig:qassplan}Schematic of QASS algorithm}
-\end{figure}
 
 Adaptive sampling techniques appear frequently in the literature and have been specialised for surrogate modelling, where precision is implicitly limited by the quantity of training samples which are available from the expensive model. Garud's~\cite{Garud2016} ``Smart Sampling Algorithm'' achieved notable success by incorporating surrogate quality and
 crowding distance scoring to identify optimal new samples, but was only tested
@@ -161,6 +156,12 @@ fare better for high-dimensional models by more thoroughly exploring all local
 optima in the feature space. MCMC produces each sample points according to a shared proposal
 distribution from the prior point. These sample points will converge to a desired posterior
 distribution, so long as the acceptance probability meets certain statistical criteria (see~\cite{Zhou2018} for a review).
+
+\begin{figure}
+	\centering
+	\hspace*{-5pt}\includegraphics[width=1.28\linewidth]{fig4_qassplan.png}
+	\caption{\label{fig:qassplan}Schematic of QASS algorithm}
+\end{figure}
 
 Many researchers have embedded surrogate methods into MCMC strategies for
 parameter optimisation~\cite{Zhang2020,Gong2017}, in particular the ASMO-PODE

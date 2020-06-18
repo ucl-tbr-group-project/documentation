@@ -9,13 +9,11 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-In this work, we develop an empirical
-surrogate model for the tritium breeding ratio
-(TBR) in an inertial confinement fusion (ICF)
-reactor. The expensive model which our
-surrogate model approximates is a Monte
-Carlo (MC) neutronics simulation, \textit{Paramak} which returns a prediction of the TBR for a given configuration of a spherical
-ICF reactor. This was achieved by containerizing (using Docker) the neutronics workflow and providing a (python flask based) API interface that returned TBR values for the provided inputs. The neutronics workflow used OpenMC, Fendl 3.1d nuclear data and a Python 3 environment for receiving the API inputs and for driving the model creation, simulation and results extraction.
+In this work, we develop an empirical surrogate model for the tritium breeding
+ratio (TBR) in an inertial confinement fusion (ICF) reactor. The expensive model
+that our surrogate model approximates is a Monte Carlo (MC) neutronics
+simulation, Paramak~\cite{paramak}, which returns a prediction of the TBR for a given
+configuration of a spherical ICF reactor.
 
 \begin{figure}[!ht]
   \centering
@@ -30,16 +28,22 @@ ICF reactor. This was achieved by containerizing (using Docker) the neutronics w
     \label{fig:model_diagram}
 \end{figure}
 
-A point source with a Muir energy distribution \cite{openmcmuir} around~\SI{14.06}{\mega\electronvolt} was used to approximate a Deuterium-Tritium (D-T) plasma neutron source. 
-The inner radius of the void region was~\SI{10}{\metre}, the first wall
-thickness was~\SI{2.7}{\centi\metre} and the blanket thickness
-was~\SI{2}{\metre}.
+Paramak facitilates simulation via OpenMC neutronics workflow that is enclosed in
+a portable Docker container, which conveniently exposes an HTTP API using the
+Python~3 \texttt{flask} package. For the purposes of this work, we used this setup to
+simulate a point source with a Muir energy distribution \cite{openmcmuir}
+around~\SI{14.06}{\mega\electronvolt} to approximate a Deuterium-Tritium (D-T)
+plasma neutron source. Illustrated in~\Fref{fig:model_diagram}, the simulated
+geometry was deliberately left tunable, so that dependency of TBR on various
+parameters may be investigated.
 
-For the remainder of Section~1, we will define the TBR and further motivate our
-research. In Section~2 we will present our methodologies for the comparison
+For the remainder of~\Sref{sec:introduction}, we will define the TBR and further motivate our
+research. In~\Sref{sec:methodology} we will present our methodologies for the comparison
 testing of a wide variety of surrogate modelling techniques, as well as a novel
 adaptive sampling procedure suited to this application. After delivering the
-results of these approaches in Section~3, we will give our final conclusions and recommendations for further work.
+results of these approaches in~\Sref{sec:results}, we will give our final conclusions and
+recommendations in~\Sref{sec:conclusion}.
+
 
 \subsection{Problem Description}
 \label{sec:problemdescription}
@@ -66,18 +70,19 @@ neutron bombardment, e.g.~by
 where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
 less common isotopes of lithium, respectively. The TBR is defined as the ratio
 between tritium generation in the breeding blanket and consumption in the
-reactor, whose input parameters (exhaustively listed in~\Tref{tbl:params}) in the expensive MC model fall
-into 2~classes. While the geometry of a given reactor is described by continuous
-parameters, material selections are specified by discrete
-categorical parameters. We set out to produce a fast TBR
-function which takes these same input parameters and approximates the MC TBR
-model with the greatest achievable regression performance.
+reactor, whose description in Paramak is facilitated by 2~classes of parameters
+(exhaustively listed in~\Tref{tbl:params}). While the geometry of a given
+reactor is described by continuous parameters, material selections are specified
+by discrete categorical parameters.
+
+In our work, we set out to produce a fast TBR function which takes these same
+input parameters and approximates the MC model used in Paramak with the
+greatest achievable regression performance.
 
 \begin{table}[t]
 	\setlength\tabcolsep{2pt}
 	\renewcommand{\arraystretch}{0.95}
-	\caption{\label{tbl:params}Input parameters supplied to the MC TBR simulation in alphabetical
-		order. Groups of fractions marked\textsuperscript{\textdagger
+	\caption{\label{tbl:params}Input parameters supplied to Paramak and surrogates in alphabetical order. Groups of fractions marked\textsuperscript{\textdagger
 		\textdaggerdbl} are independently required to sum to 1.}
 	\begin{indented}
 	\item[]
