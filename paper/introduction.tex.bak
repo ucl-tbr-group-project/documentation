@@ -28,13 +28,13 @@ configuration of a spherical ICF reactor.
     \label{fig:model_diagram}
 \end{figure}
 
-Paramak facilitates simulation via OpenMC neutronics workflow that is enclosed in
+Paramak facitilates simulation via OpenMC neutronics workflow that is enclosed in
 a portable Docker container, which conveniently exposes an HTTP API using the
 Python~3 \texttt{flask} package. For the purposes of this work, we used this setup to
 simulate a point source with a Muir energy distribution \cite{openmcmuir}
 around~\SI{14.06}{\mega\electronvolt} to approximate a Deuterium-Tritium (D-T)
 plasma neutron source. Illustrated in~\Fref{fig:model_diagram}, the simulated
-geometry was deliberately left adjustable, so that dependency of TBR on various
+geometry was deliberately left tunable, so that dependency of TBR on various
 parameters may be investigated.
 
 For the remainder of~\Sref{sec:introduction}, we will define the TBR and further motivate our
@@ -55,7 +55,7 @@ use of both tritium and deuterium fuel. While at least one deuterium atom occurs
 (\DDO) during nuclear fission, but only at very low rates which could
 never sustain industrial-scale fusion power.
 
-Instead, modern D-T reactors rely on tritium breeding blankets, specialized
+Instead, modern D-T reactors rely on tritium breeding blankets, specialised
 layers of material which partially line the reactor and produce tritium upon
 neutron bombardment, e.g.~by 
 \begin{eqnarray}

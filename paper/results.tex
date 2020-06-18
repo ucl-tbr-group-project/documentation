@@ -75,7 +75,7 @@ instance-based learning methods (KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
 Furthermore, we observe that the majority of tree-based ensemble algorithms also perform
 and scale well, unlike RBFs and GPR which appear to behave superlinearly. We note that ANNs,
-which are the only family to utilise parallelisation during training, show an
+which are the only family to utilize parallelisation during training, show an
 inverse scaling characteristic. We suspect that this effect may be caused
 by a constant multi-threading overhead that dominates the training process
 on relatively small sets.
@@ -97,7 +97,7 @@ prediction time, or (c)~acceptable performance with the smallest training set.
 To this end, we trained 8~surrogates that are presented in~\Fref{fig:reg-performance}
 and~\Tref{tbl:exp4-detailed-results}.
 Having selected ANNs, GBTs, ERTs, RBFs and SVMs based on the results of
-Experiments~2 \&~3, we utilised the best-performing hyperparameters.
+Experiments~2 \&~3, we utilized the best-performing hyperparameters.
 In pursuit of goal~(a), the best approximator (Model~1,
 ANN) achieved~$R^2=\num{0.998}$ and mean prediction
 time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
