@@ -9,11 +9,13 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-In this work, we develop an empirical surrogate model for the tritium breeding
-ratio (TBR) in an inertial confinement fusion (ICF) reactor. The
-expensive model which our surrogate model approximates is a Monte Carlo (MC)
-neutronics simulation, \textit{Paramak} (provided by collaborator
-Jonathan Shimwell at UKAEA) which returns a prediction of the TBR for a given configuration of a spherical ICF reactor.
+In this work, we develop an empirical
+surrogate model for the tritium breeding ratio
+(TBR) in an inertial confinement fusion (ICF)
+reactor. The expensive model which our
+surrogate model approximates is a Monte
+Carlo (MC) neutronics simulation, \textit{Paramak} which returns a prediction of the TBR for a given configuration of a spherical
+ICF reactor. This was achieved by containerizing (using Docker) the neutronics workflow and providing a (python flask based) API interface that returned TBR values for the provided inputs. The neutronics workflow used OpenMC, Fendl 3.1d nuclear data and a Python 3 environment for receiving the API inputs and for driving the model creation, simulation and results extraction.
 
 \begin{figure}[!ht]
   \centering
@@ -24,7 +26,7 @@ Jonathan Shimwell at UKAEA) which returns a prediction of the TBR for a given co
     \fill[red!40!white]  (0,0) circle (0.1cm);
     \end{tikzpicture}
 
-    \caption{Diagram of the simple sphere geometry (not to scale) where the blanket is \fcolorbox{white}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}}, the firstwall is \fcolorbox{white}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} and the neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}.}
+    \caption{Diagram of the simple sphere geometry (not to scale) where the blanket is \fcolorbox{white}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}}, the first wall is \fcolorbox{white}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} and the neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}.}
     \label{fig:model_diagram}
 \end{figure}
 
