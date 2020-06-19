@@ -1,0 +1,40 @@
+\documentclass{beamer}
+\usetheme{ucl}
+\useoutertheme[small]{ucltitlebanner}
+\setbeamercolor{banner}{bg=darkblue}
+
+%%%%%% Some other settings that can make things look nicer
+%%% Set a smaller indent for description environment
+\setbeamersize{description width=2em}
+%%% Remove nav symbols (and shift any logo down to corner)
+\setbeamertemplate{navigation symbols}{\vspace{-2ex}}
+
+\setbeamertemplate{slide counter}[frameonly]
+
+\title[Surrogate Modelling of the Tritium Breeding Ratio]{Surrogate Modelling of the Tritium Breeding Ratio}
+\author[Petr Mánek \and Graham Van Goffrier]{Petr Mánek \and Graham Van Goffrier}
+\institute[UCL]{%
+	Centre for Doctoral Training in Data Intensive Science \\ %
+	University College London
+}
+\date{22nd June 2020}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage%
+\end{frame}
+
+\section{Introduction}
+\input{introduction}
+
+\section{Decoupled Approach}
+\input{decoupled}
+
+\section{Adaptive Approach}
+\input{adaptive}
+
+\section{Conclusion}
+\input{conclusion}
+
+\end{document}
