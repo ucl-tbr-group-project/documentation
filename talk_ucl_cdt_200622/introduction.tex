@@ -21,16 +21,40 @@
 
 \begin{frame}
 	\frametitle{Problem Description}
-	\begin{itemize}
-		\item % TODO
-	\end{itemize}
+	Tritium breeding blankets convert neutron radiation from the fusion plasma into a steady supply of tritium fuel.
+	\begin{center}
+	$^1_0n + ^6_3Li \rightarrow ^3_1H + ^4_2He$ \hspace{20pt} $^1_0n + ^7_3Li \rightarrow ^3_1H + ^4_2He + ^1_0n$
+	\end{center}
+	However, the tritium breeding ratio (TBR) depends on numerous geometric and material parameters.\newline
+	
+	TBR evaluation \textit{Paramak} achieves very accurate results by OpenMC Monte Carlo neutronics simulation, but is computationally expensive.
+	
+	\vspace{15pt}
+	
+	\begin{center}
+	    \textbf{Our Challenge:}
+	\end{center}
+	
+	\begin{center}
+	    \textbf{Produce a fast TBR function which strongly approximates Paramak, making use of the latest in surrogate modelling techniques.}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Data Generation}
-	\begin{itemize}
-		\item % TODO
-	\end{itemize}
+	We designed the Approximate TBR Evaluator (ATE) package to generate training and test datasets from Paramak.\newline
+	 \begin{columns}[onlytextwidth,T]
+      \column{\dimexpr\linewidth-6cm-5mm}
+        
+        UCL's Hypatia cluster provided the multithreading power for us to produce one million TBR samples, representing 27 days of runtime.\newline
+        
+        These runs included full evaluations on the 18 continuous discrete parameters of Paramak, and "slice" evaluations with all discrete parameters frozen.
+
+      \column{6cm}
+      \vspace{0cm}
+      \includegraphics[trim={0 0 0 2mm},clip,width=6cm]{params}
+
+    \end{columns}
 \end{frame}
 
 %\begin{frame}
