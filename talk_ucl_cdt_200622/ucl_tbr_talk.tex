@@ -1,16 +1,21 @@
 \documentclass{beamer}
+
+% Main theme configuration
 \usetheme{ucl}
 \useoutertheme[small]{ucltitlebanner}
 \setbeamercolor{banner}{bg=darkblue}
 
-%%%%%% Some other settings that can make things look nicer
-%%% Set a smaller indent for description environment
+% Packages and settings
+\graphicspath{{./fig_final_report/}{./fig_paper/}{./fig/}}
+
+% Set a smaller indent for description environment
 \setbeamersize{description width=2em}
-%%% Remove nav symbols (and shift any logo down to corner)
+
+% Remove nav symbols (and shift any logo down to corner)
 \setbeamertemplate{navigation symbols}{\vspace{-2ex}}
 
-\setbeamertemplate{slide counter}[frameonly]
-
+% Metadata
+\titlegraphic{\includegraphics[width=0.12\paperwidth]{ukaea_logo}}
 \title[Surrogate Modelling of the Tritium Breeding Ratio]{Surrogate Modelling of the Tritium Breeding Ratio}
 \author[Petr Mánek \and Graham Van Goffrier]{Petr Mánek \and Graham Van Goffrier}
 \institute[UCL]{%
@@ -21,10 +26,12 @@
 
 \begin{document}
 
+% Title slide
 \begin{frame}
   \titlepage%
 \end{frame}
 
+% Body of the presentation is organized in separate files
 \section{Introduction}
 \input{introduction}
 
