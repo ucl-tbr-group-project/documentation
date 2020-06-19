@@ -14,8 +14,16 @@
 % Remove nav symbols (and shift any logo down to corner)
 \setbeamertemplate{navigation symbols}{\vspace{-2ex}}
 
+% Title slide logos
+\newlength{\titlegraphicheight}
+\setlength{\titlegraphicheight}{0.15\paperheight}
+\titlegraphic{%
+	\includegraphics[height=\titlegraphicheight]{cdt_dis_logo}%
+	\hspace{15pt}%
+	\includegraphics[height=\titlegraphicheight]{ukaea_logo}%
+}
+
 % Metadata
-\titlegraphic{\includegraphics[width=0.12\paperwidth]{ukaea_logo}}
 \title[Surrogate Modelling of the Tritium Breeding Ratio]{Surrogate Modelling of the Tritium Breeding Ratio}
 \author[Petr Mánek \and Graham Van Goffrier]{Petr Mánek \and Graham Van Goffrier}
 \institute[UCL]{%
