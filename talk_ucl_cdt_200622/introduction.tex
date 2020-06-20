@@ -22,9 +22,13 @@
 \begin{frame}
 	\frametitle{Problem Description}
 	Tritium breeding blankets convert neutron radiation from the fusion plasma into a steady supply of tritium fuel.
-	\begin{center}
-	$^1_0n + ^6_3Li \rightarrow ^3_1H + ^4_2He$ \hspace{20pt} $^1_0n + ^7_3Li \rightarrow ^3_1H + ^4_2He + ^1_0n$
-	\end{center}
+	\begin{align*}
+		\isotope[1][0]{n} + \isotope[6][3]{Li} \rightarrow \isotope[3][1]{H} +
+		\isotope[4][2]{He}
+		\qquad\qquad
+		\isotope[1][0]{n} + \isotope[7][3]{Li} \rightarrow \isotope[3][1]{H} +
+		\isotope[4][2]{He} + \isotope[1][0]{n}
+	\end{align*}
 	However, the tritium breeding ratio (TBR) depends on numerous geometric and material parameters.\newline
 	
 	TBR evaluation \textit{Paramak} achieves very accurate results by OpenMC Monte Carlo neutronics simulation, but is computationally expensive.
