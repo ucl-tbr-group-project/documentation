@@ -71,11 +71,8 @@
 
 			\begin{itemize}
 				\item
-					Regression performance (capability to approximate)
-					\begin{itemize}
-						\item Absolute: mean absolute error, $\sigma$ of error
-						\item Relative: $R^2$, $R^2_\text{adj.}$
-					\end{itemize}
+					Regression performance: mean absolute error, $\sigma$ of
+					error, $R^2$, $R^2_\text{adj.}$
 				\item
 					Computational complexity:
 					wall training \& prediction time / sample.
@@ -85,7 +82,7 @@
 			\begin{enumerate}
 				\item
 					Decoupled -- trains models from previously sampled
-					$\mathcal{T}=\{(x,f(x))\}$.
+					datapoints.
 				\item
 					Adaptive -- repeats sampling \& model training, increases
 					sampling density in low-performance regions.
