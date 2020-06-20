@@ -7,9 +7,29 @@
 
 \begin{frame}
 	\frametitle{Experiments 1 \& 2: Hyperparameter Tuning}
-	\begin{itemize}
-		\item % TODO
-	\end{itemize}
+
+	\includegraphics[height=95pt]{exp1_slice0}\hfill%
+	\includegraphics[height=95pt]{exp1_slice1}\hfill%
+	\includegraphics[height=95pt]{exp1_slice2}
+
+	\begin{columns}
+		\column{0.28\textwidth}
+		\includegraphics[height=95pt]{exp2_time_vs_reg}
+		\column{0.72\textwidth}
+		\begin{itemize}
+			\item
+				Experiment 1 (3x top), Experiment 2 (left).
+			\item
+				Showing the best 20 surrogates per family.
+			\item
+				Omitting discrete features yields only a negligible
+				improvement in performance.
+			\item
+				Overall dominated by tree-based surrogates (GBTs, ERTs) and
+				neural networks.
+		\end{itemize}
+	\end{columns}
+
 \end{frame}
 
 \begin{frame}
