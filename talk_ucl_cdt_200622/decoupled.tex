@@ -72,16 +72,18 @@
 \begin{frame}
 	\frametitle{Experiment 4: Model Comparison}
 	\begin{columns}
-		\column{0.59\textwidth}
+		\column{0.7\textwidth}
 		\begin{itemize}
 			\item
-				Plots show true vs.~predicted TBR by Models~1-8,
+				Trained 8~models for practical use.
+			\item
+				Plots show true vs.~predicted TBR by Models~1, 2 \& 4,
 				coloured by density.
 			\item
 				Best regression performance:
 				\begin{itemize}
 					\item
-						Model 1, ANN, 500K~samples.
+						Model 1: ANN, 500K~samples.
 					\item
 						$R^2=\num{0.998}$,
 						$\sigma=\num{0.013}$,
@@ -93,7 +95,7 @@
 				Fastest prediction:\textsuperscript{\textdagger}
 				\begin{itemize}
 					\item
-						Model 2, ANN, 500K~samples.
+						Model 2: ANN, 500K~samples.
 					\item
 						$R^2=\num{0.985}$,
 						$\sigma=\num{0.033}$,
@@ -105,7 +107,7 @@
 				Smallest training set:\textsuperscript{\textdagger}
 				\begin{itemize}
 					\item
-						Model 4, GBT, 10K~samples.
+						Model 4: GBT, 10K~samples.
 					\item
 						$R^2=\num{0.913}$,
 						$\sigma=\num{0.072}$,
@@ -120,15 +122,10 @@
 			with acceptable regression performance.
 		}
 
-		\column{0.41\textwidth}
-		\includegraphics[height=60pt]{exp4_model6_rasterized}\hfill%
-		\includegraphics[height=60pt]{exp4_model7_rasterized}\\\vspace{-4pt}%
-		\includegraphics[height=60pt]{exp4_model1_rasterized}\hfill%
-		\includegraphics[height=60pt]{exp4_model3_rasterized}\\\vspace{-4pt}%
-		\includegraphics[height=60pt]{exp4_model4_rasterized}\hfill%
-		\includegraphics[height=60pt]{exp4_model5_rasterized}\\\vspace{-4pt}%
-		\includegraphics[height=60pt]{exp4_model2_rasterized}\hfill%
-		\includegraphics[height=60pt]{exp4_model8_rasterized}%
+		\column{0.3\textwidth}
+		\includegraphics[height=83pt]{exp4_model6_rasterized}\vspace{-8pt}\\
+		\includegraphics[height=83pt]{exp4_model7_rasterized}\vspace{-8pt}\\
+		\includegraphics[height=83pt]{exp4_model3_rasterized}
 
 		% TODO: remove some plots
 		% TODO: say that we are showing only a subset
