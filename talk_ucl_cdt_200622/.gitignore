@@ -6,3 +6,6 @@
 *.out
 *.snm
 *.toc
+banners
+*.sty
+GPUCache

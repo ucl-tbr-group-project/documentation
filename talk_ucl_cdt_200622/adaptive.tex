@@ -20,7 +20,30 @@
 
 \begin{frame}
 	\frametitle{Application on Toy Theory}
-	\begin{itemize}
-		\item % TODO
-	\end{itemize}
+	        Toy functional TBR theory with wavenumber n, and similar ANN performance to Paramak:\newline
+
+        \begin{center}
+        $\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]$\newline
+        \end{center}
+    \begin{columns}[onlytextwidth,T]
+      \column{\dimexpr\linewidth-4cm-5mm}
+        
+        Evaluation was performed both on the adaptively-sampled dataset and on a baseline uniform-random dataset.\newline
+        
+        An baseline scheme with incremental but uniform-random samples was used as a placebo comparison.
+        
+
+      \column{4cm}
+      \includegraphics[trim={1.3cm 1.3cm 0 0},clip,width=4cm]{sintoy}
+
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Adaptive Sampling: Results}
+    
+    \begin{center}
+    \includegraphics[width=12cm]{qassresult}
+    \end{center}
+
 \end{frame}
