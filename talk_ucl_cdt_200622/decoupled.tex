@@ -67,7 +67,63 @@
 
 \begin{frame}
 	\frametitle{Experiment 4: Model Comparison}
-	\begin{itemize}
-		\item % TODO
-	\end{itemize}
+	\begin{columns}
+		\column{0.59\textwidth}
+		\begin{itemize}
+			\item
+				Plots show true vs.~predicted TBR by Models~1-8,
+				coloured by density.
+			\item
+				Best regression performance:
+				\begin{itemize}
+					\item
+						Model 1, ANN, 500K~samples.
+					\item
+						$R^2=\num{0.998}$,
+						$\sigma=\num{0.013}$,
+					\item
+						$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$,
+						$\num{6916416} \times$~faster.
+				\end{itemize}
+			\item
+				Fastest prediction:\textsuperscript{\textdagger}
+				\begin{itemize}
+					\item
+						Model 2, ANN, 500K~samples.
+					\item
+						$R^2=\num{0.985}$,
+						$\sigma=\num{0.033}$,
+					\item
+						$\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$,
+						$\num{8659251} \times$~faster.
+				\end{itemize}
+			\item
+				Smallest training set:\textsuperscript{\textdagger}
+				\begin{itemize}
+					\item
+						Model 4, GBT, 10K~samples.
+					\item
+						$R^2=\num{0.913}$,
+						$\sigma=\num{0.072}$,
+					\item
+						$\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$,
+						$\num{1269777} \times$~faster.
+				\end{itemize}
+		\end{itemize}
+
+		{\footnotesize
+			\textsuperscript{\textdagger}
+			with acceptable regression performance.
+		}
+
+		\column{0.41\textwidth}
+		\includegraphics[height=60pt]{exp4_model6_rasterized}\hfill%
+		\includegraphics[height=60pt]{exp4_model7_rasterized}\\\vspace{-4pt}%
+		\includegraphics[height=60pt]{exp4_model1_rasterized}\hfill%
+		\includegraphics[height=60pt]{exp4_model3_rasterized}\\\vspace{-4pt}%
+		\includegraphics[height=60pt]{exp4_model4_rasterized}\hfill%
+		\includegraphics[height=60pt]{exp4_model5_rasterized}\\\vspace{-4pt}%
+		\includegraphics[height=60pt]{exp4_model2_rasterized}\hfill%
+		\includegraphics[height=60pt]{exp4_model8_rasterized}%
+	\end{columns}
 \end{frame}
