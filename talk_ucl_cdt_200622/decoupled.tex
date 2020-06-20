@@ -15,6 +15,7 @@
 	\begin{columns}
 		\column{0.28\textwidth}
 		\includegraphics[height=95pt]{exp2_time_vs_reg}
+
 		\column{0.72\textwidth}
 		\begin{itemize}
 			\item
@@ -34,9 +35,34 @@
 
 \begin{frame}
 	\frametitle{Experiment 3: Scaling Benchmark}
-	\begin{itemize}
-		\item % TODO
-	\end{itemize}
+	\begin{columns}
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item
+				We observe a hierarchy.
+			\item
+				Best-performing families from the previous experiments also scale the
+				best in $t_\text{pred}$.
+			\item
+				More samples: neural networks outperform tree-based models.
+		\end{itemize}
+
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item
+				Instance-based surrogates offer train trivially but have
+				complex lookup strategies.
+			\item
+				Neural networks show inverse scaling due to
+				parallelization.
+		\end{itemize}
+	\end{columns}
+
+	\vspace{1em}
+
+	\includegraphics[height=95pt]{scaling_metric_r2}
+	\includegraphics[height=95pt]{scaling_time_train}
+	\includegraphics[height=95pt]{scaling_time_pred}
 \end{frame}
 
 \begin{frame}
