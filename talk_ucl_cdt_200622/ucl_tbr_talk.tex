@@ -24,6 +24,18 @@
 	\includegraphics[height=\titlegraphicheight]{ukaea_logo}%
 }
 
+% Use title slide at section beginning
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
 % Metadata
 \title[Surrogate Modelling of the Tritium Breeding Ratio]{Surrogate Modelling of the Tritium Breeding Ratio}
 \author[Petr Mánek \and Graham Van Goffrier]{Petr Mánek \and Graham Van Goffrier}
@@ -41,7 +53,6 @@
 \end{frame}
 
 % Body of the presentation is organized in separate files
-\section{Introduction}
 \input{introduction}
 
 \section{Decoupled Approach}
@@ -50,7 +61,6 @@
 \section{Adaptive Approach}
 \input{adaptive}
 
-\section{Conclusion}
 \input{conclusion}
 
 \end{document}
