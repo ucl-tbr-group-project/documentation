@@ -18,22 +18,45 @@
 \begin{frame}
 	\frametitle{Experiments 1 \& 2: Hyperparameter Tuning}
 
-	\includegraphics[height=95pt]{exp1_slice0}\hfill%
-	\includegraphics[height=95pt]{exp1_slice1}\hfill%
-	\includegraphics[height=95pt]{exp1_slice2}
+	\begin{minipage}{0.32\textwidth}
+		\begin{center}
+			\footnotesize
+			\hspace{5pt} Experiment~1, slice~(a)
+			\vspace{-10pt}
+		\end{center}
+		\includegraphics[height=95pt]{exp1_slice0}
+	\end{minipage}
+	\begin{minipage}{0.32\textwidth}
+		\begin{center}
+			\footnotesize
+			\hspace{5pt} Experiment~1, slice~(b)
+			\vspace{-10pt}
+		\end{center}
+		\includegraphics[height=95pt]{exp1_slice1}
+	\end{minipage}
+	\begin{minipage}{0.32\textwidth}
+		\begin{center}
+			\footnotesize
+			\hspace{5pt} Experiment~1, slice~(c)
+			\vspace{-10pt}
+		\end{center}
+		\includegraphics[height=95pt]{exp1_slice2}
+	\end{minipage}
 
 	\begin{columns}
 		\column{0.28\textwidth}
 		\includegraphics[height=95pt]{exp2_time_vs_reg}
+		\begin{center}
+			\footnotesize
+			\vspace{-10pt}
+			\hspace{20pt} Experiment~2
+		\end{center}
 
 		\column{0.72\textwidth}
 		\begin{itemize}
 			\item
-				Experiment 1 ($3\times$ top), Experiment 2 (left).
-				Plots show $\overline{t}_\text{pred.}$ vs.~$R^2$ (best = upper
-				left).
-			\item
-				Showing the best 20 surrogates per family.
+				Plots show $\overline{t}_\text{pred.}$ vs.~$R^2$ for 20 best surrogates per family (fastest, most
+				accurate = top left).
 			\item
 				Omitting discrete features yields only a negligible
 				improvement in performance.
