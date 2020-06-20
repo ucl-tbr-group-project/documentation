@@ -1,7 +1,29 @@
 \begin{frame}
 	\frametitle{Outline}
-	Compare 9~state-of-the-art surrogate families in 4~experiments:
-	
+	Compared 9~state-of-the-art surrogate families:
+
+	\begin{columns}
+		\column{0.48\textwidth}
+		\begin{itemize}
+			\item Support vector machines,
+			\item Gradient boosted trees,
+			\item Extremely randomized trees,
+			\item AdaBoosted decision trees,
+			\item Gaussian process regression,
+		\end{itemize}
+
+		\column{0.52\textwidth}
+		\begin{itemize}
+			\item $k$ nearest neighbors,
+			\item Artificial neural networks (MLP),
+			\item Inverse distance weighting,
+			\item Radial basis functions.
+		\end{itemize}
+	\end{columns}
+
+	\vspace{2em}
+
+	Performed 4~experiments:
 	\begin{enumerate}
 		\item
 			Hyperparameter tuning (simplified) -- Bayesian optimization,

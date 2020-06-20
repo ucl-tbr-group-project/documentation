@@ -68,26 +68,28 @@
 
 \begin{frame}
 	\frametitle{Methodology}
-			Conventional regression task -- search for a cheap surrogate $\hat{f}(x)$ that
-			minimizes dissimilarity with an expensive function $f(x)$:
+		Conventional regression task -- search for a cheap surrogate $\hat{f}(x)$ that
+		minimizes dissimilarity with an expensive function $f(x)$:
 
-			\begin{itemize}
-				\item
-					Regression performance: mean absolute error, $\sigma$ of
-					error, $R^2$, $R^2_\text{adj.}$
-				\item
-					Computational complexity:
-					training \& prediction time / sample.
-			\end{itemize}
+		\begin{itemize}
+			\item
+				Regression performance: mean absolute error, $\sigma$ of
+				error, $R^2$, $R^2_\text{adj.}$
+			\item
+				Computational complexity:
+				training \& prediction time / sample.
+		\end{itemize}
 
-			2 approaches for surrogate training:
-			\begin{enumerate}
-				\item
-					Decoupled -- trains models from previously sampled
-					datapoints.
-				\item
-					Adaptive -- repeats sampling \& model training, increases
-					sampling density in low-performance regions.
-			\end{enumerate}
+		\vspace{2em}
+
+		2 approaches for surrogate training:
+		\begin{enumerate}
+			\item
+				Decoupled -- trains models from previously sampled
+				datapoints.
+			\item
+				Adaptive -- repeats sampling \& model training, increases
+				sampling density in low-performance regions.
+		\end{enumerate}
 \end{frame}
 
