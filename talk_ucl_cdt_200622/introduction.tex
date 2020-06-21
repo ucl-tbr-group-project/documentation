@@ -13,8 +13,8 @@
 		\vspace{10pt}
 		\item Modern designs require enriched Hydrogen fuel of two varieties:
 	    \begin{itemize}
-		    \item Deuterium ($^2$H) -- abundant in naturally-sourced water
-		    \item Tritium ($^3$H) -- extremely rare, but can be produced \textit{in-reactor}
+		    \item Deuterium ($^2$H) -- abundant in naturally-sourced water.
+		    \item Tritium ($^3$H) -- extremely rare, but can be produced \textit{in-reactor}.
 		\end{itemize}
 	\end{itemize}
 	\vspace{10pt}
@@ -49,22 +49,22 @@
 
 \begin{frame}
 	\frametitle{Data Generation}
-	We designed the Approximate TBR Evaluator (ATE) package to generate training and test datasets from Paramak.\newline
+	We produced training and test datasets by uniform random sampling over the 7 discrete and 11 continuous parameters of Paramak.\newline
 	 \begin{columns}[onlytextwidth,T]
       \column{\dimexpr\linewidth-7cm-5mm}
         
-        Deployed Paramak on UCL's Hypatia cluster:
+        Paramak was deployed on UCL's Hypatia cluster:
         \begin{itemize}
-            \item Generated 1M samples
-            \item 27 days of runtime
+            \item Generated 1M samples.
+            \item 27 days of runtime.
         \end{itemize}
         
         	\vspace{10pt}
         
         Two classes of runs:
         \begin{itemize}
-            \item Full -- 18 discrete and continuous parameters
-            \item Slice -- 11 continuous parameters
+            \item All parameters free.
+            \item Discrete fixed, continuous free.
         \end{itemize}
         
       \column{7cm}
