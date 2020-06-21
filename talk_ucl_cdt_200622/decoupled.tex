@@ -154,11 +154,16 @@
 			\item
 				Plots show true vs.~predicted TBR by Models~1, 2 \& 4,
 				coloured by density.
+		\end{itemize}
+
+		\vspace{0.5em}
+
+		\begin{itemize}
 			\item
-				Best regression performance:
+				Model~1 -- best regression performance:
 				\begin{itemize}
 					\item
-						Model 1: ANN, 500K~samples.
+						ANN (4-layer MLP), 500K~samples.
 					\item
 						$R^2=\num{0.998}$,
 						$\sigma=\num{0.013}$,
@@ -167,10 +172,10 @@
 						$\num{6916416} \times$~faster.
 				\end{itemize}
 			\item
-				Fastest prediction:\textsuperscript{\textdagger}
+				Model~2 -- fastest prediction:\textsuperscript{\textdagger}
 				\begin{itemize}
 					\item
-						Model 2: ANN, 500K~samples.
+						ANN (2-layer MLP), 500K~samples.
 					\item
 						$R^2=\num{0.985}$,
 						$\sigma=\num{0.033}$,
@@ -179,10 +184,10 @@
 						$\num{8659251} \times$~faster.
 				\end{itemize}
 			\item
-				Smallest training set:\textsuperscript{\textdagger}
+				Model~4 -- smallest training set:\textsuperscript{\textdagger}
 				\begin{itemize}
 					\item
-						Model 4: GBT, 10K~samples.
+						GBT, 10K~samples.
 					\item
 						$R^2=\num{0.913}$,
 						$\sigma=\num{0.072}$,
@@ -201,8 +206,5 @@
 		\includegraphics[height=83pt]{exp4_model6_rasterized}\vspace{-8pt}\\
 		\includegraphics[height=83pt]{exp4_model7_rasterized}\vspace{-8pt}\\
 		\includegraphics[height=83pt]{exp4_model3_rasterized}
-
-		% TODO: remove some plots
-		% TODO: say that we are showing only a subset
 	\end{columns}
 \end{frame}
