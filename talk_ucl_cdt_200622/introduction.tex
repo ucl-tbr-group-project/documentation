@@ -24,22 +24,24 @@
 \begin{frame}
 	\frametitle{Problem Description}
 	Breeding blankets convert neutron radiation from the fusion plasma into a steady supply of tritium fuel.
-	\begin{center}
-	$^1_0n + ^6_3Li \rightarrow ^3_1H + ^4_2He$ \hspace{20pt} $^1_0n + ^7_3Li \rightarrow ^3_1H + ^4_2He + ^1_0n$
-	\end{center}
+	\begin{align*}
+		\isotope[1][0]{n} + \isotope[6][3]{Li} \rightarrow \isotope[3][1]{H} +
+		\isotope[4][2]{He}
+		\qquad\qquad
+		\isotope[1][0]{n} + \isotope[7][3]{Li} \rightarrow \isotope[3][1]{H} +
+		\isotope[4][2]{He} + \isotope[1][0]{n}
+	\end{align*}
 	However, the tritium breeding ratio (TBR) depends on numerous geometric and material parameters.\newline
 	
 	TBR evaluation \textit{Paramak} achieves very accurate results by OpenMC Monte Carlo neutronics simulation, but is computationally expensive.
 	
 	\vspace{15pt}
 	
-	\begin{center}
-	    \textbf{Our Challenge:}
-	\end{center}
-	
-	\begin{center}
-	    \textbf{Produce a fast TBR function which strongly approximates Paramak, making use of the latest in surrogate modelling techniques.}
-	\end{center}
+	\begin{block}{Our Challenge:}
+		\begin{center}
+			Produce a fast TBR function that strongly approximates Paramak, making use of the latest in surrogate modelling techniques.
+		\end{center}
+	\end{block}
 \end{frame}
 
 \begin{frame}
@@ -68,29 +70,28 @@
 
 \begin{frame}
 	\frametitle{Methodology}
-			Conventional regression task -- search for a cheap surrogate $\hat{f}(x)$ that
-			minimizes dissimilarity with an expensive function $f(x)$:
+		Conventional regression task -- search for a cheap surrogate $\hat{f}(x)$ that
+		minimizes dissimilarity with an expensive function $f(x)$:
 
-			\begin{itemize}
-				\item
-					Regression performance (capability to approximate)
-					\begin{itemize}
-						\item Absolute: mean absolute error, $\sigma$ of error
-						\item Relative: $R^2$, $R^2_\text{adj.}$
-					\end{itemize}
-				\item
-					Computational complexity:
-					wall training \& prediction time / sample.
-			\end{itemize}
+		\begin{itemize}
+			\item
+				Regression performance: mean absolute error, $\sigma$ of
+				error, $R^2$, $R^2_\text{adj.}$
+			\item
+				Computational complexity:
+				training \& prediction time / sample.
+		\end{itemize}
 
-			2 approaches for surrogate training:
-			\begin{enumerate}
-				\item
-					Decoupled -- trains models from previously sampled
-					$\mathcal{T}=\{(x,f(x))\}$.
-				\item
-					Adaptive -- repeats sampling \& model training, increases
-					sampling density in low-performance regions.
-			\end{enumerate}
+		\vspace{2em}
+
+		2 approaches for surrogate training:
+		\begin{enumerate}
+			\item
+				Decoupled -- trains models from previously sampled
+				datapoints.
+			\item
+				Adaptive -- repeats sampling \& model training, increases
+				sampling density in low-performance regions.
+		\end{enumerate}
 \end{frame}
 
