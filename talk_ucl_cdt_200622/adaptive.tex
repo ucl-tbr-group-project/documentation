@@ -3,14 +3,14 @@
 	 \begin{columns}[onlytextwidth,T]
       \column{\dimexpr\linewidth-6cm-5mm}
         
-        How can we take advantage of surrogate information content \textit{during training} to reduce sample quantity?\newline
+        How can we take advantage of surrogate information content \textit{during training} to reduce sample quantity? \newline
         
         We developed a new technique:
         \vspace{-5pt}
         \begin{enumerate}
         \item Construct surrogate quality distribution by nearest- neighbour interpolation.
         \item Draw candidate samples by quality using MCMC.
-        \item Include samples with high crowding distance.
+        \item Include samples with greatest separation from neighbours.
         \item Repeat!
         \end{enumerate}
       \column{6cm}
@@ -21,7 +21,7 @@
 
 \begin{frame}
 	\frametitle{Application on Toy Theory}
-	Toy functional TBR theory with wavenumber n, and similar ANN performance to Paramak:
+	Toy functional TBR theory with wavenumber n, and qualitatively comparable ANN performance to Paramak:
 	\begin{align*}
 		\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 	\end{align*}
@@ -58,7 +58,7 @@
     Equivalently, $6\%$ decrease in samples needed for same accuracy
 
 \end{frame}
-1
+
 
 \begin{frame}
     \frametitle{Adaptive Sampling: Results}
