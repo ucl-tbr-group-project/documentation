@@ -5,13 +5,14 @@
         
         Adaptive sampling takes advantage of surrogate information content \textit{during training} to reduce sample quantity.\newline
         
-        We developed a technique which is novel in the literature:
-        \begin{itemize}
+        We developed a new technique:
+        \vspace{-5pt}
+        \begin{enumerate}
         \item Construct surrogate quality distribution by nearest- neighbour interpolation.
         \item Draw candidate samples by quality using MCMC.
         \item Include samples with high crowding distance.
         \item Repeat!
-        \end{itemize}
+        \end{enumerate}
       \column{6cm}
       \includegraphics[width=8cm]{qassplan}
 
@@ -30,9 +31,14 @@
 	\begin{columns}[T]
 		\column{0.5\paperwidth}
 		\vspace{0.5em}
-		Evaluation performed both on the adaptively-sampled dataset and on a baseline uniform-random dataset.\newline
+		Two evaluation sets:
+		\begin{itemize}
+		    \item Adaptively-sampled dataset
+		    \item Independent random dataset
+		\end{itemize}
+		\vspace{15pt}
 
-		An baseline scheme with incremental but uniform-random samples used as a placebo comparison.
+		Placebo comparison -- a baseline scheme without MCMC, incremental uniform-random samples.
 
 
 		\column{0.4\paperwidth}
@@ -43,9 +49,36 @@
 
 \begin{frame}
     \frametitle{Adaptive Sampling: Results}
-    
+    \vspace{-10pt}
     \begin{center}
     \includegraphics[width=12cm]{qassresult}
     \end{center}
+    
+    $60\%$ decrease in MAE for independent evaluation (dashed) \newline
+    Equivalently, $6\%$ decrease in samples needed for same accuracy
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Adaptive Sampling: Results}
+    \vspace{-10pt}
+    \begin{center}
+    \includegraphics[width=12cm]{qassresult}
+    \end{center}
+    
+    $60\%$ decrease in MAE for independent evaluation (dashed lines) \newline
+    Equivalently, $6\%$ decrease in samples needed for same accuracy
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Adaptive Sampling: Results}
+    \vspace{-10pt}
+    \begin{center}
+    \includegraphics[width=12cm]{qassincr}
+    \end{center}
+    
+    Fewer incremented samples can lead to better accuracy! \newline
+    But depends on initial samples, specific model -- further study needed.
 
 \end{frame}
