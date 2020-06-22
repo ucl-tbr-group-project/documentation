@@ -1,0 +1,171 @@
+---------------------------------------------------------------------------------------------------
+Methodology:
+
+This brings us to the part of our work, where we define the framework for
+producing surrogate models.
+
+We chose to formulate our problem in the language of regression tasks, which
+means that we introduced common metrics like mean absolute error, its standard
+deviation and R squared, to assess the capability of our surrogates to
+approximate Paramak.
+
+To correctly characterize their computational complexity, or "cheapness" if you
+will, we decided to track the wall time required to train the surrogates and
+to produce predictions per single sample. This was motivated by their use case,
+where the surrogates would serve as a drop-in replacement for the simulation.
+
+We explore 2 possible approaches to training:
+
+What we call a "decoupled" approach is essentially your usual supervised scheme, where
+samples are first produced from Paramak, and later used to train and test surrogate models.
+
+The "adaptive" approach aims to be a bit smarter than that. In this scheme,
+which can also be viewed as a generalization, we sample, train and evaluate
+surrogates repeatedly. The motivation here is that we bias the proposal
+distribution in order to sample more densely in regions where the surrogate
+approximation breaks down.
+
+
+---------------------------------------------------------------------------------------------------
+Decoupled Approach:
+
+Let's first talk about the decoupled approach.
+
+
+---------------------------------------------------------------------------------------------------
+Outline:
+
+Based on literature, we selected 9 families of state-of-the-art regressors.
+These are well-known methods based on tree ensembles, neural networks,
+interpolation, randomization and instance-based learning.
+
+Since we didn't know which of these models would be the most suitable
+for our task, we proposed to compare them in 4 experiments.
+
+In the first two, we try to train the best possible regressors from each family.
+We achieve this by tuning their hyperparameters through the process of Bayesian
+optimization on a validation set. Since we expect that discontinuities induced
+by discrete features may adversely impact some surrogates more than others, we
+actually perform this process twice - with and without the discrete features -
+to study this effect.
+
+In the third experiment, we take the best-performing surrogates from each family
+and retrain them on sets of varying sizes to examine their scaling behaviour.
+
+In the fourth and final experiment, we utilize all of the previously collected
+information to train surrogates with desirable properties for practical use.
+
+Let's now discuss the results.
+
+
+---------------------------------------------------------------------------------------------------
+Experiments 1 & 2:
+
+The first two experiments produced thousands of surrogates. In this slide,
+we decided to conveniently visualize them as scattered points, indexed by the
+prediction time on the X axis and regression performance on the Y axis. This
+way, the most desirable models, which are the fastest and the most accurate, can
+be found in the top left quadrant of each plot.
+
+Looking at the results of experiment 1, which withholds discrete features,
+we can observe surrogate clusters of varying sizes. Furthermore, we notice that
+their spread seems to be in part determined by our choice of the assignment,
+which is not desirable. We wouldn't want the efficacy of our training process to
+depend on data.
+
+In comparison, the results of the second experiment, which does not impose any
+feature restrictions at all, do not appear much worse. This suggests that even
+though there seems to be a consistently negative effect on performance induced
+by discontinuities, fixing and withholding discrete features from training does
+not appear to be a very effective remedy.
+
+Furthermore, in all examined cases the results were dominated by neural
+networks and tree-based surrogates both in terms of prediction time and
+regression performance. Since these regression methods are known to handle
+discontinuities well, and none of the other models beat them even in the
+simplified first experiment, we chose to proceed with the full, unrestricted
+task without any additional pre-processing.
+
+
+---------------------------------------------------------------------------------------------------
+Experiment 3:
+
+In the third experiment, we re-trained the best-performing models from each
+family on datasets of varying sizes to examine their scaling behavior.
+As you can see in the plots, while the results are obviously consistent with the
+expectation that larger training sets produce more accurate but slower
+surrogates, we can definitely recognize a hierarchy between the evaluated families.
+
+Curiously, in terms of regression performance, the same families that dominated
+the previous two experiments seem to also show the most desirable scaling
+characteristics. In particular, these are the gradient boosted trees (plotted in
+orange), extremely random trees (plotted in green) and neural networks (plotted
+in pink). We should note that while trees converge the fastest, neural networks seem
+to require relatively larger datasets to achieve the same level of performance.
+However, on the largest sets both families of surrogates seem comparable.
+
+In terms of training and prediction times, we notice that most families behave
+somewhat similarly with the exception of instance-based methods. Since these
+methods effectively memorize the dataset, their training is achieved trivially at the
+expense of complex lookups later during prediction. This results in training
+times close to zero and superlinear prediction scaling.
+
+
+---------------------------------------------------------------------------------------------------
+Experiment 4:
+
+In the fourth and final experiment, we utilized all the information we collected
+thus far. We used the best-performing hyperparameters and selected the models
+that scaled the best. In the end, we trained eight models with desirable properties
+for practical use. In this slide, we highlight three of them.
+
+The best regression performance was achieved by a neural network trained on 500K
+samples. It was capable of predicting TBR with standard deviation of 0.01 and R
+squared of 99.8 percent.
+
+The fastest surrogate was coincidentally also a neural network trained on 500K
+samples, albeit a bit smaller in its architecture. It was able to produce
+predictions within 0.9 microseconds, which corresponds to average relative speedup
+of roughly 8.7 million compared to the original Paramak simulation.
+
+Finally, we include a model based on gradient boosted trees that
+showed acceptable regression performance as well as prediction time, but did so
+with only 1/50 of the training data compared to the first two. This nicely
+illustrates that our results are not only focused on producing the very best
+surrogates, but also provide a sense of a broad spectrum of trade-offs between
+different surrogate properties, making it possible to design and train
+surrogates depending on the requirements of any particular application.
+
+Let's now move on to the surrgoates trained using the adaptive approach.
+
+
+---------------------------------------------------------------------------------------------------
+Adaptive Approach:
+
+I will now pass the word back to Graham, who will tell you more about the new
+adaptive algorithm we developed.
+
+
+---------------------------------------------------------------------------------------------------
+Conclusion:
+
+Over the course of our 4-month project, we generated over a million samples from
+the Paramak simulation. We used this data to explore two possible avenues of training
+surrogate models. A conventional decoupled approach, and a self-compensating adaptive
+approach.
+
+In the decoupled scheme, we reviewed 9 state-of-the-art regressors. Having tuned
+their hyperparameters and tested their scaling behaviour, we found that the most
+suitable surrogate family both in terms of regression performance and complexity
+can be determined using a simple heuristic depending on the training set size.
+While gradient boosted trees seem to perform better on relatively smaller sets,
+they are outperformed by neural networks on larger ones.
+
+Furthermore, we used all collected information to train 8 models suitable for
+practical use, out of which the fastest one was able to produce predictions on
+average 8 million times faster than the original Paramak simulation. And even
+though 500K samples were required to produce such surrogate, we demonstrated
+that comparable models can be trained with as little as 10K.
+
+Back to you Graham.
+
