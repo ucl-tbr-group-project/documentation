@@ -49,27 +49,67 @@
 
 \begin{frame}
 	\frametitle{Data Generation}
-	We produced training and test datasets by uniform random sampling over the 7 discrete and 11 continuous parameters of Paramak.\newline
-	 \begin{columns}[onlytextwidth,T]
-      \column{\dimexpr\linewidth-7cm-5mm}
-        
-        Paramak was deployed on UCL's Hypatia cluster:
-        \begin{itemize}
-            \item Generated 1M samples.
-            \item 27 days of runtime.
-        \end{itemize}
-        
-        	\vspace{10pt}
-        
-        Two classes of runs:
-        \begin{itemize}
-            \item All parameters free.
-            \item Discrete fixed, continuous free.
-        \end{itemize}
-        
-      \column{7cm}
-      \vspace{-0.5cm}
-      \includegraphics[trim={0 0 0 2mm},clip,width=7cm]{params}
+	We produced training and test datasets by uniform random sampling over the 7
+	discrete and 11 continuous parameters of Paramak.
+
+	\begin{columns}[T]
+		\column{0.34\textwidth}
+
+		\vspace{5pt}
+
+		Paramak was deployed on UCL's Hypatia cluster:
+		\begin{itemize}
+		\item Generated 1M samples.
+		\item 27 days of runtime.
+		\end{itemize}
+
+		\vspace{5pt}
+
+		2~classes of runs:
+		\begin{itemize}
+		\item All parameters free.
+		\item Discrete fixed, continuous free.
+		\end{itemize}
+
+		\vspace{5pt}
+
+		{\footnotesize
+		Groups of fractions marked\textsuperscript{\textdagger\textdaggerdbl} are required to sum to 1.
+		}
+
+		\column{0.62\textwidth}
+		\vspace{5pt}
+
+		{\fontsize{8pt}{8pt}\selectfont
+		\setlength\tabcolsep{3pt}
+		\begin{tabular}{l|ll}
+		\toprule
+		{} & Parameter name & Domain\\
+		\midrule
+		\parbox[t]{2mm}{\hspace{-2pt}\multirow{12}{*}{\rotatebox[origin=c]{90}{Blanket}}}
+		   & Breeder fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Breeder \isotope[6]{Li} enrichment fraction & $[0,1]$\\
+		   & Breeder material & $\{\text{Li}_2\text{TiO}_3, \text{Li}_4\text{SiO}_4\}$\\
+		   & Breeder packing fraction & $[0,1]$\\
+		   & Coolant fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Coolant material & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Multiplier fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Multiplier material & $\{\text{Be}, \text{Be}_{12}\text{Ti}\}$\\
+		   & Multiplier packing fraction & $[0,1]$\\
+		   & Structural fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
+		   & Thickness & $[0,500]$\\
+		\midrule
+		\parbox[t]{2mm}{\hspace{-2pt}\multirow{6}{*}{\rotatebox[origin=c]{90}{First wall}}}
+		   & Armour fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
+		   & Coolant fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
+		   & Coolant material & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Structural fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
+		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
+		   & Thickness & $[0,20]$\\
+		\bottomrule
+		\end{tabular}
+		}
 
     \end{columns}
 \end{frame}
