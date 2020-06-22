@@ -28,7 +28,7 @@
 
 	\vspace{-1em}
 	{\footnotesize
-		\hfill(where $C$~is the set of variable indices)
+		\hfill(where $C$~enumerates all continuous variables)
 	}
 
 	\vspace{1em}
@@ -36,14 +36,19 @@
 	\begin{columns}[T]
 		\column{0.5\paperwidth}
 		\vspace{0.5em}
-		2~evaluation sets:
+		Evaluation set:
 		\begin{itemize}
-		    \item Adaptively-sampled dataset
-		    \item Independent random dataset
+		    \item Adaptive samples
+		    \item Generated during runtime
+		\end{itemize}
+		Validation set:
+		\begin{itemize}
+		    \item Uniform random samples
+		    \item Generated independently
 		\end{itemize}
 		\vspace{15pt}
 
-		Placebo comparison -- a baseline scheme without MCMC, incremental uniform-random samples.
+		Placebo comparison -- incremental uniform-random samples, no MCMC.
 
 
 		\column{0.4\paperwidth}
@@ -59,7 +64,7 @@
     \includegraphics[width=12cm]{qassresult}
     \end{center}
     
-    $60\%$ decrease in MAE for independent evaluation (dashed) \newline
+    $60\%$ decrease in MAE for validation set (dashed) \newline
     Equivalently, $6\%$ decrease in samples needed for same accuracy
 
 \end{frame}
