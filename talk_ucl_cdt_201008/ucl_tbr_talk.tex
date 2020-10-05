@@ -1,0 +1,110 @@
+\documentclass{beamer}
+
+% Main theme configuration
+\usetheme{ucl}
+\useoutertheme[small]{ucltitlebanner}
+\setbeamercolor{banner}{bg=darkblue}
+
+% Packages and settings
+\usepackage{siunitx}
+\usepackage{isotope}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\graphicspath{{./fig_final_report/}{./fig_paper/}{./fig/}}
+
+\setbeamercolor{alerted text}{fg=midred}
+
+\newcommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+% Set a smaller indent for description environment
+\setbeamersize{description width=2em}
+
+% Remove nav symbols (and shift any logo down to corner)
+\setbeamertemplate{navigation symbols}{\vspace{-2ex}}
+
+% Title slide logos
+\newlength{\titlegraphicheight}
+\setlength{\titlegraphicheight}{0.15\paperheight}
+\titlegraphic{%
+	\includegraphics[height=\titlegraphicheight]{cdt_dis_logo}%
+	\hspace{15pt}%
+	\includegraphics[height=\titlegraphicheight]{ukaea_logo}%
+}
+
+% Use title slide at section beginning
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+% Metadata
+\title[Surrogate Modelling of the Tritium Breeding Ratio]{Surrogate Modelling of the Tritium Breeding Ratio}
+\author[Petr Mánek \and Graham Van Goffrier]{Petr Mánek \and Graham Van Goffrier}
+\institute[UCL]{%
+	Centre for Doctoral Training in Data Intensive Science \\ %
+	University College London
+}
+\date{8th October 2020}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+  \titlepage%
+\end{frame}
+
+% Body of the presentation is organized in separate files
+\input{introduction}
+
+\section{Decoupled Approach}
+\input{decoupled}
+
+\section{Adaptive Approach}
+\input{adaptive}
+
+\input{conclusion}
+
+\begin{frame}
+	\vspace{2em}
+
+	{\centering
+		\begin{beamercolorbox}[sep=8pt,center]{title}
+			\usebeamerfont{title} Thank you for listening! \par%
+		\end{beamercolorbox}
+	}
+
+	\vspace{2em}
+
+	Petr Mánek \dotfill \email{petr.manek.19@ucl.ac.uk}
+
+	Graham Van~Goffrier \dotfill \email{graham.vangoffrier.19@ucl.ac.uk}
+
+	\vspace{2em}
+
+	{\footnotesize
+	Further reading:
+	\begin{itemize}
+		\item
+			\href{https://github.com/ucl-tbr-group-project/documentation/raw/pinboards-submitted/elevator_pitch/elevator_pitch.pdf}{Single page abstract (available online)}.
+		\item
+			\href{https://github.com/ucl-tbr-group-project/documentation/raw/pinboards-submitted/paper/ucl_tbr_paper.pdf}{Journal article, currently in internal pre-submission review (available online):\\
+			\textit{Fast Regression of the Tritium Breeding Ratio in Fusion
+		Reactors}}.
+		\item
+			\href{https://github.com/ucl-tbr-group-project/documentation/raw/published/final_report/tbr_final_report.pdf}{Industry group project final report (available online)}.
+		\item
+			All models, plots, training data, source code and technical documentation.
+			\url{https://github.com/ucl-tbr-group-project}
+	\end{itemize}
+	}
+
+\end{frame}
+
+\end{document}
