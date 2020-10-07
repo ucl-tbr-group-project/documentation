@@ -3,36 +3,37 @@
 		Nuclear fusion -- the energy of the future!
 		\vfill
 		\begin{columns}
-			\column{0.45\textwidth}
-			\centering{\includegraphics[width=\textwidth]{icf}}
+			\column{0.43\textwidth}
+			\centering{\includegraphics[width=\textwidth,trim={0 0 70pt 0},clip]{icf}}
 			{\tiny
 				Illustration by~Chris Philpot, courtesy of IEEE~Spectrum.
 			}
 
-			\column{0.55\textwidth}
+			\column{0.57\textwidth}
 			\begin{itemize}
-				\item Designing next-gen Inertial Confinement Fusion (ICF)
+				\setlength\itemsep{0.75em}
+				\item Designing next-generation Inertial Confinement Fusion (ICF)
 					facility.
 
-				\item \alert{Fueling} is an important consideration of
-					every design.
+				\item Search for optimal reactor design.
+
+				\item \alert{Fueling} -- important for viability.
 
 				\item Require fuel of 2~varieties:
 				\begin{itemize}
-					\item Deuterium ($^2$H) -- abundant in naturally-sourced water.
-					\item Tritium ($^3$H) -- extremely rare, \alert{produced
-						\textit{in-reactor}.}
+					\setlength\itemsep{0.3em}
+					\item Deuterium $^2$H -- abundant in~naturally-sourced water.
+					\item Tritium $^3$H -- \alert{extremely rare.}
 				\end{itemize}
-				\item
-					How do we find balance between $^3$H~fuel produced and
-					consumed?
+
+				\item Modern reactors can generate tritium during operation.
 			\end{itemize}
 		\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Problem Description}
-	Tritium breeding blankets convert neutron radiation to tritium fuel:
+	\alert{Tritium breeding blankets} convert neutron radiation to $^3$H fuel:
 	\begin{align*}
 		\isotope[1][0]{n} + \isotope[6][3]{Li} \rightarrow \isotope[3][1]{H} +
 		\isotope[4][2]{He}
@@ -40,55 +41,54 @@
 		\isotope[1][0]{n} + \isotope[7][3]{Li} \rightarrow \isotope[3][1]{H} +
 		\isotope[4][2]{He} + \isotope[1][0]{n}
 	\end{align*}
-	\alert{Tritium breeding ratio (TBR)} = fuel bred / fuel consumed
-	
+	\vfill
+	$^3$H balance described by \alert{Tritium Breeding Ratio (TBR)} = $\cfrac{\text{fuel bred}}{\text{fuel consumed}}$
+	\vspace{0.5em}
 	\begin{itemize}
 	    \item Depends on numerous geometric and material parameters.
-	    \item Evaluated precisely by OpenMC neutronics simulation \textit{Paramak}, but is computationally expensive. 
+	    \item Evaluated by \textit{Paramak} -- OpenMC neutronics simulation.
+		\item Slow \ldots we want to consider as many reactor designs as possible!
 	\end{itemize}
-	
-	\vspace{15pt}
-	
+	\vfill
 	\begin{block}{Our Challenge:}
 		\begin{center}
-			Produce a fast TBR function that strongly approximates Paramak, making use of the latest in surrogate modelling techniques.
+			Produce a \textit{fast} TBR surrogate that strongly approximates
+			Paramak.
 		\end{center}
 	\end{block}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Data Generation}
-	We produced training and test datasets by uniform random sampling over the 7
-	discrete and 11 continuous parameters of Paramak.
+	Produced datasets by sampling Paramak outputs over its
+	7~discrete and 11~continuous input parameters at random.
 
 	\begin{columns}[T]
-		\column{0.34\textwidth}
-
-		\vspace{5pt}
-
-		Paramak deployed on UCL's Hypatia cluster:
-		\begin{itemize}
-		\item Generated 1M samples.
-		\item 27 days of runtime.
-		\end{itemize}
+		\column{0.35\textwidth}
 
 		\vspace{10pt}
+
+		Deployed at UCL's Hypatia cluster:
+		\begin{itemize}
+			\setlength\itemsep{0.5em}
+			\item Created \alert{1M~points.}
+			\item \alert{27 days} of runtime.
+		\end{itemize}
+
+		\vspace{13pt}
 
 		2~classes of runs:
 		\begin{itemize}
-		\item All parameters free.
-		\item Discrete fixed, continuous free.
+			\setlength\itemsep{0.5em}
+			\item All parameters free.
+			\item Discrete fixed, continuous free.
 		\end{itemize}
 
 		\vspace{10pt}
 
-		{\footnotesize
-		Groups of fractions marked\textsuperscript{\textdagger\textdaggerdbl} are required to sum to 1.
-		}
 
-		\column{0.62\textwidth}
+		\column{0.6\textwidth}
 		\vspace{5pt}
-
 		{\fontsize{8pt}{8pt}\selectfont
 		\setlength\tabcolsep{3pt}
 		\begin{tabular}{l|ll}
@@ -120,13 +120,18 @@
 		\end{tabular}
 		}
 
+		{\tiny
+		Groups marked\textsuperscript{\textdagger\textdaggerdbl}
+		required to sum to 1.
+		}
+
     \end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Methodology}
 		Conventional regression task -- search for a cheap surrogate $\hat{f}(x)$ that
-		minimizes dissimilarity with an expensive function $f(x)$:
+		\alert{minimizes dissimilarity} with an expensive function $f(x)$:
 
 		\begin{itemize}
 			\item
@@ -137,15 +142,22 @@
 				training \& prediction time / sample
 		\end{itemize}
 
-		\vspace{2em}
+		\vspace{1.5em}
 
-		2~approaches for surrogate training:
+		Decoupled training approach:
 		\begin{enumerate}
-			\item
-				\alert{Decoupled} -- trains models from previously generated samples.
-			\item
-				\alert{Adaptive} -- repeats sampling \& model training, increases
-				sampling density in low-performance regions.
+			\item Collect training dataset at random.
+			\item Use data to train a surrogate.
+		\end{enumerate}
+
+		\vspace{1.5em}
+
+		Adaptive training approach:
+		\begin{enumerate}
+			\item Collect initial training dataset at random.
+			\item Use data to train a surrogate.
+			\item Collect more data in regions where surrogate performed poorly.
+			\item Repeat steps 2 and 3.
 		\end{enumerate}
 \end{frame}
 
