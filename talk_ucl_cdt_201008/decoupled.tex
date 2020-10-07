@@ -77,14 +77,14 @@
 		\column{0.72\textwidth}
 		\begin{itemize}
 			\item
-				Plots show $\overline{t}_\text{pred.}$ vs.~$R^2$ for 20 best
+				Showing $\overline{t}_\text{pred.}$ vs.~$R^2$ for the 20 best
 				surrogates per family (top left $\Leftrightarrow$ fastest, most accurate).
 			\item
-				Omitting discrete features yields only a negligible
-				improvement in performance.
+				Omit discrete features $\rightarrow$ negligible
+				performance improvement.
 			\item
-				Overall dominated by tree-based surrogates (GBTs, ERTs) and
-				neural networks.
+				Dominated by \alert{trees} (GBTs, ERTs) and
+				\alert{neural~networks}.
 		\end{itemize}
 	\end{columns}
 
@@ -98,17 +98,17 @@
 			\item
 				We observe a hierarchy.
 			\item
-				Best-performing families from the previous experiments also scale the
+				\alert{Trees} and \alert{neural networks} scale the
 				best in $\overline{t}_\text{pred.}$.
 			\item
-				More samples: neural networks outperform tree-based models.
+				Maximizing training set size, \alert{neural networks} dominate.
 		\end{itemize}
 
 		\column{0.5\textwidth}
 		\begin{itemize}
 			\item
 				Instance-based surrogates (KNN, IDW) train trivially but have
-				complex lookup.
+				slow lookup.
 			\item
 				Neural networks show inverse scaling due to
 				parallelization.
@@ -150,7 +150,7 @@
 		\column{0.7\textwidth}
 		\begin{itemize}
 			\item
-				Trained 8~models for practical use.
+				Trained \alert{8~models} for practical use.
 			\item
 				Plots show true vs.~predicted TBR by Models~1, 2 \& 4,
 				coloured by density.

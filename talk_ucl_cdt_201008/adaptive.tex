@@ -5,7 +5,7 @@
         
         How can we take advantage of surrogate information content \textit{during training} to reduce sample quantity? \newline
         
-        We developed a new technique:
+		We developed \alert{a new technique:}
         \vspace{-5pt}
         \begin{enumerate}
         \item Construct surrogate quality distribution by nearest- neighbour interpolation.
@@ -21,9 +21,9 @@
 
 \begin{frame}
 	\frametitle{Application on Toy Theory}
-	Toy functional TBR theory with wavenumber n, and qualitatively comparable ANN performance to Paramak:
+	Toy functional TBR theory with wavenumber $n$, and qualitatively comparable ANN performance to Paramak:
 	\begin{align*}
-		\text{TBR} = \frac{1}{|C|}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
+		\text{TBR}_\text{toy} = \frac{1}{|C|}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 	\end{align*}
 
 	\vspace{-1em}
@@ -41,6 +41,7 @@
 		    \item Adaptive samples
 		    \item Generated during runtime
 		\end{itemize}
+		\vspace{0.5em}
 		Validation set:
 		\begin{itemize}
 		    \item Uniform random samples
