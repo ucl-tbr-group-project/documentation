@@ -1,0 +1,11 @@
+*.fls
+*.aux
+*.fdb_latexmk
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+banners
+*.sty
+GPUCache
