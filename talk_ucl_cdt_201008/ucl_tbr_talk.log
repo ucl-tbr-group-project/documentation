@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.8.26)  5 OCT 2020 14:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.8.26)  7 OCT 2020 10:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1347,7 +1347,7 @@ Here is how much of TeX's memory you used:
  36640 multiletter control sequences out of 15000+600000
  576682 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,16n,72p,855b,1369s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,16n,72p,855b,1375s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
@@ -1366,7 +1366,7 @@ hare/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/share/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts
 /type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/
 uhvro8a.pfb>
-Output written on ucl_tbr_talk.pdf (17 pages, 2386954 bytes).
+Output written on ucl_tbr_talk.pdf (17 pages, 2386986 bytes).
 PDF statistics:
  555 PDF objects out of 1000 (max. 8388607)
  298 compressed objects within 3 object streams
