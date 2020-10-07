@@ -50,7 +50,7 @@
 		\item Slow \ldots we want to consider as many reactor designs as possible!
 	\end{itemize}
 	\vfill
-	\begin{block}{Our Challenge:}
+	\begin{block}{Our Challenge}
 		\begin{center}
 			Produce a \textit{fast} TBR surrogate that strongly approximates
 			Paramak.
@@ -121,8 +121,8 @@
 		}
 
 		{\tiny
-		Groups marked\textsuperscript{\textdagger\textdaggerdbl}
-		required to sum to 1.
+		Groups of parameters marked\textsuperscript{\textdagger\textdaggerdbl}
+		are required to sum to 1.
 		}
 
     \end{columns}
@@ -142,22 +142,31 @@
 				training \& prediction time / sample
 		\end{itemize}
 
-		\vspace{1.5em}
+		\vspace{1em}
+		2 approaches to solution:
+		\vspace{-1em}
 
-		Decoupled training approach:
-		\begin{enumerate}
-			\item Collect training dataset at random.
-			\item Use data to train a surrogate.
-		\end{enumerate}
+		\begin{columns}[t]
+			\column{0.48\textwidth}
+			\begin{block}{Decoupled Approach}
+				\begin{enumerate}
+					\item Collect training dataset.
+					\item Use data to train a surrogate.
+				\end{enumerate}
+			\end{block}
 
-		\vspace{1.5em}
+			\hfill
+			\column{0.48\textwidth}
+			\begin{block}{Adaptive Approach}
+				\begin{enumerate}
+					\item Collect initial training dataset.
+					\item Use data to train a surrogate.
+					\item Collect more data in regions where surrogate performed poorly.
+					\item Repeat steps 2 and 3.
+				\end{enumerate}
+			\end{block}
+		\end{columns}
 
-		Adaptive training approach:
-		\begin{enumerate}
-			\item Collect initial training dataset at random.
-			\item Use data to train a surrogate.
-			\item Collect more data in regions where surrogate performed poorly.
-			\item Repeat steps 2 and 3.
-		\end{enumerate}
+
 \end{frame}
 

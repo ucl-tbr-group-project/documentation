@@ -3,7 +3,11 @@
 % Main theme configuration
 \usetheme{ucl}
 \useoutertheme[small]{ucltitlebanner}
+\definecolor{brightred}{cmyk}{0,1,0.72,0}
+\definecolor{blueceleste}{cmyk}{0.30,0,0.07,0}
 \setbeamercolor{banner}{bg=darkblue}
+\setbeamercolor{alerted text}{fg=brightred}
+\setbeamercolor{block body}{bg=blueceleste}
 
 % Packages and settings
 \usepackage{siunitx}
@@ -11,9 +15,8 @@
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{multirow}
-\graphicspath{{./fig_final_report/}{./fig_paper/}{./fig/}}
 
-\setbeamercolor{alerted text}{fg=midred}
+\graphicspath{{./fig_final_report/}{./fig_paper/}{./fig/}}
 
 \newcommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
 
@@ -72,7 +75,7 @@
 \input{conclusion}
 
 \begin{frame}
-	\vspace{2em}
+	\vspace{3em}
 
 	{\centering
 		\begin{beamercolorbox}[sep=8pt,center]{title}
@@ -80,30 +83,30 @@
 		\end{beamercolorbox}
 	}
 
-	\vspace{2em}
+	\vspace{1em}
 
 	Petr Mánek \dotfill \email{petr.manek.19@ucl.ac.uk}
 
 	Graham Van~Goffrier \dotfill \email{graham.vangoffrier.19@ucl.ac.uk}
 
-	\vspace{2em}
+	\vspace{1em}
 
-	{\footnotesize
-	Further reading:
-	\begin{itemize}
-		\item
-			\href{https://github.com/ucl-tbr-group-project/documentation/raw/pinboards-submitted/elevator_pitch/elevator_pitch.pdf}{Single page abstract (available online)}.
-		\item
-			\href{https://github.com/ucl-tbr-group-project/documentation/raw/pinboards-submitted/paper/ucl_tbr_paper.pdf}{Journal article, currently in internal pre-submission review (available online):\\
-			\textit{Fast Regression of the Tritium Breeding Ratio in Fusion
-		Reactors}}.
-		\item
-			\href{https://github.com/ucl-tbr-group-project/documentation/raw/published/final_report/tbr_final_report.pdf}{Industry group project final report (available online)}.
-		\item
-			All models, plots, training data, source code and technical documentation.
-			\url{https://github.com/ucl-tbr-group-project}
-	\end{itemize}
-	}
+	\begin{block}{\footnotesize Further Reading}
+		\footnotesize
+		\begin{itemize}
+			\item
+				\href{https://github.com/ucl-tbr-group-project/documentation/raw/pinboards-submitted/elevator_pitch/elevator_pitch.pdf}{Single page abstract (available online)}.
+			\item
+				\href{https://github.com/ucl-tbr-group-project/documentation/raw/pinboards-submitted/paper/ucl_tbr_paper.pdf}{Journal article, currently in internal pre-submission review (available online):\\
+				\textit{Fast Regression of the Tritium Breeding Ratio in Fusion
+			Reactors}}.
+			\item
+				\href{https://github.com/ucl-tbr-group-project/documentation/raw/published/final_report/tbr_final_report.pdf}{Industry group project final report (available online)}.
+			\item
+				All models, plots, training data, source code and technical documentation.
+				\url{https://github.com/ucl-tbr-group-project}
+		\end{itemize}
+	\end{block}
 
 \end{frame}
 
