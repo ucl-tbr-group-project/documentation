@@ -148,56 +148,54 @@
 	\frametitle{Experiment 4: Model Comparison}
 	\begin{columns}
 		\column{0.7\textwidth}
-		\begin{itemize}
-			\item
-				Trained \alert{8~models} for practical use.
-			\item
-				Plots show true vs.~predicted TBR by Models~1, 2 \& 4,
-				coloured by density.
-		\end{itemize}
+		Trained \alert{8~models} for practical use.
 
-		\vspace{0.5em}
-
-		\begin{itemize}
-			\item
-				Model~1 -- best regression performance:
-				\begin{itemize}
-					\item
-						ANN (4-layer MLP), 500K~samples.
-					\item
-						$R^2=\num{0.998}$,
-						$\sigma=\num{0.013}$,
-					\item
-						$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$,
-						\alert{speedup $\num{6916416} \times$}
-				\end{itemize}
-			\item
-				Model~2 -- fastest prediction:\textsuperscript{\textdagger}
-				\begin{itemize}
-					\item
-						ANN (2-layer MLP), 500K~samples.
-					\item
-						$R^2=\num{0.985}$,
-						$\sigma=\num{0.033}$,
-					\item
-						$\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$,
-						\alert{speedup $\num{8659251} \times$}
-				\end{itemize}
-			\item
-				Model~4 -- smallest training set:\textsuperscript{\textdagger}
-				\begin{itemize}
-					\item
-						GBT, \alert{10K~samples.}
-					\item
-						$R^2=\num{0.913}$,
-						$\sigma=\num{0.072}$,
-					\item
-						$\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$,
-						\alert{speedup $\num{1269777} \times$}
-				\end{itemize}
-		\end{itemize}
-
-		{\footnotesize
+		\begin{block}{\footnotesize Model~1, best regression performance}
+			\footnotesize
+			\linespread{0.6}\selectfont
+			\begin{itemize}
+				\item
+					ANN (4-layer MLP), 500K~samples.
+				\item
+					$R^2=\num{0.998}$,
+					$\sigma=\num{0.013}$,
+				\item
+					$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$,
+					\alert{speedup $\num{6916416} \times$}
+			\end{itemize}
+		\end{block}
+		\vspace{-0.6em}
+		\begin{block}{\footnotesize Model~2, fastest prediction\textsuperscript{\textdagger}}
+			\footnotesize
+			\linespread{0.6}\selectfont
+			\begin{itemize}
+				\item
+					ANN (2-layer MLP), 500K~samples.
+				\item
+					$R^2=\num{0.985}$,
+					$\sigma=\num{0.033}$,
+				\item
+					$\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$,
+					\alert{speedup $\num{8659251} \times$}
+			\end{itemize}
+		\end{block}
+		\vspace{-0.6em}
+		\begin{block}{\footnotesize Model~4, smallest training set\textsuperscript{\textdagger}}
+			\footnotesize
+			\linespread{0.6}\selectfont
+			\begin{itemize}
+				\item
+					GBT, \alert{10K~samples.}
+				\item
+					$R^2=\num{0.913}$,
+					$\sigma=\num{0.072}$,
+				\item
+					$\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$,
+					\alert{speedup $\num{1269777} \times$}
+			\end{itemize}
+		\end{block}
+		\vspace{-0.6em}
+		{\tiny
 			\textsuperscript{\textdagger}
 			with acceptable regression performance.
 		}
