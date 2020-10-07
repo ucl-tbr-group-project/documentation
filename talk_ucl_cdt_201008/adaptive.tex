@@ -3,10 +3,10 @@
 	 \begin{columns}[onlytextwidth,T]
       \column{\dimexpr\linewidth-6cm-5mm}
         
-        How can we take advantage of surrogate information content \textit{during training} to reduce sample quantity? \newline
+        How to take advantage of surrogate information content \textit{during training} to reduce sample quantity? \newline
         
 		We developed \alert{a new technique:}
-        \vspace{-5pt}
+        \vspace{-1em}
         \begin{enumerate}
         \item Construct surrogate quality distribution by nearest- neighbour interpolation.
         \item Draw candidate samples by quality using MCMC.
@@ -35,7 +35,7 @@
 
 	\begin{columns}[T]
 		\column{0.5\paperwidth}
-		\vspace{0.5em}
+		\vspace{-0.5em}
 		Evaluation set:
 		\begin{itemize}
 		    \item Adaptive samples
@@ -60,20 +60,20 @@
 
 \begin{frame}
     \frametitle{Adaptive Sampling: Results}
-    \vspace{-10pt}
+    \vspace{-20pt}
     \begin{center}
     \includegraphics[width=12cm]{qassresult}
     \end{center}
     
-    $60\%$ decrease in MAE for validation set (dashed) \newline
-    Equivalently, $6\%$ decrease in samples needed for same accuracy
+	\alert{$60\%$ decrease} in MAE for validation set (dashed) \newline
+	Equivalently, \alert{$6\%$ decrease} in samples needed for same accuracy
 
 \end{frame}
 
 
 \begin{frame}
     \frametitle{Adaptive Sampling: Results}
-    \vspace{-10pt}
+    \vspace{-20pt}
     \begin{center}
     \includegraphics[width=12cm]{qassincr}
     \end{center}
