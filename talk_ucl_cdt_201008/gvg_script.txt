@@ -1,0 +1,45 @@
+
+Good afternoon everyone! My name is Graham
+
+<and my name is Petr>
+
+we are both second years on the HEP track of the DIS CDT,
+and our project in conjunction with the UK Atomic Energy Authority focuses on surrogate modelling of the tritium breeding ratio.
+
+<slide>
+
+First we will give some background on the atomic energy context in which this project sits. Nuclear fusion is often advertised as the energy of the future, due to its efficiency and cleanliness, and the fusion community is currently in a major design period for the next generation of magnetic-confinement reactors, such as ITER. An essential design consideration is that of fueling, and of the two varieties of heavy hydrogen fuel now required, one, Deuterium, is readily found in nature, while the other, Tritium, is extremely rare. 
+
+<slide>
+
+Fortunately, advances in materials science have facilitated the design of breeding blankets which convert the outgoing reactor neutron radiation into Tritium fuel. Regarding the reactor setup as a closed system, the key quantity is the ratio between tritium fuel produced and that consumed, known as the TBR. The TBR is heavily dependent on geometric and material parameters and must be calculated through expensive numerical simulations, for example Paramak. Our challenge in this project was to produce an approximate TBR function that improves on the speed of Paramak without significant loss of precision. I'll now pass things off to Petr who will talk about how we got started.
+
+<slide>
+
+................
+
+
+<slide>
+
+So what does adaptive sampling mean in our application? Training a surrogate model produces information about the system under study, and we ask ourselves, can we use this information to draw more effective expensive samples while training is still in process?
+In parallel to the decoupled approach, we made an extensive literature review and developed a new algorithm, called Quality-Adaptive Surrogate Sampling or QASS. Three steps occur on each training iteration: first, we construct an interpolated distribution over the parameter space that describes how well the surrogate has performed; second, we draw candidate samples from this quality distribution using Markov Chain Monte Carlo; finally, we rank these samples by their separation from neighbors, and include the winners in the training set.
+
+<slide>
+
+We constructed a toy TBR theory with a simple oscillatory structure as a testing ground for our algorithm. For adaptive sampling, two test sets were necessary: the evaluation set captures the performance of the trained surrogate on the body of adaptive samples generated during runtime, while the validation set applies the surrogate to independent, uniform random samples. We also drew comparison with a placebo algorithm, where incremental samples are added to the training set at the same rate as in QASS, but without using surrogate quality information.
+
+<slide>
+
+Our results at this point have been very promising: in this neural network surrogate example with around 110k total samples, QASS reduces the final mean-averaged error by about 60% on the validation set. Performance is expected to be poorer on the adaptive evaluation set, as these data points are concentrated in the least smooth regions of the TBR function. We can also think of this result as a 6% decrease in samples needed to attain the same surrogate accuracy.
+
+<slide> 
+
+Another important result is an observed inverse trend between number of incremental samples and final validation set precision. While significant hyperparameter optimisation on the QASS algorithm still needs to be performed, including on the number of initial samples and type of surrogate model, this indicates that significant benefit stands to be gained from adaptive sampling.
+
+<slide>
+
+....
+
+And on the adaptive side, a new theoretical approach based on Markov Chain Monte Carlo was deveeloped, which has been demonstrated to achieve at least a 60% decrease in evaluation error, or a 6% decrease in samples needed from the expensive Paramak simulation.
+
+We are hopeful that our portable methods can be applied to general expensive simulations, and following the conclusion of the project, we have a pending submission to the IOP Journal of Nuclear Fusion, and have recently been included as a benchmark dataset for the STFC Scientific Machine Learning Collaboration.
