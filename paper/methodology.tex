@@ -1,4 +1,4 @@
-Labeling the expensive MC TBR model $f(x)$, a surrogate is a mapping
+Labeling the expensive Paramak model $f(x)$, a surrogate is a mapping
 $\hat{f}(x)$ such that $f(x)$ and $\hat{f}(x)$ minimize a selected dissimilarity
 metric. In order to be considered \textit{viable}, $\hat{f}(x)$ is required to
 achieve expected evaluation time lower than that of~$f(x)$. In this work, we
@@ -9,7 +9,7 @@ compensate for localized regression performance insufficiency's by interleaving
 multiple epochs of sampling and training.
 
 \begin{table}[t]
-	\setlength\tabcolsep{2pt}
+	\setlength\tabcolsep{1pt}
 	\renewcommand{\arraystretch}{0.95}
 	\caption{\label{tbl:surrogates}Considered surrogate model families, their
 		selected abbreviations and implementations. $\mathcal{H}$~denotes the
@@ -40,7 +40,7 @@ multiple epochs of sampling and training.
 	\caption{\label{tbl:metrics}Metrics recorded in experiments. In
 	formulations, we work with a training set of size $N_0$ and a test set of
 size $N$, values $y^{(i)}=f(x^{(i)})$ and $\hat{y}^{(i)}=\hat{f}(x^{(i)})$
-denote images of the $i$th testing sample in the MC TBR model and the surrogate
+denote images of the $i$th testing sample in Paramak and the surrogate
 respectively. The mean $\overline{y}=N^{-1}\sum_{i=1}^N y^{(i)}$ and $P$ is the
 number of input features.}
 	\begin{indented}
