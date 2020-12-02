@@ -13,12 +13,21 @@ complexity, its regression performance falls below average.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{exp1_slice0}
-	\includegraphics[width=0.9\linewidth]{exp1_slice1}
-	\includegraphics[width=0.9\linewidth]{exp1_slice2}
-	\caption{\label{fig:exp1-time-vs-reg}Results of Experiment~1, 20~best-performing surrogates per each considered family, plotted in
-		terms of computational complexity (as~$\overline{t}_{\text{pred.}}$) and regression
-		performance (as~$R^2$) with 3~selected discrete feature assignments out
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=10pt 50pt 10pt 10pt,clip,width=1.1\linewidth]{exp1_slice0}
+
+	\vfill
+
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=10pt 50pt 10pt 10pt,clip,width=1.1\linewidth]{exp1_slice1}
+
+	\vfill
+
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=10pt 15pt 10pt 10pt,clip,width=1.1\linewidth]{exp1_slice2}
+
+	\caption{\label{fig:exp1-time-vs-reg}Experiment~1 results. 20~best surrogates per each considered family, plotted in
+		terms of~$\overline{t}_{\text{pred.}}$ and~$R^2$ with 3~selected slices out
 		of~4.}
 \end{figure}
 
@@ -35,8 +44,10 @@ terms of regression performance, and in some cases also in prediction time.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{exp2_time_vs_reg}
-	\caption{\label{fig:exp2-time-vs-reg}Results of Experiment~2, plotted analogously
+
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=10pt 15pt 10pt 10pt,clip,width=1.1\linewidth]{exp2_time_vs_reg_edited}
+	\caption{\label{fig:exp2-time-vs-reg}Experiment~2 results, plotted analogously
 	to~\Fref{fig:exp1-time-vs-reg}.}
 \end{figure}
 
@@ -61,12 +72,20 @@ particularly on sets of sizes up to~\num{6000}.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{scaling_metric_r2}
-	\includegraphics[width=0.9\linewidth]{scaling_time_train}
-	\includegraphics[width=0.9\linewidth]{scaling_time_pred}
-	\caption{Results of the scaling benchmark displayed as a function of
-	training set size. From top to bottom, regression performance (as $R^2$),
-	mean training time and mean prediction time.}
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=10pt 50pt 10pt 10pt,clip,width=1.1\columnwidth]{scaling_metric_r2}
+	
+	\vfill
+
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=5pt 50pt 10pt 10pt,clip,width=1.1\columnwidth]{scaling_time_train}
+	
+	\vfill
+
+	\hspace*{-0.1\columnwidth}
+	\includegraphics[trim=0pt 15pt 10pt 15pt,clip,width=1.1\columnwidth]{scaling_time_pred}
+	\caption{Experiment~3 results, displayed as a function of $N_0$. From top to bottom, $R^2$,
+	$\overline{t}_{\text{trn.}}$, $\overline{t}_{\text{pred.}}$.}
 	\label{fig:scaling}
 \end{figure}
 
