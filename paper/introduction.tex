@@ -36,6 +36,10 @@ around~\SI{14.06}{\mega\electronvolt} to approximate a Deuterium-Tritium (D-T)
 plasma neutron source. Illustrated in~\Fref{fig:model_diagram}, the simulated
 geometry was deliberately left adjustable, so that dependency of TBR on various
 parameters may be explored. Nuclear data for simulation was extracted from the following sources, in order of preference: Fendl 3.1d \cite{fendl31d}; Jeff 3.3 \cite{jeff33}; and ENDF 7.1 \cite{2011ii}.
+To maintain model-agnostic approach, variance reduction (VR) techniques
+were not used to accelerate the MC neutronics simulation~\cite{Kleijnen2013}.
+It should be noted that depending on application, VR may constitute a viable
+alternative to the presented work.
 
 For the remainder of~\Sref{sec:introduction}, we will define the TBR and further motivate our
 research. In~\Sref{sec:methodology} we will present our methodologies for the comparison
@@ -44,7 +48,9 @@ adaptive sampling procedure suited to this application. After delivering the
 results of these approaches in~\Sref{sec:results}, we will give our final conclusions and
 recommendations in~\Sref{sec:conclusion}.
 
-\footnotetext[1]{A bug in the Muir distribution involving erronous normal sampling was recently uncovered (see https://github.com/openmc-dev/openmc/pull/1670), but is disregarded in the present approach-focused work.}
+\footnotetext[1]{A bug in the Muir distribution involving erronous normal
+sampling was recently uncovered (see
+\url{https://github.com/openmc-dev/openmc/pull/1670}), but is disregarded in the present approach-focused work.}
 
 
 \subsection{Problem Description}
