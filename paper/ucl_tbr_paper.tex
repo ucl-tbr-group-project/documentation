@@ -11,6 +11,7 @@
 \usepackage{isotope}
 \usepackage{fixltx2e}
 \usepackage{booktabs}
+\usepackage{xcolor}
 \usepackage{multirow}
 \usepackage{url}
 \usepackage{graphicx}
@@ -19,8 +20,43 @@
 
 \providecommand{\keywords}[1]{\textbf{\textit{Index terms---}} #1}
 \newcommand{\DDO}{D\textsubscript{2}O}
+\definecolor{datacolor}{RGB}{72,36,117}
 
 \graphicspath{{./fig_final_report/}{./fig/}}
+
+\newcommand{\surrogateplot}[6]{
+\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] at (0,0){\includegraphics[width=\textwidth]{#1}};
+	\draw[black,fill=white,line
+		width=0.05mm,align=right,font=\fontsize{5.5}{6.5}\selectfont]
+		(0.42,#6) rectangle
+		(2.45,2.5) node[pos=.5] {
+			\\[0.1ex]
+			$\mathrm{MAE} = \num{#2}$\\
+			$S = \num{#3}$\\
+			$R^2 = \num{#4}$\\
+			$R^2_{\text{adj.}} = \num{#5}$
+		};
+	\draw[black,fill=white,line
+		width=0.05mm,align=left,font=\fontsize{5.5}{7.5}\selectfont]
+		(2.02,1.43) rectangle
+		(4.05,0.38) node[pos=.5] {
+			{\color{red}
+			\leavevmode\leaders\hrule height 0.7ex
+			depth\dimexpr0.4pt-0.7ex\hskip3pt\kern0pt
+			\hskip1pt
+			\leavevmode\leaders\hrule height 0.7ex
+			depth\dimexpr0.4pt-0.7ex\hskip3pt\kern0pt
+			} Ideal model\\
+			{\leavevmode\leaders\hrule height 0.7ex
+			depth\dimexpr0.4pt-0.7ex\hskip3pt\kern0pt
+			\hskip1pt
+			\leavevmode\leaders\hrule height 0.7ex
+			depth\dimexpr0.4pt-0.7ex\hskip3pt\kern0pt
+			} Trained model\\
+			\hskip3pt\raisebox{0.25ex}{\scalebox{0.75}{\color{datacolor}\textbullet}}\hskip4pt Data
+		};
+\end{tikzpicture}}
 
 \begin{document}
 
