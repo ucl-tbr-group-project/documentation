@@ -9,11 +9,11 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-In this work, we develop an empirical surrogate model for the tritium breeding
+In this work, we develop a family of empirical surrogate models for the tritium breeding
 ratio (TBR) in an inertial confinement fusion (ICF) reactor. The expensive model
 that our surrogate model approximates is a Monte Carlo (MC) neutronics
 simulation, Paramak~\cite{paramak}, which returns a prediction of the TBR for a given
-configuration of a spherical ICF reactor. Although more expensive 3D parametric models exist, we chose the Paramak simulation for its preferable speed in dataset generation in order to most fully demonstrate our methods.
+configuration of a spherical ICF reactor. Although more expensive 3D parametric models exist, we chose the Paramak simulation for its preferable speed in dataset generation in order to most fully demonstrate our methods. We further propose an adaptive sampling algorithm (QASS) suitable for reducing the quantity of expensive samples needed to train our surrogate models.
 
 \begin{figure}[!ht]
   \centering
@@ -35,7 +35,7 @@ simulate a point source with a Muir energy distribution \cite{openmcmuir}\footno
 around~\SI{14.06}{\mega\electronvolt} to approximate a Deuterium-Tritium (D-T)
 plasma neutron source. Illustrated in~\Fref{fig:model_diagram}, the simulated
 geometry was deliberately left adjustable, so that dependency of TBR on various
-parameters may be explored. Nuclear data for simulation was extracted from the following sources, in order of preference: Fendl 3.1d \cite{fendl31d}; Jeff 3.3 \cite{jeff33}; and ENDF 7.1 \cite{2011ii}.
+parameters may be explored. Nuclear data for simulation was extracted from the following sources, in order of preference: FENDL 3.1d \cite{fendl31d}; JEFF 3.3 \cite{jeff33}; and ENDF/B-VII.1 \cite{2011ii}.
 To maintain model-agnostic approach, variance reduction (VR) techniques
 were not used to accelerate the MC neutronics simulation~\cite{Kleijnen2013}.
 It should be noted that depending on application, VR may constitute a viable
@@ -43,8 +43,7 @@ alternative to the presented work.
 
 For the remainder of~\Sref{sec:introduction}, we will define the TBR and further motivate our
 research. In~\Sref{sec:methodology} we will present our methodologies for the comparison
-testing of a wide variety of surrogate modelling techniques, as well as a novel
-adaptive sampling procedure suited to this application. After delivering the
+testing of a wide variety of surrogate modelling techniques, as well as defining the adaptive sampling procedure QASS. After delivering the
 results of these approaches in~\Sref{sec:results}, we will give our final conclusions and
 recommendations in~\Sref{sec:conclusion}.
 
@@ -82,9 +81,7 @@ reactor, whose description in Paramak is facilitated by 2~classes of parameters
 reactor is described by continuous parameters, material selections are specified
 by discrete categorical parameters. For all parameters, we have attempted to cover the full theoretical range of values even where those values are practically infeasible with current technology (e.g. packing fractions close to 1). Simulating broadly around typical values of parameters is necessary to construct the most accurate model of the typical range, and also aids in demonstrating the robustness of constructed models.
 
-In our work, we set out to produce a fast TBR function which takes these same
-input parameters and approximates the MC model used in Paramak with the
-greatest achievable regression performance, while also minimising the required quantity of expensive samples.
+In our work, we set out to produce a fast TBR surrogate model, which takes the same input parameters as the MC model used in Paramak and approximates its output with the greatest achievable regression performance, while also minimising the required quantity of expensive-model samples needed for training.
 
 \begin{table}[t]
 	\setlength\tabcolsep{2pt}

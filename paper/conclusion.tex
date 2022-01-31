@@ -1,6 +1,6 @@
 We employed a broad spectrum of data
-analysis and machine learning techniques to develop fast and high-quality
-surrogates for the Paramak TBR model. After reviewing
+analysis and machine learning techniques to develop a library of fast and high-quality
+surrogate models for the expensive Paramak TBR model. After reviewing
 9~surrogate model families, examining their behaviour on a constrained and
 unrestricted feature space, and studying their scaling properties, we retrained
 the best-performing instances to produce properties desirable for
@@ -10,14 +10,12 @@ of~$\SI{0.898}{\micro\second}$, representing a relative
 speedup of $8\cdot 10^6$ with respect to Paramak. Furthermore, we demonstrated the possibility of achieving comparable results using only a
 training set of size~\num{10000}.
 
-We further developed a novel adaptive
-sampling algorithm, QASS, capable of interfacing with any of the presented
-surrogate models.
+We additionally developed a novel adaptive
+sampling algorithm, QASS, capable of interfacing with any of the surrogate models presented in this work.
 Preliminary testing on a toy theory, qualitatively comparable to
-Paramak, demonstrated the effectiveness of QASS and behavioural trends
-consistent with the design of the algorithm. With~\num{100000} initial samples
+Paramak, demonstrated the effectiveness of QASS and key behavioral trends. With~\num{100000} initial samples
 and 100 incremental samples per iteration, QASS achieved a ${\sim}40\%$ decrease
-in surrogate error compared to a baseline random sampling scheme. Further optimisation over the hyperparameter space has strong potential to increase this performance by further reduction of necessary expensive samples, in particular by decreasing the required quantity of initial samples. This will allow for future deployment of QASS on the Paramak TBR model in coalition with any of the most effective identified surrogates.
+in surrogate error compared to a baseline random sampling scheme. Further optimisation over the hyperparameter space has strong potential to increase this performance by further reduction of necessary expensive samples, in particular by decreasing the required quantity of initial samples. This will allow for future deployment of QASS on top of any of our most effective identified TBR surrogate models.
 
 Relevant source code, model instances and datasets are freely
 available online as well as a more detailed technical

@@ -73,17 +73,17 @@ particularly on sets of sizes up to~\num{6000}.
 \begin{figure}
 	\centering
 	\hspace*{-0.1\columnwidth}
-	\includegraphics[trim=10pt 50pt 10pt 10pt,clip,width=1.1\columnwidth]{scaling_metric_r2}
+	\includegraphics[trim=10pt 50pt 10pt 10pt,clip,width=1\columnwidth]{scaling_metric_r2}
 	
 	\vfill
 
 	\hspace*{-0.1\columnwidth}
-	\includegraphics[trim=5pt 50pt 10pt 10pt,clip,width=1.1\columnwidth]{scaling_time_train}
+	\includegraphics[trim=5pt 50pt 10pt 10pt,clip,width=1\columnwidth]{scaling_time_train}
 	
 	\vfill
 
 	\hspace*{-0.1\columnwidth}
-	\includegraphics[trim=0pt 15pt 10pt 15pt,clip,width=1.1\columnwidth]{scaling_time_pred}
+	\includegraphics[trim=0pt 15pt 10pt 15pt,clip,width=1\columnwidth]{scaling_time_pred}
 	\caption{Experiment~3 results, displayed as a function of $N_0$. From top to bottom, $R^2$,
 	$\overline{t}_{\text{trn.}}$, $\overline{t}_{\text{pred.}}$.}
 	\label{fig:scaling}
@@ -125,16 +125,16 @@ Experiments~2 \&~3, we utilized the best-performing hyperparameters.
 In pursuit of goal~(a), the best approximator (Model~1,
 ANN) achieved~$R^2=\num{0.998}$ and mean prediction
 time~$\overline{t}_{\text{pred.}}=\SI{1.124}{\micro\second}$. These correspond
-to a standard error~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6916416} \times$
+to a standard error~$S=\num{0.013}$ and a relative speedup~$\omega=\num{6.92} \times {10^6}$
 with respect to Paramak. Satisfying
 goal~(b), the fastest model (Model~2, ANN) achieved~$R^2=\num{0.985}$,
 $\overline{t}_{\text{pred.}}=\SI{0.898}{\micro\second}$, $S=\num{0.033}$
-and~$\omega=\num{8659251} \times$.
+and~$\omega=\num{8.66} \times {10^6}$.
 While these surrogates
 were trained on the entire available set of~\num{500000} datapoints, to satisfy
 goal~(c) we also trained a more simplified model (Model~4, GBT)
 that achieved~$R^2=\num{0.913}$,
-$\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1269777} \times$
+$\overline{t}_{\text{pred.}}=\SI{6.125}{\micro\second}$, $S=\num{0.072}$ and $\omega=\num{1.27} \times {10^6}$
 with a set of size only~\num{10000}.
 
 \begin{table*}
@@ -228,19 +228,17 @@ order of~$10^5$) both in terms of regression performance and mean prediction tim
 \subsection{Adaptive Approach}\label{sec:adaptiveres}
 
 
-In order to test our QASS prototype, several functional toy theories for TBR
-were developed as alternatives to the expensive MC model. By far the most robust
-of these was the following sinusoidal theory over continuous parameters~$C$,
-with adjustable wavenumber parameter~$n$:
+In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. QASS performance was verified by training an ANN on
+these theories for varied quantities of initial, incremental, and MCMC
+candidate samples. By far the most useful
+of these was the following sinusoidal theory, as ANNs trained on this model demonstrated similar performance to those on the expensive
+MC model:
 
 \begin{equation}
 	\text{TBR} = |C|^{-1}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 \end{equation}
 
-ANNs trained on this model demonstrated similar performance to those on the expensive
-MC model. QASS performance was verified by training an ANN on
-the sinusoidal theory for varied quantities of initial, incremental, and MCMC
-candidate samples.
+where $C$ denotes the continuous parameter space, and $n$ is an adjustable wavenumber parameter.
 
 An increase in initial samples with increment held constant had a strong impact
 on final surrogate precision, an early confirmation of basic functionality. An
@@ -263,13 +261,13 @@ in~\Fref{fig:qasssampling}.
 
 \begin{figure}
 	\centering
-	\hspace*{-1.4em}\includegraphics[width=1.15\linewidth]{fig7_qasssampling.png}
+	\hspace*{-0.5em}\includegraphics[width=1.1\linewidth]{fig7_qasssampling.png}
 	\caption{\label{fig:qasssampling}Absolute training error for QASS, baseline scheme, and mixed scheme.}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\hspace*{-1.4em}\includegraphics[width=1.15\linewidth]{fig8_qasssampling100k.png}
+	\hspace*{-0.5em}\includegraphics[width=1.1\linewidth]{fig8_qasssampling100k.png}
 	\caption{\label{fig:qasssampling100k}Absolute training error for QASS and
 	baseline scheme, with~\num{100000} initial samples.}
 \end{figure}
@@ -281,13 +279,12 @@ learning the most strongly peaked regions of the TBR theory, this comes at the
 expense of precision in broader, smoother regions where uniformly random
 sampling suffices. Therefore a mixed scheme was implemented, with half MCMC
 samples and half uniformly random samples incremented on each iteration, which
-is also shown in~\Fref{fig:qasssampling}. An increase in initial sample size was
-observed to also resolve precision in these smooth regions of the toy theory, as
+is also shown in~\Fref{fig:qasssampling}. An increase in initial sample size was also observed to improve precision in these smooth regions of the toy theory, as
 the initial samples were obtained from a uniform random distribution. As shown
 in ~\Fref{fig:qasssampling100k}, with~\num{100000} initial samples it was
 possible to obtain a ${\sim}40\%$ decrease in error as compared to the baseline
 scheme, from 0.0025 to 0.0015 mean averaged error. Comparing at the point of
 termination for QASS, this corresponds to a ${\sim}6\%$ decrease in the number
-of total samples needed to train a surrogate with the same error. 
+of total samples needed to train a surrogate model while achieving the same error. 
 
 
