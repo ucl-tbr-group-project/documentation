@@ -24,7 +24,13 @@ configuration of a spherical ICF reactor. Although more expensive 3D parametric 
     \fill[red!40!white]  (0,0) circle (0.1cm);
     \end{tikzpicture}
 
-    \caption{Diagram of the simple sphere geometry (not to scale) where the blanket is \fcolorbox{white}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}}, the first wall is \fcolorbox{white}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} and the neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}.}
+    \caption{Diagram of the simple sphere geometry (not to scale) where the
+	blanket is \fcolorbox{white}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}}, the
+first wall is \fcolorbox{white}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} and the
+neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}.
+Blanket and first wall thickness, as well as their material and structural
+properties, are adjustable parameters of the simulation that are later optimized
+(see~\Tref{tbl:params} for complete parameter listing).}
     \label{fig:model_diagram}
 \end{figure}
 
@@ -57,12 +63,12 @@ sampling was recently uncovered (see
 
 Nuclear fusion technology relies on the production and containment of an
 extremely hot and dense plasma containing enriched Hydrogen isotopes. The current frontier generation of fusion reactors, such as the Joint European Torus (JET) and the
-under-construction International Thermonuclear Experimental Reactor (ITER), make
+under-construction ITER, make
 use of both tritium and deuterium fuel. While at least one deuterium atom occurs for every \num{5000} molecules of naturally-sourced water, and may be easily distilled, tritium is extremely rare in nature. It may be produced indirectly through irradiation of heavy water
 (\DDO) during nuclear fission, but only at very low rates which could
 never sustain industrial-scale fusion power.
 
-Instead, modern D-T reactors rely on tritium breeding blankets, specialized
+Modern D-T reactors rely on tritium breeding blankets, specialized
 layers of material which partially line the reactor and produce tritium upon
 neutron bombardment, e.g.~by 
 \begin{eqnarray}
@@ -92,31 +98,32 @@ In our work, we set out to produce a fast TBR surrogate model, which takes the s
 	\item[]
 		\begin{tabular}{l|ll}
 		\toprule
-		{} & Parameter name & Domain\\
+		{} & Parameter name (abbreviation) & Domain\\
 		\midrule
 		\parbox[t]{2mm}{\hspace{-2pt}\multirow{12}{*}{\rotatebox[origin=c]{90}{Blanket}}}
 		   & Breeder fraction\textsuperscript{\textdagger} & $[0,1]$\\
 		   & Breeder \isotope[6]{Li} enrichment fraction & $[0,1]$\\
-		   & Breeder material & $\{\text{Li}_2\text{TiO}_3, \text{Li}_4\text{SiO}_4\}$\\
+		   & Breeder material (BBM) & $\{\text{Li}_2\text{TiO}_3, \text{Li}_4\text{SiO}_4\}$\\
 		   & Breeder packing fraction & $[0,1]$\\
 		   & Coolant fraction\textsuperscript{\textdagger} & $[0,1]$\\
-		   & Coolant material & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Coolant material (BCM) & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
 		   & Multiplier fraction\textsuperscript{\textdagger} & $[0,1]$\\
-		   & Multiplier material & $\{\text{Be}, \text{Be}_{12}\text{Ti}\}$\\
+		   & Multiplier material (BMM) & $\{\text{Be}, \text{Be}_{12}\text{Ti}\}$\\
 		   & Multiplier packing fraction & $[0,1]$\\
-		   & Structural fraction\textsuperscript{\textdagger} & $[0,1]$\\
+		   & Structural fraction\textsuperscript{\textdagger} (BSM) & $[0,1]$\\
 		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
-		   & Thickness & $[0,500]$\\
+		   & Thickness & $[0,500]\text{ cm}$\\
 		\midrule
 		\parbox[t]{2mm}{\hspace{-2pt}\multirow{6}{*}{\rotatebox[origin=c]{90}{First wall}}}
 		   & Armour fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
 		   & Coolant fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
-		   & Coolant material & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Coolant material (FCM) & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
 		   & Structural fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
-		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
-		   & Thickness & $[0,20]$\\
+		   & Structural material (FSM) & $\{\text{SiC}, \text{eurofer}\}$\\
+		   & Thickness & $[0,20]\text{ cm}$\\
 		\bottomrule
 		\end{tabular}
 	\end{indented}
+	% TODO: verify with JS that thickness unit is indeed cm
 \end{table}
 

@@ -5,11 +5,13 @@
 \label{sec:res-exp12}
 
 The results displayed in~\Fref{fig:exp1-time-vs-reg} indicate that in the first,
-simplified case GBTs clearly appear to be the most accurate as
-well as the fastest surrogate family in terms of mean prediction time. Following
-that, we note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to both examined metrics.
-While the remainder of tested surrogate families does not exhibit prohibitive
-complexity, its regression performance falls below average.
+simplified case GBTs clearly appear to be the most accurate as well as the
+fastest surrogate family in terms of mean prediction time. Following that, we
+note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to
+both examined metrics. In addition, prediction times of GBTs and SVMs show
+relatively lower variance than those of ERTs and ANNs. Even though the remainder
+of tested surrogate families does not exhibit prohibitive complexity, its
+regression performance falls below average.
 
 \begin{figure}
 	\centering
@@ -28,19 +30,41 @@ complexity, its regression performance falls below average.
 
 	\caption{\label{fig:exp1-time-vs-reg}Experiment~1 results. 20~best surrogates per each considered family, plotted in
 		terms of~$\overline{t}_{\text{pred.}}$ and~$R^2$ with 3~selected slices out
-		of~4.}
+	of~4 (defined in~\Tref{tbl:slices}).}
 \end{figure}
+
+\begin{table}[h]
+	\centering
+	\setlength\tabcolsep{5pt}
+	\renewcommand{\arraystretch}{0.95}
+	{\footnotesize
+		\begin{tabular}{llllll}
+		\toprule
+		BBM & BCM & BMM & BSM & FCM & FSM \\
+		\midrule
+		$\text{Li}_4\text{SiO}_4$ & $\text{H}_2\text{O}$ & $\text{Be}_{12}\text{Ti}$ & eurofer & $\text{H}_2\text{O}$ & eurofer\\
+		$\text{Li}_4\text{SiO}_4$ & He & $\text{Be}_{12}\text{Ti}$ & eurofer & $\text{H}_2\text{O}$ & eurofer\\
+		$\text{Li}_4\text{SiO}_4$ & $\text{H}_2\text{O}$ & $\text{Be}_{12}\text{Ti}$ & eurofer & He & eurofer\\
+		$\text{Li}_4\text{SiO}_4$ & He & $\text{Be}_{12}\text{Ti}$ & eurofer & He & eurofer\\
+		\bottomrule
+		\end{tabular}
+	}
+	\caption{Slices 1-4 of the domain space (discrete parameter
+	assignments) explored in Experiment~1. Columns correspond to abbreviated
+	parameter names listed in~\Tref{tbl:params}.}
+	\label{tbl:slices}
+\end{table}
 
 Comparing these results with those of the second, unrestricted experiment (shown
 in~\Fref{fig:exp2-time-vs-reg}), we observe that many surrogate families
-consistently underperform. The least
-affected models appear to be GBTs, ANNs and ERTs, which are known to be capable of capturing relationships
-involving mixed feature types that were deliberately withheld in the first
-experiment. With only negligible differences, the first two of these families
-appear to be tied for the best performance as well as the shortest prediction
-time. We observe that ERTs and RBFs also
-demonstrated satisfactory results, clearly outperforming the remaining surrogates in
-terms of regression performance, and in some cases also in prediction time.
+consistently underperform. The least affected models appear to be GBTs, ANNs and
+ERTs, which are known to be capable of capturing relationships involving mixed
+feature types that were deliberately withheld in the first experiment. With only
+negligible differences, the first two of these families appear to be tied for
+the best performance as well as the shortest prediction time. We observe that
+ERTs and RBFs also demonstrated satisfactory results, clearly outperforming the
+remaining surrogates in terms of regression performance, and in some cases also
+in prediction time.
 
 \begin{figure}
 	\centering
@@ -54,7 +78,9 @@ terms of regression performance, and in some cases also in prediction time.
 Following both hyperparameter tuning experiments, we conclude that while domain
 restrictions employed in the first case have proven effective in improving the
 regression performance of some methods, their performance fluctuates considerably
-depending on the selected slices. Furthermore, in all instances the best
+depending on the selected slices. For instance, the variance in SVM performance
+in slice 1 is much lower than in slices 2-3, and both KNNs and ABTs perform much
+better in slices 1-2 than in slice 3. Furthermore, in all instances the best
 results are achieved by families of surrogates that do not benefit from this
 restriction (GBTs, ANNs, ERTs).
 
@@ -66,9 +92,11 @@ The results shown in~\Fref{fig:scaling} suggest that in terms of regression
 performance the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as
 more training points are introduced. While such families achieve nearly comparable
-performance on the largest dataset, in the opposite case tree-based ensemble approaches
-clearly outperform ANNs. This can be observed
-particularly on sets of sizes up to~\num{6000}.
+performance on the largest dataset, in the opposite case tree-based ensemble
+approaches clearly outperform ANNs. For instance, GBTs achieve
+$\text{MAE}=\num{0.107}$ that is nearly half of the $\text{MAE}=\num{0.186}$
+reached by ANNs, representing a clear benefit given vastly disparate training
+and prediction times. This trend continues to set sizes up to~\num{6000}.
 
 \begin{figure}
 	\centering
@@ -141,13 +169,13 @@ with a set of size only~\num{10000}.
 	\centering
 	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
 	\caption{\label{tbl:exp4-detailed-results}Results of Experiment~4. Here,
-		average values and standard deviations are reported over 5~cross-validation folds,
+		means and standard deviations are reported over 5~cross-validation folds,
 		$|\mathcal{T}|$~denotes cross-validation set size ($\times 10^3$)
 		and $\omega$ is a relative speedup with respect to
 		$\overline{t}_{\text{eval.}}=\num{7.777049573054314} \pm
 		\num{2.8103592103930337} \text{ s}$
-		measured in Paramak over~\num{500000} samples.
-	The best-performing method(s) under each are highlighted in bold.}
+		measured in Paramak over~\num[round-precision=0]{500000} samples.
+	The best-performing method(s) under each metric are highlighted in bold.}
 	\setlength\tabcolsep{4pt}
 	\renewcommand{\arraystretch}{0.95}
 	\begin{indented}

@@ -13,7 +13,9 @@ multiple epochs of sampling and training.
 	\renewcommand{\arraystretch}{0.95}
 	\caption{\label{tbl:surrogates}Considered surrogate model families, their
 		selected abbreviations and implementations. $\mathcal{H}$~denotes the
-		set of hyperparameters.}
+		set of hyperparameters, family-dependent priors that control the
+		learning process, and are tuned separately. Families with fewer
+		hyperparameter represents a smaller surogate domain to explore.}
 	\begin{indented}
 	\item[]
 		\begin{tabular}{lllr}
@@ -83,9 +85,9 @@ in~\Sref{sec:experiment-methodology}.
 
 To compare the quality of the produced surrogates, we define a number of metrics listed
 in~\Tref{tbl:metrics}. For regression performance analysis, we include a
-selection of absolute metrics to assess the models' approximation capability and set
-practical bounds on the expected uncertainty of their predictions. In addition, we also track
-relative measures that are better-suited for comparison between this work and others as
+selection of absolute metrics (MAE, $S$) to assess the models' approximation capability
+and set practical bounds on the expected uncertainty of their predictions. In addition, we also track
+relative measures ($R^2$, $R^2_\text{adj.}$) that are better-suited for comparison between this work and others as
 they are invariant with respect to the selected domain and image space.
 For analysis of computational complexity, surrogates are assessed in terms of wall
 time (captured by the Python~3 \texttt{time} package). This is motivated by common practical use
@@ -132,10 +134,10 @@ respectively, and described in~\Sref{sec:res-exp12}.
 
 In Experiment~3, the 20~best-performing hyperparameter configurations
 per each model family are used to train surrogates on sets of various sizes to
-investigate their scaling properties. In particular, we consider sets of
-sizes~$\{1,2,5,10,12,15,20\}$ in thousands of samples to better characterize the
-relationship of each family between sample count and the metrics of interest
-listed in~\Tref{tbl:metrics}.
+investigate their scaling properties. In particular, we track the metrics
+from~\Tref{tbl:metrics} as functions of training set size (1, 2, 5, 10, 12, 15 and 20 thousands
+of samples) individually for each family. This allows their comparison based on
+observed trends, and estimation of optimal training set sizes.
 The results of this experiment are shown in~\Fref{fig:scaling} and discussed
 in~\Sref{sec:res-exp3}.
 
