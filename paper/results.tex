@@ -8,8 +8,8 @@ The results displayed in~\Fref{fig:exp1-time-vs-reg} indicate that in the first,
 simplified case GBTs clearly appear to be the most accurate as well as the
 fastest surrogate family in terms of mean prediction time. Following that, we
 note that ERTs, SVMs and ANNs also achieved satisfactory results with respect to
-both examined metrics. In addition, prediction times of GBTs and SVMs show
-relatively lower variance than those of ERTs and ANNs. Even though the remainder
+both examined metrics. \textcolor{red}{In addition, prediction times of GBTs and SVMs show
+relatively lower variance than those of ERTs and ANNs. Even though} the remainder
 of tested surrogate families does not exhibit prohibitive complexity, its
 regression performance falls below average.
 
@@ -30,8 +30,9 @@ regression performance falls below average.
 
 	\caption{\label{fig:exp1-time-vs-reg}Experiment~1 results. 20~best surrogates per each considered family, plotted in
 		terms of~$\overline{t}_{\text{pred.}}$ and~$R^2$ with 3~selected slices out
-	of~4 (defined in~\Tref{tbl:slices}).}
+	of~4 \textcolor{red}{(defined in~\Tref{tbl:slices})}.}
 \end{figure}
+
 
 \begin{table}[h]
 	\centering
@@ -49,9 +50,9 @@ regression performance falls below average.
 		\bottomrule
 		\end{tabular}
 	}
-	\caption{Slices 1-4 of the domain space (discrete parameter
+	\caption{\textcolor{red}{Slices 1-4 of the domain space (discrete parameter
 	assignments) explored in Experiment~1. Columns correspond to abbreviated
-	parameter names listed in~\Tref{tbl:params}.}
+	parameter names listed in~\Tref{tbl:params}.}}
 	\label{tbl:slices}
 \end{table}
 
@@ -78,9 +79,9 @@ in prediction time.
 Following both hyperparameter tuning experiments, we conclude that while domain
 restrictions employed in the first case have proven effective in improving the
 regression performance of some methods, their performance fluctuates considerably
-depending on the selected slices. For instance, the variance in SVM performance
+depending on the selected slices. \textcolor{red}{For instance, the variance in SVM performance
 in slice 1 is much lower than in slices 2-3, and both KNNs and ABTs perform much
-better in slices 1-2 than in slice 3. Furthermore, in all instances the best
+better in slices 1-2 than in slice 3.} Furthermore, in all instances the best
 results are achieved by families of surrogates that do not benefit from this
 restriction (GBTs, ANNs, ERTs).
 
@@ -93,10 +94,10 @@ performance the most accurate families from the previous experiments
 consistently maintain their relative advantage over others, even as
 more training points are introduced. While such families achieve nearly comparable
 performance on the largest dataset, in the opposite case tree-based ensemble
-approaches clearly outperform ANNs. For instance, GBTs achieve
+approaches clearly outperform ANNs. \textcolor{red}{For instance, GBTs achieve
 $\text{MAE}=\num{0.107}$ that is nearly half of the $\text{MAE}=\num{0.186}$
 reached by ANNs, representing a clear benefit given vastly disparate training
-and prediction times. This trend continues to set sizes up to~\num{6000}.
+and prediction times. This trend continues to set sizes up to~\num{6000}.}
 
 \begin{figure}
 	\centering
@@ -117,7 +118,7 @@ and prediction times. This trend continues to set sizes up to~\num{6000}.
 	\label{fig:scaling}
 \end{figure}
 
-Consistent with our expectation, the shortest training times were achieved by
+Consistent with our \textcolor{red}{expectations}, the shortest training times were achieved by
 instance-based learning methods (KNN, IDW) that
 are trained trivially at the expense of increased lookup complexity later during prediction.
 Furthermore, we observe that the majority of tree-based ensemble algorithms also perform
@@ -168,14 +169,14 @@ with a set of size only~\num{10000}.
 \begin{table*}
 	\centering
 	\sisetup{round-mode=places,round-precision=3,detect-weight=true,detect-family=true}
-	\caption{\label{tbl:exp4-detailed-results}Results of Experiment~4. Here,
+	\caption{\label{tbl:exp4-detailed-results}\textcolor{red}{Results of Experiment~4. Here,
 		means and standard deviations are reported over 5~cross-validation folds,
 		$|\mathcal{T}|$~denotes cross-validation set size ($\times 10^3$)
 		and $\omega$ is a relative speedup with respect to
 		$\overline{t}_{\text{eval.}}=\num{7.777049573054314} \pm
 		\num{2.8103592103930337} \text{ s}$
 		measured in Paramak over~\num[round-precision=0]{500000} samples.
-	The best-performing method(s) under each metric are highlighted in bold.}
+	The best-performing method(s) under each metric are highlighted in bold.}}
 	\setlength\tabcolsep{4pt}
 	\renewcommand{\arraystretch}{0.95}
 	\begin{indented}
@@ -242,8 +243,7 @@ with a set of size only~\num{10000}.
 
 	\caption{Regression performance of Models~1-8 (from left to right, top to
 		bottom) in Experiment~4, viewed
-		as true vs.~predicted TBR on a test set of a selected cross-validation
-		fold. Points are coloured by density.}
+		as true vs.~predicted TBR on a test set of a selected cross-validation fold. Points are \textcolor{red}{colored} by density.}
 	\label{fig:reg-performance}
 \end{figure}
 
@@ -256,17 +256,17 @@ order of~$10^5$) both in terms of regression performance and mean prediction tim
 \subsection{Adaptive Approach}\label{sec:adaptiveres}
 
 
-In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. QASS performance was verified by training an ANN on
+In order to test our QASS prototype, several functional toy theories for TBR were developed as alternatives to the expensive MC model. \textcolor{red}{QASS performance was verified by training an ANN on
 these theories for varied quantities of initial, incremental, and MCMC
 candidate samples. By far the most useful
 of these was the following sinusoidal theory, as ANNs trained on this model demonstrated similar performance to those on the expensive
-MC model:
+MC model:}
 
 \begin{equation}
 	\text{TBR} = |C|^{-1}\sum_{i \in C} \left[1 + \sin(2\pi n (x_i - 1/2)) \right]
 \end{equation}
 
-where $C$ denotes the continuous parameter space, and $n$ is an adjustable wavenumber parameter.
+\textcolor{red}{where $C$ denotes the continuous parameter space, and $n$ is an adjustable wavenumber parameter.}
 
 An increase in initial samples with increment held constant had a strong impact
 on final surrogate precision, an early confirmation of basic functionality. An
@@ -302,14 +302,14 @@ in~\Fref{fig:qasssampling}.
 
 Such tests revealed that while QASS has unmatched performance on its own
 adaptively-sampled training set, it is outperformed by the baseline scheme on
-uniformly-random evaluation sets. We suspected that while QASS excels in
+uniformly-random evaluation sets. We \textcolor{red}{inferred} that while QASS excels in
 learning the most strongly peaked regions of the TBR theory, this comes at the
 expense of precision in broader, smoother regions where uniformly random
 sampling suffices. Therefore a mixed scheme was implemented, with half MCMC
-samples and half uniformly random samples incremented on each iteration, which
+samples and half uniformly-random samples incremented on each iteration, which
 is also shown in~\Fref{fig:qasssampling}. An increase in initial sample size was also observed to improve precision in these smooth regions of the toy theory, as
-the initial samples were obtained from a uniform random distribution. As shown
-in ~\Fref{fig:qasssampling100k}, with~\num{100000} initial samples it was
+the initial samples were \textcolor{red}{uniformly-random}. As shown
+in~\Fref{fig:qasssampling100k}, with~\num{100000} initial samples it was
 possible to obtain a ${\sim}40\%$ decrease in error as compared to the baseline
 scheme, from 0.0025 to 0.0015 mean averaged error. Comparing at the point of
 termination for QASS, this corresponds to a ${\sim}6\%$ decrease in the number

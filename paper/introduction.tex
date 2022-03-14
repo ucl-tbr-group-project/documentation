@@ -9,11 +9,11 @@ between ``physical'' surrogates which are constructed with some contextual
 knowledge in hand, and ``empirical'' surrogates which are derived purely from
 samples of the underlying expensive model.
 
-In this work, we develop a family of empirical surrogate models for the tritium breeding
+In this work, we develop \textcolor{red}{a family of empirical surrogate models} for the tritium breeding
 ratio (TBR) in an inertial confinement fusion (ICF) reactor. The expensive model
 that our surrogate model approximates is a Monte Carlo (MC) neutronics
 simulation, Paramak~\cite{paramak}, which returns a prediction of the TBR for a given
-configuration of a spherical ICF reactor. Although more expensive 3D parametric models exist, we chose the Paramak simulation for its preferable speed in dataset generation in order to most fully demonstrate our methods. We further propose an adaptive sampling algorithm (QASS) suitable for reducing the quantity of expensive samples needed to train our surrogate models.
+configuration of a spherical ICF reactor. Although more expensive 3D parametric models exist, we chose the Paramak simulation for its preferable speed in dataset generation in order to most fully demonstrate our methods. \textcolor{red}{We further propose an adaptive sampling algorithm (QASS) suitable for reducing the quantity of expensive samples needed to train our surrogate models.}
 
 \begin{figure}[!ht]
   \centering
@@ -27,10 +27,10 @@ configuration of a spherical ICF reactor. Although more expensive 3D parametric 
     \caption{Diagram of the simple sphere geometry (not to scale) where the
 	blanket is \fcolorbox{white}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}}, the
 first wall is \fcolorbox{white}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} and the
-neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}.
+neutron point source is \fcolorbox{white}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}}. \textcolor{red}{
 Blanket and first wall thickness, as well as their material and structural
 properties, are adjustable parameters of the simulation that are later optimized
-(see~\Tref{tbl:params} for complete parameter listing).}
+(see~\Tref{tbl:params} for complete parameter listing).}}
     \label{fig:model_diagram}
 \end{figure}
 
@@ -41,7 +41,7 @@ simulate a point source with a Muir energy distribution \cite{openmcmuir}\footno
 around~\SI{14.06}{\mega\electronvolt} to approximate a Deuterium-Tritium (D-T)
 plasma neutron source. Illustrated in~\Fref{fig:model_diagram}, the simulated
 geometry was deliberately left adjustable, so that dependency of TBR on various
-parameters may be explored. Nuclear data for simulation was extracted from the following sources, in order of preference: FENDL 3.1d \cite{fendl31d}; JEFF 3.3 \cite{jeff33}; and ENDF/B-VII.1 \cite{2011ii}.
+parameters may be explored. Nuclear data for simulation was extracted from the following sources, in order of preference: \textcolor{red}{FENDL 3.1d \cite{fendl31d}; JEFF 3.3 \cite{jeff33}; and ENDF/B-VII.1 \cite{2011ii}}.
 To maintain model-agnostic approach, variance reduction (VR) techniques
 were not used to accelerate the MC neutronics simulation~\cite{Kleijnen2013}.
 It should be noted that depending on application, VR may constitute a viable
@@ -63,12 +63,12 @@ sampling was recently uncovered (see
 
 Nuclear fusion technology relies on the production and containment of an
 extremely hot and dense plasma containing enriched Hydrogen isotopes. The current frontier generation of fusion reactors, such as the Joint European Torus (JET) and the
-under-construction ITER, make
+under-construction \textcolor{red}{ITER}, make
 use of both tritium and deuterium fuel. While at least one deuterium atom occurs for every \num{5000} molecules of naturally-sourced water, and may be easily distilled, tritium is extremely rare in nature. It may be produced indirectly through irradiation of heavy water
 (\DDO) during nuclear fission, but only at very low rates which could
 never sustain industrial-scale fusion power.
 
-Modern D-T reactors rely on tritium breeding blankets, specialized
+\textcolor{red}{Modern} D-T reactors rely on tritium breeding blankets, specialized
 layers of material which partially line the reactor and produce tritium upon
 neutron bombardment, e.g.~by 
 \begin{eqnarray}
@@ -80,13 +80,13 @@ neutron bombardment, e.g.~by
 	\isotope[3][1]{T} + \hspace{3pt} \isotope[4][2]{He} + \hspace{3pt} \isotope[1][0]{n}
 \end{eqnarray}%
 where T represents tritium and \isotope[7]{Li}, \isotope[6]{Li} are the more and
-less common isotopes of lithium, respectively. The TBR is defined as the ratio of tritium produced per source neutron
+less common isotopes of lithium, respectively. \textcolor{red}{The TBR is defined as the ratio of tritium produced per source neutron}
 , whose description in Paramak is facilitated by 2~classes of parameters
 (exhaustively listed in~\Tref{tbl:params}). While the geometry of a given
 reactor is described by continuous parameters, material selections are specified
 by discrete categorical parameters. For all parameters, we have attempted to cover the full theoretical range of values even where those values are practically infeasible with current technology (e.g. packing fractions close to 1). Simulating broadly around typical values of parameters is necessary to construct the most accurate model of the typical range, and also aids in demonstrating the robustness of constructed models.
 
-In our work, we set out to produce a fast TBR surrogate model, which takes the same input parameters as the MC model used in Paramak and approximates its output with the greatest achievable regression performance, while also minimising the required quantity of expensive-model samples needed for training.
+In our work, we set out to produce a \textcolor{red}{fast TBR surrogate model}, which takes the same input parameters \textcolor{red}{as the MC model used in Paramak and approximates its output} with the greatest achievable regression performance, while also minimising the required quantity of expensive-model samples \textcolor{red}{needed for training}.
 
 \begin{table}[t]
 	\setlength\tabcolsep{2pt}
@@ -97,32 +97,31 @@ In our work, we set out to produce a fast TBR surrogate model, which takes the s
 	\item[]
 		\begin{tabular}{l|ll}
 		\toprule
-		{} & Parameter name (abbreviation) & Domain\\
+		{} & Parameter name \textcolor{red}{(abbreviation)} & Domain\\
 		\midrule
 		\parbox[t]{2mm}{\hspace{-2pt}\multirow{12}{*}{\rotatebox[origin=c]{90}{Blanket}}}
 		   & Breeder fraction\textsuperscript{\textdagger} & $[0,1]$\\
 		   & Breeder \isotope[6]{Li} enrichment fraction & $[0,1]$\\
-		   & Breeder material (BBM) & $\{\text{Li}_2\text{TiO}_3, \text{Li}_4\text{SiO}_4\}$\\
+		   & Breeder material \textcolor{red}{(BBM)} & $\{\text{Li}_2\text{TiO}_3, \text{Li}_4\text{SiO}_4\}$\\
 		   & Breeder packing fraction & $[0,1]$\\
 		   & Coolant fraction\textsuperscript{\textdagger} & $[0,1]$\\
-		   & Coolant material (BCM) & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Coolant material \textcolor{red}{(BCM)} & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
 		   & Multiplier fraction\textsuperscript{\textdagger} & $[0,1]$\\
-		   & Multiplier material (BMM) & $\{\text{Be}, \text{Be}_{12}\text{Ti}\}$\\
+		   & Multiplier material \textcolor{red}{(BMM)} & $\{\text{Be}, \text{Be}_{12}\text{Ti}\}$\\
 		   & Multiplier packing fraction & $[0,1]$\\
-		   & Structural fraction\textsuperscript{\textdagger} (BSM) & $[0,1]$\\
+		   & Structural fraction\textsuperscript{\textdagger} \textcolor{red}{(BSM)} & $[0,1]$\\
 		   & Structural material & $\{\text{SiC}, \text{eurofer}\}$\\
 		   & Thickness & $[0,500]\text{ cm}$\\
 		\midrule
 		\parbox[t]{2mm}{\hspace{-2pt}\multirow{6}{*}{\rotatebox[origin=c]{90}{First wall}}}
 		   & Armour fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
 		   & Coolant fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
-		   & Coolant material (FCM) & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
+		   & Coolant material \textcolor{red}{(FCM)} & $\{\text{D}_2\text{O}, \text{H}_2\text{O}, \text{He}\}$\\
 		   & Structural fraction\textsuperscript{\textdaggerdbl} & $[0,1]$\\
-		   & Structural material (FSM) & $\{\text{SiC}, \text{eurofer}\}$\\
+		   & Structural material \textcolor{red}{(FSM)} & $\{\text{SiC}, \text{eurofer}\}$\\
 		   & Thickness & $[0,20]\text{ cm}$\\
 		\bottomrule
 		\end{tabular}
 	\end{indented}
-	% TODO: verify with JS that thickness unit is indeed cm
 \end{table}
 
