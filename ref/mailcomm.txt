@@ -1,0 +1,87 @@
+> REFEREE REPORT(S):
+
+> Referee: 1
+
+>
+
+> COMMENTS TO THE AUTHOR(S)
+
+> Please find attached my comments.
+
+>
+
+> Referee: 2
+
+>
+
+> COMMENTS TO THE AUTHOR(S)
+
+> Highly interesting work on empirical surrogate modelling for an integral 3D Monte-Carlo radiation transport problem (TBR).
+
+>
+
+> Some comments for consideration:
+
+>
+
+> Introduction
+
+> - use capital letters for FENDL and JEFF projects; ENDF/B-VII.1.
+
+> - I am not fully convinced that VR is a competitor of your work or perhaps in other applications. The concept is very different, the objective is similar: to achieve significant speedups.
+
+>
+
+> 1.1
+
+> - The acronym ITER should be used without the abandoned explanation. Just say "ITER".
+
+> - 2nd paragraph starts with "instead". However, the tritium self-sufficiency is a paramount requirement for viable nuclear fusion energy production (DT reaction). Therefore the tritium breeding is an inherent feature of DT fusion reactors; there is no way to rely, even partially, on external supply, except of start-up inventories.
+
+> - TBR definition is ok, if "consumption" is well understood. Better to use the standard definiton tritium produced per source neutron (or tritium fused in plasma).
+
+> - Table 1: Thickness in mm; Armour material I suppose is W.
+
+> - It seems to me that the accessible domains could be narrowed down for a reasonable design space. Would this impact the assessment made in the paper? This obviously applies most prominently to parameters like armour fraction and blanket thickness.
+
+>
+
+> 2
+
+> - Table 2: it might be useful to briefly introduce the rationale of hyperparameter sets (how they are built from the Paramak input). What could be said about the size, e.g. using only 1-2 parameters vs. 11?
+
+>
+
+> 2.2
+
+> - Regarding QASS, I am confused about the objective to maximize surrogate eorr (page 6). Is this a typo?
+
+> - The CDM is not introduced through ref. 26. I would anyway suggest to describe the core of the metric in your article.
+
+>
+
+> 3.2
+
+> - what does "most robust" mean for the selected TBR toy theory? Is "robustness" a requirement for the functionality or success of QASS?
+
+> - Fig. 7/8: explain E-MAE in the article and how it relates to the introduced MAE.
+
+>
+
+> BOARD OF EDITORS
+
+>
+
+> COMMENTS TO THE AUTHOR(S)
+
+>
+
+> The reviewer believes to publish this paper in the Nuclear Fusion, the authors should interpret or correlate finding/result/significance with the fusion terminology/knowledge/practice. In this case, what is the final design composition (the set of input parameters listed in Table 1) derived from the proposed methodology that would provide an adequate TBR, and how are the derived design compositions compared with the available designs? Without such a comparison, it is hard to evaluate the contribution of the paper toward the advancement of fusion nuclear science and technology (FNST). Furthermore, even TBR is a critical parameter in the design, the blanket design has to satisfy other constraints such as temperature, stress, MHD pressure drop, etc. How does the proposed method incorporate additional yet necessary constraints in searching for a required TBR?
+
+> The goal of the proposed methodology is not clearly stated. If the goal is only to produce a fast TBR function as stated below “In our work, we set out to produce a fast TBR function which takes these same input parameters and approximates the MC model used in Paramak with the greatest achievable regression performance, while also minimizing the required quantity of expensive samples,” the reviewer would consider this work is in its primitive stage of the application of artificial intelligence/machine learning to FNST, and a too narrow fusion relevant scope to be published in Nuclear Fusion. More thoughts should be given to the identifications of the space/critical design needs from an integrated perspective (versus a single parameter such as TBR), where AI/the proposed methodology can help ensure tritium fuel self-sufficiency for the fusion energy development.
+
+>
+
+> Letter reference: DSRR01
+
+
