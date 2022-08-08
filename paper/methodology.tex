@@ -1,21 +1,21 @@
-Labeling the expensive Paramak model $f(x)$, a surrogate \textcolor{red}{model is a function}
+Labeling the expensive Paramak model $f(x)$, a surrogate model is a function
 $\hat{f}(x)$ such that $f(x)$ and $\hat{f}(x)$ minimize a selected dissimilarity
 metric. In order to be considered \textit{viable}, $\hat{f}(x)$ is required to
-achieve \textcolor{red}{an} expected evaluation time lower than that of~$f(x)$. In this work, we
-consider \textcolor{red}{two} methods of producing viable surrogates: (1)~a conventional decoupled
-approach, which evaluates $f(x)$ on a set of \textcolor{red}{uniformly-random samples} and
+achieve an expected evaluation time lower than that of~$f(x)$. In this work, we
+consider two methods of producing viable surrogates: (1)~a conventional decoupled
+approach, which evaluates $f(x)$ on a set of uniformly-random samples and
 trains surrogates in a supervised scheme, and (2)~an adaptive approach, which attempts to
-compensate for localized regression performance \textcolor{red}{insufficiencies} by interleaving
-multiple epochs of sampling and training. \textcolor{red}{Several high-accuracy and deployment-ready surrogate models are developed using the decoupled approach, and their performance characterized numerically, while the adaptive approach is studied as a proof-of-concept.}
+compensate for localized regression performance insufficiencies by interleaving
+multiple epochs of sampling and training. Several high-accuracy and deployment-ready surrogate models are developed using the decoupled approach, and their performance characterized numerically, while the adaptive approach is studied exclusively as a proof-of-concept.
 
 \begin{table}[t]
 	\setlength\tabcolsep{1pt}
 	\renewcommand{\arraystretch}{0.95}
 	\caption{\label{tbl:surrogates}Considered surrogate model families, their
 		selected abbreviations and implementations. $\mathcal{H}$~denotes the
-		set of hyperparameters, \textcolor{red}{family-dependent priors that control the
+		set of hyperparameters, family-dependent priors that control the
 		learning process, and are tuned separately. Families with fewer
-		hyperparameter represents a smaller surogate domain to explore.}}
+		hyperparameter represents a smaller surogate domain to explore.}
 	\begin{indented}
 	\item[]
 		\begin{tabular}{lllr}
@@ -71,77 +71,77 @@ number of input features.}
 		\end{tabularx}\\%
 		{\footnotesize $^\text{b}$This corresponds to evaluation of Paramak
 		 on all points of the test set. In surrogates, the equivalent
-		time period is referred to as \textcolor{red}{the} ``prediction time.''}
+		time period is referred to as the ``prediction time.''}
 	\end{indented}
 \end{table*}
 
 We selected several state-of-the-art regression algorithms to perform
 surrogate training on sampled point sets. Listed in~\Tref{tbl:surrogates}, these
-implementations define \textcolor{red}{nine} surrogate families \textcolor{red}{which are detailed} in~\Sref{sec:results}.
+implementations define nine surrogate families which are detailed in~\Sref{sec:results}.
 We note that each presented algorithm defines hyperparameters that may influence its
 performance. Their problem-specific optimal values are searched within the scope
 of this work, in particular in Experiments~1 \&~2 that are outlined
 in~\Sref{sec:experiment-methodology}.
 
-To compare the quality of the produced surrogates, we define a \textcolor{red}{variety} of metrics listed
+To compare the quality of the produced surrogates, we define a variety of metrics listed
 in~\Tref{tbl:metrics}. For regression performance analysis, we include a
-selection of absolute metrics \textcolor{red}{(MAE, $S$)} to assess the models' approximation capability
-and set practical bounds on the expected uncertainty of their predictions. In addition, we also track
-relative measures \textcolor{red}{($R^2$, $R^2_\text{adj.}$)} that are better-suited for comparison between this work and others as
+selection of absolute metrics (MAE, $S$) to assess the models' approximation capability
+and to set practical bounds on the expected uncertainty of their predictions. In addition, we also track
+relative measures ($R^2$, $R^2_\text{adj.}$) that are better-suited for comparison between this work and others, as
 they are invariant with respect to the selected domain and image space.
 For analysis of computational complexity, surrogates are assessed in terms of wall
-time (captured by the Python~3 \texttt{time} package). This is motivated by common practical \textcolor{red}{use-cases} of our work, where surrogate models are trained as replacements for
+time (captured by the Python~3 \texttt{time} package). This is motivated by common practical use-cases of our work, where surrogate models are trained as replacements for
 Paramak. All times reported (training, test, evaluation) are
 normalized by the corresponding dataset size, i.e.~correspond to ``time to
 process a single datapoint.''
 
-Even though some surrogates support acceleration by means of \textcolor{red}{parallelization}, we
-used non-parallelized implementations. The only exception to this \textcolor{red}{is the ANN family},
-which \textcolor{red}{requires} a considerable amount of processing power for training on
+Even though some surrogates support acceleration by means of parallelization, we
+used non-parallelized implementations. The only exception to this is the ANN family,
+which requires a considerable amount of processing power for training on
 conventional CPU architectures. Lastly, to prevent undesirable bias by training
-set selection, all reported metrics are obtained via 5-fold cross-validation.
-In this setting, a sample set is uniformly divided into \textcolor{red}{five} disjoint folds, each of which
-is used as a test set for models trained on the remaining \textcolor{red}{four}. Having repeated the
+set selection, all reported metrics are obtained via five-fold cross-validation.
+In this setting, a sample set is uniformly divided into five disjoint folds, each of which
+is used as a test set for models trained on the remaining four. Having repeated the
 same experiment for each division, the overall value of individual metrics is reported in terms of their mean and standard deviation over all folds.
 
 
 
 \subsection{Decoupled Approach}\label{sec:experiment-methodology}
 
-Experiments related to the decoupled approach are organized in \textcolor{red}{four} parts,
+Experiments related to the decoupled approach are organized in four parts,
 further described in this section. In summary, we aim to optimize the hyperparameters of
-each surrogate family separately, \textcolor{red}{and later compare the best results between
-families.}
+each surrogate family separately, and later compare the best results between
+families.
 
 The objective of Experiment~1 is to simplify the regression task for
-surrogates prone to suboptimal performance in \textcolor{red}{discrete} spaces.
+surrogates prone to suboptimal performance in discrete spaces.
 To this end, training points are filtered to a single selected discrete feature
 assignment, and surrogates are trained only on the remaining continuous features.
 This is repeated several times to explore variances in behavior,
-particularly in \textcolor{red}{four} distinct assignments that are obtained by setting blanket and
+particularly in four distinct assignments that are obtained by setting blanket and
 first wall coolant materials to one
 of:~$\{\text{H\textsubscript{2}O},\isotope{He}\}$.
 Experiment~2 conventionally measures surrogate performance on the full feature
 space without any parameter restrictions. In both experiments, hyperparameter tuning is
 facilitated by Bayesian optimisation~\cite{movckus1975bayesian}, where we select the
 hyperparameter configuration that produces the model that maximizes $R^2$. The
-process is terminated after 1000~iterations or \textcolor{red}{two} days, whichever condition is satisfied first.
+process is terminated after 1000~iterations or two days, whichever condition is satisfied first.
 The results of Experiments~1 \&~2 are depicted
 in Figures~\ref{fig:exp1-time-vs-reg} \&~\ref{fig:exp2-time-vs-reg}
 respectively, and described in~\Sref{sec:res-exp12}.
 
-In Experiment~3, the \textcolor{red}{twenty} best-performing hyperparameter configurations
-\textcolor{red}{for} each model family are used to train surrogates on sets of various sizes to
+In Experiment~3, the twenty best-performing hyperparameter configurations
+for each model family are used to train surrogates on sets of various sizes to
 investigate their scaling properties. In particular, we track the metrics
 from~\Tref{tbl:metrics} as functions of training set size (1, 2, 5, 10, 12, 15 and 20 thousands
-of samples) individually \textcolor{red}{for} each family. This allows their comparison based on
+of samples) individually for each family. This allows their comparison based on
 observed trends, and estimation of optimal training set sizes.
 The results of this experiment are shown in~\Fref{fig:scaling} and discussed
 in~\Sref{sec:res-exp3}.
 
 Finally, Experiment~4 aims
 to produce surrogates suitable for practical use by retraining selected
-well-scaling instances on large training sets\textcolor{red}{.}
+well-scaling instances on large training sets.
 The results of this process are displayed in~\Fref{fig:reg-performance} and
 in~\Tref{tbl:exp4-detailed-results}, and summarized in~\Sref{sec:res-exp4}.
 
@@ -154,7 +154,7 @@ crowding distance scoring to identify optimal new samples, but was only tested
 on a single-parameter domain. We theorized that a nondeterministic sample
 generation approach, built around Markov Chain Monte Carlo methods (MCMC), would
 fare better for high-dimensional models by more thoroughly exploring all local
-optima in the feature space. MCMC produces each sample \textcolor{red}{point} according to a \textcolor{red}{jump step drawn from a} shared proposal
+optima in the feature space. MCMC produces each sample point according to a jump step drawn from a shared proposal
 distribution. These sample points will converge to a desired posterior
 distribution, so long as the acceptance probability meets certain statistical criteria (see~\cite{Zhou2018} for a review).
 
@@ -171,4 +171,4 @@ which increase surrogate precision throughout the entire parameter space.
 
 We designed the Quality-Adaptive Surrogate Sampling algorithm (QASS, \Fref{fig:qassplan}) to iteratively increment the training/test set with sample
 points which maximize surrogate error and minimize a crowding distance metric
-(CDM)~\cite{Solonen2012} in feature space. \textcolor{red}{Error maximization is desirable for these sample points because it identifies regions of parameter space where the surrogate most needs to be improved.} On each iteration following an initial training of the surrogate on $N$ uniformly random samples, the surrogate was trained and absolute error calculated. MCMC was then performed to sample the error function generated by performing nearest-neighbor interpolation on these test error points. The resultant samples were culled by $50\%$ according to the CDM, and then the $n$ highest-error candidates were selected for reintegration with the training/test set, beginning another training epoch. Validation was also performed during each iteration on independent, uniformly-random sample sets.
+(CDM)~\cite{Solonen2012} in feature space. Error maximization is desirable for these sample points because it identifies regions of parameter space where the surrogate most needs to be improved. On each iteration following an initial training of the surrogate on $N$ uniformly random samples, the surrogate was trained and absolute error calculated. MCMC was then performed to sample the error function generated by performing nearest-neighbor interpolation on these test error points. The resultant samples were culled by $50\%$ according to the CDM, and then the $n$ highest-error candidates were selected for reintegration with the training/test set, beginning another training epoch. Validation was also performed during each iteration on independent, uniformly-random sample sets.
