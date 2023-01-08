@@ -83,7 +83,14 @@ The TBR is defined as the ratio of tritium produced per source neutron, whose de
 reactor is described by continuous parameters, material selections are specified
 by discrete categorical parameters. For all parameters, we have attempted to cover the full theoretical range of values even where those values are practically infeasible with current technology (e.g. packing fractions close to 1). Simulating broadly around typical values of parameters also improves the accuracy of the model nearer to typical values, and further aids in demonstrating the robustness of constructed models.
 
-In our work, we set out to produce a fast TBR surrogate model, which takes the same input parameters as the MC model used in Paramak and approximates its output with the greatest achievable regression performance, while also minimising the required quantity of expensive-model samples needed for training. This represents a significant step forwards in computational fusion-reactor design, as any speed-up achieved in TBR evaluation directly informs a speed-up in numerical optimization of reactor parameters, although such optimization is beyond the scope of the present work.
+In our work, we set out to produce a fast TBR surrogate model, which takes the
+same input parameters as the MC model used in Paramak and approximates its
+output with the greatest achievable regression performance, while also
+minimising the required quantity of expensive-model samples needed for training.
+This represents a significant step forward in computational fusion-reactor
+design, as speed-ups achieved in TBR evaluation can lead to a speed-up in
+numerical optimization of reactor parameters, although such optimization is
+beyond the scope of the present work.
 
 \begin{table}[t]
 	\setlength\tabcolsep{2pt}
