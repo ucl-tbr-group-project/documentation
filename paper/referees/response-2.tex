@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+
+\topmargin = 1mm
+\headsep = 1mm
+\textheight = 228mm
+\textwidth = 167.0mm
+\oddsidemargin = 1.1mm
+\evensidemargin = 1.1mm
+\date{\today}
+
+% Set the format for notes on in-progress responses
+\newcommand\myNotes[1]{\textcolor{red}{#1}}
+\newcommand\myTodo[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\begin{center}
+\bf Reviewer Response for Manuscript MLST-100670
+\end{center}
+
+\bigskip
+
+\noindent
+Dear Editor,
+
+\bigskip
+\noindent
+We thank the referee for his or her careful consideration and useful comments.
+Please find below our detailed responses. We have also made the corresponding
+changes in the text.
+
+\bigskip
+\noindent
+Best Regards,\\
+Petr Mánek (for the authors)
+
+\bigskip
+\bigskip
+\bigskip
+\noindent
+{\bf Comments of Referee 1}
+
+\begin{enumerate}
+
+\item Page 3, Section 1.1, Table 1: Please correct abbreviation \textit{Blanket
+	Structural Fraction (BSM)} defined in Table 1. It should be BSF. While BSM
+	corresponds to \textit{``Blanket Structural Material''}.
+
+{\bf
+	The ``BSM'' abbreviation was indeed intended to denote ``Blanket
+	Structural Material'', as can be seen further on in Table 4, where it is
+	associated with ``eurofer''. In the submitted manuscript, the abbreviation
+	was incorrectly misplaced in Table 1 by one row. We have corrected this
+	error.
+}
+
+\item Page 3, Section 1.1, lines 47-54: Please clarify the meaning of the
+	sentence which currently is trivial and does not convey much sense:
+	\textit{``This represents a significant step forwards in computational
+		fusion-reactor design, as any speed-up achieved in TBR evaluation
+		directly informs a speed-up in numerical optimization of reactor
+		parameters, although such optimization is beyond the scope of the
+		present work.''} Particularly, I suspect that its second clause is very
+		doubtful: \textit{``as any speed-up achieved in TBR evaluation directly
+		informs a speed-up in numerical optimization of reactor parameters,''}
+		Maybe, the problems in understanding are related with the phrases
+		\textit{``any speed-up''} -- this is too general expression, the second
+		phrase is \textit{``directly informs''} -- maybe you wanted to say
+		\textit{``directly connected''}?
+
+{\bf
+	It is true that the wording of this sentence is perhaps unnecessarily
+	complex. Its purpose is to motivate our work in the following sense: if a
+	computationally expensive Monte Carlo (MC) simulation is required in order
+	to evaluate a single instance of reactor parameters (i.e.~a single data
+	point of some phase space), it may act as a performance bottleneck
+	prohibiting efficient exploration of that domain. Our surrogate models can
+	be viewed as a possible improvement of this paradigm. If a surrogate model
+	is trained to be sufficiently accurate, it could perhaps completely
+	substitute MC simulations in this process (note that MC would still be
+	needed to train the model). Or alternatively, one could envision a hybrid
+	optimization process where a surrogate model acts as a heuristic that guides
+	the optimization algorithm, prunes the parameter space and reduces the
+	number of calls to the MC. For instance, such approach would be consistent
+	with Branch \& Bound strategy. Since the prediction time of the presented
+	surrogate models is significantly smaller than the runtime of the MC, in
+	both cases we would observe a relative speed-up of the optimization process.
+
+	We have rephrased the referenced sentence to better convey this meaning.
+}
+
+\end{enumerate}
+
+\end{document}
